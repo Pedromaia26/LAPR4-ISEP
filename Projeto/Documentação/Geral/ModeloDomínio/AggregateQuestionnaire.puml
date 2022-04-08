@@ -1,0 +1,46 @@
+@startuml
+
+entity Questionnaire
+entity Section
+entity Question
+
+object IdQuestion
+object QuestionName
+object Instruction
+object Type
+object QuestionObligatoriness
+object ExtraInfo
+
+object IdQuestionnaire
+object QuestionnaireTitle
+object WelcomeMessage
+object FinalMessage
+
+object IdSection
+object SectionTitle
+object DescriptionSection
+object SectionObligatoriness
+object Repeatability
+
+Questionnaire-->IdQuestionnaire 
+Questionnaire-->QuestionnaireTitle
+Questionnaire-->WelcomeMessage
+Questionnaire-->FinalMessage
+
+Question --> IdQuestion
+Question --> QuestionName
+Question --> Instruction
+Question --> Type
+Question --> QuestionObligatoriness
+Question --> ExtraInfo
+
+Section --> IdSection
+Section --> SectionTitle
+Section --> DescriptionSection
+Section --> SectionObligatoriness
+Section --> Repeatability
+
+Questionnaire "1" --> "1..*" Question : contains 
+Questionnaire "1" --> "1..*" Section : has 
+Section "1" --> "1..*" Question : contains
+@enduml
