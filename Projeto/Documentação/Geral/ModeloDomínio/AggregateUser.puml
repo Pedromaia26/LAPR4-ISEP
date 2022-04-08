@@ -1,0 +1,41 @@
+@startuml Modelo de domínio
+' hide the spot
+
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+entity Customer
+entity User
+entity WarehouseEmployee
+entity SalesClerk
+entity SalesManager
+entity Administrator
+
+object VAT
+object email
+object Phone_number
+object Birthday
+object Gender
+object Delivering_postal_addresses
+object Billing_postal_addresses
+Customer --> VAT_id
+Customer --> email
+Customer --> Phone_number
+Customer --> Birthday
+Customer --> Gender
+Customer --> Delivering_postal_addresses
+Customer --> Billing_postal_addresses
+
+object User_id
+object Name
+User --> User_id
+User --> Name
+
+Customer -left--|> User
+WarehouseEmployee --|> User
+SalesClerk -up--|> User
+SalesManager -right--|> User
+Administrator -right--|> User
+
+@enduml
