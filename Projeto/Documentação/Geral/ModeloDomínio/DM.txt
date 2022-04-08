@@ -1,0 +1,67 @@
+@startuml Modelo de domÃ­nio
+' hide the spot
+
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+package Product{
+  entity Product 
+  entity Order
+  entity ShoppingCart_Line
+  entity Status
+  entity Category
+  entity ShoppingCart
+}
+
+package User{
+  entity Customer
+  entity User
+  entity WarehouseEmployee
+  entity SalesClerk
+  entity SalesManager
+  entity Administrator
+}
+
+package Questionnaire{
+  entity Questionnaire
+  entity Section
+  entity Question
+}
+
+package Warehouse{
+  entity Warehouse
+  entity AGV
+  entity AGVDock
+  entity Aisle
+  entity Row
+  entity Shelf
+}
+
+
+  
+Customer -left--|> User
+WarehouseEmployee --|> User
+SalesClerk --|> User
+SalesManager --|> User
+Administrator --|> User
+Customer "1" --> "0..*" Product: orders 
+Product "*" --> "1"  Category : belongs to 
+Order "1"--> "1" ShoppingCart : corresponds
+ShoppingCart "1" --> "1..*" ShoppingCart_Line : contains 
+ShoppingCart_Line "1" --> "1" Product : corresponds
+Order "1..*" --> "1" Status : has  
+Warehouse "1" --> "0..*" Product : stores
+Questionnaire "1" --> "1..*" Question : contains 
+Questionnaire "1" --> "1..*" Section : has 
+Section "1" --> "1..*" Question : contains 
+Warehouse "1" --> "1*.." AGV : contains 
+Customer "1..*" --> "1..*" Questionnaire : answers 
+Warehouse "1" --> "1..*" Aisle : organized by 
+AGV "1" --> "1" AGVDock : has 
+Aisle "1" --> "1..*" Row : divided by 
+Row "1" --> "1..*" Shelf  : contains 
+
+
+
+@enduml
