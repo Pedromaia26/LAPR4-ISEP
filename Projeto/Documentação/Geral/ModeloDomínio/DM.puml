@@ -1,4 +1,4 @@
-@startuml Modelo de domÃ­nio
+@startuml Modelo de domínio
 ' hide the spot
 
 
@@ -6,7 +6,7 @@
 skinparam linetype ortho
 
 package Product{
-  entity Product 
+  entity Product
   entity Order
   entity ShoppingCart_Line
   entity Status
@@ -39,28 +39,28 @@ package Warehouse{
 }
 
 
-  
+
 Customer -left--|> User
 WarehouseEmployee --|> User
 SalesClerk --|> User
 SalesManager --|> User
 Administrator --|> User
-Customer "1" --> "0..*" Product: orders 
-Product "*" --> "1"  Category : belongs to 
+Customer "1" --> "0..*" Product: orders
+Product "*" --> "1"  Category : belongs to
 Order "1"--> "1" ShoppingCart : corresponds
-ShoppingCart "1" --> "1..*" ShoppingCart_Line : contains 
+ShoppingCart "1" --> "1..*" ShoppingCart_Line : contains
 ShoppingCart_Line "1" --> "1" Product : corresponds
-Order "1..*" --> "1" Status : has  
+Order "1..*" --> "1" Status : has
 Warehouse "1" --> "0..*" Product : stores
-Questionnaire "1" --> "1..*" Question : contains 
-Questionnaire "1" --> "1..*" Section : has 
-Section "1" --> "1..*" Question : contains 
-Warehouse "1" --> "1*.." AGV : contains 
-Customer "1..*" --> "1..*" Questionnaire : answers 
-Warehouse "1" --> "1..*" Aisle : organized by 
-AGV "1" --> "1" AGVDock : has 
-Aisle "1" --> "1..*" Row : divided by 
-Row "1" --> "1..*" Shelf  : contains 
+Questionnaire "1" --> "1..*" Question : contains
+Questionnaire "1" --> "1..*" Section : has
+Section "1" --> "1..*" Question : contains
+Warehouse "1" --> "1*.." AGV : contains
+Customer "1..*" --> "1..*" Questionnaire : answers
+Warehouse "1" --> "1..*" Aisle : organized by
+AGV "1" --> "1" AGVDock : has
+Aisle "1" --> "1..*" Row : divided by
+Row "1" --> "1..*" Shelf  : contains
 
 
 

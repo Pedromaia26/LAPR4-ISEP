@@ -26,11 +26,11 @@ object ShelfLocation
 
 
 
-Warehouse "1" --> "1*.." AGV : contains 
-Warehouse "1" --> "1..*" Aisle : organized by 
-AGV "1" --> "1" AGVDock : has 
-Aisle "1" --> "1..*" Row : divided by 
-Row "1" --> "1..*" Shelf  : contains 
+Warehouse "1" --> "1*.." AGV : contains
+Warehouse "1" --> "1..*" Aisle : organized by
+AGV "1" --> "1" AGVDock : has
+Aisle "1" --> "1..*" Row : divided by
+Row "1" --> "1..*" Shelf  : contains
 AGV --> AGVIdentifier
 AGV --> AGVShortDescription
 AGV --> Model
