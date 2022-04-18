@@ -1,1 +1,0 @@
-The application developed by the team will be in this folder.
