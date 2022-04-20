@@ -37,23 +37,31 @@ public final class BaseRoles {
     /**
      * Utente
      */
-    public static final Role CLIENT_USER = Role.valueOf("CLIENT_USER");
+    public static final Role COSTUMER_USER = Role.valueOf("COSTUMER_USER");
     /**
      * Base Administrator
      */
     public static final Role ADMIN = Role.valueOf("ADMIN");
+
     /**
-     *
+     * Sales Clerk
      */
-    public static final Role KITCHEN_MANAGER = Role.valueOf("KITCHEN_MANAGER");
+    public static final Role SALES_CLERK = Role.valueOf("SALES_CLERK");
+
     /**
-     *
+     * Sales Manager
      */
-    public static final Role MENU_MANAGER = Role.valueOf("MENU_MANAGER");
+    public static final Role SALES_MANAGER = Role.valueOf("SALES_MANAGER");
+
     /**
-     *
+     * Warehouse Employee
      */
-    public static final Role CASHIER = Role.valueOf("CASHIER");
+    public static final Role WAREHOUSE_EMPLOYEE = Role.valueOf("WAREHOUSE_EMPLOYEE");
+
+    /**
+     * AGV
+     */
+    public static final Role AGV = Role.valueOf("AGV");
 
     /**
      * get available role types for adding new users
@@ -61,10 +69,10 @@ public final class BaseRoles {
      * @return
      */
     public static Role[] nonUserValues() {
-        return new Role[] { ADMIN, KITCHEN_MANAGER, MENU_MANAGER, CASHIER };
+        return new Role[] { ADMIN, /*COSTUMER_USER*/SALES_CLERK,SALES_MANAGER,WAREHOUSE_EMPLOYEE, AGV};
     }
 
     public boolean isCollaborator(final Role role) {
-        return role != CLIENT_USER;
+        return role != COSTUMER_USER;
     }
 }
