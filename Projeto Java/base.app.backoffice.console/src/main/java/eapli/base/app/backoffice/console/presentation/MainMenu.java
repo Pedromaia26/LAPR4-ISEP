@@ -23,6 +23,7 @@
  */
 package eapli.base.app.backoffice.console.presentation;
 
+import eapli.base.app.backoffice.console.presentation.authz.AddCostumerUI;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
 import eapli.base.app.backoffice.console.presentation.authz.AddUserUI;
@@ -152,6 +153,11 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(SETTINGS_OPTION, settingsMenu);
         }
 
+        if(authz.isAuthenticatedUserAuthorizedTo(BaseRoles.SALES_CLERK)){
+            final Menu registerCostumer = buildRegisterCostumerMenu();
+            mainMenu.addSubMenu(USERS_OPTION, registerCostumer);
+        }
+
         if (!Application.settings().isMenuLayoutHorizontal()) {
             mainMenu.addItem(MenuItem.separator(SEPARATOR_LABEL));
         }
@@ -184,6 +190,15 @@ public class MainMenu extends AbstractUI {
         return menu;
     }
 
+    private Menu buildRegisterCostumerMenu() {
+        final Menu menu = new Menu("Register Costumer >");
+
+        menu.addItem(ADD_USER_OPTION, "Add Costumer", new AddCostumerUI()::show);
+
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
 
 
 

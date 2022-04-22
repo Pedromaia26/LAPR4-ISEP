@@ -90,6 +90,8 @@ class MainMenu extends ClientUserBaseUI {
 
         mainMenu.addItem(MenuItem.separator(SEPARATOR_LABEL));
 
+        mainMenu.addSubMenu(BOOKINGS_OPTION,myUserMenu);
+
         mainMenu.addItem(EXIT_OPTION, "Exit", new ExitWithMessageAction("Bye, Bye"));
 
         return mainMenu;
