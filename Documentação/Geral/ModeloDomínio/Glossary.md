@@ -79,9 +79,13 @@ This document contains a description of each entity, value object and aggregate.
 > | VAT | Value Added Tax. A consumption tax assessed on the value added to goods and services. | ------ |
 
 > ### Aggregates ###
-> | Designation | Description | Entities |
-> |:---------------|:--------|:-------:|
+> | Designation   | Description | Entities |
+---------------|:---------------|:--------|:-------:|
 > | Questionnaire | The aggregate Questionnaire contains all entities involving the questionnaire. | Questionnaire - Section - Question |
-> | Product       | The aggregate Product contains all entities involving the product. | Product - Order - Status - ShoppingCart - ShoppingCart_Line - Category |
+> | Product       | The aggregate Product contains all entities involving the product. | Product |
 > | User          | The aggregate User contains all entities involving the user. | User - Administrator - SalesManager - SalesClerk - WarehouseEmployee - Customer |
 > | Warehouse     | The aggregate Warehouse contains all entities involving the warehouse. | Warehouse - AGV - AGVDock - Aisle - Row - Shelf |
+> | AGV           | The aggregate AGV contains all entities involving the AGV. | AGV - AGVDock |
+> | Category      | The aggregate Category contains all entities involving the category. | Category |
+> | Order         | The aggregate Order contains all entities involving the order. | Order - Order_Line - ShoppingCart - ShoppingCart_Line |
+> | Status        | The aggregate Status contains all entities involving the status. | Status |

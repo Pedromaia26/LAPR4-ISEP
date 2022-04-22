@@ -7,12 +7,12 @@ skinparam linetype ortho
 
 entity Customer
 entity User
-entity WarehouseEmployee
-entity SalesClerk
-entity SalesManager
-entity Administrator
+enum WarehouseEmployee
+enum SalesClerk
+enum SalesManager
+enum Administrator
 
-object VAT
+object VAT_id
 object email
 object Phone_number
 object Birthday

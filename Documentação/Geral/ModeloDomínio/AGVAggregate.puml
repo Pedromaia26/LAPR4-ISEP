@@ -1,0 +1,25 @@
+@startuml
+
+skinparam linetype ortho
+
+entity AGV
+entity AGVDock
+object AGVIdentifier
+object AGVShortDescription
+object Model
+object MaximumWeight
+object Autonomy
+object Task
+object AGVDockIdentifier
+object AGVDockLocation
+
+AGV "1" --> "1" AGVDock : has
+
+AGV --> AGVIdentifier
+AGV --> AGVShortDescription
+AGV --> Model
+AGV --> MaximumWeight
+AGV --> Autonomy
+AGV --> Task
+AGVDock --> AGVDockLocation
+AGVDock --> AGVDockIdentifier
