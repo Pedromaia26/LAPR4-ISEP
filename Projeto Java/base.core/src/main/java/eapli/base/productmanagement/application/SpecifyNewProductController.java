@@ -23,7 +23,10 @@ package eapli.base.productmanagement.application;
 import java.util.Calendar;
 import java.util.Set;
 
+import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.productmanagement.domain.Product;
+import eapli.base.productmanagement.domain.ProductBuilder;
+import eapli.base.productmanagement.repositories.ProductRepository;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.application.UseCaseController;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
@@ -41,7 +44,7 @@ import eapli.framework.time.util.Calendars;
 public class SpecifyNewProductController {
 
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
-    private final UserManagementService  userSvc = AuthzRegistry.userService();
+    private final ProductRepository productRepository = PersistenceContext.repositories().products();
 
     /**
      * Get existing Products available to the user.
@@ -49,16 +52,27 @@ public class SpecifyNewProductController {
      * @return a list of Products
      */
     public Product[] getProducts() {
-
+        return null;
     }
 
-    public SystemUser addProduct(final String setOfPhotos, final String shortDescription, final String extendedDescription,
+    public Product addProduct(final String setOfPhotos, final String shortDescription, final String extendedDescription,
                               final String technicalDescription,
                               final String brand, final String reference, final String productionCode, final String internalCode, double price) {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
 
-        return userSvc.registerNewProduct(username, password, firstName, lastName, email, roles,
-                createdOn);
+        final var newProduct = new ProductBuilder(setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, productionCode, internalCode, price);
+
+        return productRepository.save(newProduct.build());
+    }
+
+    public Product addProduct(final String setOfPhotos, final String shortDescription, final String extendedDescription,
+                              final String technicalDescription,
+                              final String brand, final String reference, final String internalCode, double price) {
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+
+        final var newProduct = new ProductBuilder(setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, internalCode, price);
+
+        return productRepository.save(newProduct.build());
     }
 
 }

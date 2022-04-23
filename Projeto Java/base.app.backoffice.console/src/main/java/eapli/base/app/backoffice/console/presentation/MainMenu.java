@@ -24,6 +24,8 @@
 package eapli.base.app.backoffice.console.presentation;
 
 import eapli.base.app.backoffice.console.presentation.authz.*;
+import eapli.base.app.backoffice.console.presentation.product.SpecifyNewProductUI;
+import eapli.base.app.backoffice.console.presentation.product.SpecifyNewProductUI;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
 import eapli.base.app.backoffice.console.presentation.clientuser.AcceptRefuseSignupRequestAction;
@@ -57,6 +59,9 @@ public class MainMenu extends AbstractUI {
     private static final int LIST_USERS_OPTION = 2;
     private static final int DEACTIVATE_USER_OPTION = 3;
     private static final int ACCEPT_REFUSE_SIGNUP_REQUEST_OPTION = 4;
+
+    // PRODUCTS
+    private static final int SPECIFY_NEW_PRODUCT = 3;
 
     // SETTINGS
     private static final int SET_KITCHEN_ALERT_LIMIT_OPTION = 1;
@@ -127,6 +132,8 @@ public class MainMenu extends AbstractUI {
         if(authz.isAuthenticatedUserAuthorizedTo(BaseRoles.SALES_CLERK)){
             final Menu registerCostumer = buildRegisterCostumerMenu();
             mainMenu.addSubMenu(USERS_OPTION, registerCostumer);
+            final Menu specifyProduct = buildProductMenu();
+            mainMenu.addSubMenu(SPECIFY_NEW_PRODUCT, specifyProduct);
         }
 
         if(authz.isAuthenticatedUserAuthorizedTo(BaseRoles.WAREHOUSE_EMPLOYEE)){
@@ -186,7 +193,15 @@ public class MainMenu extends AbstractUI {
         return menu;
     }
 
+    private Menu buildProductMenu() {
+        final Menu menu = new Menu("Product >");
 
+        menu.addItem(SPECIFY_NEW_PRODUCT, "Specify Product", new SpecifyNewProductUI()::show);
+
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
 
 
 }

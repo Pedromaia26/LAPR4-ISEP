@@ -1,9 +1,12 @@
 package eapli.base.productmanagement.domain;
 
 import eapli.base.clientusermanagement.domain.ClientUser;
+import eapli.framework.domain.model.DomainFactory;
 import eapli.framework.infrastructure.authz.domain.model.SystemUserBuilder;
 
-public class ProductBuilder {
+public class ProductBuilder implements DomainFactory<Product> {
+
+    private Product product;
 
     private Barcode barcode;
     private Brand brand;
@@ -14,8 +17,8 @@ public class ProductBuilder {
     private Reference reference;
 
     public ProductBuilder(final String setOfPhotos, final String shortDescription, final String extendedDescription,
-                   final String technicalDescription,
-                   final String brand, final String reference, final String productionCode, final String internalCode, double price){
+                          final String technicalDescription,
+                          final String brand, final String reference, final String productionCode, final String internalCode, double price){
         withPhoto(setOfPhotos);
         withDescription(shortDescription, extendedDescription, technicalDescription);
         withBrand(brand);
@@ -75,10 +78,23 @@ public class ProductBuilder {
         return this;
     }
 
+    private Product buildOrThrow() {
+        if (product != null) {
+            return product;
+        } else if (barcode != null && brand != null && code != null && description != null && photo != null && price != null && reference != null) {
+            product = new Product(photo, description, brand, reference, code, price, barcode);
+            return product;
+        } else {
+            throw new IllegalStateException();
+        }
+    }
+
     public Product build() {
-        // since the factory knows that all the parts are needed it could throw
-        // an exception. however, we will leave that to the constructor
-        return new Product(this.photo, this.description, this.brand, this.reference, this.code, this.price);
+        final Product ret = buildOrThrow();
+        // make sure we will create a new instance if someone reuses this builder and do not change
+        // the previously built dish.
+        product = null;
+        return ret;
     }
 
 
