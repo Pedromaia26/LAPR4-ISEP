@@ -13,7 +13,6 @@ public class Product implements AggregateRoot<Code> {
 
     private Barcode barcode;
     private Brand brand;
-
     private Code code;
     private Description description;
     private Photo photo;
