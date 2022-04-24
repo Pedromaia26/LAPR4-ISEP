@@ -1,9 +1,11 @@
 package eapli.base.productmanagement.domain;
 
+import eapli.framework.domain.model.ValueObject;
+
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class TechnicalDescription {
+public class TechnicalDescription implements ValueObject {
 
 
     private String technicalDescription;

@@ -24,10 +24,7 @@
 package eapli.base.app.backoffice.console.presentation;
 
 import eapli.base.app.backoffice.console.presentation.authz.*;
-import eapli.base.app.backoffice.console.presentation.product.ListProductUI;
-import eapli.base.app.backoffice.console.presentation.product.SearchProductBrandUI;
-import eapli.base.app.backoffice.console.presentation.product.SearchProductDescriptionUI;
-import eapli.base.app.backoffice.console.presentation.product.SpecifyNewProductUI;
+import eapli.base.app.backoffice.console.presentation.product.*;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
 import eapli.base.app.backoffice.console.presentation.clientuser.AcceptRefuseSignupRequestAction;
@@ -73,6 +70,12 @@ public class MainMenu extends AbstractUI {
     //PRODUCTS
     private static final int SPECIFY_NEW_PRODUCT = 1;
     private static final int SEARCH_LIST_PRODUCT_SUBMENU = 2;
+
+    // CATEGORY MAIN MENU
+    private static final int CATEGORY_MENU = 4;
+
+    //CATEGORY
+    private static final int DEFINE_NEW_CATEGORY = 1;
 
     // SETTINGS
     private static final int SET_KITCHEN_ALERT_LIMIT_OPTION = 1;
@@ -145,6 +148,8 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(USERS_OPTION, registerCostumer);
             final Menu Product = buildProductMenu();
             mainMenu.addSubMenu(PRODUCT_MENU, Product);
+            final Menu Category = buildCategoryMenu();
+            mainMenu.addSubMenu(CATEGORY_MENU, Category);
         }
 
         if(authz.isAuthenticatedUserAuthorizedTo(BaseRoles.WAREHOUSE_EMPLOYEE)){
@@ -222,6 +227,16 @@ public class MainMenu extends AbstractUI {
         menu.addItem(LIST_ALL_PRODUCT, "View Products Catalog", new ListProductUI()::show);
         menu.addItem(SEARCH_BRAND_PRODUCT, "Search Products Catalog by Brand", new SearchProductBrandUI()::show);
         menu.addItem(SEARCH_DESCRIPTION_PRODUCT, "Search Products Catalog by Description", new SearchProductDescriptionUI()::show);
+
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
+    private Menu buildCategoryMenu() {
+        final Menu menu = new Menu("Category >");
+
+        menu.addItem(DEFINE_NEW_CATEGORY, "Define Category", new DefineNewCategoryUI()::show);
 
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 

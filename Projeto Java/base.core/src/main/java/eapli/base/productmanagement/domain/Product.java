@@ -75,7 +75,7 @@ public class Product implements AggregateRoot<InternalCode> {
 
     @Override
     public InternalCode identity() {
-        return null;
+        return internalCode;
     }
 
     @Override
