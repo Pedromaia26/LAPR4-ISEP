@@ -54,4 +54,9 @@ public class InMemoryClientUserRepository
     public Iterable<ClientUser> findAllActive() {
         return match(e -> e.user().isActive());
     }
+
+    @Override
+    public ClientUser save(ClientUser clientUser) {
+        return clientUser;
+    }
 }

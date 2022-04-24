@@ -1,44 +1,68 @@
 package eapli.base.productmanagement.domain;
 
-import eapli.base.clientusermanagement.domain.MecanographicNumber;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.util.List;
-
-public class Product implements AggregateRoot<Code> {
+import javax.persistence.*;
 
 
-    private Barcode barcode;
-    private Brand brand;
-    private Code code;
-    private Description description;
+
+@Entity
+public class Product implements AggregateRoot<InternalCode> {
+
+    @EmbeddedId
+    private InternalCode internalCode;
     private Photo photo;
-    private Price price;
+    private ShortDescription shortDescription;
+    private ExtendedDescription extendedDescription;
+    private TechnicalDescription technicalDescription;
+    private Brand brand;
     private Reference reference;
+    private ProductionCode productionCode;
+    private Price price;
+    private Barcode barcode;
 
 
-    private List<Product> listOfProducts;
+    public Product(Photo photo, ShortDescription shortDescription, ExtendedDescription extendedDescription, TechnicalDescription technicalDescription, Brand brand, Reference reference, InternalCode internalCode, Price price, Barcode barcode){
 
-    public Product(Photo photo, Description description, Brand brand, Reference reference, Code code, Price price, Barcode barcode){
-
-        if (photo == null || description == null || brand == null || reference == null || code == null || price == price || barcode == null)
+        if (photo == null || shortDescription == null || extendedDescription == null || technicalDescription == null || brand == null || reference == null || internalCode == null || price == null || barcode == null)
             throw new IllegalArgumentException();
 
         this.photo = photo;
-        this.description = description;
+        this.shortDescription = shortDescription;
+        this.extendedDescription = extendedDescription;
+        this.technicalDescription = technicalDescription;
         this.brand = brand;
         this.reference = reference;
-        this.code = code;
+        this.internalCode = internalCode;
         this.price = price;
+        this.barcode = barcode;
 
     }
 
-    public List<Product> getListOfProducts() {
-        return listOfProducts;
+    public Product(Photo photo, ShortDescription shortDescription, ExtendedDescription extendedDescription, TechnicalDescription technicalDescription, Brand brand, Reference reference, InternalCode internalCode, ProductionCode productionCode, Price price, Barcode barcode){
+
+        if (photo == null || shortDescription == null || extendedDescription == null || technicalDescription == null || brand == null || reference == null || internalCode == null || price == null || barcode == null)
+            throw new IllegalArgumentException();
+
+        this.photo = photo;
+        this.shortDescription = shortDescription;
+        this.extendedDescription = extendedDescription;
+        this.technicalDescription = technicalDescription;
+        this.brand = brand;
+        this.reference = reference;
+        this.internalCode = internalCode;
+        this.productionCode = productionCode;
+        this.price = price;
+        this.barcode = barcode;
+
     }
+
+    public Product() {
+
+    }
+
+
 
     @Override
     public boolean sameAs(Object other) {
@@ -46,7 +70,18 @@ public class Product implements AggregateRoot<Code> {
     }
 
     @Override
-    public Code identity() {
-        return this.code;
+    public int compareTo(InternalCode other) {
+        return AggregateRoot.super.compareTo(other);
+    }
+
+
+    @Override
+    public InternalCode identity() {
+        return null;
+    }
+
+    @Override
+    public boolean hasIdentity(InternalCode id) {
+        return AggregateRoot.super.hasIdentity(id);
     }
 }

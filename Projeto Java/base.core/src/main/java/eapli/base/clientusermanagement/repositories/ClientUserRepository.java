@@ -24,6 +24,7 @@ import java.util.Optional;
 
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.domain.MecanographicNumber;
+import eapli.base.productmanagement.domain.Product;
 import eapli.framework.domain.repositories.DomainRepository;
 import eapli.framework.infrastructure.authz.domain.model.Username;
 
@@ -53,5 +54,8 @@ public interface ClientUserRepository
         return ofIdentity(number);
     }
 
+
     public Iterable<ClientUser> findAllActive();
+
+    public ClientUser save(ClientUser entity);
 }

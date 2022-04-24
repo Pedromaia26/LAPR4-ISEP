@@ -1,24 +1,40 @@
 package eapli.base.persistence.impl.jpa;
 
-import eapli.base.Application;
-import eapli.base.clientusermanagement.domain.ClientUser;
-import eapli.base.clientusermanagement.domain.MecanographicNumber;
-import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.productmanagement.domain.Product;
-import eapli.base.productmanagement.domain.Code;
+import eapli.base.productmanagement.domain.InternalCode;
 import eapli.base.productmanagement.repositories.ProductRepository;
-import eapli.framework.domain.repositories.TransactionalContext;
-import eapli.framework.infrastructure.authz.domain.model.Username;
-import eapli.framework.infrastructure.repositories.impl.jpa.JpaAutoTxRepository;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
-public class JpaProductRepository extends BasepaRepositoryBase<Product, Code, Code>
+public class JpaProductRepository extends BasepaRepositoryBase<Product, InternalCode, InternalCode>
         implements ProductRepository {
 
     JpaProductRepository() {
         super("name");
+    }
+
+    private EntityManager getEntityManager() {
+        EntityManagerFactory factory = Persistence.
+                createEntityManagerFactory("eapli.base");
+        EntityManager manager = factory.createEntityManager();
+        return manager;
+    }
+
+    @Override
+    public Product save(Product product) {
+        if (product == null) {
+            throw new IllegalArgumentException();
+        }
+        EntityManager em = getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+        em.persist(product);
+        tx.commit();
+        em.close();
+
+        return product;
     }
 }

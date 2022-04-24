@@ -35,6 +35,7 @@ import eapli.framework.infrastructure.authz.application.UserManagementService;
 import eapli.framework.infrastructure.authz.domain.model.Role;
 import eapli.framework.infrastructure.authz.domain.model.SystemUser;
 import eapli.framework.time.util.Calendars;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -55,23 +56,25 @@ public class SpecifyNewProductController {
         return null;
     }
 
+
     public Product addProduct(final String setOfPhotos, final String shortDescription, final String extendedDescription,
                               final String technicalDescription,
-                              final String brand, final String reference, final String productionCode, final String internalCode, double price) {
+                              final String brand, final String reference, final String productionCode, final String internalCode, double price, String barcode) {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
 
-        final var newProduct = new ProductBuilder(setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, productionCode, internalCode, price);
+        final var newProduct = new ProductBuilder(setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, productionCode, internalCode, price, barcode);
+
 
         return productRepository.save(newProduct.build());
     }
 
+
     public Product addProduct(final String setOfPhotos, final String shortDescription, final String extendedDescription,
                               final String technicalDescription,
-                              final String brand, final String reference, final String internalCode, double price) {
+                              final String brand, final String reference, final String internalCode, double price, String barcode) {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
 
-        final var newProduct = new ProductBuilder(setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, internalCode, price);
-
+        final var newProduct = new ProductBuilder(setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, internalCode, price, barcode);
         return productRepository.save(newProduct.build());
     }
 

@@ -1,45 +1,49 @@
 package eapli.base.productmanagement.domain;
 
-import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.framework.domain.model.DomainFactory;
-import eapli.framework.infrastructure.authz.domain.model.SystemUserBuilder;
 
 public class ProductBuilder implements DomainFactory<Product> {
 
     private Product product;
-
     private Barcode barcode;
     private Brand brand;
-    private Code code;
-    private Description description;
+    private InternalCode internalCode;
+    private ProductionCode productionCode;
+    private ShortDescription shortDescription;
+    private ExtendedDescription extendedDescription;
+    private TechnicalDescription technicalDescription;
     private Photo photo;
     private Price price;
     private Reference reference;
 
     public ProductBuilder(final String setOfPhotos, final String shortDescription, final String extendedDescription,
                           final String technicalDescription,
-                          final String brand, final String reference, final String productionCode, final String internalCode, double price){
+                          final String brand, final String reference, final String productionCode, final String internalCode, double price, String barcode){
         withPhoto(setOfPhotos);
-        withDescription(shortDescription, extendedDescription, technicalDescription);
+        withShortDescription(shortDescription);
+        withExtendedDescription(extendedDescription);
+        withTechnicalDescription(technicalDescription);
         withBrand(brand);
         withReference(reference);
-        withCode(productionCode, internalCode);
+        withInternalCode(internalCode);
+        withProductionCode(productionCode);
         withPrice(price);
+        withBarcode(barcode);
     }
-
-
 
     public ProductBuilder(final String setOfPhotos, final String shortDescription, final String extendedDescription,
                           final String technicalDescription,
-                          final String brand, final String reference, final String internalCode, double price){
+                          final String brand, final String reference, final String internalCode, double price, String barcode){
 
         withPhoto(setOfPhotos);
-        withDescription(shortDescription, extendedDescription, technicalDescription);
+        withShortDescription(shortDescription);
+        withExtendedDescription(extendedDescription);
+        withTechnicalDescription(technicalDescription);
         withBrand(brand);
         withReference(reference);
-        withCode(internalCode);
+        withInternalCode(internalCode);
         withPrice(price);
-
+        withBarcode(barcode);
     }
 
     public ProductBuilder withPhoto(String setOfPhotos) {
@@ -47,9 +51,18 @@ public class ProductBuilder implements DomainFactory<Product> {
         return this;
     }
 
-    public ProductBuilder withDescription(final String shortDescription, final String extendedDescription,
-                                          final String technicalDescription) {
-        this.description = new Description(shortDescription, extendedDescription, technicalDescription);
+    public ProductBuilder withShortDescription(final String shortDescription) {
+        this.shortDescription = new ShortDescription(shortDescription);
+        return this;
+    }
+
+    public ProductBuilder withExtendedDescription(final String extendedDescription) {
+        this.extendedDescription = new ExtendedDescription(extendedDescription);
+        return this;
+    }
+
+    public ProductBuilder withTechnicalDescription(final String technicalDescription) {
+        this.technicalDescription = new TechnicalDescription(technicalDescription);
         return this;
     }
 
@@ -63,13 +76,13 @@ public class ProductBuilder implements DomainFactory<Product> {
         return this;
     }
 
-    public ProductBuilder withCode(final String productionCode, final String internalCode) {
-        this.code = new Code(productionCode, internalCode);
+    public ProductBuilder withInternalCode(final String internalCode) {
+        this.internalCode = new InternalCode(internalCode);
         return this;
     }
 
-    public ProductBuilder withCode(final String internalCode) {
-        this.code = new Code(internalCode);
+    public ProductBuilder withProductionCode(final String productionCode) {
+        this.productionCode = new ProductionCode(productionCode);
         return this;
     }
 
@@ -78,11 +91,19 @@ public class ProductBuilder implements DomainFactory<Product> {
         return this;
     }
 
+    public ProductBuilder withBarcode(String barcode) {
+        this.barcode = new Barcode(barcode);
+        return this;
+    }
+
     private Product buildOrThrow() {
         if (product != null) {
             return product;
-        } else if (barcode != null && brand != null && code != null && description != null && photo != null && price != null && reference != null) {
-            product = new Product(photo, description, brand, reference, code, price, barcode);
+        } else if (barcode != null && brand != null && internalCode != null && shortDescription != null && extendedDescription != null && technicalDescription != null && photo != null && price != null && reference != null && productionCode == null) {
+            product = new Product(photo, shortDescription, extendedDescription, technicalDescription, brand, reference, internalCode, price, barcode);
+            return product;
+        } else if (barcode != null && brand != null && internalCode != null && productionCode != null && shortDescription != null && extendedDescription != null && technicalDescription != null && photo != null && price != null && reference != null) {
+            product = new Product(photo, shortDescription, extendedDescription, technicalDescription, brand, reference, internalCode, productionCode, price, barcode);
             return product;
         } else {
             throw new IllegalStateException();
@@ -91,9 +112,6 @@ public class ProductBuilder implements DomainFactory<Product> {
 
     public Product build() {
         final Product ret = buildOrThrow();
-        // make sure we will create a new instance if someone reuses this builder and do not change
-        // the previously built dish.
-        product = null;
         return ret;
     }
 

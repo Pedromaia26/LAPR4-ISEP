@@ -1,18 +1,32 @@
 package eapli.base.productmanagement.domain;
 
+import eapli.framework.domain.model.ValueObject;
 
-public class Brand {
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
-    private String name;
+@Embeddable
+public class Brand implements ValueObject, Comparable<Brand> {
 
-    public Brand(final String name) {
 
-        if (name.isEmpty())
+    private String brand;
+
+    public Brand(final String brand) {
+
+        if (brand == null || brand.isBlank())
             throw new IllegalArgumentException("Brand name cannot be empty!");
-        if (name.length() > 50)
+        if (brand.length() > 50)
             throw new IllegalArgumentException("Brand name cannot have more than 50 chars!");
 
-        this.name = name;
+        this.brand = brand;
     }
-    
+
+    public Brand() {
+        
+    }
+
+    @Override
+    public int compareTo(Brand o) {
+        return 0;
+    }
 }

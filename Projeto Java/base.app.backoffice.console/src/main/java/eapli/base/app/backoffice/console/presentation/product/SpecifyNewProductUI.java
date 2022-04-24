@@ -39,12 +39,13 @@ public class SpecifyNewProductUI extends AbstractUI {
             final String internalCode = Console.readLine("Internal Code (Please respect the following pattern: " +
                     "4 letters followed by a dot ('.') and ending with 5 digits (Max 23 chars)");
             final double price = Double.parseDouble(Console.readLine("Price"));
+            final String barcode = Console.readLine("Barcode (Must have 13 chars)");
 
                 try {
                     if (op)
-                        this.theController.addProduct(setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, productionCode, internalCode, price);
+                        this.theController.addProduct(setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, productionCode, internalCode, price, barcode);
                     else
-                        this.theController.addProduct(setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, internalCode, price);
+                        this.theController.addProduct(setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, internalCode, price, barcode);
                 } catch (final IntegrityViolationException | ConcurrencyException e) {
                     System.out.println("That code is already associated.");
                 } catch (IllegalArgumentException e) {

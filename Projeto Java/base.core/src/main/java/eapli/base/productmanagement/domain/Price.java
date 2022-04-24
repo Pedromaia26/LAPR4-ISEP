@@ -1,6 +1,11 @@
 package eapli.base.productmanagement.domain;
 
-public class Price {
+import eapli.framework.domain.model.ValueObject;
+
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class Price implements ValueObject {
 
     private double price;
 
@@ -10,5 +15,9 @@ public class Price {
             throw new IllegalArgumentException("Price cannot be negative!");
 
         this.price = price;
+    }
+
+    public Price() {
+
     }
 }
