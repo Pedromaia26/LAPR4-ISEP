@@ -29,4 +29,10 @@ public class Brand implements ValueObject, Comparable<Brand> {
     public int compareTo(Brand o) {
         return 0;
     }
+
+    @Override
+    public String toString(){
+
+        return brand;
+    }
 }

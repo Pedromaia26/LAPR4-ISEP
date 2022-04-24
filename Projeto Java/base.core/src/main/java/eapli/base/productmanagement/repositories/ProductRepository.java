@@ -34,4 +34,7 @@ public interface ProductRepository extends DomainRepository<InternalCode, Produc
      */
     public Product save(Product entity);
 
+    Iterable<Product> findByBrand(String brand);
+
+    Iterable<Product> findByDescription(String description);
 }

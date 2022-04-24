@@ -32,4 +32,10 @@ public class ProductionCode implements Comparable<InternalCode>, ValueObject {
     public int compareTo(InternalCode o) {
         return 0;
     }
+
+    @Override
+    public String toString(){
+
+        return productionCode;
+    }
 }

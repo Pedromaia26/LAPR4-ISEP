@@ -38,4 +38,10 @@ public class ShortDescription implements ValueObject {
     public int hashCode() {
         return Objects.hash(shortDescription);
     }
+
+    @Override
+    public String toString(){
+
+        return shortDescription;
+    }
 }

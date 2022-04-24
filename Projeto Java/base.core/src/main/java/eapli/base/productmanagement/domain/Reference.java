@@ -27,4 +27,10 @@ public class Reference implements ValueObject {
     public Reference() {
 
     }
+
+    @Override
+    public String toString(){
+
+        return reference;
+    }
 }

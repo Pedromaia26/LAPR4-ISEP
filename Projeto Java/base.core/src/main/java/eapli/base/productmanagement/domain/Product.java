@@ -62,8 +62,6 @@ public class Product implements AggregateRoot<InternalCode> {
 
     }
 
-
-
     @Override
     public boolean sameAs(Object other) {
         return DomainEntities.areEqual(this, other);
@@ -83,5 +81,85 @@ public class Product implements AggregateRoot<InternalCode> {
     @Override
     public boolean hasIdentity(InternalCode id) {
         return AggregateRoot.super.hasIdentity(id);
+    }
+
+    public InternalCode InternalCode() {
+        return internalCode;
+    }
+
+    public void modifyInternalCode(InternalCode internalCode) {
+        this.internalCode = internalCode;
+    }
+
+    public Photo Photo() {
+        return photo;
+    }
+
+    public void modifysetPhoto(Photo photo) {
+        this.photo = photo;
+    }
+
+    public ShortDescription ShortDescription() {
+        return shortDescription;
+    }
+
+    public void modifysetShortDescription(ShortDescription shortDescription) {
+        this.shortDescription = shortDescription;
+    }
+
+    public ExtendedDescription ExtendedDescription() {
+        return extendedDescription;
+    }
+
+    public void modifyExtendedDescription(ExtendedDescription extendedDescription) {
+        this.extendedDescription = extendedDescription;
+    }
+
+    public TechnicalDescription TechnicalDescription() {
+        return technicalDescription;
+    }
+
+    public void modifyTechnicalDescription(TechnicalDescription technicalDescription) {
+        this.technicalDescription = technicalDescription;
+    }
+
+    public Brand Brand() {
+        return brand;
+    }
+
+    public void modifyBrand(Brand brand) {
+        this.brand = brand;
+    }
+
+    public Reference Reference() {
+        return reference;
+    }
+
+    public void modifyReference(Reference reference) {
+        this.reference = reference;
+    }
+
+    public ProductionCode ProductionCode() {
+        return productionCode;
+    }
+
+    public void modifyProductionCode(ProductionCode productionCode) {
+        this.productionCode = productionCode;
+    }
+
+    public Price Price() {
+        return price;
+    }
+
+    public void modifyPrice(Price price) {
+        this.price = price;
+    }
+
+    public Barcode Barcode() {
+        return barcode;
+    }
+
+    public void modifyBarcode(Barcode barcode) {
+        this.barcode = barcode;
     }
 }

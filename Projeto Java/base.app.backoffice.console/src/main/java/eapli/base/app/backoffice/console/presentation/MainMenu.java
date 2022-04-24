@@ -24,7 +24,9 @@
 package eapli.base.app.backoffice.console.presentation;
 
 import eapli.base.app.backoffice.console.presentation.authz.*;
-import eapli.base.app.backoffice.console.presentation.product.SpecifyNewProductUI;
+import eapli.base.app.backoffice.console.presentation.product.ListProductUI;
+import eapli.base.app.backoffice.console.presentation.product.SearchProductBrandUI;
+import eapli.base.app.backoffice.console.presentation.product.SearchProductDescriptionUI;
 import eapli.base.app.backoffice.console.presentation.product.SpecifyNewProductUI;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
@@ -60,8 +62,17 @@ public class MainMenu extends AbstractUI {
     private static final int DEACTIVATE_USER_OPTION = 3;
     private static final int ACCEPT_REFUSE_SIGNUP_REQUEST_OPTION = 4;
 
-    // PRODUCTS
-    private static final int SPECIFY_NEW_PRODUCT = 3;
+    // PRODUCTS MAIN MENU
+    private static final int PRODUCT_MENU = 3;
+
+    //PRODUCTS SUB MENU
+    private static final int LIST_ALL_PRODUCT = 1;
+    private static final int SEARCH_BRAND_PRODUCT = 2;
+    private static final int SEARCH_DESCRIPTION_PRODUCT = 3;
+
+    //PRODUCTS
+    private static final int SPECIFY_NEW_PRODUCT = 1;
+    private static final int SEARCH_LIST_PRODUCT_SUBMENU = 2;
 
     // SETTINGS
     private static final int SET_KITCHEN_ALERT_LIMIT_OPTION = 1;
@@ -132,8 +143,8 @@ public class MainMenu extends AbstractUI {
         if(authz.isAuthenticatedUserAuthorizedTo(BaseRoles.SALES_CLERK)){
             final Menu registerCostumer = buildRegisterCostumerMenu();
             mainMenu.addSubMenu(USERS_OPTION, registerCostumer);
-            final Menu specifyProduct = buildProductMenu();
-            mainMenu.addSubMenu(SPECIFY_NEW_PRODUCT, specifyProduct);
+            final Menu Product = buildProductMenu();
+            mainMenu.addSubMenu(PRODUCT_MENU, Product);
         }
 
         if(authz.isAuthenticatedUserAuthorizedTo(BaseRoles.WAREHOUSE_EMPLOYEE)){
@@ -197,11 +208,24 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("Product >");
 
         menu.addItem(SPECIFY_NEW_PRODUCT, "Specify Product", new SpecifyNewProductUI()::show);
+        final Menu SearchProduct = buildSearchViewProductMenu();
+        menu.addSubMenu(SEARCH_LIST_PRODUCT_SUBMENU, SearchProduct);
 
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
     }
 
+    private Menu buildSearchViewProductMenu(){
+        final Menu menu = new Menu("Search/View Product Catalog");
+
+        menu.addItem(LIST_ALL_PRODUCT, "View Products Catalog", new ListProductUI()::show);
+        menu.addItem(SEARCH_BRAND_PRODUCT, "Search Products Catalog by Brand", new SearchProductBrandUI()::show);
+        menu.addItem(SEARCH_DESCRIPTION_PRODUCT, "Search Products Catalog by Description", new SearchProductDescriptionUI()::show);
+
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
 
 }

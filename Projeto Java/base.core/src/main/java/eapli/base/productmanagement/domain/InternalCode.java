@@ -33,4 +33,10 @@ public class InternalCode implements Comparable<InternalCode>, ValueObject {
     public int compareTo(InternalCode o) {
         return internalCode.compareTo(o.internalCode);
     }
+
+    @Override
+    public String toString(){
+
+        return internalCode;
+    }
 }

@@ -24,4 +24,10 @@ public class ExtendedDescription implements ValueObject {
     public ExtendedDescription() {
 
     }
+
+    @Override
+    public String toString(){
+
+        return extendedDescription;
+    }
 }

@@ -1,5 +1,6 @@
 package eapli.base.persistence.impl.inmemory;
 
+import eapli.base.productmanagement.domain.Brand;
 import eapli.base.productmanagement.domain.InternalCode;
 import eapli.base.productmanagement.domain.Product;
 import eapli.base.productmanagement.repositories.ProductRepository;
@@ -15,5 +16,15 @@ public class InMemoryProductRepository extends InMemoryDomainRepository<Product,
     @Override
     public Product save(Product product) {
         return product;
+    }
+
+    @Override
+    public Iterable<Product> findByBrand(String brand) {
+        return null;
+    }
+
+    @Override
+    public Iterable<Product> findByDescription(String description) {
+        return null;
     }
 }

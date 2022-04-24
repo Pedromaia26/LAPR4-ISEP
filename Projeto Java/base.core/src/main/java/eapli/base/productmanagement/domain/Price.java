@@ -20,4 +20,10 @@ public class Price implements ValueObject {
     public Price() {
 
     }
+
+    @Override
+    public String toString(){
+
+        return String.valueOf(price);
+    }
 }

@@ -20,4 +20,10 @@ public class TechnicalDescription {
     public TechnicalDescription() {
 
     }
+
+    @Override
+    public String toString(){
+
+        return technicalDescription;
+    }
 }
