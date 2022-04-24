@@ -164,7 +164,65 @@ public class JsonImporter
 
         }
 
-        final WarehouseBuilder newWarehouse = new WarehouseBuilder(whName,whLength,whWidth,whSquare,whUnit,aisleSet);
+        JSONArray agvDocks = (JSONArray) warehousePlant.get("AGVDocks");
+        Set<AGVDock> agvDockSet = new HashSet<>();
+        for (Object agvD : agvDocks) {
+            JSONObject oAGVD=(JSONObject) agvD;
+
+            //id aisle
+            String idAGVD= (String) oAGVD.get("Id");
+            System.out.println(idAGVD);
+
+
+
+            JSONObject begin = (JSONObject) oAGVD.get("begin");
+
+
+            //begin object
+            long lsquareBegin =  (long)begin.get("lsquare");
+            long wsquareBegin =  (long)begin.get("wsquare");
+
+            System.out.println(lsquareBegin);
+            System.out.println(wsquareBegin);
+
+
+
+
+
+            JSONObject end = (JSONObject) oAGVD.get("end");
+            //end object
+            long lsquareEnd =  (long)end.get("lsquare");
+            long wsquareEnd =  (long)end.get("wsquare");
+
+            System.out.println(lsquareEnd);
+            System.out.println(wsquareEnd);
+
+
+
+            JSONObject depth = (JSONObject) oAGVD.get("depth");
+
+            //depth object
+            long lsquareDepth =  (long)depth.get("lsquare");
+            long wsquareDepth =  (long)depth.get("wsquare");
+            System.out.println(lsquareDepth);
+            System.out.println(wsquareDepth);
+
+
+            //aisle accessibility
+            String agvAccess= (String) oAGVD.get("accessibility");
+            System.out.println(agvAccess);
+
+            final AGVDockBuilder newAGVDocker = new AGVDockBuilder(idAGVD,lsquareBegin,wsquareBegin,lsquareEnd,wsquareEnd,lsquareDepth,wsquareDepth,agvAccess);
+            AGVDock agvDocker = newAGVDocker.build();
+            //repository.save
+            agvDockSet.add(agvDocker);
+
+        }
+
+
+
+
+        final WarehouseBuilder newWarehouse = new WarehouseBuilder(whName,whLength,whWidth,whSquare,whUnit,aisleSet,agvDockSet);
         Warehouse warehouse = newWarehouse.build();
         //repository.save
 

@@ -7,16 +7,30 @@ public class Aisle {
 
         private AisleIdentifier aisleIdentifier;
 
-        private AisleLocation aisleLocation;
+        private AisleBeginLSquare aisleBeginLSquare;
+
+        private AisleBeginWSquare aisleBeginWSquare;
+
+        private AisleDepthLSquare aisleDepthLSquare;
+
+        private AisleDepthWSquare aisleDepthWSquare;
+
+        private AisleEndLSquare aisleEndLSquare;
+
+        private AisleEndWSquare aisleEndWSquare;
 
         private String accessibility;
 
         private Set<Row> rows;
 
-
-    public Aisle(AisleIdentifier aisleIdentifier, AisleLocation aisleLocation, String accessibility, Set<Row> rows) {
+    public Aisle(AisleIdentifier aisleIdentifier, AisleBeginLSquare aisleBeginLSquare, AisleBeginWSquare aisleBeginWSquare, AisleDepthLSquare aisleDepthLSquare, AisleDepthWSquare aisleDepthWSquare, AisleEndLSquare aisleEndLSquare, AisleEndWSquare aisleEndWSquare, String accessibility, Set<Row> rows) {
         this.aisleIdentifier = aisleIdentifier;
-        this.aisleLocation = aisleLocation;
+        this.aisleBeginLSquare = aisleBeginLSquare;
+        this.aisleBeginWSquare = aisleBeginWSquare;
+        this.aisleDepthLSquare = aisleDepthLSquare;
+        this.aisleDepthWSquare = aisleDepthWSquare;
+        this.aisleEndLSquare = aisleEndLSquare;
+        this.aisleEndWSquare = aisleEndWSquare;
         this.accessibility = accessibility;
         this.rows = rows;
     }

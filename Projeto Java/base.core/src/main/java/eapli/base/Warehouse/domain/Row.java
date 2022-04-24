@@ -7,13 +7,22 @@ public class Row {
 
     private RowIdentifier rowIdentifier;
 
-    private RowLocation rowLocation;
+    private RowBeginLSquare rowBeginLSquare;
+
+    private RowBeginWSquare rowBeginWSquare;
+
+    private RowEndLSquare rowEndLSquare;
+
+    private RowEndWSquare rowEndWSquare;
 
     private Set<Shelf> shelves;
 
-    public Row(RowIdentifier rowIdentifier, RowLocation rowLocation, Set<Shelf> shelves) {
+    public Row(RowIdentifier rowIdentifier, RowBeginLSquare rowBeginLSquare, RowBeginWSquare rowBeginWSquare, RowEndLSquare rowEndLSquare, RowEndWSquare rowEndWSquare, Set<Shelf> shelves) {
         this.rowIdentifier = rowIdentifier;
-        this.rowLocation = rowLocation;
+        this.rowBeginLSquare = rowBeginLSquare;
+        this.rowBeginWSquare = rowBeginWSquare;
+        this.rowEndLSquare = rowEndLSquare;
+        this.rowEndWSquare = rowEndWSquare;
         this.shelves = shelves;
     }
 }

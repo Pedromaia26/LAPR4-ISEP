@@ -9,14 +9,23 @@ public class RowBuilder {
 
     private RowIdentifier rowIdentifier;
 
-    private RowLocation rowLocation;
+    private RowBeginLSquare rowBeginLSquare;
+
+    private RowBeginWSquare rowBeginWSquare;
+
+    private RowEndLSquare rowEndLSquare;
+
+    private RowEndWSquare rowEndWSquare;
 
     private Set<Shelf> shelves;
 
 
     public RowBuilder(long rowIdentifier, long beginLSquare, long beginWSquare, long endLSquare, long endWSquare , Set<Shelf> shelves) {
         withRowIdentifier(rowIdentifier);
-        withRowLocation(beginLSquare, beginWSquare, endLSquare, endWSquare);
+        withRowBeginLSquare(beginLSquare);
+        withRowBeginWSquare(beginWSquare);
+        withRowEndLSquare(endLSquare);
+        withRowEndWSquare(endWSquare);
         this.shelves = shelves;
     }
 
@@ -25,16 +34,34 @@ public class RowBuilder {
         return this;
     }
 
-    private RowBuilder withRowLocation(long beginLSquare, long beginWSquare, long endLSquare, long endWSquare ){
-        this.rowLocation=new RowLocation(beginLSquare, beginWSquare, endLSquare, endWSquare);
+
+    private RowBuilder withRowBeginLSquare(long beginWSquare){
+        this.rowBeginLSquare= new RowBeginLSquare(beginWSquare);
+        return this;
+    }
+
+    private RowBuilder withRowBeginWSquare(long beginWSquare){
+        this.rowBeginWSquare= new RowBeginWSquare(beginWSquare);
+        return this;
+    }
+
+
+
+    private RowBuilder withRowEndLSquare(long EndWSquare){
+        this.rowEndLSquare= new RowEndLSquare(EndWSquare);
+        return this;
+    }
+
+    private RowBuilder withRowEndWSquare(long EndWSquare){
+        this.rowEndWSquare= new RowEndWSquare(EndWSquare);
         return this;
     }
 
     private Row buildOrThrow() {
         if (row != null) {
             return row;
-        } else if (rowIdentifier != null && rowLocation != null && shelves != null ) {
-            row = new Row(rowIdentifier,rowLocation,shelves);
+        } else if (rowIdentifier != null && rowBeginLSquare != null && shelves != null && rowBeginWSquare!=null && rowEndLSquare!=null && rowEndWSquare !=null ) {
+            row = new Row(rowIdentifier,rowBeginLSquare,rowBeginWSquare,rowEndLSquare,rowEndWSquare,shelves);
             return row;
         } else {
             throw new IllegalStateException();

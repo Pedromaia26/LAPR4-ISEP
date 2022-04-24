@@ -7,7 +7,17 @@ public class AisleBuilder {
 
     private AisleIdentifier aisleIdentifier;
 
-    private AisleLocation aisleLocation;
+    private AisleBeginLSquare aisleBeginLSquare;
+
+    private AisleBeginWSquare aisleBeginWSquare;
+
+    private AisleDepthLSquare aisleDepthLSquare;
+
+    private AisleDepthWSquare aisleDepthWSquare;
+
+    private AisleEndLSquare aisleEndLSquare;
+
+    private AisleEndWSquare aisleEndWSquare;
 
     private String accessibility;
 
@@ -15,7 +25,13 @@ public class AisleBuilder {
 
     public AisleBuilder(long aisleIdentifier, long beginLSquare, long beginWSquare, long endLSquare, long endWSquare, long depthLSquare ,long depthWSquare,String accessibility, Set<Row> rows) {
         withAisleIdentifier(aisleIdentifier);
-        withAisleLocation(beginLSquare, beginWSquare, endLSquare, endWSquare, depthLSquare , depthWSquare);
+        withAileBeginLSquare(beginLSquare);
+        withAileBeginWSquare(beginWSquare);
+        withAileEndLSquare(endLSquare);
+        withAileEndWSquare(endWSquare);
+        withAileDepthLSquare(depthLSquare);
+        withAileDepthWSquare(depthWSquare);
+
         this.rows = rows;
         this.accessibility= accessibility;
     }
@@ -25,16 +41,43 @@ public class AisleBuilder {
         return this;
     }
 
-    private AisleBuilder withAisleLocation(long beginLSquare, long beginWSquare, long endLSquare, long endWSquare,long depthLSquare ,long depthWSquare  ){
-        this.aisleLocation=new AisleLocation(beginLSquare, beginWSquare, endLSquare, endWSquare,depthLSquare , depthWSquare);
+    private AisleBuilder withAileBeginLSquare(long beginWSquare){
+        this.aisleBeginLSquare= new AisleBeginLSquare(beginWSquare);
+        return this;
+    }
+
+    private AisleBuilder withAileBeginWSquare(long beginWSquare){
+        this.aisleBeginWSquare= new AisleBeginWSquare(beginWSquare);
+        return this;
+    }
+
+
+
+    private AisleBuilder withAileEndLSquare(long EndWSquare){
+        this.aisleEndLSquare= new AisleEndLSquare(EndWSquare);
+        return this;
+    }
+
+    private AisleBuilder withAileEndWSquare(long EndWSquare){
+        this.aisleEndWSquare= new AisleEndWSquare(EndWSquare);
+        return this;
+    }
+
+    private AisleBuilder withAileDepthLSquare(long DepthWSquare){
+        this.aisleDepthLSquare= new AisleDepthLSquare(DepthWSquare);
+        return this;
+    }
+
+    private AisleBuilder withAileDepthWSquare(long DepthWSquare){
+        this.aisleDepthWSquare= new AisleDepthWSquare(DepthWSquare);
         return this;
     }
 
     private Aisle buildOrThrow() {
         if (aisle != null) {
             return aisle;
-        } else if (aisleIdentifier != null && aisleLocation != null && accessibility != null && rows!= null ) {
-            aisle = new Aisle(aisleIdentifier,aisleLocation,accessibility,rows);
+        } else if (aisleIdentifier != null && aisleBeginWSquare != null && accessibility != null && rows!= null && aisleBeginLSquare != null && aisleEndLSquare != null && aisleEndWSquare != null && aisleDepthLSquare != null && aisleDepthWSquare != null ) {
+            aisle = new Aisle(aisleIdentifier,aisleBeginLSquare,aisleBeginWSquare,aisleDepthLSquare,aisleDepthWSquare,aisleEndLSquare,aisleEndWSquare,accessibility,rows);
             return aisle;
         } else {
             throw new IllegalStateException();
