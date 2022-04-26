@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 public class Product implements AggregateRoot<InternalCode> {
 
-    @Id
+    @EmbeddedId
     private InternalCode internalCode;
     private Photo photo;
     private ShortDescription shortDescription;
