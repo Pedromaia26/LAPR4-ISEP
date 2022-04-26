@@ -69,10 +69,7 @@ public class JsonImporter
             long idAisle= (long) oAisle.get("Id");
             System.out.println(idAisle);
 
-
-
             JSONObject begin = (JSONObject) oAisle.get("begin");
-
 
             //begin object
             long lsquareBegin =  (long)begin.get("lsquare");
@@ -80,10 +77,6 @@ public class JsonImporter
 
             System.out.println(lsquareBegin);
             System.out.println(wsquareBegin);
-
-
-
-
 
             JSONObject end = (JSONObject) oAisle.get("end");
             //end object
@@ -93,8 +86,6 @@ public class JsonImporter
             System.out.println(lsquareEnd);
             System.out.println(wsquareEnd);
 
-
-
             JSONObject depth = (JSONObject) oAisle.get("depth");
 
             //depth object
@@ -102,7 +93,6 @@ public class JsonImporter
             long wsquareDepth =  (long)depth.get("wsquare");
             System.out.println(lsquareDepth);
             System.out.println(wsquareDepth);
-
 
             //aisle accessibility
             String aisleAccess= (String) oAisle.get("accessibility");
@@ -117,8 +107,6 @@ public class JsonImporter
                 //id Row
                 long idRow= (long) oRow.get("Id");
                 System.out.println(idRow);
-
-
                 JSONObject beginRow = (JSONObject) oRow.get("begin");
 
                 //beginRow object
@@ -134,7 +122,6 @@ public class JsonImporter
                 System.out.println(lsquareEndRow);
                 System.out.println(wsquareEndRow);
 
-
                 //Shelves
                 long numberShelves= (long) oRow.get("shelves");
                 System.out.println(numberShelves);
@@ -147,13 +134,10 @@ public class JsonImporter
                     shelfSet.add(shelf);
                 }
 
-
                 final RowBuilder newRow = new RowBuilder(idRow,lsquareBeginRow,wsquareBeginRow,lsquareEndRow,wsquareEndRow,shelfSet);
                 Row fila = newRow.build();
                 //repository.save
                 rowSet.add(fila);
-
-
 
             }
 
@@ -168,50 +152,30 @@ public class JsonImporter
         Set<AGVDock> agvDockSet = new HashSet<>();
         for (Object agvD : agvDocks) {
             JSONObject oAGVD=(JSONObject) agvD;
-
             //id aisle
             String idAGVD= (String) oAGVD.get("Id");
             System.out.println(idAGVD);
-
-
-
             JSONObject begin = (JSONObject) oAGVD.get("begin");
-
-
             //begin object
             long lsquareBegin =  (long)begin.get("lsquare");
             long wsquareBegin =  (long)begin.get("wsquare");
-
             System.out.println(lsquareBegin);
             System.out.println(wsquareBegin);
-
-
-
-
-
             JSONObject end = (JSONObject) oAGVD.get("end");
             //end object
             long lsquareEnd =  (long)end.get("lsquare");
             long wsquareEnd =  (long)end.get("wsquare");
-
             System.out.println(lsquareEnd);
             System.out.println(wsquareEnd);
-
-
-
             JSONObject depth = (JSONObject) oAGVD.get("depth");
-
             //depth object
             long lsquareDepth =  (long)depth.get("lsquare");
             long wsquareDepth =  (long)depth.get("wsquare");
             System.out.println(lsquareDepth);
             System.out.println(wsquareDepth);
-
-
             //aisle accessibility
             String agvAccess= (String) oAGVD.get("accessibility");
             System.out.println(agvAccess);
-
             final AGVDockBuilder newAGVDocker = new AGVDockBuilder(idAGVD,lsquareBegin,wsquareBegin,lsquareEnd,wsquareEnd,lsquareDepth,wsquareDepth,agvAccess);
             AGVDock agvDocker = newAGVDocker.build();
             //repository.save
@@ -219,18 +183,10 @@ public class JsonImporter
 
         }
 
-
-
-
         final WarehouseBuilder newWarehouse = new WarehouseBuilder(whName,whLength,whWidth,whSquare,whUnit,aisleSet,agvDockSet);
         Warehouse warehouse = newWarehouse.build();
         //repository.save
 
-
-
     }
-
-
-
 
 }

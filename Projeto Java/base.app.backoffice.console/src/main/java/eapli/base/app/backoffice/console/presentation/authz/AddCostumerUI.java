@@ -24,13 +24,20 @@ public class AddCostumerUI extends AbstractUI {
         final String firstName = Console.readLine("First Name");
         final String lastName = Console.readLine("Last Name");
         final String email = Console.readLine("E-Mail");
+        final String vat = Console.readLine("VAT");
+        final String phoneNumber = Console.readLine("PhoneNumber");
+        final String gender = Console.readLine("Gender");
+        final String birthDay = Console.readLine("BirthDay");
+        final String delAddress = Console.readLine("Delevering Postal Addresses");
+        final String billAddress = Console.readLine("Billing Postal Addresses");
+
 
         final Set<Role> roleTypes=new HashSet<>();
         roleTypes.add(BaseRoles.COSTUMER_USER);
 
 
         try {
-            this.theController.addUser(username, password, firstName, lastName, email, roleTypes);
+            this.theController.addUser(username, password, firstName, lastName, email, roleTypes, vat, phoneNumber, gender, birthDay, delAddress,billAddress);
         } catch (final IntegrityViolationException | ConcurrencyException e) {
             System.out.println("That username is already in use.");
         }

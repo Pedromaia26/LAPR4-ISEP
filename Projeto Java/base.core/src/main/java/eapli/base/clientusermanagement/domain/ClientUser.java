@@ -23,10 +23,7 @@
  */
 package eapli.base.clientusermanagement.domain;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Version;
+import javax.persistence.*;
 
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
@@ -47,13 +44,31 @@ import eapli.framework.infrastructure.authz.domain.model.SystemUser;
  *
  */
 @Entity
-public class ClientUser implements AggregateRoot<MecanographicNumber> {
+public class ClientUser implements AggregateRoot<VAT> {
 
     @Version
     private Long version;
 
+    //private MecanographicNumber mecanographicNumber;
     @EmbeddedId
-    private MecanographicNumber mecanographicNumber;
+    private VAT vat;
+
+    @Embedded
+    private PhoneNumber phoneNumber;
+
+    @Embedded
+    private VerifyGender gender;
+
+    @Embedded
+    private Birthday birthday;
+
+    @Embedded
+    private DeliveringPostalAddresses deliveringPostalAddresses;
+
+    @Embedded
+    private BillingPostalAddresses billingPostalAddresses;
+
+
 
     /**
      * cascade = CascadeType.NONE as the systemUser is part of another aggregate
@@ -61,12 +76,38 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     @OneToOne()
     private SystemUser systemUser;
 
-    public ClientUser(final SystemUser user, final MecanographicNumber mecanographicNumber) {
-        if (mecanographicNumber == null || user == null) {
+    public BillingPostalAddresses getBillingPostalAddresses() {
+        return billingPostalAddresses;
+    }
+
+    public DeliveringPostalAddresses getDeleveringPostalAddresses() {
+        return deliveringPostalAddresses;
+    }
+
+    public Birthday getBirthday() {
+        return birthday;
+    }
+
+    public VerifyGender getGender() {
+        return gender;
+    }
+
+    public PhoneNumber getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public ClientUser(final SystemUser user, final VAT vat, final PhoneNumber phoneNumber, final VerifyGender gender, final Birthday birthday, final DeliveringPostalAddresses deliveringPostalAddresses, final BillingPostalAddresses billingPostalAddresses) {
+        if (vat == null || user == null || phoneNumber == null || gender == null || birthday == null || deliveringPostalAddresses == null || billingPostalAddresses == null) {
             throw new IllegalArgumentException();
         }
         this.systemUser = user;
-        this.mecanographicNumber = mecanographicNumber;
+        this.vat = vat;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.deliveringPostalAddresses = deliveringPostalAddresses;
+        this.billingPostalAddresses = billingPostalAddresses;
+
     }
 
     protected ClientUser() {
@@ -92,12 +133,12 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         return DomainEntities.areEqual(this, other);
     }
 
-    public MecanographicNumber mecanographicNumber() {
+    public VAT vat() {
         return identity();
     }
 
     @Override
-    public MecanographicNumber identity() {
-        return this.mecanographicNumber;
+    public VAT identity() {
+        return this.vat;
     }
 }

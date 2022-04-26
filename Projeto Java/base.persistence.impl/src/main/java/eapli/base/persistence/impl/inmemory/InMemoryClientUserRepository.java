@@ -24,6 +24,7 @@ import java.util.Optional;
 
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.domain.MecanographicNumber;
+import eapli.base.clientusermanagement.domain.VAT;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.framework.infrastructure.authz.domain.model.Username;
 import eapli.framework.infrastructure.repositories.impl.inmemory.InMemoryDomainRepository;
@@ -33,7 +34,7 @@ import eapli.framework.infrastructure.repositories.impl.inmemory.InMemoryDomainR
  * @author Jorge Santos ajs@isep.ipp.pt 02/04/2016
  */
 public class InMemoryClientUserRepository
-        extends InMemoryDomainRepository<ClientUser, MecanographicNumber>
+        extends InMemoryDomainRepository<ClientUser, VAT>
         implements ClientUserRepository {
 
     static {
@@ -45,10 +46,10 @@ public class InMemoryClientUserRepository
         return matchOne(e -> e.user().username().equals(name));
     }
 
-    @Override
+   /* @Override
     public Optional<ClientUser> findByMecanographicNumber(final MecanographicNumber number) {
         return Optional.of(data().get(number));
-    }
+    }*/
 
     @Override
     public Iterable<ClientUser> findAllActive() {

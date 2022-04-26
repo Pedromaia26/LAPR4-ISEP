@@ -27,6 +27,7 @@ import java.util.Optional;
 import eapli.base.Application;
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.domain.MecanographicNumber;
+import eapli.base.clientusermanagement.domain.VAT;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.productmanagement.domain.Product;
 import eapli.framework.domain.repositories.TransactionalContext;
@@ -43,16 +44,16 @@ import javax.persistence.Persistence;
  * @author Jorge Santos ajs@isep.ipp.pt 02/04/2016
  */
 class JpaClientUserRepository
-        extends JpaAutoTxRepository<ClientUser, MecanographicNumber, MecanographicNumber>
+        extends JpaAutoTxRepository<ClientUser, VAT, VAT>
         implements ClientUserRepository {
 
     public JpaClientUserRepository(final TransactionalContext autoTx) {
-        super(autoTx, "mecanographicNumber");
+        super(autoTx, "vat");
     }
 
     public JpaClientUserRepository(final String puname) {
         super(puname, Application.settings().getExtendedPersistenceProperties(),
-                "mecanographicNumber");
+                "vat");
     }
 
     private EntityManager getEntityManager() {
@@ -68,12 +69,12 @@ class JpaClientUserRepository
         return matchOne("e.systemUser.username=:name", params);
     }
 
-    @Override
+    /*@Override
     public Optional<ClientUser> findByMecanographicNumber(final MecanographicNumber number) {
         final Map<String, Object> params = new HashMap<>();
         params.put("number", number);
         return matchOne("e.mecanographicNumber=:number", params);
-    }
+    }*/
 
     @Override
     public Iterable<ClientUser> findAllActive() {
