@@ -26,6 +26,7 @@ import eapli.base.clientusermanagement.domain.events.NewUserRegisteredFromSignup
 import eapli.base.clientusermanagement.domain.events.SignupAcceptedEvent;
 import eapli.base.infrastructure.bootstrapers.BaseBootstrapper;
 import eapli.base.infrastructure.bootstrapers.demo.BaseDemoBootstrapper;
+import eapli.base.infrastructure.bootstrapers.demo.StatusBootstrapper;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.infrastructure.smoketests.BaseDemoSmokeTester;
 import eapli.base.usermanagement.application.eventhandlers.SignupAcceptedWatchDog;

@@ -3,10 +3,10 @@ package eapli.base.productmanagement.domain;
 import eapli.framework.domain.model.ValueObject;
 
 import javax.persistence.Embeddable;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Embeddable
 public class InternalCode implements Comparable<InternalCode>, ValueObject {
 
 
@@ -38,5 +38,18 @@ public class InternalCode implements Comparable<InternalCode>, ValueObject {
     public String toString(){
 
         return internalCode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        InternalCode that = (InternalCode) o;
+        return internalCode.equals(that.internalCode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(internalCode);
     }
 }

@@ -3,6 +3,7 @@ package eapli.base.productmanagement.domain;
 import eapli.framework.domain.model.ValueObject;
 
 import javax.persistence.Embeddable;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,5 +37,18 @@ public class CategoryCode implements ValueObject, Comparable<CategoryCode> {
     @Override
     public int compareTo(CategoryCode o) {
         return code.compareTo(o.code);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CategoryCode that = (CategoryCode) o;
+        return code.equals(that.code);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(code);
     }
 }
