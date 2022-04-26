@@ -12,6 +12,16 @@ public class InternalCode implements Comparable<InternalCode>, ValueObject {
 
     private String internalCode;
 
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
     public InternalCode(final String internalCode) {
 
         if (internalCode == null || internalCode.isBlank())

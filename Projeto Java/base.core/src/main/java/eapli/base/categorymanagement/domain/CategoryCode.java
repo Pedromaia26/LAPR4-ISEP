@@ -1,4 +1,4 @@
-package eapli.base.productmanagement.domain;
+package eapli.base.categorymanagement.domain;
 
 import eapli.framework.domain.model.ValueObject;
 
@@ -26,6 +26,16 @@ public class CategoryCode implements ValueObject, Comparable<CategoryCode> {
 
     public CategoryCode() {
 
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 
     @Override

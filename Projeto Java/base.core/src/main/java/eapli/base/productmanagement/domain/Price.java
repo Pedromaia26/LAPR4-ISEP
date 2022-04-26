@@ -9,6 +9,7 @@ public class Price implements ValueObject {
 
     private double price;
 
+
     public Price(final double price){
 
         if (price < 0)

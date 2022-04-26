@@ -1,9 +1,7 @@
-package eapli.base.productmanagement.repositories;
+package eapli.base.categorymanagement.repositories;
 
-import eapli.base.productmanagement.domain.Category;
-import eapli.base.productmanagement.domain.CategoryCode;
-import eapli.base.productmanagement.domain.InternalCode;
-import eapli.base.productmanagement.domain.Product;
+import eapli.base.categorymanagement.domain.Category;
+import eapli.base.categorymanagement.domain.CategoryCode;
 import eapli.framework.domain.repositories.DomainRepository;
 
 public interface CategoryRepository extends DomainRepository<CategoryCode, Category> {
