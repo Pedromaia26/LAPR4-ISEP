@@ -1,8 +1,8 @@
 package eapli.base.persistence.impl.jpa;
 
-import eapli.base.productmanagement.domain.*;
-import eapli.base.productmanagement.repositories.CategoryRepository;
-import eapli.base.productmanagement.repositories.ProductRepository;
+import eapli.base.categorymanagement.domain.Category;
+import eapli.base.categorymanagement.domain.CategoryCode;
+import eapli.base.categorymanagement.repositories.CategoryRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

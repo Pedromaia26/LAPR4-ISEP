@@ -1,7 +1,6 @@
-package eapli.base.app.backoffice.console.presentation.product;
+package eapli.base.app.backoffice.console.presentation.category;
 
-import eapli.base.productmanagement.application.DefineNewCategoryController;
-import eapli.base.productmanagement.application.SpecifyNewProductController;
+import eapli.base.categorymanagement.application.DefineNewCategoryController;
 import eapli.framework.domain.repositories.ConcurrencyException;
 import eapli.framework.domain.repositories.IntegrityViolationException;
 import eapli.framework.io.util.Console;

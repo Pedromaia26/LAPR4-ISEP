@@ -21,11 +21,15 @@ public class Product implements AggregateRoot<InternalCode> {
     private ProductionCode productionCode;
     private Price price;
     private Barcode barcode;
+    private Height height;
+    private Length length;
+    private Width width;
+    private Weight weight;
 
 
-    public Product(Photo photo, ShortDescription shortDescription, ExtendedDescription extendedDescription, TechnicalDescription technicalDescription, Brand brand, Reference reference, InternalCode internalCode, Price price, Barcode barcode){
+    public Product(Photo photo, ShortDescription shortDescription, ExtendedDescription extendedDescription, TechnicalDescription technicalDescription, Brand brand, Reference reference, InternalCode internalCode, Price price, Barcode barcode, Height height, Length length, Width width, Weight weight) {
 
-        if (photo == null || shortDescription == null || extendedDescription == null || technicalDescription == null || brand == null || reference == null || internalCode == null || price == null || barcode == null)
+        if (photo == null || shortDescription == null || extendedDescription == null || technicalDescription == null || brand == null || reference == null || internalCode == null || price == null || barcode == null || height == null || length == null || width == null || weight == null)
             throw new IllegalArgumentException();
 
         this.photo = photo;
@@ -37,12 +41,16 @@ public class Product implements AggregateRoot<InternalCode> {
         this.internalCode = internalCode;
         this.price = price;
         this.barcode = barcode;
+        this.height = height;
+        this.length = length;
+        this.width = width;
+        this.weight = weight;
 
     }
 
-    public Product(Photo photo, ShortDescription shortDescription, ExtendedDescription extendedDescription, TechnicalDescription technicalDescription, Brand brand, Reference reference, InternalCode internalCode, ProductionCode productionCode, Price price, Barcode barcode){
+    public Product(Photo photo, ShortDescription shortDescription, ExtendedDescription extendedDescription, TechnicalDescription technicalDescription, Brand brand, Reference reference, InternalCode internalCode, ProductionCode productionCode, Price price, Barcode barcode, Height height, Length length, Width width, Weight weight){
 
-        if (photo == null || shortDescription == null || extendedDescription == null || technicalDescription == null || brand == null || reference == null || internalCode == null || price == null || barcode == null)
+        if (photo == null || shortDescription == null || extendedDescription == null || technicalDescription == null || brand == null || reference == null || internalCode == null || productionCode == null || price == null || barcode == null || height == null || length == null || width == null || weight== null)
             throw new IllegalArgumentException();
 
         this.photo = photo;
@@ -55,6 +63,10 @@ public class Product implements AggregateRoot<InternalCode> {
         this.productionCode = productionCode;
         this.price = price;
         this.barcode = barcode;
+        this.height = height;
+        this.length = length;
+        this.width = width;
+        this.weight = weight;
 
     }
 
@@ -161,5 +173,37 @@ public class Product implements AggregateRoot<InternalCode> {
 
     public void modifyBarcode(Barcode barcode) {
         this.barcode = barcode;
+    }
+
+    public Height getHeight() {
+        return height;
+    }
+
+    public void modifyHeight(Height height) {
+        this.height = height;
+    }
+
+    public Length getLength() {
+        return length;
+    }
+
+    public void modifyLength(Length length) {
+        this.length = length;
+    }
+
+    public Width getWidth() {
+        return width;
+    }
+
+    public void modifyWidth(Width width) {
+        this.width = width;
+    }
+
+    public Weight getWeight() {
+        return weight;
+    }
+
+    public void modifyWeight(Weight weight) {
+        this.weight = weight;
     }
 }

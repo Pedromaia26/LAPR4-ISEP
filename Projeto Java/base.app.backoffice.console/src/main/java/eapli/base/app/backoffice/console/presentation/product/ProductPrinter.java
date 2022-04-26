@@ -11,3 +11,4 @@ public class ProductPrinter implements Visitor<Product> {
                 visitee.Brand(), visitee.Price());
     }
 }
+    

@@ -20,8 +20,7 @@
  */
 package eapli.base.productmanagement.repositories;
 
-import eapli.base.productmanagement.domain.InternalCode;
-import eapli.base.productmanagement.domain.Product;
+import eapli.base.productmanagement.domain.*;
 import eapli.framework.domain.repositories.DomainRepository;
 
 public interface ProductRepository extends DomainRepository<InternalCode, Product> {

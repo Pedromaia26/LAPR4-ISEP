@@ -1,12 +1,9 @@
-package eapli.base.productmanagement.application;
+package eapli.base.categorymanagement.application;
 
 import eapli.base.infrastructure.persistence.PersistenceContext;
-import eapli.base.productmanagement.domain.Category;
-import eapli.base.productmanagement.domain.CategoryBuilder;
-import eapli.base.productmanagement.domain.Product;
-import eapli.base.productmanagement.domain.ProductBuilder;
-import eapli.base.productmanagement.repositories.CategoryRepository;
-import eapli.base.productmanagement.repositories.ProductRepository;
+import eapli.base.categorymanagement.domain.Category;
+import eapli.base.categorymanagement.domain.CategoryBuilder;
+import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.application.UseCaseController;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;

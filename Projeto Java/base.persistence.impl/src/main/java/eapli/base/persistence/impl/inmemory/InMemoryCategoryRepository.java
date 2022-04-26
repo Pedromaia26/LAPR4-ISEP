@@ -1,11 +1,8 @@
 package eapli.base.persistence.impl.inmemory;
 
-import eapli.base.productmanagement.domain.Category;
-import eapli.base.productmanagement.domain.CategoryCode;
-import eapli.base.productmanagement.domain.InternalCode;
-import eapli.base.productmanagement.domain.Product;
-import eapli.base.productmanagement.repositories.CategoryRepository;
-import eapli.base.productmanagement.repositories.ProductRepository;
+import eapli.base.categorymanagement.domain.Category;
+import eapli.base.categorymanagement.domain.CategoryCode;
+import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.framework.infrastructure.repositories.impl.inmemory.InMemoryDomainRepository;
 
 public class InMemoryCategoryRepository  extends InMemoryDomainRepository<Category, CategoryCode>

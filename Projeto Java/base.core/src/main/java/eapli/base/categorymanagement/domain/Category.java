@@ -1,4 +1,4 @@
-package eapli.base.productmanagement.domain;
+package eapli.base.categorymanagement.domain;
 
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;

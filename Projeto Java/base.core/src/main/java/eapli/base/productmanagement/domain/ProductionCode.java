@@ -15,11 +15,11 @@ public class ProductionCode implements Comparable<InternalCode>, ValueObject {
 
         if (productionCode == null || productionCode.isBlank())
             throw new IllegalArgumentException("Internal code cannot be empty!");
-        String regex = "[A-Za-z]{4}.[A-Za-z]{0,13}[0-9]{5}";
+        String regex = "[A-Za-z].[A-Za-z]{0,19}[0-9]{3}";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(productionCode);
         if (!matcher.matches())
-            throw new IllegalArgumentException("Internal code must respect the following pattern: 4 letters followed by a dot ('.') and ending with 5 digits (Max 23 chars).");
+            throw new IllegalArgumentException("Production code must respect the following pattern: 1 letter followed by a dot ('.') and ending with 3 digits (Max 23 chars).");
 
         this.productionCode = productionCode;
     }

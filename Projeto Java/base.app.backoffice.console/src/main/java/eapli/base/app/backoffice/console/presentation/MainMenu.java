@@ -24,6 +24,7 @@
 package eapli.base.app.backoffice.console.presentation;
 
 import eapli.base.app.backoffice.console.presentation.authz.*;
+import eapli.base.app.backoffice.console.presentation.category.DefineNewCategoryUI;
 import eapli.base.app.backoffice.console.presentation.product.*;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
