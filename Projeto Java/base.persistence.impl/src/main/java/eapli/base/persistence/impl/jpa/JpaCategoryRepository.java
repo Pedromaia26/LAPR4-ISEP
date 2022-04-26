@@ -3,11 +3,9 @@ package eapli.base.persistence.impl.jpa;
 import eapli.base.categorymanagement.domain.Category;
 import eapli.base.categorymanagement.domain.CategoryCode;
 import eapli.base.categorymanagement.repositories.CategoryRepository;
+import eapli.base.productmanagement.domain.Product;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 
 public class JpaCategoryRepository extends BasepaRepositoryBase<Category, CategoryCode, CategoryCode>
         implements CategoryRepository {
@@ -21,6 +19,24 @@ public class JpaCategoryRepository extends BasepaRepositoryBase<Category, Catego
                 createEntityManagerFactory("eapli.base");
         EntityManager manager = factory.createEntityManager();
         return manager;
+    }
+
+    @Override
+    public Iterable<Category> findAll() {
+        final TypedQuery<Category> query = entityManager().createQuery(
+                "SELECT d FROM Category d", Category.class);
+
+        return query.getResultList();
+    }
+
+    @Override
+    public Category findByCode(String categoryCode) {
+        final TypedQuery<Category> query = super.createQuery(
+                "SELECT d FROM Category d WHERE categoryCode = '" + categoryCode + "'",
+                Category.class);
+
+
+        return query.getSingleResult();
     }
 
     @Override

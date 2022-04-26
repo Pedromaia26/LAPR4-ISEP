@@ -13,4 +13,9 @@ public interface CategoryRepository extends DomainRepository<CategoryCode, Categ
      * @return the persisted entity
      */
     public Category save(Category entity);
+
+    public Iterable<Category> findAll();
+
+    public Category findByCode(String categoryCode);
+
 }

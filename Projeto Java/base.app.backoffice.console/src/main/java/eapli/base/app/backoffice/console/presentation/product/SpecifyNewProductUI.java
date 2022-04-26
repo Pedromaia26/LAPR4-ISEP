@@ -1,5 +1,8 @@
 package eapli.base.app.backoffice.console.presentation.product;
 
+import eapli.base.app.backoffice.console.presentation.category.ListCategoryUI;
+import eapli.base.categorymanagement.application.ListCategoryController;
+import eapli.base.categorymanagement.domain.Category;
 import eapli.base.productmanagement.application.SpecifyNewProductController;
 import eapli.base.usermanagement.application.AddCostumerController;
 import eapli.base.usermanagement.domain.BaseRoles;
@@ -8,24 +11,43 @@ import eapli.framework.domain.repositories.IntegrityViolationException;
 import eapli.framework.infrastructure.authz.domain.model.Role;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
+import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
 public class SpecifyNewProductUI extends AbstractUI {
 
     private final SpecifyNewProductController theController = new SpecifyNewProductController();
-    private boolean invalidData;
+    private final ListCategoryController theCController = new ListCategoryController();
+    private boolean invalidData, invalidCategory;
     private String setOfPhotos = "base.core/src/main/resources/";
+    private Category category;
 
     @Override
     protected boolean doShow() {
 
         do{
+
+            ListCategoryUI listCategoryUI = new ListCategoryUI();
+            listCategoryUI.show();
+
+            do {
+                try {
+                    final String categoryCode = Console.readLine("Please select one of the categories (Enter the code)");
+                    category = theCController.findByCode(categoryCode);
+                    invalidCategory = false;
+                } catch (Exception e) {
+                    System.out.println("Invalid code. Category does not exist!");
+                        invalidCategory = true;
+                }
+            }while (invalidCategory);
+
             invalidData = false;
             boolean op = false;
             // FIXME avoid duplication with SignUpUI. reuse UserDataWidget from
@@ -53,9 +75,9 @@ public class SpecifyNewProductUI extends AbstractUI {
 
                 try {
                     if (op)
-                        this.theController.addProduct(setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, productionCode, internalCode, price, barcode, height, length, width, weight);
+                        this.theController.addProduct(category, setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, productionCode, internalCode, price, barcode, height, length, width, weight);
                     else
-                        this.theController.addProduct(setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, internalCode, price, barcode, height, length, width, weight);
+                        this.theController.addProduct(category, setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, internalCode, price, barcode, height, length, width, weight);
                 } catch (final IntegrityViolationException | ConcurrencyException e) {
                     System.out.println("That code is already associated.");
                 } catch (IllegalArgumentException e) {

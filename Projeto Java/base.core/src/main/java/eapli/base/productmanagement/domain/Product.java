@@ -1,5 +1,6 @@
 package eapli.base.productmanagement.domain;
 
+import eapli.base.categorymanagement.domain.Category;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
 
@@ -25,11 +26,14 @@ public class Product implements AggregateRoot<InternalCode> {
     private Length length;
     private Width width;
     private Weight weight;
+    @ManyToOne(optional = false)
+    private Category category;
 
 
-    public Product(Photo photo, ShortDescription shortDescription, ExtendedDescription extendedDescription, TechnicalDescription technicalDescription, Brand brand, Reference reference, InternalCode internalCode, Price price, Barcode barcode, Height height, Length length, Width width, Weight weight) {
 
-        if (photo == null || shortDescription == null || extendedDescription == null || technicalDescription == null || brand == null || reference == null || internalCode == null || price == null || barcode == null || height == null || length == null || width == null || weight == null)
+    public Product(Category category, Photo photo, ShortDescription shortDescription, ExtendedDescription extendedDescription, TechnicalDescription technicalDescription, Brand brand, Reference reference, InternalCode internalCode, Price price, Barcode barcode, Height height, Length length, Width width, Weight weight) {
+
+        if (photo == null || shortDescription == null || extendedDescription == null || technicalDescription == null || brand == null || reference == null || internalCode == null || price == null || barcode == null || height == null || length == null || width == null || weight == null || category == null)
             throw new IllegalArgumentException();
 
         this.photo = photo;
@@ -45,12 +49,12 @@ public class Product implements AggregateRoot<InternalCode> {
         this.length = length;
         this.width = width;
         this.weight = weight;
-
+        this.category = category;
     }
 
-    public Product(Photo photo, ShortDescription shortDescription, ExtendedDescription extendedDescription, TechnicalDescription technicalDescription, Brand brand, Reference reference, InternalCode internalCode, ProductionCode productionCode, Price price, Barcode barcode, Height height, Length length, Width width, Weight weight){
+    public Product(Category category, Photo photo, ShortDescription shortDescription, ExtendedDescription extendedDescription, TechnicalDescription technicalDescription, Brand brand, Reference reference, InternalCode internalCode, ProductionCode productionCode, Price price, Barcode barcode, Height height, Length length, Width width, Weight weight){
 
-        if (photo == null || shortDescription == null || extendedDescription == null || technicalDescription == null || brand == null || reference == null || internalCode == null || productionCode == null || price == null || barcode == null || height == null || length == null || width == null || weight== null)
+        if (photo == null || shortDescription == null || extendedDescription == null || technicalDescription == null || brand == null || reference == null || internalCode == null || productionCode == null || price == null || barcode == null || height == null || length == null || width == null || weight== null || category == null)
             throw new IllegalArgumentException();
 
         this.photo = photo;
@@ -67,7 +71,7 @@ public class Product implements AggregateRoot<InternalCode> {
         this.length = length;
         this.width = width;
         this.weight = weight;
-
+        this.category = category;
     }
 
     public Product() {
@@ -175,7 +179,7 @@ public class Product implements AggregateRoot<InternalCode> {
         this.barcode = barcode;
     }
 
-    public Height getHeight() {
+    public Height Height() {
         return height;
     }
 
@@ -183,7 +187,7 @@ public class Product implements AggregateRoot<InternalCode> {
         this.height = height;
     }
 
-    public Length getLength() {
+    public Length Length() {
         return length;
     }
 
@@ -191,7 +195,7 @@ public class Product implements AggregateRoot<InternalCode> {
         this.length = length;
     }
 
-    public Width getWidth() {
+    public Width Width() {
         return width;
     }
 
@@ -199,11 +203,19 @@ public class Product implements AggregateRoot<InternalCode> {
         this.width = width;
     }
 
-    public Weight getWeight() {
+    public Weight Weight() {
         return weight;
     }
 
     public void modifyWeight(Weight weight) {
         this.weight = weight;
+    }
+
+    public Category Category() {
+        return category;
+    }
+
+    public void modifyCategory(Category category) {
+        this.category = category;
     }
 }

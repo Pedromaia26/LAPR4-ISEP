@@ -25,6 +25,7 @@ package eapli.base.app.backoffice.console.presentation;
 
 import eapli.base.app.backoffice.console.presentation.authz.*;
 import eapli.base.app.backoffice.console.presentation.category.DefineNewCategoryUI;
+import eapli.base.app.backoffice.console.presentation.category.ListCategoryUI;
 import eapli.base.app.backoffice.console.presentation.product.*;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
@@ -77,6 +78,8 @@ public class MainMenu extends AbstractUI {
 
     //CATEGORY
     private static final int DEFINE_NEW_CATEGORY = 1;
+    private static final int SHOW_CATEGORY_LIST = 2;
+
 
     // SETTINGS
     private static final int SET_KITCHEN_ALERT_LIMIT_OPTION = 1;
@@ -238,10 +241,12 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("Category >");
 
         menu.addItem(DEFINE_NEW_CATEGORY, "Define Category", new DefineNewCategoryUI()::show);
-
+        menu.addItem(SHOW_CATEGORY_LIST, "Show Category List", new ListCategoryUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
     }
+
+
 
 }

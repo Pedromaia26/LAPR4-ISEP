@@ -1,7 +1,10 @@
 package eapli.base.productmanagement.domain;
 
+import eapli.base.categorymanagement.domain.Category;
 import eapli.framework.domain.model.DomainFactory;
 
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import java.io.IOException;
 
 public class ProductBuilder implements DomainFactory<Product> {
@@ -21,8 +24,9 @@ public class ProductBuilder implements DomainFactory<Product> {
     private Length length;
     private Width width;
     private Weight weight;
+    private Category category;
 
-    public ProductBuilder(final String setOfPhotos, final String shortDescription, final String extendedDescription,
+    public ProductBuilder(final Category category, final String setOfPhotos, final String shortDescription, final String extendedDescription,
                           final String technicalDescription,
                           final String brand, final String reference, final String productionCode, final String internalCode,
                           final double price, String barcode, final double height, final double length, final double width, final double weight) throws IOException {
@@ -40,11 +44,13 @@ public class ProductBuilder implements DomainFactory<Product> {
         withLength(length);
         withWidth(width);
         withWeight(weight);
+        withCategory(category);
     }
 
 
 
-    public ProductBuilder(final String setOfPhotos, final String shortDescription, final String extendedDescription,
+
+    public ProductBuilder(final Category category, final String setOfPhotos, final String shortDescription, final String extendedDescription,
                           final String technicalDescription,
                           final String brand, final String reference, final String internalCode, final double price, final String barcode,
                           final double height, final double length, final double width, final double weight) throws IOException {
@@ -62,6 +68,7 @@ public class ProductBuilder implements DomainFactory<Product> {
         withLength(length);
         withWidth(width);
         withWeight(weight);
+        withCategory(category);
     }
 
     public ProductBuilder withPhoto(String setOfPhotos) throws IOException {
@@ -134,15 +141,20 @@ public class ProductBuilder implements DomainFactory<Product> {
         return this;
     }
 
+    public ProductBuilder withCategory(Category category) {
+        this.category = category;
+        return this;
+    }
+
 
     private Product buildOrThrow() {
         if (product != null) {
             return product;
-        } else if (barcode != null && brand != null && internalCode != null && shortDescription != null && extendedDescription != null && technicalDescription != null && photo != null && price != null && reference != null && productionCode == null && height != null && length != null && width != null && weight != null) {
-            product = new Product(photo, shortDescription, extendedDescription, technicalDescription, brand, reference, internalCode, price, barcode, height, length, width, weight);
+        } else if (barcode != null && brand != null && internalCode != null && shortDescription != null && extendedDescription != null && technicalDescription != null && photo != null && price != null && reference != null && productionCode == null && height != null && length != null && width != null && weight != null && category != null) {
+            product = new Product(category, photo, shortDescription, extendedDescription, technicalDescription, brand, reference, internalCode, price, barcode, height, length, width, weight);
             return product;
-        } else if (barcode != null && brand != null && internalCode != null && shortDescription != null && extendedDescription != null && technicalDescription != null && photo != null && price != null && reference != null && productionCode != null && height != null && length != null && width != null && weight != null) {
-            product = new Product(photo, shortDescription, extendedDescription, technicalDescription, brand, reference, internalCode, productionCode, price, barcode, height, length, width, weight);
+        } else if (barcode != null && brand != null && internalCode != null && shortDescription != null && extendedDescription != null && technicalDescription != null && photo != null && price != null && reference != null && productionCode != null && height != null && length != null && width != null && weight != null && category != null) {
+            product = new Product(category, photo, shortDescription, extendedDescription, technicalDescription, brand, reference, internalCode, productionCode, price, barcode, height, length, width, weight);
             return product;
         } else {
             throw new IllegalStateException();

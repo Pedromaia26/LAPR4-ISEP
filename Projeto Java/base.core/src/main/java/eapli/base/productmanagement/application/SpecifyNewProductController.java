@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.Set;
 
+import eapli.base.categorymanagement.domain.Category;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.productmanagement.domain.Product;
 import eapli.base.productmanagement.domain.ProductBuilder;
@@ -58,14 +59,14 @@ public class SpecifyNewProductController {
     }
 
 
-    public Product addProduct(final String setOfPhotos, final String shortDescription, final String extendedDescription,
+    public Product addProduct(final Category category, final String setOfPhotos, final String shortDescription, final String extendedDescription,
                               final String technicalDescription,
                               final String brand, final String reference, final String productionCode,
                               final String internalCode, final double price, String barcode,
                               final double height, final double length, final double width, final double weight) throws IOException {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
 
-        final var newProduct = new ProductBuilder(setOfPhotos, shortDescription, extendedDescription, technicalDescription,
+        final var newProduct = new ProductBuilder(category, setOfPhotos, shortDescription, extendedDescription, technicalDescription,
                 brand, reference, productionCode, internalCode, price, barcode, height, length, width, weight);
 
 
@@ -73,13 +74,13 @@ public class SpecifyNewProductController {
     }
 
 
-    public Product addProduct(final String setOfPhotos, final String shortDescription, final String extendedDescription,
+    public Product addProduct(final Category category, final String setOfPhotos, final String shortDescription, final String extendedDescription,
                               final String technicalDescription,
                               final String brand, final String reference, final String internalCode, final double price, final String barcode,
                               final double height, final double length, final double width, final double weight ) throws IOException {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
 
-        final var newProduct = new ProductBuilder(setOfPhotos, shortDescription, extendedDescription, technicalDescription,
+        final var newProduct = new ProductBuilder(category, setOfPhotos, shortDescription, extendedDescription, technicalDescription,
                 brand, reference, internalCode, price, barcode, height, length, width, weight);
         return productRepository.save(newProduct.build());
     }

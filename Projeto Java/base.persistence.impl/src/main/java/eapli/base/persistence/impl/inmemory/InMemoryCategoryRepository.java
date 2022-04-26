@@ -16,4 +16,9 @@ public class InMemoryCategoryRepository  extends InMemoryDomainRepository<Catego
     public Category save(Category category) {
         return category;
     }
+
+    @Override
+    public Category findByCode(String categoryCode) {
+        return null;
+    }
 }
