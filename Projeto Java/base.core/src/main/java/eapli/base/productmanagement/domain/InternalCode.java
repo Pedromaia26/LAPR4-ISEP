@@ -49,17 +49,4 @@ public class InternalCode implements Comparable<InternalCode>, ValueObject {
 
         return internalCode;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        InternalCode that = (InternalCode) o;
-        return internalCode.equals(that.internalCode);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(internalCode);
-    }
 }
