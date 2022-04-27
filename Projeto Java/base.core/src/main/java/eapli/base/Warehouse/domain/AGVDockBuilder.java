@@ -21,8 +21,10 @@ public class AGVDockBuilder {
 
     private String accessibility;
 
+    private Warehouse warehouse;
 
-    public AGVDockBuilder(String rowIdentifier, long beginLSquare, long beginWSquare, long endLSquare, long endWSquare , long depthLSquare, long depthWSquare, String accessibility) {
+
+    public AGVDockBuilder(String rowIdentifier, long beginLSquare, long beginWSquare, long endLSquare, long endWSquare , long depthLSquare, long depthWSquare, String accessibility, Warehouse warehouse) {
         withRowIdentifier(rowIdentifier);
         withAGVDockBeginLSquare(beginLSquare);
         withAGVDockBeginWSquare(beginWSquare);
@@ -31,6 +33,7 @@ public class AGVDockBuilder {
         withAGVDockDepthLSquare(depthLSquare);
         withAGVDockDepthWSquare(depthWSquare);
         this.accessibility = accessibility;
+        withWarehouse(warehouse);
 
     }
 
@@ -72,11 +75,17 @@ public class AGVDockBuilder {
         this.agvDockDepthWSquare= new AGVDockDepthWSquare(depthWSquare);
         return this;
     }
+
+    private AGVDockBuilder withWarehouse(Warehouse warehouse){
+        this.warehouse= warehouse;
+        return this;
+    }
+
     private AGVDock buildOrThrow() {
         if (agvDock != null) {
             return agvDock;
-        } else if (accessibility != null && agvDockIdentifier != null && agvDockBeginLSquare != null && agvDockBeginWSquare!=null && agvDockEndLSquare!=null && agvDockEndWSquare !=null && agvDockDepthLSquare != null && agvDockDepthWSquare!=null ) {
-            agvDock = new AGVDock(agvDockIdentifier,agvDockBeginLSquare,agvDockBeginWSquare,agvDockEndLSquare,agvDockEndWSquare,agvDockDepthLSquare,agvDockDepthWSquare,accessibility);
+        } else if (warehouse!=null && accessibility != null && agvDockIdentifier != null && agvDockBeginLSquare != null && agvDockBeginWSquare!=null && agvDockEndLSquare!=null && agvDockEndWSquare !=null && agvDockDepthLSquare != null && agvDockDepthWSquare!=null ) {
+            agvDock = new AGVDock(agvDockIdentifier,agvDockBeginLSquare,agvDockBeginWSquare,agvDockEndLSquare,agvDockEndWSquare,agvDockDepthLSquare,agvDockDepthWSquare,accessibility, warehouse);
             return agvDock;
         } else {
             throw new IllegalStateException();

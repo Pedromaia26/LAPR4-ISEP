@@ -1,29 +1,36 @@
 package eapli.base.Warehouse.domain;
 
+import eapli.framework.domain.model.AggregateRoot;
+import eapli.framework.domain.model.DomainEntities;
+
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
-
-public class Aisle {
-
+@Entity
+public class Aisle implements AggregateRoot<AisleIdentifier> {
+    @EmbeddedId
         private AisleIdentifier aisleIdentifier;
-
+    @Embedded
         private AisleBeginLSquare aisleBeginLSquare;
 
+    @Embedded
         private AisleBeginWSquare aisleBeginWSquare;
-
+    @Embedded
         private AisleDepthLSquare aisleDepthLSquare;
-
+    @Embedded
         private AisleDepthWSquare aisleDepthWSquare;
-
+    @Embedded
         private AisleEndLSquare aisleEndLSquare;
-
+    @Embedded
         private AisleEndWSquare aisleEndWSquare;
 
         private String accessibility;
+   // @OneToMany
+   //     private Set<Row> rows;
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE)
+    private Warehouse warehouse;
 
-        private Set<Row> rows;
-
-    public Aisle(AisleIdentifier aisleIdentifier, AisleBeginLSquare aisleBeginLSquare, AisleBeginWSquare aisleBeginWSquare, AisleDepthLSquare aisleDepthLSquare, AisleDepthWSquare aisleDepthWSquare, AisleEndLSquare aisleEndLSquare, AisleEndWSquare aisleEndWSquare, String accessibility, Set<Row> rows) {
+    public Aisle(AisleIdentifier aisleIdentifier, AisleBeginLSquare aisleBeginLSquare, AisleBeginWSquare aisleBeginWSquare, AisleDepthLSquare aisleDepthLSquare, AisleDepthWSquare aisleDepthWSquare, AisleEndLSquare aisleEndLSquare, AisleEndWSquare aisleEndWSquare, String accessibility, Warehouse warehouse) {
         this.aisleIdentifier = aisleIdentifier;
         this.aisleBeginLSquare = aisleBeginLSquare;
         this.aisleBeginWSquare = aisleBeginWSquare;
@@ -32,6 +39,30 @@ public class Aisle {
         this.aisleEndLSquare = aisleEndLSquare;
         this.aisleEndWSquare = aisleEndWSquare;
         this.accessibility = accessibility;
-        this.rows = rows;
+        this.warehouse= warehouse;
+      //  this.rows = rows;
+    }
+
+    public Aisle() {
+
+    }
+
+    @Override
+    public boolean sameAs(Object other) {
+        return DomainEntities.areEqual(this, other);
+    }
+
+    @Override
+    public AisleIdentifier identity() {
+        return aisleIdentifier;
+    }
+    @Override
+    public boolean equals(final Object o) {
+        return DomainEntities.areEqual(this, o);
+    }
+
+
+    public AisleIdentifier aisleIdentifier() {
+        return identity();
     }
 }

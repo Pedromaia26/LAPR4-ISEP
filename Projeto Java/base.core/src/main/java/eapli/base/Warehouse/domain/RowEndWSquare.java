@@ -1,9 +1,18 @@
 package eapli.base.Warehouse.domain;
 
-public class RowEndWSquare {
+import eapli.framework.domain.model.ValueObject;
+
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class RowEndWSquare implements ValueObject {
     private long endWSquare;
 
     public RowEndWSquare(long endWSquare) {
         this.endWSquare = endWSquare;
+    }
+
+    public RowEndWSquare() {
+
     }
 }

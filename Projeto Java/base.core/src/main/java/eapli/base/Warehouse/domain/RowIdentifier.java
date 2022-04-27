@@ -1,10 +1,33 @@
 package eapli.base.Warehouse.domain;
 
-public class RowIdentifier {
+import eapli.framework.domain.model.ValueObject;
 
-    private long id;
+import javax.persistence.CascadeType;
+import javax.persistence.Embeddable;
+import javax.persistence.ManyToOne;
 
-    public RowIdentifier(long id) {
-        this.id = id;
+@Embeddable
+public class RowIdentifier implements ValueObject, Comparable<RowIdentifier> {
+
+    private long rowId;
+
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    private Aisle aisle;
+
+    public RowIdentifier(long id,Aisle aisle) {
+        this.rowId = id;
+        this.aisle=aisle;
+    }
+
+    public RowIdentifier() {
+
+    }
+
+    @Override
+    public int compareTo(RowIdentifier o) {
+        if(rowId>o.rowId)return 1;
+        else if (rowId<o.rowId)return -1;
+        else return 0;
+
     }
 }

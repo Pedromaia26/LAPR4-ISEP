@@ -21,9 +21,11 @@ public class AisleBuilder {
 
     private String accessibility;
 
-    private Set<Row> rows;
+    private Set<Section> sections;
 
-    public AisleBuilder(long aisleIdentifier, long beginLSquare, long beginWSquare, long endLSquare, long endWSquare, long depthLSquare ,long depthWSquare,String accessibility, Set<Row> rows) {
+    private Warehouse warehouse;
+
+    public AisleBuilder(long aisleIdentifier, long beginLSquare, long beginWSquare, long endLSquare, long endWSquare, long depthLSquare ,long depthWSquare,String accessibility/*, Set<Row> rows*/, Warehouse warehouse) {
         withAisleIdentifier(aisleIdentifier);
         withAileBeginLSquare(beginLSquare);
         withAileBeginWSquare(beginWSquare);
@@ -31,13 +33,18 @@ public class AisleBuilder {
         withAileEndWSquare(endWSquare);
         withAileDepthLSquare(depthLSquare);
         withAileDepthWSquare(depthWSquare);
+        withWarehouse(warehouse);
 
-        this.rows = rows;
+      //  this.rows = rows;
         this.accessibility= accessibility;
     }
 
     private AisleBuilder withAisleIdentifier(long rowIdentifier){
         this.aisleIdentifier=new AisleIdentifier(rowIdentifier);
+        return this;
+    }
+    private AisleBuilder withWarehouse(Warehouse warehouse){
+        this.warehouse=warehouse;
         return this;
     }
 
@@ -76,8 +83,8 @@ public class AisleBuilder {
     private Aisle buildOrThrow() {
         if (aisle != null) {
             return aisle;
-        } else if (aisleIdentifier != null && aisleBeginWSquare != null && accessibility != null && rows!= null && aisleBeginLSquare != null && aisleEndLSquare != null && aisleEndWSquare != null && aisleDepthLSquare != null && aisleDepthWSquare != null ) {
-            aisle = new Aisle(aisleIdentifier,aisleBeginLSquare,aisleBeginWSquare,aisleDepthLSquare,aisleDepthWSquare,aisleEndLSquare,aisleEndWSquare,accessibility,rows);
+        } else if (warehouse!= null && aisleIdentifier != null && aisleBeginWSquare != null && accessibility != null && aisleBeginLSquare != null && aisleEndLSquare != null && aisleEndWSquare != null && aisleDepthLSquare != null && aisleDepthWSquare != null ) {
+            aisle = new Aisle(aisleIdentifier,aisleBeginLSquare,aisleBeginWSquare,aisleDepthLSquare,aisleDepthWSquare,aisleEndLSquare,aisleEndWSquare,accessibility/*,rows*/,warehouse);
             return aisle;
         } else {
             throw new IllegalStateException();

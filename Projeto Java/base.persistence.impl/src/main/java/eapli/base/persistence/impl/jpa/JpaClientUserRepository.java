@@ -52,8 +52,7 @@ class JpaClientUserRepository
     }
 
     public JpaClientUserRepository(final String puname) {
-        super(puname, Application.settings().getExtendedPersistenceProperties(),
-                "vat");
+        super(puname, Application.settings().getExtendedPersistenceProperties(), "vat");
     }
 
     private EntityManager getEntityManager() {
@@ -82,7 +81,7 @@ class JpaClientUserRepository
     }
 
 
-    @Override
+   /* @Override
     public ClientUser save(ClientUser clientUser) {
         if (clientUser == null) {
             throw new IllegalArgumentException();
@@ -95,5 +94,5 @@ class JpaClientUserRepository
         em.close();
 
         return clientUser;
-    }
+    }*/
 }

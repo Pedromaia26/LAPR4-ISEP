@@ -1,22 +1,30 @@
 package eapli.base.Warehouse.domain;
 
-import java.util.Set;
-
 public class ShelfBuilder {
     private Shelf shelf;
+    private Section section;
+    private Aisle aisle;
 
     private ShelfIdentifier shelfIdentifier;
 
-    public ShelfBuilder(long shelfIdentifier) {
-        withShelfIdentifier(shelfIdentifier);
+    public ShelfBuilder(long shelfIdentifier, Section section, Aisle aisle) {
+        withShelfIdentifier(shelfIdentifier,section,aisle);
+
 
     }
 
-    private ShelfBuilder withShelfIdentifier(long shelfIdentifier){
-        this.shelfIdentifier=new ShelfIdentifier(shelfIdentifier);
+    private ShelfBuilder withShelfIdentifier(long shelfIdentifier,Section section, Aisle aisle){
+        this.shelfIdentifier=new ShelfIdentifier(shelfIdentifier,section,aisle);
         return this;
     }
-
+    private ShelfBuilder withAisle(Aisle aisle){
+        this.aisle=aisle;
+        return this;
+    }
+    private ShelfBuilder withRow(Section section){
+        this.section = section;
+        return this;
+    }
 
     private Shelf buildOrThrow() {
         if (shelf != null) {
