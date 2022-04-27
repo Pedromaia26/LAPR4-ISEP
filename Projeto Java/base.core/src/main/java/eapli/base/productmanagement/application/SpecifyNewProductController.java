@@ -50,15 +50,6 @@ public class SpecifyNewProductController {
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final ProductRepository productRepository = PersistenceContext.repositories().products();
 
-    /**
-     * Get existing Products available to the user.
-     *
-     * @return a list of Products
-     */
-    public Product[] getProducts() {
-        return null;
-    }
-
 
     public Product addProduct(final Category category, final List<String> setOfPhotos, final String shortDescription, final String extendedDescription,
                               final String technicalDescription,

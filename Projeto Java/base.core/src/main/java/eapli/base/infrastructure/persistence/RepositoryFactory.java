@@ -22,6 +22,7 @@ package eapli.base.infrastructure.persistence;
 
 import eapli.base.Warehouse.domain.Warehouse;
 import eapli.base.Warehouse.repositories.*;
+import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.ordermanagement.repositories.OrderLineRepository;
@@ -89,6 +90,13 @@ public interface RepositoryFactory {
      * @return
      */
     AGVDockRepository agvDock();
+
+    /**
+     * repository will be created in auto transaction mode
+     *
+     * @return
+     */
+    AGVRepository agv();
 
     /**
      * repository will be created in auto transaction mode

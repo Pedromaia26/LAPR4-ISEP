@@ -23,6 +23,7 @@ package eapli.base.persistence.impl.jpa;
 import eapli.base.Application;
 import eapli.base.Warehouse.domain.Warehouse;
 import eapli.base.Warehouse.repositories.*;
+import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.infrastructure.persistence.RepositoryFactory;
 import eapli.base.ordermanagement.repositories.OrderLineRepository;
@@ -118,6 +119,9 @@ public class JpaRepositoryFactory implements RepositoryFactory {
     public StatusRepository status() {
         return new JpaStatusRepository();
     }
+
+    @Override
+    public AGVRepository agv() { return new JpaAGVRepository(); }
 
     @Override
     public SignupRequestRepository signupRequests(final TransactionalContext autoTx) {
