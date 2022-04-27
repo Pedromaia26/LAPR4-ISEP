@@ -4,7 +4,7 @@ import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.ordermanagement.domain.ProductOrder;
-import eapli.base.ordermanagement.domain.OrderBuilder;
+import eapli.base.ordermanagement.domain.ProductOrderBuilder;
 import eapli.base.ordermanagement.repositories.OrderLineRepository;
 import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.orderstatusmanagement.domain.Status;
@@ -28,9 +28,7 @@ public class AddOrderController {
         ClientUser clientUser = userRepository.findByVAT(clientvat);
         long statusid = 1;
         Status status = statusRepository.findByStatusId(statusid);
-        final OrderBuilder newOrder = new OrderBuilder(clientUser, Calendars.now(), status);
-
-
+        final ProductOrderBuilder newOrder = new ProductOrderBuilder(clientUser, Calendars.now(), status);
         return orderRepository.save(newOrder.build());
     }
 
@@ -42,8 +40,7 @@ public class AddOrderController {
         long statusid = 1;
         Status status = statusRepository.findByStatusId(statusid);
         double cost = orderLineRepository.getAllCost(orderId);
-        final OrderBuilder newOrder = new OrderBuilder(clientUser, status, Calendars.now(), deliveringPostalAddress, billingPostalAddress, cost + cost*0.23, cost, shipmentMethod, shipmentCost, paymentMethod);
-
+        final ProductOrderBuilder newOrder = new ProductOrderBuilder(clientUser, status, Calendars.now(), deliveringPostalAddress, billingPostalAddress, cost + cost*0.23, cost, shipmentMethod, shipmentCost, paymentMethod);
 
         return orderRepository.save(newOrder.build());
     }

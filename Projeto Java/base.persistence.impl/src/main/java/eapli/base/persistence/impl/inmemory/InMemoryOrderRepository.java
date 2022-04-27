@@ -11,10 +11,7 @@ public class InMemoryOrderRepository  extends InMemoryDomainRepository<ProductOr
         InMemoryInitializer.init();
     }
 
-    @Override
-    public ProductOrder save(ProductOrder productOrder) {
-        return productOrder;
-    }
+    public ProductOrder save(ProductOrder order){ return null;}
 
     @Override
     public ProductOrder findByOrderId(Long orderId) {

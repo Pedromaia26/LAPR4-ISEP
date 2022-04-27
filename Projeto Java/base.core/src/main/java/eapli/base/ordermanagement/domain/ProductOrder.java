@@ -44,7 +44,6 @@ public class ProductOrder implements AggregateRoot<Long> {
     private ShipmentMethod shipmentMethod;
 
     @Embedded
-    @Column()
     private ShipmentCost shipmentCost;
 
     @Embedded
@@ -71,17 +70,9 @@ public class ProductOrder implements AggregateRoot<Long> {
 
         if (clientUser_id == null || createdOn == null)
             throw new IllegalArgumentException();
-
         this.clientUser = clientUser_id;
         this.status = status;
         this.createdOn = createdOn;
-        this.deliveringPostalAddress = null;
-        this.billingPostalAddress = null;
-        this.totalAmountWithTaxes = null;
-        this.totalAmountWithoutTaxes = null;
-        this.shipmentMethod = null;
-        this.shipmentCost = null;
-        this.paymentMethod = null;
     }
 
     public ProductOrder() {
