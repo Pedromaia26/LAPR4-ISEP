@@ -6,6 +6,8 @@ import eapli.framework.domain.model.DomainFactory;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import java.io.IOException;
+import java.util.List;
+import java.util.Set;
 
 public class ProductBuilder implements DomainFactory<Product> {
 
@@ -26,7 +28,7 @@ public class ProductBuilder implements DomainFactory<Product> {
     private Weight weight;
     private Category category;
 
-    public ProductBuilder(final Category category, final String setOfPhotos, final String shortDescription, final String extendedDescription,
+    public ProductBuilder(final Category category, final List<String>  setOfPhotos, final String shortDescription, final String extendedDescription,
                           final String technicalDescription,
                           final String brand, final String reference, final String productionCode, final String internalCode,
                           final double price, String barcode, final double height, final double length, final double width, final double weight) throws IOException {
@@ -50,7 +52,7 @@ public class ProductBuilder implements DomainFactory<Product> {
 
 
 
-    public ProductBuilder(final Category category, final String setOfPhotos, final String shortDescription, final String extendedDescription,
+    public ProductBuilder(final Category category, final List<String> setOfPhotos, final String shortDescription, final String extendedDescription,
                           final String technicalDescription,
                           final String brand, final String reference, final String internalCode, final double price, final String barcode,
                           final double height, final double length, final double width, final double weight) throws IOException {
@@ -71,7 +73,7 @@ public class ProductBuilder implements DomainFactory<Product> {
         withCategory(category);
     }
 
-    public ProductBuilder withPhoto(String setOfPhotos) throws IOException {
+    public ProductBuilder withPhoto(List<String>  setOfPhotos) throws IOException {
         this.photo = new Photo(setOfPhotos);
         return this;
     }

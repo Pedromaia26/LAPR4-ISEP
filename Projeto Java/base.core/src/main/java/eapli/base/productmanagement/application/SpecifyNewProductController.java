@@ -22,6 +22,7 @@ package eapli.base.productmanagement.application;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Set;
 
 import eapli.base.categorymanagement.domain.Category;
@@ -59,7 +60,7 @@ public class SpecifyNewProductController {
     }
 
 
-    public Product addProduct(final Category category, final String setOfPhotos, final String shortDescription, final String extendedDescription,
+    public Product addProduct(final Category category, final List<String> setOfPhotos, final String shortDescription, final String extendedDescription,
                               final String technicalDescription,
                               final String brand, final String reference, final String productionCode,
                               final String internalCode, final double price, String barcode,
@@ -74,7 +75,7 @@ public class SpecifyNewProductController {
     }
 
 
-    public Product addProduct(final Category category, final String setOfPhotos, final String shortDescription, final String extendedDescription,
+    public Product addProduct(final Category category, final List<String>  setOfPhotos, final String shortDescription, final String extendedDescription,
                               final String technicalDescription,
                               final String brand, final String reference, final String internalCode, final double price, final String barcode,
                               final double height, final double length, final double width, final double weight ) throws IOException {

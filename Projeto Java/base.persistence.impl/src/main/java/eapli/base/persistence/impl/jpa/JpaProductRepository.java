@@ -10,29 +10,7 @@ public class JpaProductRepository extends BasepaRepositoryBase<Product, Internal
         implements ProductRepository {
 
     JpaProductRepository() {
-        super("name");
-    }
-
-    private EntityManager getEntityManager() {
-        EntityManagerFactory factory = Persistence.
-                createEntityManagerFactory("eapli.base");
-        EntityManager manager = factory.createEntityManager();
-        return manager;
-    }
-
-    @Override
-    public Product save(Product product) {
-        if (product == null) {
-            throw new IllegalArgumentException();
-        }
-        EntityManager em = getEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        em.persist(product);
-        tx.commit();
-        em.close();
-
-        return product;
+        super("internalCode");
     }
 
     @Override

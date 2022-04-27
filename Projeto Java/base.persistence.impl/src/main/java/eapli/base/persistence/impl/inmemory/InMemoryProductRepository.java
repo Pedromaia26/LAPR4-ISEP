@@ -15,11 +15,6 @@ public class InMemoryProductRepository extends InMemoryDomainRepository<Product,
     }
 
     @Override
-    public Product save(Product product) {
-        return product;
-    }
-
-    @Override
     public Iterable<Product> findByBrand(String brand) {
         return null;
     }

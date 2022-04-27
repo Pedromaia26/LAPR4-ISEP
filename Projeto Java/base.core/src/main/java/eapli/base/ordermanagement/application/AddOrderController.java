@@ -26,6 +26,7 @@ public class AddOrderController {
     public ProductOrder addOrder(final String clientvat) {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
         ClientUser clientUser = userRepository.findByVAT(clientvat);
+        System.out.println(clientUser.toString());
         long statusid = 1;
         Status status = statusRepository.findByStatusId(statusid);
         final OrderBuilder newOrder = new OrderBuilder(clientUser, Calendars.now(), status);

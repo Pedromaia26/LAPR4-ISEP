@@ -44,7 +44,6 @@ public class ProductOrder implements AggregateRoot<Long> {
     private ShipmentMethod shipmentMethod;
 
     @Embedded
-    @Column()
     private ShipmentCost shipmentCost;
 
     @Embedded

@@ -25,14 +25,6 @@ import eapli.framework.domain.repositories.DomainRepository;
 
 public interface ProductRepository extends DomainRepository<InternalCode, Product> {
 
-    /**
-     * inserts an entity and commits
-     *
-     * @param entity
-     * @return the persisted entity
-     */
-    public Product save(Product entity);
-
     Product findByCode(String productCode);
 
     Iterable<Product> findByBrand(String brand);

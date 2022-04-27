@@ -4,6 +4,7 @@ import eapli.base.app.backoffice.console.presentation.category.ListCategoryUI;
 import eapli.base.categorymanagement.application.ListCategoryController;
 import eapli.base.categorymanagement.domain.Category;
 import eapli.base.productmanagement.application.SpecifyNewProductController;
+import eapli.base.productmanagement.domain.Photo;
 import eapli.base.usermanagement.application.AddCostumerController;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.domain.repositories.ConcurrencyException;
@@ -18,7 +19,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class SpecifyNewProductUI extends AbstractUI {
@@ -26,8 +29,10 @@ public class SpecifyNewProductUI extends AbstractUI {
     private final SpecifyNewProductController theController = new SpecifyNewProductController();
     private final ListCategoryController theCController = new ListCategoryController();
     private boolean invalidData, invalidCategory;
-    private String setOfPhotos = "base.core/src/main/resources/";
+    private List<String> setOfPhotos = new ArrayList<>();
+    private String path;
     private Category category;
+    private boolean more = true;
 
     @Override
     protected boolean doShow() {
@@ -51,7 +56,17 @@ public class SpecifyNewProductUI extends AbstractUI {
             invalidData = false;
             boolean op = false;
             // FIXME avoid duplication with SignUpUI. reuse UserDataWidget from
-            setOfPhotos = setOfPhotos +  Console.readLine("Photo");
+            System.out.println("Set of Photos (Type 'DONE' when you are done adding photos)");
+            do {
+                String photo = Console.readLine("Photo");
+                if (!photo.equals("DONE")) {
+                    path = "base.core/src/main/resources/";
+                    path += photo;
+                    setOfPhotos.add(path);
+                }else {
+                    more = false;
+                }
+            }while(more);
             final String shortDescription = Console.readLine("Short Description (Max 30 chars)");
             final String extendedDescription = Console.readLine("Extended Description (Between 20 and 100 chars)");
             final String technicalDescription = Console.readLine("Technical Description");
@@ -66,7 +81,7 @@ public class SpecifyNewProductUI extends AbstractUI {
             final String internalCode = Console.readLine("Internal Code (Please respect the following pattern: " +
                     "4 letters followed by a dot ('.') and ending with 5 digits (Max 23 chars)");
             final double price = Double.parseDouble(Console.readLine("Price (Euros)"));
-            final String barcode = Console.readLine("Barcode (Must have 13 chars)");
+            final String barcode = Console.readLine("Barcode (Must have 13 numbers)");
             System.out.println("\nDIMENSIONS\n");
             final double height = Double.parseDouble(Console.readLine("Height (Milimeters)"));
             final double length = Double.parseDouble(Console.readLine("Length (Milimeters)"));

@@ -5,18 +5,24 @@ import eapli.framework.domain.model.ValueObject;
 import javax.persistence.Embeddable;
 import java.io.File;
 import java.sql.Blob;
+import java.util.List;
+import java.util.Set;
 
 @Embeddable
 public class Photo implements ValueObject {
 
-    private String setOfPhotos;
+    private String setOfPhotos = "";
 
-    public Photo(final String setOfPhotos) {
-        File file = new File(setOfPhotos);
-        if (!file.exists())
-            throw new IllegalArgumentException("File does not exist!");
+    public Photo(final List<String> setOfPhotos) {
 
-        this.setOfPhotos = setOfPhotos;
+        for (int i = 0; i < setOfPhotos.size(); i++){
+            File file = new File(setOfPhotos.get(i));
+            if (!file.exists())
+                throw new IllegalArgumentException("File does not exist!");
+
+            this.setOfPhotos += setOfPhotos.get(i) + "\n";
+        }
+
     }
 
     public Photo() {

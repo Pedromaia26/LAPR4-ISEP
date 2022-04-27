@@ -5,7 +5,7 @@ import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
 
 import javax.persistence.*;
-
+import java.util.Set;
 
 
 @Entity
