@@ -12,7 +12,7 @@ public class JsonImporterController {
     private final JsonImporter jsonImporter= new JsonImporter();
 
     public Warehouse jsonImporter(final String fileName) {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.WAREHOUSE_EMPLOYEE);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.WAREHOUSE_EMPLOYEE, BaseRoles.ADMIN, BaseRoles.POWER_USER);
 
         return jsonImporter.importer(fileName);
     }

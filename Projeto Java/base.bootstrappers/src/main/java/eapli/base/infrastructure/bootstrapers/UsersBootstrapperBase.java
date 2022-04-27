@@ -22,6 +22,8 @@ package eapli.base.infrastructure.bootstrapers;
 
 import java.util.Set;
 
+import eapli.base.Warehouse.application.JsonImporterController;
+import eapli.base.Warehouse.domain.Warehouse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,6 +40,8 @@ public class UsersBootstrapperBase {
 
     final AddUserController userController = new AddUserController();
     final ListUsersController listUserController = new ListUsersController();
+    final JsonImporterController warehouseImporter = new JsonImporterController();
+
 
     public UsersBootstrapperBase() {
         super();
@@ -61,6 +65,21 @@ public class UsersBootstrapperBase {
             // assuming it is just a primary key violation due to the tentative
             // of inserting a duplicated user. let's just lookup that user
             u = listUserController.find(Username.valueOf(username)).orElseThrow(() -> e);
+        }
+        return u;
+    }
+    /**
+     * @param fileName
+     */
+    protected Warehouse importWarehouse(final String fileName) {
+        Warehouse u = null;
+        try {
+            u = warehouseImporter.jsonImporter(fileName);
+            LOGGER.debug("»»» %s", fileName);
+        } catch (final IntegrityViolationException | ConcurrencyException e) {
+            // assuming it is just a primary key violation due to the tentative
+            // of inserting a duplicated user. let's just lookup that user
+            e.printStackTrace();
         }
         return u;
     }

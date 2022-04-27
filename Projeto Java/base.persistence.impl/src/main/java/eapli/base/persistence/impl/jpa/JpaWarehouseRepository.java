@@ -8,6 +8,6 @@ import eapli.base.Warehouse.repositories.WarehouseRepository;
 
 public class JpaWarehouseRepository extends BasepaRepositoryBase<Warehouse, Long, Long> implements WarehouseRepository {
     JpaWarehouseRepository() {
-        super("shelfIdentifier");
+        super("id");
     }
 }

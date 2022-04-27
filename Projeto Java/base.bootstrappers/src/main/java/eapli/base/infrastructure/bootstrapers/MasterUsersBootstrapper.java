@@ -36,6 +36,7 @@ public class MasterUsersBootstrapper extends UsersBootstrapperBase implements Ac
     public boolean execute() {
         registerAdmin("admin", TestDataConstants.PASSWORD1, "Jane", "Doe Admin",
                 "jane.doe@email.local");
+        importWarehouseBootStrap("warehouse1");
         return true;
     }
 
@@ -49,4 +50,10 @@ public class MasterUsersBootstrapper extends UsersBootstrapperBase implements Ac
 
         registerUser(username, password, firstName, lastName, email, roles);
     }
+
+    private void importWarehouseBootStrap(final String fileName) {
+
+        importWarehouse(fileName);
+    }
+
 }

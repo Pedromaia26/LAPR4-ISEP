@@ -11,7 +11,7 @@ public class JpaCategoryRepository extends BasepaRepositoryBase<Category, Catego
         implements CategoryRepository {
 
     JpaCategoryRepository() {
-        super("name");
+        super("categoryCode");
     }
 
     private EntityManager getEntityManager() {
@@ -39,7 +39,7 @@ public class JpaCategoryRepository extends BasepaRepositoryBase<Category, Catego
         return query.getSingleResult();
     }
 
-    @Override
+   /* @Override
     public Category save(Category category) {
         if (category == null) {
             throw new IllegalArgumentException();
@@ -52,5 +52,5 @@ public class JpaCategoryRepository extends BasepaRepositoryBase<Category, Catego
         em.close();
 
         return category;
-    }
+    }*/
 }
