@@ -69,6 +69,7 @@ public class MainMenu extends AbstractUI {
     private static final int LIST_ALL_PRODUCT = 1;
     private static final int SEARCH_BRAND_PRODUCT = 2;
     private static final int SEARCH_DESCRIPTION_PRODUCT = 3;
+    private static final int SEARCH_CATEGORY_PRODUCT = 4;
 
     //PRODUCTS
     private static final int SPECIFY_NEW_PRODUCT = 1;
@@ -239,6 +240,7 @@ public class MainMenu extends AbstractUI {
         menu.addItem(LIST_ALL_PRODUCT, "View Products Catalog", new ListProductUI()::show);
         menu.addItem(SEARCH_BRAND_PRODUCT, "Search Products Catalog by Brand", new SearchProductBrandUI()::show);
         menu.addItem(SEARCH_DESCRIPTION_PRODUCT, "Search Products Catalog by Description", new SearchProductDescriptionUI()::show);
+        menu.addItem(SEARCH_CATEGORY_PRODUCT, "Search Products Catalog by Category Code", new SearchProductCategoryUI()::show);
 
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 

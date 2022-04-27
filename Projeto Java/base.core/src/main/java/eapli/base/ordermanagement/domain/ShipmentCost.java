@@ -6,7 +6,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class ShipmentCost implements ValueObject {
-    private double shipmentCost;
+    private Double shipmentCost;
 
     public ShipmentCost(final double shipmentCost){
 
@@ -24,5 +24,13 @@ public class ShipmentCost implements ValueObject {
     public String toString(){
 
         return String.valueOf(shipmentCost);
+    }
+
+    public Double getShipmentCost() {
+        return shipmentCost;
+    }
+
+    public void setShipmentCost(Double shipmentCost) {
+        this.shipmentCost = shipmentCost;
     }
 }

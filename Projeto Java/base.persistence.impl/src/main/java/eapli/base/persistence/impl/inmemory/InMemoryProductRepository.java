@@ -20,6 +20,11 @@ public class InMemoryProductRepository extends InMemoryDomainRepository<Product,
     }
 
     @Override
+    public Iterable<Product> findByCategoryCode(String code) {
+        return null;
+    }
+
+    @Override
     public Iterable<Product> findByDescription(String description) {
         return null;
     }

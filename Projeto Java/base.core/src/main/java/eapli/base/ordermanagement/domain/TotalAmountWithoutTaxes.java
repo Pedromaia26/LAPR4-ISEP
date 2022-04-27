@@ -6,9 +6,9 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class TotalAmountWithoutTaxes implements ValueObject {
-    private double totalAmountWithoutTaxes;
+    private Double totalAmountWithoutTaxes;
 
-    public TotalAmountWithoutTaxes(final double totalAmountWithoutTaxes){
+    public TotalAmountWithoutTaxes(final Double totalAmountWithoutTaxes){
 
         if (totalAmountWithoutTaxes < 0)
             throw new IllegalArgumentException("Cost cannot be negative!");
@@ -24,5 +24,13 @@ public class TotalAmountWithoutTaxes implements ValueObject {
     public String toString(){
 
         return String.valueOf(totalAmountWithoutTaxes);
+    }
+
+    public Double getTotalAmountWithoutTaxes() {
+        return totalAmountWithoutTaxes;
+    }
+
+    public void setTotalAmountWithoutTaxes(Double totalAmountWithoutTaxes) {
+        this.totalAmountWithoutTaxes = totalAmountWithoutTaxes;
     }
 }

@@ -30,4 +30,6 @@ public interface ProductRepository extends DomainRepository<InternalCode, Produc
     Iterable<Product> findByBrand(String brand);
 
     Iterable<Product> findByDescription(String description);
+
+    Iterable<Product> findByCategoryCode(String code);
 }

@@ -16,7 +16,7 @@ public class OrderLine implements AggregateRoot<Long>{
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     private Product product;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE)
     private ProductOrder productOrder;
 
     @Embedded
