@@ -1,7 +1,7 @@
 package eapli.base.persistence.impl.jpa;
 
-import eapli.base.productmanagement.domain.Product;
 import eapli.base.productmanagement.domain.InternalCode;
+import eapli.base.productmanagement.domain.Product;
 import eapli.base.productmanagement.repositories.ProductRepository;
 
 import javax.persistence.*;
@@ -57,5 +57,14 @@ public class JpaProductRepository extends BasepaRepositoryBase<Product, Internal
                 Product.class);
 
         return query.getResultList();
+    }
+
+    @Override
+    public Product findByCode(String productCode) {
+        final TypedQuery<Product> query = super.createQuery(
+                "SELECT d FROM Product d WHERE internalCode = '" + productCode + "'",
+                Product.class);
+
+        return query.getSingleResult();
     }
 }

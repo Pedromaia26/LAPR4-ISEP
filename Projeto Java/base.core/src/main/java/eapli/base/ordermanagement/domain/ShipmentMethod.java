@@ -11,8 +11,8 @@ public class ShipmentMethod implements ValueObject {
 
     public ShipmentMethod(final String shipmentMethod){
 
-        if (shipmentMethod == null || shipmentMethod.isBlank())
-            throw new IllegalArgumentException("Payment Method cannot be null!");
+        if (shipmentMethod.length() > 30)
+            throw new IllegalArgumentException("Shipment Method invalid!");
 
 
         this.shipmentMethod = shipmentMethod;
@@ -25,5 +25,13 @@ public class ShipmentMethod implements ValueObject {
     @Override
     public String toString(){
         return shipmentMethod;
+    }
+
+    public String getShipmentMethod() {
+        return shipmentMethod;
+    }
+
+    public void setShipmentMethod(String shipmentMethod) {
+        this.shipmentMethod = shipmentMethod;
     }
 }

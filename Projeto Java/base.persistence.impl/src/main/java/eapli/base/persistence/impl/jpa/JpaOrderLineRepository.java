@@ -1,18 +1,17 @@
 package eapli.base.persistence.impl.jpa;
 
-import eapli.base.clientusermanagement.domain.ClientUser;
-import eapli.base.orderstatusmanagement.domain.Status;
-import eapli.base.orderstatusmanagement.repositories.StatusRepository;
+import eapli.base.ordermanagement.domain.OrderLine;
+import eapli.base.ordermanagement.repositories.OrderLineRepository;
 import eapli.base.productmanagement.domain.InternalCode;
 import eapli.base.productmanagement.domain.Product;
 import eapli.base.productmanagement.repositories.ProductRepository;
 
 import javax.persistence.*;
 
-public class JpaStatusRepository extends BasepaRepositoryBase<Status, Long, Long>
-        implements StatusRepository {
+public class JpaOrderLineRepository extends BasepaRepositoryBase<OrderLine, Long, Long>
+        implements OrderLineRepository {
 
-    JpaStatusRepository() {
+    JpaOrderLineRepository() {
         super("name");
     }
 
@@ -24,25 +23,25 @@ public class JpaStatusRepository extends BasepaRepositoryBase<Status, Long, Long
     }
 
     @Override
-    public Status save(Status status) {
-        if (status == null) {
+    public OrderLine save(OrderLine orderLine) {
+        if (orderLine == null) {
             throw new IllegalArgumentException();
         }
         EntityManager em = getEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
-        em.persist(status);
+        em.persist(orderLine);
         tx.commit();
         em.close();
 
-        return status;
+        return orderLine;
     }
 
     @Override
-    public Status findByStatusId(final Long id) {
-        final TypedQuery<Status> query = super.createQuery(
-                "SELECT d FROM Status d WHERE id = '" + id + "'",
-                Status.class);
+    public int getAllCost(Long orderId) {
+        final TypedQuery<Integer> query = super.createQuery(
+                "SELECT SUM(unitPrice) FROM OrderLine WHERE order_id = '" + orderId + "'",
+                Integer.class);
 
         return query.getSingleResult();
     }

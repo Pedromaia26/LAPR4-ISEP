@@ -26,4 +26,12 @@ public class BillingPostalAddresses implements ValueObject {
     public BillingPostalAddresses() {
 
     }
+
+    public String getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(String billingAddress) {
+        this.billingAddress = billingAddress;
+    }
 }

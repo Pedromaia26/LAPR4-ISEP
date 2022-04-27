@@ -23,8 +23,12 @@ package eapli.base.persistence.impl.jpa;
 import eapli.base.Application;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.infrastructure.persistence.RepositoryFactory;
+import eapli.base.ordermanagement.repositories.OrderLineRepository;
+import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.orderstatusmanagement.repositories.StatusRepository;
 import eapli.base.categorymanagement.repositories.CategoryRepository;
+import eapli.base.persistence.impl.inmemory.InMemoryOrderLineRepository;
+import eapli.base.persistence.impl.inmemory.InMemoryOrderRepository;
 import eapli.base.productmanagement.repositories.ProductRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
@@ -66,6 +70,16 @@ public class JpaRepositoryFactory implements RepositoryFactory {
     @Override
     public CategoryRepository categories() {
         return new JpaCategoryRepository();
+    }
+
+    @Override
+    public OrderLineRepository orderlines() {
+        return new JpaOrderLineRepository();
+    }
+
+    @Override
+    public OrderRepository orders() {
+        return new JpaOrderRepository();
     }
 
     @Override

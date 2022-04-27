@@ -26,6 +26,7 @@ package eapli.base.app.backoffice.console.presentation;
 import eapli.base.app.backoffice.console.presentation.authz.*;
 import eapli.base.app.backoffice.console.presentation.category.DefineNewCategoryUI;
 import eapli.base.app.backoffice.console.presentation.category.ListCategoryUI;
+import eapli.base.app.backoffice.console.presentation.order.AddOrderUI;
 import eapli.base.app.backoffice.console.presentation.product.*;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
@@ -80,6 +81,11 @@ public class MainMenu extends AbstractUI {
     private static final int DEFINE_NEW_CATEGORY = 1;
     private static final int SHOW_CATEGORY_LIST = 2;
 
+    // ORDER MAIN MENU
+    private static final int ORDER_MENU = 5;
+
+    // ORDER
+    private static final int CREATE_NEW_ORDER = 1;
 
     // SETTINGS
     private static final int SET_KITCHEN_ALERT_LIMIT_OPTION = 1;
@@ -154,6 +160,8 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(PRODUCT_MENU, Product);
             final Menu Category = buildCategoryMenu();
             mainMenu.addSubMenu(CATEGORY_MENU, Category);
+            final Menu Order = buildOrderMenu();
+            mainMenu.addSubMenu(ORDER_MENU, Order);
         }
 
         if(authz.isAuthenticatedUserAuthorizedTo(BaseRoles.WAREHOUSE_EMPLOYEE)){
@@ -247,6 +255,13 @@ public class MainMenu extends AbstractUI {
         return menu;
     }
 
+    private Menu buildOrderMenu() {
+        final Menu menu = new Menu("Order >");
 
+        menu.addItem(CREATE_NEW_ORDER, "Create products order", new AddOrderUI()::show);
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
 
 }

@@ -1,5 +1,6 @@
 package eapli.base.persistence.impl.inmemory;
 
+import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.orderstatusmanagement.domain.Status;
 import eapli.base.orderstatusmanagement.repositories.StatusRepository;
 import eapli.base.productmanagement.domain.InternalCode;
@@ -12,6 +13,11 @@ public class InMemoryStatusRepository extends InMemoryDomainRepository<Status, L
 
     static {
         InMemoryInitializer.init();
+    }
+
+    @Override
+    public Status findByStatusId(final Long id) {
+        return null;
     }
 
     @Override

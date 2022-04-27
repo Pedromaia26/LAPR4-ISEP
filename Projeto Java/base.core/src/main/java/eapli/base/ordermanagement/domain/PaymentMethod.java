@@ -11,8 +11,8 @@ public class PaymentMethod implements ValueObject {
 
     public PaymentMethod(final String paymentMethod){
 
-        if (paymentMethod == null || paymentMethod.isBlank())
-            throw new IllegalArgumentException("Payment Method cannot be null!");
+        if (paymentMethod.length() > 30)
+            throw new IllegalArgumentException("Payment Method invalid!");
 
 
         this.paymentMethod = paymentMethod;
@@ -25,5 +25,13 @@ public class PaymentMethod implements ValueObject {
     @Override
     public String toString(){
         return paymentMethod;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 }

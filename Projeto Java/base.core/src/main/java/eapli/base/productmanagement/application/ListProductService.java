@@ -1,5 +1,6 @@
 package eapli.base.productmanagement.application;
 
+import eapli.base.categorymanagement.domain.Category;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.productmanagement.domain.Product;
 import eapli.base.productmanagement.repositories.ProductRepository;
@@ -18,5 +19,11 @@ public class ListProductService {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
 
         return productRepository.findAll();
+    }
+
+    public Product findByCode(String productCode) {
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+
+        return productRepository.findByCode(productCode);
     }
 }

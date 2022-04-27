@@ -7,9 +7,9 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Quantity implements ValueObject {
 
-    private double quantity;
+    private int quantity;
 
-    public Quantity(final double quantity){
+    public Quantity(final int quantity){
 
         if (quantity < 0)
             throw new IllegalArgumentException("Quantity cannot be negative!");

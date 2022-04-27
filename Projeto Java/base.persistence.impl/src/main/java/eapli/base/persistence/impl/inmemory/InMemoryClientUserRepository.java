@@ -46,6 +46,11 @@ public class InMemoryClientUserRepository
         return matchOne(e -> e.user().username().equals(name));
     }
 
+    @Override
+    public ClientUser findByVAT(final String vat) {
+        return null;
+    }
+
    /* @Override
     public Optional<ClientUser> findByMecanographicNumber(final MecanographicNumber number) {
         return Optional.of(data().get(number));

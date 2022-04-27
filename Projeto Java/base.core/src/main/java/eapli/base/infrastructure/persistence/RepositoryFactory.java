@@ -22,6 +22,8 @@ package eapli.base.infrastructure.persistence;
 
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
+import eapli.base.ordermanagement.repositories.OrderLineRepository;
+import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.orderstatusmanagement.repositories.StatusRepository;
 import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.productmanagement.repositories.ProductRepository;
@@ -91,6 +93,20 @@ public interface RepositoryFactory {
      * @return
      */
     StatusRepository status();
+
+    /**
+     * repository will be created in auto transaction mode
+     *
+     * @return
+     */
+    OrderRepository orders();
+
+    /**
+     * repository will be created in auto transaction mode
+     *
+     * @return
+     */
+    OrderLineRepository orderlines();
 
     /**
      *

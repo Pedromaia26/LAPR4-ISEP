@@ -45,6 +45,15 @@ public interface ClientUserRepository
      */
     Optional<ClientUser> findByUsername(Username name);
 
+    /**
+     * returns the client user (utente) whose username is given
+     *
+     * @param vat
+     *            the vat to search for
+     * @return
+     */
+    ClientUser findByVAT(String vat);
+
     /*/**
      * returns the client user (utente) with the given mecanographic number
      *

@@ -7,17 +7,17 @@ import eapli.framework.domain.model.DomainEntities;
 import javax.persistence.*;
 
 @Entity
-public class Order_Line implements AggregateRoot<Long>{
+public class OrderLine implements AggregateRoot<Long>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Product product_id;
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    private Product product;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Order order_id;
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    private ProductOrder productOrder;
 
     @Embedded
     private Quantity quantity;
@@ -25,18 +25,18 @@ public class Order_Line implements AggregateRoot<Long>{
     @Embedded
     private Cost unitPrice;
 
-    public Order_Line(Product product, Quantity quantity, Order order, Cost unitPrice){
+    public OrderLine(Product product, Quantity quantity, ProductOrder productOrder, Cost unitPrice){
 
-        if (product == null || quantity == null || order == null || unitPrice == null)
+        if (product == null || quantity == null || productOrder == null || unitPrice == null)
             throw new IllegalArgumentException();
 
-        this.product_id = product;
+        this.product = product;
         this.quantity = quantity;
-        this.order_id = order;
+        this.productOrder = productOrder;
         this.unitPrice = unitPrice;
     }
 
-    public Order_Line() {
+    public OrderLine() {
 
     }
 
