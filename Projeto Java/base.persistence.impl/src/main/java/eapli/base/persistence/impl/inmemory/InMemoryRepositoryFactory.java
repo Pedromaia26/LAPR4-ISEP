@@ -20,6 +20,8 @@
  */
 package eapli.base.persistence.impl.inmemory;
 
+import eapli.base.Warehouse.domain.Warehouse;
+import eapli.base.Warehouse.repositories.*;
 import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
@@ -63,6 +65,39 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
     @Override
     public ClientUserRepository clientUsers() {
         return clientUsers(null);
+    }
+
+    /*@Override
+    public AGVDockRepository agvDock(TransactionalContext autoTx) {
+        return new InMemoryAGVDockRepository();
+    }*/
+
+   /* @Override
+    public AGVDockRepository agvDock() {
+        return agvDock(null);
+    }*/
+    @Override
+    public AGVDockRepository agvDock(){
+        return new InMemoryAGVDockRepository();
+    }
+    @Override
+    public AisleRepository aisle(){
+        return new InMemoryAisleRepository();
+    }
+
+    @Override
+    public RowRepository row(){
+        return new InMemoryRowRepository();
+    }
+
+    @Override
+    public ShelfRepository shelf(){
+        return new InMemoryShelfRepository();
+    }
+
+    @Override
+    public WarehouseRepository warehouse(){
+        return new InMemoryWarehouseRepository();
     }
 
     @Override

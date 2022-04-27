@@ -1,11 +1,9 @@
 package eapli.base.Warehouse.domain;
 
-import eapli.base.productmanagement.domain.Product;
-
 import java.util.Set;
 
 public class RowBuilder {
-    private Row row;
+    private Section section;
 
     private RowIdentifier rowIdentifier;
 
@@ -19,18 +17,20 @@ public class RowBuilder {
 
     private Set<Shelf> shelves;
 
+    private Aisle aisle;
 
-    public RowBuilder(long rowIdentifier, long beginLSquare, long beginWSquare, long endLSquare, long endWSquare , Set<Shelf> shelves) {
-        withRowIdentifier(rowIdentifier);
+
+    public RowBuilder(long rowIdentifier, long beginLSquare, long beginWSquare, long endLSquare, long endWSquare , Aisle aisle) {
+        withRowIdentifier(rowIdentifier, aisle);
         withRowBeginLSquare(beginLSquare);
         withRowBeginWSquare(beginWSquare);
         withRowEndLSquare(endLSquare);
         withRowEndWSquare(endWSquare);
-        this.shelves = shelves;
+
     }
 
-    private RowBuilder withRowIdentifier(long rowIdentifier){
-        this.rowIdentifier=new RowIdentifier(rowIdentifier);
+    private RowBuilder withRowIdentifier(long rowIdentifier, Aisle aisle){
+        this.rowIdentifier=new RowIdentifier(rowIdentifier, aisle);
         return this;
     }
 
@@ -56,23 +56,27 @@ public class RowBuilder {
         this.rowEndWSquare= new RowEndWSquare(EndWSquare);
         return this;
     }
+    private RowBuilder withAisle(Aisle aisle){
+        this.aisle= aisle;
+        return this;
+    }
 
-    private Row buildOrThrow() {
-        if (row != null) {
-            return row;
-        } else if (rowIdentifier != null && rowBeginLSquare != null && shelves != null && rowBeginWSquare!=null && rowEndLSquare!=null && rowEndWSquare !=null ) {
-            row = new Row(rowIdentifier,rowBeginLSquare,rowBeginWSquare,rowEndLSquare,rowEndWSquare,shelves);
-            return row;
+    private Section buildOrThrow() {
+        if (section != null) {
+            return section;
+        } else if (rowIdentifier != null && rowBeginLSquare != null && rowBeginWSquare!=null && rowEndLSquare!=null && rowEndWSquare !=null ) {
+            section = new Section(rowIdentifier,rowBeginLSquare,rowBeginWSquare,rowEndLSquare,rowEndWSquare);
+            return section;
         } else {
             throw new IllegalStateException();
         }
     }
 
-    public Row build() {
-        final Row ret = buildOrThrow();
+    public Section build() {
+        final Section ret = buildOrThrow();
         // make sure we will create a new instance if someone reuses this builder and do not change
         // the previously built dish.
-        row = null;
+        section = null;
         return ret;
     }
 }

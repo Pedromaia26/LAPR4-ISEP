@@ -67,5 +67,5 @@ public interface ClientUserRepository
 
     public Iterable<ClientUser> findAllActive();
 
-    public ClientUser save(ClientUser entity);
+   // public ClientUser save(ClientUser entity);
 }

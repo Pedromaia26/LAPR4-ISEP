@@ -29,7 +29,7 @@ public class AddCostumerController {
     private final TransactionalContext txCtx = PersistenceContext.repositories()
             .newTransactionalContext();
     private final ClientUserRepository clientUserRepository = PersistenceContext
-            .repositories().clientUsers(txCtx);
+            .repositories().clientUsers();
     private final UserRepository userRepository = PersistenceContext.repositories().users();
 
 
@@ -38,7 +38,7 @@ public class AddCostumerController {
                               final String email, final Set<Role> roles, final Calendar createdOn, final String vat, final String phoneNumber,
                               final String gender, final String birthDay, final String delAddress, final String billAddress) {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
-
+        txCtx.beginTransaction();
             final SystemUserBuilder userBuilder = UserBuilderHelper.builder();
             userBuilder.withUsername(username)
                     .withPassword(password)
@@ -52,7 +52,9 @@ public class AddCostumerController {
         clientUserBuilder.withVAT(vat).withPhoneNumber(phoneNumber).withGender(gender).withBirthDay(birthDay).withBillAddress(billAddress).withDelAddress(delAddress)
                 .withSystemUser(newUser);
 
-        return this.clientUserRepository.save(clientUserBuilder.build());
+         ClientUser clientUser= this.clientUserRepository.save(clientUserBuilder.build());
+        txCtx.commit();
+        return clientUser;
     }
 
     public ClientUser addUser(final String username, final String password, final String firstName,

@@ -17,6 +17,11 @@
     <class>eapli.base.orderstatusmanagement.domain.Status</class>
     <class>eapli.base.ordermanagement.domain.ProductOrder</class>
     <class>eapli.base.ordermanagement.domain.OrderLine</class>
+    <class>eapli.base.Warehouse.domain.AGVDock</class>
+    <class>eapli.base.Warehouse.domain.Warehouse</class>
+    <class>eapli.base.Warehouse.domain.Aisle</class>
+    <class>eapli.base.Warehouse.domain.Shelf</class>
+    <class>eapli.base.Warehouse.domain.Section</class>
 
     <properties>
       <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/base"/>-->

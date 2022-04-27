@@ -20,6 +20,8 @@
  */
 package eapli.base.infrastructure.persistence;
 
+import eapli.base.Warehouse.domain.Warehouse;
+import eapli.base.Warehouse.repositories.*;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.ordermanagement.repositories.OrderLineRepository;
@@ -73,6 +75,46 @@ public interface RepositoryFactory {
      */
     ClientUserRepository clientUsers();
 
+    /**
+     *
+     * @param autoTx
+     *            the transactional context to enroll
+     * @return
+     */
+  //  AGVDockRepository agvDock(TransactionalContext autoTx);
+
+    /**
+     * repository will be created in auto transaction mode
+     *
+     * @return
+     */
+    AGVDockRepository agvDock();
+
+    /**
+     * repository will be created in auto transaction mode
+     *
+     * @return
+     */
+    AisleRepository aisle();
+
+    /**
+     * repository will be created in auto transaction mode
+     *
+     * @return
+     */
+    RowRepository row();
+    /**
+     * repository will be created in auto transaction mode
+     *
+     * @return
+     */
+    ShelfRepository shelf();
+    /**
+     * repository will be created in auto transaction mode
+     *
+     * @return
+     */
+    WarehouseRepository warehouse();
     /**
      * repository will be created in auto transaction mode
      *
