@@ -23,6 +23,7 @@
  */
 package eapli.base.app.backoffice.console.presentation;
 
+import eapli.base.app.backoffice.console.presentation.agv.ConfigureAGVUI;
 import eapli.base.app.backoffice.console.presentation.authz.*;
 import eapli.base.app.backoffice.console.presentation.category.DefineNewCategoryUI;
 import eapli.base.app.backoffice.console.presentation.category.ListCategoryUI;
@@ -98,9 +99,15 @@ public class MainMenu extends AbstractUI {
 
     //WareHouse MAIN MENU
     private static final int JSON_WAREHOUSE_PLANT_IMPORTER_MENU = 2;
+    private static final int AGV = 3;
 
     //WareHouse
     private static final int JSON_WAREHOUSE_PLANT_IMPORTER = 1;
+
+    // AGV
+    private static final int CONFIGURE_AGV = 1;
+
+
 
 
 
@@ -168,6 +175,8 @@ public class MainMenu extends AbstractUI {
         if(authz.isAuthenticatedUserAuthorizedTo(BaseRoles.WAREHOUSE_EMPLOYEE)){
             final Menu importJson = buildImportJson();
             mainMenu.addSubMenu(JSON_WAREHOUSE_PLANT_IMPORTER_MENU, importJson);
+            final Menu configureAGV = buildConfigureAGV();
+            mainMenu.addSubMenu(AGV, configureAGV);
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -261,6 +270,15 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("Order >");
 
         menu.addItem(CREATE_NEW_ORDER, "Create products order", new AddOrderUI()::show);
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
+    private Menu buildConfigureAGV(){
+        final Menu menu = new Menu("AGV >");
+
+        menu.addItem(CONFIGURE_AGV, "Configure AGV", new ConfigureAGVUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
