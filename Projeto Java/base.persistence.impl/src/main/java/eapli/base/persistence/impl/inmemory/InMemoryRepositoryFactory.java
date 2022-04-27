@@ -22,6 +22,7 @@ package eapli.base.persistence.impl.inmemory;
 
 import eapli.base.Warehouse.domain.Warehouse;
 import eapli.base.Warehouse.repositories.*;
+import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
@@ -80,6 +81,12 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
     public AGVDockRepository agvDock(){
         return new InMemoryAGVDockRepository();
     }
+
+    @Override
+    public AGVRepository agv() {
+        return new InMemoryAGVRepository();
+    }
+
     @Override
     public AisleRepository aisle(){
         return new InMemoryAisleRepository();

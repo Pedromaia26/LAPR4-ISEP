@@ -25,4 +25,9 @@ public class AGVIdentifier implements ValueObject, Comparable<AGVIdentifier> {
     public AGVIdentifier() {
 
     }
+
+    @Override
+    public int compareTo(AGVIdentifier o) {
+        return 0;
+    }
 }
