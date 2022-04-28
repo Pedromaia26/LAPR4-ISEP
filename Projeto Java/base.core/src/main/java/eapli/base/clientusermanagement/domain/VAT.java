@@ -4,6 +4,7 @@ import eapli.base.productmanagement.domain.InternalCode;
 import eapli.framework.domain.model.ValueObject;
 
 import javax.persistence.Embeddable;
+import java.util.Objects;
 
 @Embeddable
 
@@ -30,5 +31,18 @@ public class VAT implements ValueObject, Comparable<VAT> {
 
         return vat.compareTo(o.vat);
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        VAT vat1 = (VAT) o;
+        return vat.equals(vat1.vat);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(vat);
     }
 }

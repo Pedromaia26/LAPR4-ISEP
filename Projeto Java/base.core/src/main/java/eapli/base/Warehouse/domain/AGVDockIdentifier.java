@@ -4,6 +4,8 @@ import eapli.framework.domain.model.ValueObject;
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;
+import java.util.Objects;
+
 @Embeddable
 public class AGVDockIdentifier implements Comparable<AGVDockIdentifier>, Serializable, ValueObject {
     private static final long serialVersionUID = 7249038453492292448L;
@@ -20,5 +22,18 @@ public class AGVDockIdentifier implements Comparable<AGVDockIdentifier>, Seriali
     @Override
     public int compareTo(AGVDockIdentifier o) {
         return id.compareTo(o.id);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AGVDockIdentifier that = (AGVDockIdentifier) o;
+        return id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
