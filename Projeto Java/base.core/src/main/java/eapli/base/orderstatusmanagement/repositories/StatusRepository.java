@@ -8,13 +8,6 @@ import eapli.framework.domain.repositories.DomainRepository;
 
 public interface StatusRepository extends DomainRepository<Long, Status> {
 
-    /**
-     * inserts an entity and commits
-     *
-     * @param entity
-     * @return the persisted entity
-     */
-    public Status save(Status entity);
 
     /**
      * returns the status whose id is given

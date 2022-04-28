@@ -37,7 +37,7 @@ public class AddCostumerController {
                               final String lastName,
                               final String email, final Set<Role> roles, final Calendar createdOn, final String vat, final String phoneNumber,
                               final String gender, final String birthDay, final String delAddress, final String billAddress) {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK, BaseRoles.POWER_USER, BaseRoles.ADMIN);
         txCtx.beginTransaction();
             final SystemUserBuilder userBuilder = UserBuilderHelper.builder();
             userBuilder.withUsername(username)
