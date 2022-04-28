@@ -8,7 +8,7 @@ import javax.persistence.Embeddable;
 public class AGVIdentifier implements ValueObject, Comparable<AGVIdentifier> {
 
 
-    private String agvIdentifer;
+    private String agvIdentifier;
 
     public AGVIdentifier(String agvIdentifier){
 
@@ -18,7 +18,7 @@ public class AGVIdentifier implements ValueObject, Comparable<AGVIdentifier> {
         if (agvIdentifier.length() > 8)
             throw new IllegalArgumentException("AGV Identifier cannot have more than 8 chars!");
 
-        this.agvIdentifer = agvIdentifier;
+        this.agvIdentifier = agvIdentifier;
     }
 
 
