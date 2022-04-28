@@ -15,12 +15,7 @@ public class InMemoryOrderLineRepository extends InMemoryDomainRepository<OrderL
     }
 
     @Override
-    public OrderLine save(OrderLine orderLine) {
-        return orderLine;
-    }
-
-    @Override
-    public int getAllCost(Long orderId){
-        return 0;
+    public Double getAllCost(Long orderId){
+        return 0d;
     }
 }

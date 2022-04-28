@@ -28,7 +28,7 @@ public class AddCostumerUI extends AbstractUI {
         final String phoneNumber = Console.readLine("PhoneNumber");
         final String gender = Console.readLine("Gender");
         final String birthDay = Console.readLine("BirthDay");
-        final String delAddress = Console.readLine("Delevering Postal Addresses");
+        final String delAddress = Console.readLine("Delivering Postal Addresses");
         final String billAddress = Console.readLine("Billing Postal Addresses");
 
 

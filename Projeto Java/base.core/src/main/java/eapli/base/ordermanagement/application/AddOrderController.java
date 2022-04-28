@@ -1,10 +1,11 @@
 package eapli.base.ordermanagement.application;
 
+import eapli.base.clientusermanagement.domain.BillingPostalAddresses;
 import eapli.base.clientusermanagement.domain.ClientUser;
+import eapli.base.clientusermanagement.domain.DeliveringPostalAddresses;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
-import eapli.base.ordermanagement.domain.ProductOrder;
-import eapli.base.ordermanagement.domain.ProductOrderBuilder;
+import eapli.base.ordermanagement.domain.*;
 import eapli.base.ordermanagement.repositories.OrderLineRepository;
 import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.orderstatusmanagement.domain.Status;
@@ -32,16 +33,31 @@ public class AddOrderController {
         return orderRepository.save(newOrder.build());
     }
 
-    public ProductOrder addOrder(final String clientvat, final Long orderId, final String deliveringPostalAddress, final String billingPostalAddress,
+    public boolean addOrder(final String clientvat, final ProductOrder order, final String deliveringPostalAddress, final String billingPostalAddress,
                                  final String shipmentMethod, final double shipmentCost, final String paymentMethod) {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
 
         ClientUser clientUser = userRepository.findByVAT(clientvat);
         long statusid = 1;
         Status status = statusRepository.findByStatusId(statusid);
-        double cost = orderLineRepository.getAllCost(orderId);
-        final ProductOrderBuilder newOrder = new ProductOrderBuilder(clientUser, status, Calendars.now(), deliveringPostalAddress, billingPostalAddress, cost + cost*0.23, cost, shipmentMethod, shipmentCost, paymentMethod);
+        double cost = orderLineRepository.getAllCost(order.identity());
+        String deliveringPostalAddressInsert, billingPostalAddressInsert;
+        if (deliveringPostalAddress.equals("default")) deliveringPostalAddressInsert = clientUser.getDeleveringPostalAddresses().getDeliveringAddress();
+        else deliveringPostalAddressInsert = deliveringPostalAddress;
 
-        return orderRepository.save(newOrder.build());
+        if (billingPostalAddress.equals("default")) billingPostalAddressInsert = clientUser.getDeleveringPostalAddresses().getDeliveringAddress();
+        else billingPostalAddressInsert = billingPostalAddress;
+
+        order.modifyBillingPostalAddress(new BillingPostalAddresses(billingPostalAddressInsert));
+        order.modifyDeliveringPostalAddress(new DeliveringPostalAddresses(deliveringPostalAddressInsert));
+        order.modifyTotalAmountWithoutTaxes(new TotalAmountWithoutTaxes(cost));
+        order.modifyTotalAmountWithTaxes(new TotalAmountWithTaxes(cost + cost*0.23));
+        order.modifyShipmentMethod(new ShipmentMethod(shipmentMethod));
+        order.modifyShipmentCost(new ShipmentCost(shipmentCost));
+        order.modifyPaymentMethod(new PaymentMethod(paymentMethod));
+
+        orderRepository.update(order);
+
+        return true;
     }
 }

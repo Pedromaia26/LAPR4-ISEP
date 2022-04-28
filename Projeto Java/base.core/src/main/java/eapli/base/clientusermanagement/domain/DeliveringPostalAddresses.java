@@ -26,4 +26,12 @@ public class DeliveringPostalAddresses implements ValueObject {
     public DeliveringPostalAddresses() {
 
     }
+
+    public String getDeliveringAddress() {
+        return deliveringAddress;
+    }
+
+    public void setDeliveringAddress(String deliveringAddress) {
+        this.deliveringAddress = deliveringAddress;
+    }
 }

@@ -5,7 +5,7 @@ import eapli.framework.domain.repositories.DomainRepository;
 
 public interface OrderRepository extends DomainRepository<Long, ProductOrder> {
 
-    ProductOrder save(ProductOrder order);
-
     ProductOrder findByOrderId(Long id);
+
+    ProductOrder update(ProductOrder order);
 }

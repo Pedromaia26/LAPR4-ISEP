@@ -12,36 +12,14 @@ public class JpaOrderLineRepository extends BasepaRepositoryBase<OrderLine, Long
         implements OrderLineRepository {
 
     JpaOrderLineRepository() {
-        super("name");
-    }
-
-    private EntityManager getEntityManager() {
-        EntityManagerFactory factory = Persistence.
-                createEntityManagerFactory("eapli.base");
-        EntityManager manager = factory.createEntityManager();
-        return manager;
+        super("id");
     }
 
     @Override
-    public OrderLine save(OrderLine orderLine) {
-        if (orderLine == null) {
-            throw new IllegalArgumentException();
-        }
-        EntityManager em = getEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        em.persist(orderLine);
-        tx.commit();
-        em.close();
-
-        return orderLine;
-    }
-
-    @Override
-    public int getAllCost(Long orderId) {
-        final TypedQuery<Integer> query = super.createQuery(
-                "SELECT SUM(unitPrice) FROM OrderLine WHERE order_id = '" + orderId + "'",
-                Integer.class);
+    public Double getAllCost(Long orderId) {
+        final TypedQuery<Double> query = super.createQuery(
+                "SELECT SUM(unitPrice*quantity) FROM OrderLine WHERE productorder_id = '" + orderId + "'",
+                Double.class);
 
         return query.getSingleResult();
     }

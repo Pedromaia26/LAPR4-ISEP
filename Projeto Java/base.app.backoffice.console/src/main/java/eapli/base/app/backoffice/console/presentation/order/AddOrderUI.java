@@ -40,11 +40,19 @@ public class AddOrderUI  extends AbstractUI {
                     }
                 }while (invalidProduct);
                 final int quantity = Integer.parseInt(Console.readLine("Quantity"));
-                theOrderLineController.addOrderLine(productCode, productOrder.Id(), quantity);
+                theOrderLineController.addOrderLine(productCode, productOrder.identity(), quantity);
             }while (Console.readLine("Do you want to add more products? (Y/N)").equals("Y"));
 
-            final String deliveringPostalAddress = Console.readLine("Delivering Postal Address");
-            final String billingPostalAddress = Console.readLine("Billing Postal Address");
+            String deliveringPostalAddress = "default";
+            String billingPostalAddress = "default";
+
+            if (Console.readLine("Do you want to use the client delivering postal address? (Y/N)").equals("N")){
+                deliveringPostalAddress = Console.readLine("Delivering Postal Address");
+            }
+            if (Console.readLine("Do you want to use the client billing postal address? (Y/N)").equals("N")){
+                billingPostalAddress = Console.readLine("Billing Postal Address");
+            }
+
             double shipmentCost = 0;
             String shipmentMethod;
             do {
@@ -72,7 +80,7 @@ public class AddOrderUI  extends AbstractUI {
             invalidData = false;
 
             try {
-                theOrderController.addOrder(clientVat, productOrder.Id(), deliveringPostalAddress, billingPostalAddress, shipmentMethod,  shipmentCost, paymentMethod);
+                theOrderController.addOrder(clientVat, productOrder, deliveringPostalAddress, billingPostalAddress, shipmentMethod,  shipmentCost, paymentMethod);
             } catch (IllegalArgumentException e) {
                 System.out.println("\n"+ e.getMessage());
                 if (Console.readLine("Do you want to try again? (Y/N)").equals("Y")){
