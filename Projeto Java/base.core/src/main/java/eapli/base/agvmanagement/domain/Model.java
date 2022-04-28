@@ -26,5 +26,7 @@ public class Model implements ValueObject {
 
     }
 
-
+    public String model() {
+        return model;
+    }
 }

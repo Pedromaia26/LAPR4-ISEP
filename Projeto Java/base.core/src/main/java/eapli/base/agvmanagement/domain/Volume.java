@@ -21,4 +21,8 @@ public class Volume implements ValueObject {
     public Volume() {
 
     }
+
+    public double volume() {
+        return volume;
+    }
 }

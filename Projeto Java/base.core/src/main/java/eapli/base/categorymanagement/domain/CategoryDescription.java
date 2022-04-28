@@ -27,4 +27,8 @@ public class CategoryDescription implements ValueObject {
 
         return description;
     }
+
+    public String Description() {
+        return description;
+    }
 }

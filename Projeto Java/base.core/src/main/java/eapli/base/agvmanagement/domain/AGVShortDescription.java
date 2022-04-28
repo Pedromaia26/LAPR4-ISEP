@@ -23,4 +23,8 @@ public class AGVShortDescription implements ValueObject {
     public AGVShortDescription() {
 
     }
+
+    public String ShortDescription() {
+        return shortDescription;
+    }
 }

@@ -13,22 +13,86 @@ public class Product implements AggregateRoot<InternalCode> {
 
     @EmbeddedId
     private InternalCode internalCode;
+    @Embedded
     private Photo photo;
+    @Embedded
     private ShortDescription shortDescription;
+    @Embedded
     private ExtendedDescription extendedDescription;
+    @Embedded
     private TechnicalDescription technicalDescription;
+    @Embedded
     private Brand brand;
+    @Embedded
     private Reference reference;
+    @Embedded
     private ProductionCode productionCode;
+    @Embedded
     private Price price;
+    @Embedded
     private Barcode barcode;
+    @Embedded
     private Height height;
+    @Embedded
     private Length length;
+    @Embedded
     private Width width;
+    @Embedded
     private Weight weight;
     @ManyToOne(optional = false)
     private Category category;
 
+    public Weight getWeight() {
+        return weight;
+    }
+
+    public Width getWidth() {
+        return width;
+    }
+
+    public Length getLength() {
+        return length;
+    }
+
+    public Height getHeight() {
+        return height;
+    }
+
+    public Barcode getBarcode() {
+        return barcode;
+    }
+
+    public Price getPrice() {
+        return price;
+    }
+
+    public ProductionCode getProductionCode() {
+        return productionCode;
+    }
+
+    public Reference getReference() {
+        return reference;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public TechnicalDescription getTechnicalDescription() {
+        return technicalDescription;
+    }
+
+    public ExtendedDescription getExtendedDescription() {
+        return extendedDescription;
+    }
+
+    public ShortDescription getShortDescription() {
+        return shortDescription;
+    }
+
+    public Photo getPhoto() {
+        return photo;
+    }
 
 
     public Product(Category category, Photo photo, ShortDescription shortDescription, ExtendedDescription extendedDescription, TechnicalDescription technicalDescription, Brand brand, Reference reference, InternalCode internalCode, Price price, Barcode barcode, Height height, Length length, Width width, Weight weight) {

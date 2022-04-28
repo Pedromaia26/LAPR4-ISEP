@@ -21,4 +21,8 @@ public class Autonomy implements ValueObject {
     public Autonomy() {
 
     }
+
+    public double autonomy() {
+        return autonomy;
+    }
 }

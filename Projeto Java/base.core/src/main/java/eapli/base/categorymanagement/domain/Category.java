@@ -3,6 +3,7 @@ package eapli.base.categorymanagement.domain;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
 
+import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
@@ -11,6 +12,7 @@ public class Category implements AggregateRoot<CategoryCode> {
 
     @EmbeddedId
     private CategoryCode categoryCode;
+    @Embedded
     private CategoryDescription categoryDescription;
 
     public Category(CategoryCode categoryCode, CategoryDescription categoryDescription){
@@ -44,14 +46,6 @@ public class Category implements AggregateRoot<CategoryCode> {
     @Override
     public boolean hasIdentity(CategoryCode id) {
         return AggregateRoot.super.hasIdentity(id);
-    }
-
-    public CategoryCode CategoryCode() {
-        return categoryCode;
-    }
-
-    public void modifyCategoryCode(CategoryCode categoryCode) {
-        this.categoryCode = categoryCode;
     }
 
     public CategoryDescription CategoryDescription() {

@@ -48,4 +48,8 @@ public class CategoryCode implements ValueObject, Comparable<CategoryCode> {
     public int compareTo(CategoryCode o) {
         return code.compareTo(o.code);
     }
+
+    public String Code() {
+        return code;
+    }
 }

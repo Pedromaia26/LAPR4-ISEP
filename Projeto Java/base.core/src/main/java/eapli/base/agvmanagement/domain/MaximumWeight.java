@@ -21,4 +21,8 @@ public class MaximumWeight implements ValueObject {
     public MaximumWeight() {
 
     }
+
+    public double maximumWeight() {
+        return maximumWeight;
+    }
 }

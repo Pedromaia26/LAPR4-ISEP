@@ -44,4 +44,8 @@ public class AGVIdentifier implements ValueObject, Comparable<AGVIdentifier> {
     public int hashCode() {
         return Objects.hash(agvIdentifier);
     }
+
+    public String AgvIdentifier() {
+        return agvIdentifier;
+    }
 }

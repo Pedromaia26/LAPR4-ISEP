@@ -21,4 +21,8 @@ public class Task implements ValueObject {
     public Task() {
 
     }
+
+    public String task() {
+        return task;
+    }
 }
