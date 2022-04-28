@@ -23,6 +23,7 @@
     <class>eapli.base.Warehouse.domain.Shelf</class>
     <class>eapli.base.Warehouse.domain.Section</class>
     <class>eapli.base.agvmanagement.domain.AGV</class>
+    <class>eapli.base.taskmanagement.domain.Task</class>
 
     <properties>
       <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/base"/>-->

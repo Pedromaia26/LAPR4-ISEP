@@ -1,5 +1,7 @@
 package eapli.base.agvmanagement.domain;
 
+import eapli.base.taskmanagement.domain.Description;
+import eapli.base.taskmanagement.domain.Task;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -10,12 +12,13 @@ public class TaskTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void ensureTaskMustNotBeEmpty() {
-        new Task("");
+        new Task(null);
     }
 
     @Test
     public void ensureTaskHasRightValue() {
-        final Task instance = new Task(TASK);
-        assertEquals(TASK, instance.task());
+        Description description = new Description(TASK);
+        final Task instance = new Task(description);
+        assertEquals(TASK, instance.description());
     }
 }

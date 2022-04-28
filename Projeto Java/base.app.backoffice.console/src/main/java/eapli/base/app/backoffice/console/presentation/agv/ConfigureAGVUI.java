@@ -23,11 +23,10 @@ public class ConfigureAGVUI extends AbstractUI {
             final double autonomy = Double.parseDouble(Console.readLine("Autonomy (Minutes)"));
             final double maximumWeight = Double.parseDouble(Console.readLine("Maximum weight it can carry (kg)"));
             final String model = Console.readLine("Model (Max 50 chars)");
-            final String task = Console.readLine("Task");
             final double volume = Double.parseDouble(Console.readLine("Maximum volume it can carry (cm3)"));
 
             try {
-                this.theController.addAGV(agvIdentifier, agvShortDescription, autonomy, maximumWeight, model, task, volume);
+                this.theController.addAGV(agvIdentifier, agvShortDescription, autonomy, maximumWeight, model, volume);
             } catch (final IntegrityViolationException | ConcurrencyException e) {
                 System.out.println("That code is already associated.");
             } catch (IllegalArgumentException e) {

@@ -1,6 +1,8 @@
 package eapli.base.agvmanagement.domain;
 
 import eapli.base.productmanagement.domain.Product;
+import eapli.base.taskmanagement.domain.Description;
+import eapli.base.taskmanagement.domain.Task;
 
 public class AGVBuilder {
 
@@ -14,7 +16,7 @@ public class AGVBuilder {
     private Task task;
     private Volume volume;
 
-    public AGVBuilder(final String agvIdentifier, final String agvShortDescription, final double autonomy, final double maximumWeight, final String model, final String task, final double volume) {
+    public AGVBuilder(final String agvIdentifier, final String agvShortDescription, final double autonomy, final double maximumWeight, final String model, final Task task, final double volume) {
 
         withAGVIdentifier(agvIdentifier);
         withAGVDescription(agvShortDescription);
@@ -51,8 +53,8 @@ public class AGVBuilder {
         return this;
     }
 
-    public AGVBuilder withTask (String task){
-        this.task = new Task(task);
+    public AGVBuilder withTask (Task task){
+        this.task = task;
         return this;
     }
 
