@@ -1,0 +1,80 @@
+@startuml
+actor SalesClerk as adm
+participant "//<<presentation>>//\nAddCostumerUI" as ui
+participant "//<<application>>//\nAddCostumerController" as cc
+participant "//<<builder>>//\nUserBuilder" as build
+participant "//<<domain>>//\nuser:User" as user
+participant "//<<persistance>>//\nPersistanceContext" as pc
+participant "//<<factory>>//\nRepositoryFactory" as rf
+database "//<<repository>>//\nUserRepository" as db
+
+autonumber
+
+adm-->ui: Add costumer
+
+activate ui
+
+ui-->cc: create
+
+ui-->adm: asks user information
+
+adm-->ui: Username, password, First name, Last name,\nE-mail, Role, Calendar, VAT, Phone Number,\nGender, Birthday, Del address, Bill address
+
+loop option != 0
+
+ui-->adm: Show list of role types
+
+adm-->ui: Role type
+
+end
+
+ui-->cc: addUser(username, password, firstName, lastName,\nemail, roles, createdOn, vat, phoneNumber, gender,\n birthDay, delAddress, billAddress)
+
+activate cc
+
+cc-->build: create
+
+cc-->build: setUsername(username)
+
+cc-->build: createUser()
+
+activate build
+
+build-->user: create(username, password, firstName, lastName,\nemail, roles, createdOn, vat, phoneNumber, gender,\n birthDay, delAddress, billAddress)
+
+user-->build: user
+
+build-->cc: user
+
+deactivate build
+
+cc-->pc: repositories()
+
+activate pc
+
+pc-->rf: create
+
+pc-->cc: factory
+
+deactivate pc
+
+cc-->rf: users()
+
+activate rf
+
+rf-->db: create
+
+rf-->cc: userRepository
+
+deactivate rf
+
+cc-->db: save(user)
+
+cc-->ui: user
+
+deactivate cc
+
+ui-->adm: displayUserInfo
+
+deactivate ui
+@enduml

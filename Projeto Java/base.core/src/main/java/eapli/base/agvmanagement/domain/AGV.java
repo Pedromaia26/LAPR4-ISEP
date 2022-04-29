@@ -1,59 +1,24 @@
 package eapli.base.agvmanagement.domain;
 
 
+import eapli.base.taskmanagement.domain.Task;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
 
-import javax.persistence.Embedded;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class AGV implements AggregateRoot<AGVIdentifier> {
 
-    @EmbeddedId
+    @Id
     private AGVIdentifier agvIdentifier;
-    @Embedded
     private AGVShortDescription agvShortDescription;
-    @Embedded
     private Autonomy autonomy;
-    @Embedded
     private MaximumWeight maximumWeight;
-    @Embedded
     private Model model;
-    @Embedded
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE)
     private Task task;
-    @Embedded
     private Volume volume;
-
-    public Volume getVolume() {
-        return volume;
-    }
-
-    public Task getTask() {
-        return task;
-    }
-
-    public Model getModel() {
-        return model;
-    }
-
-    public MaximumWeight getMaximumWeight() {
-        return maximumWeight;
-    }
-
-    public Autonomy getAutonomy() {
-        return autonomy;
-    }
-
-    public AGVShortDescription getAgvShortDescription() {
-        return agvShortDescription;
-    }
-
-    public AGVIdentifier getAgvIdentifier() {
-        return agvIdentifier;
-    }
 
 
     public AGV(AGVIdentifier agvIdentifier, AGVShortDescription agvShortDescription, Autonomy autonomy, MaximumWeight maximumWeight, Model model, Task task, Volume volume) {
@@ -72,6 +37,14 @@ public class AGV implements AggregateRoot<AGVIdentifier> {
 
     public AGV() {
 
+    }
+
+    public AGVIdentifier AgvIdentifier() {
+        return agvIdentifier;
+    }
+
+    public void modifyAgvIdentifier(AGVIdentifier agvIdentifier) {
+        this.agvIdentifier = agvIdentifier;
     }
 
     public AGVShortDescription AgvShortDescription() {
