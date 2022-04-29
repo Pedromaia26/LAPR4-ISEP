@@ -23,12 +23,15 @@
  */
 package eapli.base.clientusermanagement.application;
 
+import eapli.base.clientusermanagement.domain.BillingPostalAddresses;
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
+
+import java.util.Set;
 
 /**
  *
@@ -43,5 +46,13 @@ public class ListClientUsersController {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.ADMIN);
 
         return this.repo.findAllActive();
+    }
+
+    public Set<String> billingAddressOfAClient(String clientVat){
+        return repo.findByVAT(clientVat).getBillingPostalAddresses().getBillingAddress();
+    }
+
+    public Set<String> deliveringAddressOfAClient(String clientVat){
+        return repo.findByVAT(clientVat).getDeleveringPostalAddresses().getDeliveringAddress();
     }
 }
