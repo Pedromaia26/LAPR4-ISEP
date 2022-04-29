@@ -18,28 +18,6 @@ public class JpaTaskRepository extends BasepaRepositoryBase<Task, Long, Long>
         super("id");
     }
 
-    private EntityManager getEntityManager() {
-        EntityManagerFactory factory = Persistence.
-                createEntityManagerFactory("eapli.base");
-        EntityManager manager = factory.createEntityManager();
-        return manager;
-    }
-
-    @Override
-    public Task save(Task task) {
-        if (task == null) {
-            throw new IllegalArgumentException();
-        }
-        EntityManager em = getEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        em.persist(task);
-        tx.commit();
-        em.close();
-
-        return task;
-    }
-
     @Override
     public Task findTaskByID(final Long id) {
         final TypedQuery<Task> query = super.createQuery(

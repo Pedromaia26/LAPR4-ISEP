@@ -52,8 +52,12 @@ public class ClientUserBootstrapper implements Action {
     @Override
     public boolean execute() {
         signupAndApprove(TestDataConstants.USER_TEST1, "Password1", "John", "Smith",
-                "john@smith.com","123123123","+351935184013","Male","","a","1","4550-321","a","a","a","1","4550-321","a","a");
-        signupAndApprove("isep959", "Password1", "Mary", "Smith", "mary@smith.com","123123124","+351935184014","Male","2002/08/25","a","1","4550-321","a","a","a","1","4550-321","a","a");
+                "john@smith.com","123123123","+351935184013","Male","2002/08/25","a","1","4550-321","a","a","a","1","4550-321","a","a");
+        signupAndApprove1("isep959", "Password1", "Mary", "Smith", "mary@smith.com","123123124","+351935184014",
+                "Male","2002/08/26","c","3","4550-678","c","c","b","2","4550-123","b","b","e","5","4550-321","e","e");
+        signupAndApprove2("Tiago", "Password1", "Mary", "Smith", "mary@smith.com","123451234","+351935184123",
+                "Male","2002/08/1","c","3","4550-678","c","c");
+
         return true;
     }
 
@@ -74,7 +78,7 @@ public class ClientUserBootstrapper implements Action {
             strings[3]=delCity;
             strings[4]=delCountry;
 
-            delAddress.add(strings);
+            delAddress.add(strings.clone());
 
             strings[0]=bilStreetName;
             strings[1]=bilDoor;
@@ -82,7 +86,83 @@ public class ClientUserBootstrapper implements Action {
             strings[3]=bilCity;
             strings[4]=bilCountry;
 
-            bilAddress.add(strings);
+            bilAddress.add(strings.clone());
+
+            request = addCostumerController.addUser(username, password, firstName, lastName, email, roleTypes,vat,phoneNumber,gender,birthday,delAddress,bilAddress);
+
+        } catch (final ConcurrencyException | IntegrityViolationException e) {
+            // ignoring exception. assuming it is just a primary key violation
+            // due to the tentative of inserting a duplicated user
+            LOGGER.warn("Assuming {} already exists (activate trace log for details)", username);
+            LOGGER.trace("Assuming existing record", e);
+        }
+        return request;
+    }
+    private ClientUser signupAndApprove1(final String username, final String password,
+                                        final String firstName, final String lastName, final String email,
+                                        final String vat, final String phoneNumber, final String gender, final String birthday, final String delStreetName,final String delDoor,final String delPost,final String delCity,final String delCountry,final String delStreetName1,final String delDoor1,final String delPost1,final String delCity1,final String delCountry1, final String bilStreetName,final String bilDoor,final String bilPost,final String bilCity,final String bilCountry) {
+        ClientUser request = null;
+        try {
+            final Set<Role> roleTypes=new HashSet<>();
+            roleTypes.add(BaseRoles.COSTUMER_USER);
+            final Set<String[]> delAddress=new HashSet<>();
+            final Set<String[]> bilAddress=new HashSet<>();
+            String[] strings = new String[5];
+
+            strings[0]=delStreetName;
+            strings[1]=delDoor;
+            strings[2]=delPost;
+            strings[3]=delCity;
+            strings[4]=delCountry;
+
+            delAddress.add(strings.clone());
+
+            strings[0]=delStreetName1;
+            strings[1]=delDoor1;
+            strings[2]=delPost1;
+            strings[3]=delCity1;
+            strings[4]=delCountry1;
+
+            delAddress.add(strings.clone());
+
+            strings[0]=bilStreetName;
+            strings[1]=bilDoor;
+            strings[2]=bilPost;
+            strings[3]=bilCity;
+            strings[4]=bilCountry;
+
+            bilAddress.add(strings.clone());
+
+
+
+            request = addCostumerController.addUser(username, password, firstName, lastName, email, roleTypes,vat,phoneNumber,gender,birthday,delAddress,bilAddress);
+
+        } catch (final ConcurrencyException | IntegrityViolationException e) {
+            // ignoring exception. assuming it is just a primary key violation
+            // due to the tentative of inserting a duplicated user
+            LOGGER.warn("Assuming {} already exists (activate trace log for details)", username);
+            LOGGER.trace("Assuming existing record", e);
+        }
+        return request;
+    }
+    private ClientUser signupAndApprove2(final String username, final String password,
+                                        final String firstName, final String lastName, final String email,
+                                        final String vat, final String phoneNumber, final String gender, final String birthday, final String bilStreetName,final String bilDoor,final String bilPost,final String bilCity,final String bilCountry) {
+        ClientUser request = null;
+        try {
+            final Set<Role> roleTypes=new HashSet<>();
+            roleTypes.add(BaseRoles.COSTUMER_USER);
+            final Set<String[]> delAddress=new HashSet<>();
+            final Set<String[]> bilAddress=new HashSet<>();
+            String[] strings = new String[5];
+
+            strings[0]=bilStreetName;
+            strings[1]=bilDoor;
+            strings[2]=bilPost;
+            strings[3]=bilCity;
+            strings[4]=bilCountry;
+
+            bilAddress.add(strings.clone());
 
             request = addCostumerController.addUser(username, password, firstName, lastName, email, roleTypes,vat,phoneNumber,gender,birthday,delAddress,bilAddress);
 

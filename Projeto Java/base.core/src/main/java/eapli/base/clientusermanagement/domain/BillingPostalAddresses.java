@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 @Embeddable
 public class BillingPostalAddresses implements ValueObject {
     @ElementCollection
-    private Set<String> billingAddress;
+    private Set<String> billingAddress = new HashSet<>();
 
     public BillingPostalAddresses(Set<String[]> address) {
 
