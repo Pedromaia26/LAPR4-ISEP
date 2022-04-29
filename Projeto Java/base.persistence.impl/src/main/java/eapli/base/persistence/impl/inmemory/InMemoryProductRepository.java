@@ -33,4 +33,9 @@ public class InMemoryProductRepository extends InMemoryDomainRepository<Product,
     public Product findByCode(String productCode) {
         return null;
     }
+
+    @Override
+    public Product findProductWithLocation(long aisleID, long sectionID, long shelfID) {
+        return null;
+    }
 }

@@ -16,7 +16,7 @@ public class DefineNewCategoryController {
     private final CategoryRepository categoryRepository = PersistenceContext.repositories().categories();
 
     public Category addCategory(final String code, final String description) {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK, BaseRoles.POWER_USER);
 
         final var newCategory = new CategoryBuilder(code, description);
 

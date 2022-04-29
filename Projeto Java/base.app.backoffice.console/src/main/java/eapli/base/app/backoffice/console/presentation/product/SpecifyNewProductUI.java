@@ -5,6 +5,7 @@ import eapli.base.app.backoffice.console.presentation.category.ListCategoryUI;
 import eapli.base.categorymanagement.application.ListCategoryController;
 import eapli.base.categorymanagement.domain.Category;
 import eapli.base.productmanagement.application.SpecifyNewProductController;
+import eapli.base.productmanagement.application.VerifyFreeStorageAreaController;
 import eapli.base.productmanagement.domain.Photo;
 import eapli.base.usermanagement.application.AddCostumerController;
 import eapli.base.usermanagement.domain.BaseRoles;
@@ -29,11 +30,13 @@ public class SpecifyNewProductUI extends AbstractUI {
 
     private final SpecifyNewProductController theController = new SpecifyNewProductController();
     private final ListCategoryController theCController = new ListCategoryController();
-    private boolean invalidData, invalidCategory;
+    private final VerifyFreeStorageAreaController freeStorageAreaController = new VerifyFreeStorageAreaController();
+    private boolean invalidData, invalidCategory, invalidLocation, more = true;
     private List<String> setOfPhotos = new ArrayList<>();
     private String path;
     private Category category;
-    private boolean more = true;
+    private long aisleID, sectionID, shelfID;
+
 
     @Override
     protected boolean doShow() {
@@ -89,15 +92,35 @@ public class SpecifyNewProductUI extends AbstractUI {
             final double width = Double.parseDouble(Console.readLine("Width (Milimeters)"));
             final double weight = Double.parseDouble(Console.readLine("Weight (Grams)"));
             System.out.println("\nLOCATION\n");
-            final long aisleID = Long.parseLong(Console.readLine("Aisle identifier"));
-            final long sectionID = Long.parseLong(Console.readLine("Row identifier"));
-            final long shelfID = Long.parseLong(Console.readLine("Shelf identifier"));
 
+            do{
+                invalidLocation = false;
+            aisleID = Long.parseLong(Console.readLine("Aisle identifier"));
+            sectionID = Long.parseLong(Console.readLine("Row identifier"));
+            shelfID = Long.parseLong(Console.readLine("Shelf identifier"));
                 try {
+                    if (freeStorageAreaController.verify(aisleID, sectionID, shelfID)){
+                        System.out.println("Storage area already assigned to a product");
+                        invalidLocation = true;
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }while(invalidLocation);
+
+            System.out.println("OIIIIIIIIIIIIIIIIII");
+
+
+            try {
                     if (op)
                         this.theController.addProduct(category, setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, productionCode, internalCode, price, barcode, height, length, width, weight, aisleID, sectionID, shelfID);
-                    else
+                    else{
+                        System.out.println(aisleID);
+                        System.out.println(sectionID);
+                        System.out.println(invalidLocation);
                         this.theController.addProduct(category, setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, internalCode, price, barcode, height, length, width, weight, aisleID, sectionID, shelfID);
+                    }
+
                 } catch (final IntegrityViolationException | ConcurrencyException e) {
                     System.out.println("That code is already associated.");
                 } catch (IllegalArgumentException e) {

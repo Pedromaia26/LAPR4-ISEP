@@ -8,4 +8,5 @@ import eapli.framework.domain.repositories.DomainRepository;
 public interface ShelfRepository extends DomainRepository<ShelfIdentifier, Shelf> {
 
     Shelf findStorageAreaByID(long aisleID, long sectionID, long shelfID);
+
 }

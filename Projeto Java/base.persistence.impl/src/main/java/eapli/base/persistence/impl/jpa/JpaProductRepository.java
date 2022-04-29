@@ -1,5 +1,6 @@
 package eapli.base.persistence.impl.jpa;
 
+import eapli.base.Warehouse.domain.Shelf;
 import eapli.base.productmanagement.domain.InternalCode;
 import eapli.base.productmanagement.domain.Product;
 import eapli.base.productmanagement.repositories.ProductRepository;
@@ -53,5 +54,12 @@ public class JpaProductRepository extends BasepaRepositoryBase<Product, Internal
                 Product.class);
 
         return query.getResultList();
+    }
+
+    @Override
+    public Product findProductWithLocation(long aisleID, long sectionID, long shelfID) {
+        final TypedQuery<Product> query = super.createQuery(
+                "SELECT d FROM Product d WHERE d.shelf.shelfIdentifier.aisle.aisleIdentifier.id = " + aisleID + " and d.shelf.shelfIdentifier.section.rowIdentifier.rowId = " + sectionID + " and d.shelf.shelfIdentifier.id = " + shelfID, Product.class);
+        return query.getSingleResult();
     }
 }

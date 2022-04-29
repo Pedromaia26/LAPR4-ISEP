@@ -58,8 +58,6 @@ public class SpecifyNewProductController {
                               final String brand, final String reference, final String productionCode,
                               final String internalCode, final double price, String barcode,
                               final double height, final double length, final double width, final double weight, final long aisleID, final long sectionID, final long shelfID) throws IOException {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
-
         Shelf shelf = shelfRepository.findStorageAreaByID(aisleID, sectionID, shelfID);
         final var newProduct = new ProductBuilder(category, setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference,
                 productionCode, internalCode, price, barcode, height, length, width, weight, shelf);
@@ -73,7 +71,7 @@ public class SpecifyNewProductController {
                               final String technicalDescription,
                               final String brand, final String reference, final String internalCode, final double price, final String barcode,
                               final double height, final double length, final double width, final double weight, final long aisleID, final long sectionID, final long shelfID) throws IOException {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK, BaseRoles.POWER_USER);
         Shelf shelf = shelfRepository.findStorageAreaByID(aisleID, sectionID, shelfID);
         final var newProduct = new ProductBuilder(category, setOfPhotos, shortDescription, extendedDescription, technicalDescription,
                 brand, reference, internalCode, price, barcode, height, length, width, weight, shelf);
