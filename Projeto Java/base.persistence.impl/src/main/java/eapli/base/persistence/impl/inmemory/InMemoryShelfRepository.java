@@ -17,4 +17,9 @@ public class InMemoryShelfRepository extends InMemoryDomainRepository<Shelf, She
     public Shelf save(Shelf shelf) {
         return shelf;
     }
+
+    @Override
+    public Shelf findStorageAreaByID(long aisleID, long sectionID, long shelfID) {
+        return null;
+    }
 }
