@@ -1,0 +1,205 @@
+@startuml
+actor SalesClerk as adm
+participant "//<<presentation>>//\nListProductUI" as ui1
+participant "//<<application>>//\nListProductController" as cc1
+participant "//<<presentation>>//\nSearchProductBrandUI" as ui2
+participant "//<<application>>//\nSearchProductBrandController" as cc2
+participant "//<<presentation>>//\nSearchProductDescriptionUI" as ui3
+participant "//<<application>>//\nSearchProductDescriptionController" as cc3
+participant "//<<presentation>>//\nSearchProductCategoryUI" as ui4
+participant "//<<application>>//\nSearchProductCategoryController" as cc4
+participant "//<<app>>//\nAppSettings" as app
+database "//<<repository>>//\nProductRepository" as db
+
+autonumber
+
+adm-->ui1: show
+
+activate ui1
+
+ui1-->ui1: doShow()
+
+alt 
+
+else list all
+
+ui1-->cc1: allProducts()
+
+activate cc1
+
+cc1-->db: repositories()
+
+activate db
+
+db-->app: instance()
+
+db-->app: getRepositoryFactory()
+
+activate app
+
+app-->db: create
+
+db-->app
+
+app-->cc1
+
+deactivate app
+
+cc1-->db: Products()
+
+cc1-->db: list = all()
+
+db-->cc1
+
+deactivate db
+
+cc1-->ui1: list
+
+deactivate cc1
+
+
+
+
+
+
+else list by brand
+
+ui1-->ui2: brand
+
+activate ui2
+
+ui2-->cc2: listarProductBrand()
+
+activate cc2
+
+cc2-->db: repositories()
+
+activate db
+
+db-->app: instance()
+
+db-->app: getRepositoryFactory()
+
+activate app
+
+app-->db: create
+
+db-->app
+
+app-->cc2
+
+deactivate app
+
+cc2-->db: Products()
+
+cc2-->db: list = all()
+
+db-->cc2
+
+deactivate db
+
+deactivate cc2
+
+ui2-->ui1: list
+
+deactivate ui2
+
+
+
+
+
+
+else list by description
+
+ui1-->ui3: description
+
+activate ui3
+
+ui3-->cc3: listarProductDescription()
+
+activate cc3
+
+cc3-->db: repositories()
+
+activate db
+
+db-->app: instance()
+
+db-->app: getRepositoryFactory()
+
+activate app
+
+app-->db: create
+
+db-->app
+
+app-->cc3
+
+deactivate app
+
+cc3-->db: Products()
+
+cc3-->db: list = all()
+
+deactivate db
+
+db-->cc3
+
+deactivate cc3
+
+ui3-->ui1: list
+
+deactivate ui3
+
+
+
+
+
+else list by category
+
+ui1-->ui4: category
+
+activate ui4
+
+ui4-->cc4: listarProductCategory()
+
+activate cc4
+
+cc4-->db: repositories()
+
+activate db
+
+db-->app: instance()
+
+db-->app: getRepositoryFactory()
+
+activate app
+
+app-->db: create
+
+db-->app
+
+app-->cc4
+
+deactivate app
+
+cc4-->db: Products()
+
+cc4-->db: list = all()
+
+db-->cc4
+
+deactivate db
+
+deactivate cc4
+
+ui4-->ui1: list
+
+deactivate ui4
+
+end
+
+ui1-->adm: displayProducts
+
+deactivate ui1
+@enduml
