@@ -53,7 +53,7 @@ public class AGVBuilderTest {
         new AGVBuilder(AGV_IDENTIFIER, SHORT_DESCRIPTION, AUTONOMY, MAXIMUM_WEIGHT, null, task, VOLUME).build();
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = IllegalStateException.class)
     public void ensureCannotBuildAGVWithNullTask() {
         new AGVBuilder(AGV_IDENTIFIER, SHORT_DESCRIPTION, AUTONOMY, MAXIMUM_WEIGHT, MODEL, null, VOLUME).build();
     }

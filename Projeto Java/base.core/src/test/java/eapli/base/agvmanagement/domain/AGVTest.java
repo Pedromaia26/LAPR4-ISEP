@@ -165,7 +165,10 @@ public class AGVTest {
 
         final AGV AGV1 = AGVBuild();
 
-        final AGV AGV2 = new AGVBuilder("aaa111", SHORT_DESCRIPTION, AUTONOMY, MAXIMUM_WEIGHT, MODEL, TASK, VOLUME).build();
+        Description description = new Description(TASK);
+        Task task = new Task(description);
+
+        final AGV AGV2 = new AGVBuilder("aaa111", SHORT_DESCRIPTION, AUTONOMY, MAXIMUM_WEIGHT, MODEL, task, VOLUME).build();
 
         final boolean expected = AGV1.equals(AGV2);
 
@@ -205,7 +208,10 @@ public class AGVTest {
     public void ensureTwoAGVWithDifferentAGVIdentifierAreNotTheSame() {
         final AGV AGV1 = AGVBuild();
 
-        final AGV AGV2 = new AGVBuilder("aaa111", SHORT_DESCRIPTION, AUTONOMY, MAXIMUM_WEIGHT, MODEL, TASK, VOLUME).build();
+        Description description = new Description(TASK);
+        Task task = new Task(description);
+
+        final AGV AGV2 = new AGVBuilder("aaa111", SHORT_DESCRIPTION, AUTONOMY, MAXIMUM_WEIGHT, MODEL, task, VOLUME).build();
 
         final boolean expected = AGV1.sameAs(AGV2);
 

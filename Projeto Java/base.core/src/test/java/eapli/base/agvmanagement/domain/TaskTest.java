@@ -19,6 +19,6 @@ public class TaskTest {
     public void ensureTaskHasRightValue() {
         Description description = new Description(TASK);
         final Task instance = new Task(description);
-        assertEquals(TASK, instance.description());
+        assertEquals(TASK, instance.description().toString());
     }
 }
