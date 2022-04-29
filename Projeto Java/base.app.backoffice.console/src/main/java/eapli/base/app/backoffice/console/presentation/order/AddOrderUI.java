@@ -1,5 +1,7 @@
 package eapli.base.app.backoffice.console.presentation.order;
 
+import eapli.base.app.backoffice.console.presentation.authz.AddCostumerUI;
+import eapli.base.app.backoffice.console.presentation.authz.AddUserUI;
 import eapli.base.app.backoffice.console.presentation.product.ListProductUI;
 import eapli.base.ordermanagement.application.AddOrderController;
 import eapli.base.ordermanagement.application.AddOrderLineController;
@@ -21,7 +23,14 @@ public class AddOrderUI  extends AbstractUI {
 
         do{
             final String clientVat = Console.readLine("Client VAT");
-            productOrder = theOrderController.addOrder(clientVat);
+            try{
+                productOrder = theOrderController.addOrder(clientVat);
+            } catch (Exception e) {
+                System.out.println("Invalid VAT. Client does not exist!");
+                AddCostumerUI addCostumerUI = new AddCostumerUI();
+                addCostumerUI.show();
+            }
+
             if (Console.readLine("Do you want to see the products catalog? (Y/N)").equals("Y")) {
                 ListProductUI listProductUI = new ListProductUI();
                 listProductUI.show();

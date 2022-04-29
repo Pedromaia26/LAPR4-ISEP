@@ -2,6 +2,7 @@ package eapli.base.agvmanagement.domain;
 
 
 import eapli.framework.domain.model.AggregateRoot;
+import eapli.framework.domain.model.DomainEntities;
 
 import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
@@ -123,7 +124,7 @@ public class AGV implements AggregateRoot<AGVIdentifier> {
 
     @Override
     public boolean sameAs(Object other) {
-        return false;
+        return DomainEntities.areEqual(this, other);
     }
 
     @Override

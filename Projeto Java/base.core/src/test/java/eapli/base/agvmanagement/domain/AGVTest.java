@@ -1,5 +1,8 @@
 package eapli.base.agvmanagement.domain;
 
+import eapli.base.categorymanagement.domain.Category;
+import eapli.base.categorymanagement.domain.CategoryBuilder;
+import eapli.base.productmanagement.domain.Product;
 import eapli.base.productmanagement.domain.ShortDescription;
 import eapli.framework.general.domain.model.Designation;
 import eapli.framework.general.domain.model.Money;
@@ -144,4 +147,55 @@ public class AGVTest {
         assertEquals(newInfo, subject.Volume());
     }
 
+    @Test
+    public void ensureAGVEqualsFailsForDifferenteAGVIdentifier() {
+
+        final AGV AGV1 = AGVBuild();
+
+        final AGV AGV2 = new AGVBuilder("aaa111", SHORT_DESCRIPTION, AUTONOMY, MAXIMUM_WEIGHT, MODEL, TASK, VOLUME).build();
+
+        final boolean expected = AGV1.equals(AGV2);
+
+        assertFalse(expected);
+    }
+
+    @Test
+    public void ensureAGVEqualsAreTheSameForTheSameInstance() {
+        final AGV AGV1 = AGVBuild();
+
+        final boolean expected = AGV1.equals(AGV1);
+
+        assertTrue(expected);
+    }
+
+    @Test
+    public void ensureAGVEqualsFailsForDifferenteObjectTypes() {
+
+        final AGV AGV1 = AGVBuild();
+
+        final boolean expected = AGV1.equals(new Product());
+
+        assertFalse(expected);
+    }
+
+    @Test
+    public void ensureAGVIsTheSameAsItsInstance() {
+
+        final AGV AGV1 = AGVBuild();
+
+        final boolean expected = AGV1.sameAs(AGV1);
+
+        assertTrue(expected);
+    }
+
+    @Test
+    public void ensureTwoAGVWithDifferentAGVIdentifierAreNotTheSame() {
+        final AGV AGV1 = AGVBuild();
+
+        final AGV AGV2 = new AGVBuilder("aaa111", SHORT_DESCRIPTION, AUTONOMY, MAXIMUM_WEIGHT, MODEL, TASK, VOLUME).build();
+
+        final boolean expected = AGV1.sameAs(AGV2);
+
+        assertTrue(expected);
+    }
 }

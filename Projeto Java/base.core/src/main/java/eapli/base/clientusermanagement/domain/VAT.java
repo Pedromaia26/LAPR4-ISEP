@@ -45,4 +45,8 @@ public class VAT implements ValueObject, Comparable<VAT> {
     public int hashCode() {
         return Objects.hash(vat);
     }
+
+    public String vat() {
+        return vat;
+    }
 }

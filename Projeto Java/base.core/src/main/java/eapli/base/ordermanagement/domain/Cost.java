@@ -26,4 +26,12 @@ public class Cost implements ValueObject {
 
             return String.valueOf(cost);
         }
+
+    public double cost() {
+        return cost;
+    }
+
+    public void modifyCost(double cost) {
+        this.cost = cost;
+    }
 }
