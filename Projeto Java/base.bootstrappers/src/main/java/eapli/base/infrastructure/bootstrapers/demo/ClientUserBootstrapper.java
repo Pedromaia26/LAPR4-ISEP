@@ -52,19 +52,39 @@ public class ClientUserBootstrapper implements Action {
     @Override
     public boolean execute() {
         signupAndApprove(TestDataConstants.USER_TEST1, "Password1", "John", "Smith",
-                "john@smith.com","123123123","+351935184013","Male","2002/08/25","a,1,4550-321,a,a","a,1,4550-321,a,a");
-        signupAndApprove("isep959", "Password1", "Mary", "Smith", "mary@smith.com","123123124","+351935184014","Male","2002/08/25","a,1,4550-321,a,a","a,1,4550-321,a,a");
+                "john@smith.com","123123123","+351935184013","Male","","a","1","4550-321","a","a","a","1","4550-321","a","a");
+        signupAndApprove("isep959", "Password1", "Mary", "Smith", "mary@smith.com","123123124","+351935184014","Male","2002/08/25","a","1","4550-321","a","a","a","1","4550-321","a","a");
         return true;
     }
 
     private ClientUser signupAndApprove(final String username, final String password,
                                            final String firstName, final String lastName, final String email,
-                                           final String vat, final String phoneNumber, final String gender, final String birthday, final String deliveringPostalAddresses, final String billingPostalAddresses) {
+                                           final String vat, final String phoneNumber, final String gender, final String birthday, final String delStreetName,final String delDoor,final String delPost,final String delCity,final String delCountry, final String bilStreetName,final String bilDoor,final String bilPost,final String bilCity,final String bilCountry) {
         ClientUser request = null;
         try {
             final Set<Role> roleTypes=new HashSet<>();
             roleTypes.add(BaseRoles.COSTUMER_USER);
-            request = addCostumerController.addUser(username, password, firstName, lastName, email, roleTypes,vat,phoneNumber,gender,birthday,deliveringPostalAddresses,billingPostalAddresses);
+            final Set<String[]> delAddress=new HashSet<>();
+            final Set<String[]> bilAddress=new HashSet<>();
+            String[] strings = new String[5];
+
+            strings[0]=delStreetName;
+            strings[1]=delDoor;
+            strings[2]=delPost;
+            strings[3]=delCity;
+            strings[4]=delCountry;
+
+            delAddress.add(strings);
+
+            strings[0]=bilStreetName;
+            strings[1]=bilDoor;
+            strings[2]=bilPost;
+            strings[3]=bilCity;
+            strings[4]=bilCountry;
+
+            bilAddress.add(strings);
+
+            request = addCostumerController.addUser(username, password, firstName, lastName, email, roleTypes,vat,phoneNumber,gender,birthday,delAddress,bilAddress);
 
         } catch (final ConcurrencyException | IntegrityViolationException e) {
             // ignoring exception. assuming it is just a primary key violation

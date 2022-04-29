@@ -20,8 +20,11 @@
  */
 package eapli.base.clientusermanagement.domain;
 
+import eapli.base.Warehouse.domain.Warehouse;
 import eapli.framework.domain.model.DomainFactory;
 import eapli.framework.infrastructure.authz.domain.model.SystemUser;
+
+import java.util.Set;
 
 /**
  * A factory for User entities.
@@ -32,6 +35,8 @@ import eapli.framework.infrastructure.authz.domain.model.SystemUser;
  * @author Jorge Santos ajs@isep.ipp.pt 02/04/2016
  */
 public class ClientUserBuilder implements DomainFactory<ClientUser> {
+
+    private ClientUser clientUser;
 
     private SystemUser systemUser;
 
@@ -107,7 +112,7 @@ public class ClientUserBuilder implements DomainFactory<ClientUser> {
         return this;
     }
 
-    public ClientUserBuilder withDelAddress(final String delAddress) {
+    public ClientUserBuilder withDelAddress(final Set<String[]> delAddress) {
         this.deliveringPostalAddresses = new DeliveringPostalAddresses(delAddress);
         return this;
     }
@@ -116,16 +121,85 @@ public class ClientUserBuilder implements DomainFactory<ClientUser> {
         return this;
     }
 
-    public ClientUserBuilder withBillAddress(final String billAddress) {
+    public ClientUserBuilder withBillAddress(final Set<String[]> billAddress) {
         this.billingPostalAddresses = new BillingPostalAddresses(billAddress);
         return this;
     }
 
 
-    @Override
+    private ClientUser buildOrThrow() {
+        if (clientUser != null) {
+            return clientUser;
+        } else if (systemUser != null && vat != null && phoneNumber != null && gender != null && birthday != null && deliveringPostalAddresses != null && billingPostalAddresses != null) {
+            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses,billingPostalAddresses);
+            return clientUser;
+        }
+         else if (systemUser != null && vat != null && phoneNumber != null && gender != null && birthday != null && deliveringPostalAddresses != null) {
+            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
+            return clientUser;
+        }
+         else if (systemUser != null && vat != null && phoneNumber != null && gender != null && birthday != null && billingPostalAddresses != null) {
+            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
+            return clientUser;
+        }
+        else if (systemUser != null && vat != null && phoneNumber != null && gender != null && birthday == null && deliveringPostalAddresses != null && billingPostalAddresses != null) {
+            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
+            return clientUser;
+        }
+        else if (systemUser != null && vat != null && phoneNumber != null && gender == null && birthday != null && deliveringPostalAddresses != null && billingPostalAddresses != null) {
+            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
+            return clientUser;
+        }
+        else if (systemUser != null && vat != null && phoneNumber != null && gender != null && birthday != null) {
+            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
+            return clientUser;
+        }
+        else if (systemUser != null && vat != null && phoneNumber != null && gender != null && deliveringPostalAddresses != null) {
+            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
+            return clientUser;
+        }
+        else if (systemUser != null && vat != null && phoneNumber != null && gender == null && birthday != null && deliveringPostalAddresses != null) {
+            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
+            return clientUser;
+        }
+        else if (systemUser != null && vat != null && phoneNumber != null && gender != null && billingPostalAddresses != null) {
+            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
+            return clientUser;
+        }
+        else if (systemUser != null && vat != null && phoneNumber != null && gender == null && birthday != null && billingPostalAddresses != null) {
+            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
+            return clientUser;
+        }
+        else if (systemUser != null && vat != null && phoneNumber != null && gender != null) {
+            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
+            return clientUser;
+        }
+        else if (systemUser != null && vat != null && phoneNumber != null && birthday != null) {
+            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
+            return clientUser;
+        }
+        else if (systemUser != null && vat != null && phoneNumber != null && deliveringPostalAddresses != null && billingPostalAddresses == null) {
+            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
+            return clientUser;
+        }
+        else if (systemUser != null && vat != null && phoneNumber != null && deliveringPostalAddresses == null && billingPostalAddresses != null) {
+            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
+            return clientUser;
+        }
+        else if (systemUser != null && vat != null && phoneNumber != null && deliveringPostalAddresses == null) {
+            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
+            return clientUser;
+        }
+         else {
+            throw new IllegalStateException();
+        }
+    }
+
     public ClientUser build() {
-        // since the factory knows that all the parts are needed it could throw
-        // an exception. however, we will leave that to the constructor
-        return new ClientUser(this.systemUser, this.vat,this.phoneNumber, this.gender, this.birthday, this.deliveringPostalAddresses, this.billingPostalAddresses);
+        final ClientUser ret = buildOrThrow();
+        // make sure we will create a new instance if someone reuses this builder and do not change
+        // the previously built dish.
+        clientUser = null;
+        return ret;
     }
 }

@@ -2,36 +2,65 @@ package eapli.base.clientusermanagement.domain;
 
 import eapli.framework.domain.model.ValueObject;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Embeddable;
+import java.util.*;
 import java.util.regex.Pattern;
 @Embeddable
 
 public class DeliveringPostalAddresses implements ValueObject {
-    private String deliveringAddress;
+    @ElementCollection
+    private Set<String> deliveringAddress;
 
-    public DeliveringPostalAddresses(String address) {
-
-        String[] format=address.split(Pattern.quote(","));
-        if(format.length!=5) throw new IllegalArgumentException("Invalid Address! eg: Street name, door number, postal code, city, country!");
-
-        if (!format[1].matches("[0-9]+"))  throw new IllegalArgumentException("Invalid door number, all the digits must be numeric!");
-
-        if(format[2].length()!=8) throw new IllegalArgumentException("Invalid postal code, xxxx-xxx!");
-        if (!format[2].matches("[0-9]+[-][0-9]+"))  throw new IllegalArgumentException("Invalid postal code, xxxx-xxx!");
+    public DeliveringPostalAddresses(Set<String[]> address) {
 
 
-        this.deliveringAddress = address;
+        if(address.isEmpty()) {
+            this.deliveringAddress=null;
+        }else {
+
+
+            Set<String> set = new HashSet<>();
+
+            List<String[]> lists = new ArrayList<>();
+
+            address.iterator().forEachRemaining(lists::add);
+
+
+            for (int i = 0; i < address.size(); i++) {
+
+                String[] format = lists.get(i);
+
+                if (format.length != 5)
+                    throw new IllegalArgumentException("Invalid Address! eg: Street name, door number, postal code, city, country!");
+
+                if (!format[1].matches("[0-9]+"))
+                    throw new IllegalArgumentException("Invalid door number, all the digits must be numeric!");
+
+                if (format[2].length() != 8) throw new IllegalArgumentException("Invalid postal code, xxxx-xxx!");
+                if (!format[2].matches("[0-9]+[-][0-9]+"))
+                    throw new IllegalArgumentException("Invalid postal code, xxxx-xxx!");
+
+                String add = format[0];
+                add.concat(format[1]).concat(format[2]).concat(format[3]).concat(format[4]);
+                set.add(add);
+            }
+
+            this.deliveringAddress = set;
+        }
     }
+
 
     public DeliveringPostalAddresses() {
 
     }
 
-    public String getDeliveringAddress() {
+    public Set<String> getDeliveringAddress() {
+
         return deliveringAddress;
     }
 
-    public void setDeliveringAddress(String deliveringAddress) {
+    public void setDeliveringAddress(Set<String> deliveringAddress) {
         this.deliveringAddress = deliveringAddress;
     }
 }

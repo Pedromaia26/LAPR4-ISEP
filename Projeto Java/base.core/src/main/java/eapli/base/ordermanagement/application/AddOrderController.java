@@ -16,6 +16,8 @@ import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 import eapli.framework.time.util.Calendars;
 
+import java.util.Set;
+
 @UseCaseController
 public class AddOrderController {
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
@@ -33,7 +35,7 @@ public class AddOrderController {
         return orderRepository.save(newOrder.build());
     }
 
-    public boolean addOrder(final String clientvat, final ProductOrder order, final String deliveringPostalAddress, final String billingPostalAddress,
+    public boolean addOrder(final String clientvat, final ProductOrder order, final Set<String[]> deliveringPostalAddress, final Set<String[]> billingPostalAddress,
                                  final String shipmentMethod, final double shipmentCost, final String paymentMethod) {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
 
@@ -41,15 +43,18 @@ public class AddOrderController {
         long statusid = 1;
         Status status = statusRepository.findByStatusId(statusid);
         double cost = orderLineRepository.getAllCost(order.identity());
-        String deliveringPostalAddressInsert, billingPostalAddressInsert;
-        if (deliveringPostalAddress.equals("default")) deliveringPostalAddressInsert = clientUser.getDeleveringPostalAddresses().getDeliveringAddress();
-        else deliveringPostalAddressInsert = deliveringPostalAddress;
+        int flag=0, flag1=0;
+        if (deliveringPostalAddress.equals("default")) {
+            order.modifyDeliveringPostalAddress(clientUser.getDeleveringPostalAddresses());
+            flag=1;
+        }
+        if (billingPostalAddress.equals("default")) {
+            order.modifyBillingPostalAddress(clientUser.getBillingPostalAddresses());
+            flag1=1;
+        }
 
-        if (billingPostalAddress.equals("default")) billingPostalAddressInsert = clientUser.getDeleveringPostalAddresses().getDeliveringAddress();
-        else billingPostalAddressInsert = billingPostalAddress;
-
-        order.modifyBillingPostalAddress(new BillingPostalAddresses(billingPostalAddressInsert));
-        order.modifyDeliveringPostalAddress(new DeliveringPostalAddresses(deliveringPostalAddressInsert));
+        if(flag1==0)order.modifyBillingPostalAddress(new BillingPostalAddresses(billingPostalAddress));
+        if(flag==0)order.modifyDeliveringPostalAddress(new DeliveringPostalAddresses(deliveringPostalAddress));
         order.modifyTotalAmountWithoutTaxes(new TotalAmountWithoutTaxes(cost));
         order.modifyTotalAmountWithTaxes(new TotalAmountWithTaxes(cost + cost*0.23));
         order.modifyShipmentMethod(new ShipmentMethod(shipmentMethod));

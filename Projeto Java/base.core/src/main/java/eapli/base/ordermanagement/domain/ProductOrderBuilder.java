@@ -7,6 +7,7 @@ import eapli.base.orderstatusmanagement.domain.Status;
 import eapli.framework.domain.model.DomainFactory;
 
 import java.util.Calendar;
+import java.util.Set;
 
 public class ProductOrderBuilder implements DomainFactory<ProductOrder> {
 
@@ -33,7 +34,7 @@ public class ProductOrderBuilder implements DomainFactory<ProductOrder> {
 
 
 
-    public ProductOrderBuilder(final ClientUser clientvat, final Status status, final Calendar createdOn, final String deliveringPostalAddress, final String billingPostalAddress,
+    public ProductOrderBuilder(final ClientUser clientvat, final Status status, final Calendar createdOn, final Set<String[]> deliveringPostalAddress, final Set<String[]> billingPostalAddress,
                                final double totalAmountWithTaxes, final double totalAmountWithoutTaxes, final String shipmentMethod, final double shipmentCost, final String paymentMethod) {
         withClientVat(clientvat);
         withStatus(status);
@@ -62,13 +63,13 @@ public class ProductOrderBuilder implements DomainFactory<ProductOrder> {
         return this;
     }
 
-    public ProductOrderBuilder withDeliveringPostalAddresses(final String deliveringPostalAddress) {
+    public ProductOrderBuilder withDeliveringPostalAddresses(final Set<String[]> deliveringPostalAddress) {
         if (deliveringPostalAddress == null) return null;
         this.deliveringPostalAddress = new DeliveringPostalAddresses(deliveringPostalAddress);
         return this;
     }
 
-    public ProductOrderBuilder withBillingPostalAddresses(final String billingPostalAddress) {
+    public ProductOrderBuilder withBillingPostalAddresses(final Set<String[]> billingPostalAddress) {
         if (billingPostalAddress == null) return null;
         this.billingPostalAddress = new BillingPostalAddresses(billingPostalAddress);
         return this;

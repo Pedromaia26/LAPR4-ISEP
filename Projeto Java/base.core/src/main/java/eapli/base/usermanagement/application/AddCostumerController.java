@@ -36,7 +36,7 @@ public class AddCostumerController {
     public ClientUser addUser(final String username, final String password, final String firstName,
                               final String lastName,
                               final String email, final Set<Role> roles, final Calendar createdOn, final String vat, final String phoneNumber,
-                              final String gender, final String birthDay, final String delAddress, final String billAddress) {
+                              final String gender, final String birthDay, final Set<String[]> delAddress, final Set<String[]> billAddress) {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK, BaseRoles.POWER_USER, BaseRoles.ADMIN);
         txCtx.beginTransaction();
             final SystemUserBuilder userBuilder = UserBuilderHelper.builder();
@@ -60,7 +60,7 @@ public class AddCostumerController {
     public ClientUser addUser(final String username, final String password, final String firstName,
                               final String lastName,
                               final String email, final Set<Role> roles, final String vat, final String phoneNumber,
-                              final String gender, final String birthDay, final String delAddress, final String billAddress) {
+                              final String gender, final String birthDay, final Set<String[]> delAddress, final Set<String[]> billAddress) {
         return addUser(username, password, firstName, lastName, email, roles, Calendars.now(),vat, phoneNumber, gender,  birthDay, delAddress, billAddress);
     }
 }

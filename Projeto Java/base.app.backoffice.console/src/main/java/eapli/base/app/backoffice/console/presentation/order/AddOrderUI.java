@@ -8,6 +8,9 @@ import eapli.base.productmanagement.application.ListProductController;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class AddOrderUI  extends AbstractUI {
 
     private final AddOrderController theOrderController = new AddOrderController();
@@ -43,14 +46,26 @@ public class AddOrderUI  extends AbstractUI {
                 theOrderLineController.addOrderLine(productCode, productOrder.identity(), quantity);
             }while (Console.readLine("Do you want to add more products? (Y/N)").equals("Y"));
 
-            String deliveringPostalAddress = "default";
-            String billingPostalAddress = "default";
+            Set<String[]> deliveringPostalAddress = new HashSet<>();
+            String[] strings1= new String[5];
+            String strings= "default";
+            strings1[0] = strings;
+            deliveringPostalAddress.add(strings1);
+
+            Set<String[]> billingPostalAddress = new HashSet<>();
+            billingPostalAddress.add(strings1);
+
+
 
             if (Console.readLine("Do you want to use the client delivering postal address? (Y/N)").equals("N")){
-                deliveringPostalAddress = Console.readLine("Delivering Postal Address");
+                String s = Console.readLine("Delivering Postal Address");
+                strings1[0] = s;
+                deliveringPostalAddress.add(strings1);
             }
             if (Console.readLine("Do you want to use the client billing postal address? (Y/N)").equals("N")){
-                billingPostalAddress = Console.readLine("Billing Postal Address");
+                String s = Console.readLine("Billing Postal Address");
+                strings1[0] = s;
+                billingPostalAddress.add(strings1);
             }
 
             double shipmentCost = 0;
