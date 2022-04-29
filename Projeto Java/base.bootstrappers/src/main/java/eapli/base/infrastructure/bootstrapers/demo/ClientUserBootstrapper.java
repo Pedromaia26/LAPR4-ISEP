@@ -20,17 +20,23 @@
  */
 package eapli.base.infrastructure.bootstrapers.demo;
 
+import eapli.base.clientusermanagement.domain.*;
+import eapli.base.usermanagement.application.AddCostumerController;
+import eapli.base.usermanagement.domain.BaseRoles;
+import eapli.framework.infrastructure.authz.domain.model.Role;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import eapli.base.clientusermanagement.application.AcceptRefuseSignupFactory;
 import eapli.base.clientusermanagement.application.AcceptRefuseSignupRequestController;
-import eapli.base.clientusermanagement.domain.SignupRequest;
 import eapli.base.infrastructure.bootstrapers.TestDataConstants;
 import eapli.base.myclientuser.application.SignupController;
 import eapli.framework.actions.Action;
 import eapli.framework.domain.repositories.ConcurrencyException;
 import eapli.framework.domain.repositories.IntegrityViolationException;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -40,26 +46,26 @@ public class ClientUserBootstrapper implements Action {
     private static final Logger LOGGER = LoggerFactory.getLogger(
             ClientUserBootstrapper.class);
 
-    private final SignupController signupController = new SignupController();
-    private final AcceptRefuseSignupRequestController acceptController = AcceptRefuseSignupFactory
-            .build();
+    private final AddCostumerController addCostumerController = new AddCostumerController();
+
 
     @Override
     public boolean execute() {
         signupAndApprove(TestDataConstants.USER_TEST1, "Password1", "John", "Smith",
-                "john@smith.com", TestDataConstants.USER_TEST1);
-        signupAndApprove("isep959", "Password1", "Mary", "Smith", "mary@smith.com", "isep959");
+                "john@smith.com","123123123","+351935184013","Male","2002/08/25","a,1,4550-321,a,a","a,1,4550-321,a,a");
+        signupAndApprove("isep959", "Password1", "Mary", "Smith", "mary@smith.com","123123124","+351935184014","Male","2002/08/25","a,1,4550-321,a,a","a,1,4550-321,a,a");
         return true;
     }
 
-    private SignupRequest signupAndApprove(final String username, final String password,
-            final String firstName, final String lastName, final String email,
-            final String mecanographicNumber) {
-        SignupRequest request = null;
+    private ClientUser signupAndApprove(final String username, final String password,
+                                           final String firstName, final String lastName, final String email,
+                                           final String vat, final String phoneNumber, final String gender, final String birthday, final String deliveringPostalAddresses, final String billingPostalAddresses) {
+        ClientUser request = null;
         try {
-            request = signupController.signup(username, password, firstName, lastName, email,
-                    mecanographicNumber);
-            acceptController.acceptSignupRequest(request);
+            final Set<Role> roleTypes=new HashSet<>();
+            roleTypes.add(BaseRoles.COSTUMER_USER);
+            request = addCostumerController.addUser(username, password, firstName, lastName, email, roleTypes,vat,phoneNumber,gender,birthday,deliveringPostalAddresses,billingPostalAddresses);
+
         } catch (final ConcurrencyException | IntegrityViolationException e) {
             // ignoring exception. assuming it is just a primary key violation
             // due to the tentative of inserting a duplicated user

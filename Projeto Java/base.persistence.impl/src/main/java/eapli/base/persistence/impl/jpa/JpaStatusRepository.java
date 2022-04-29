@@ -13,30 +13,9 @@ public class JpaStatusRepository extends BasepaRepositoryBase<Status, Long, Long
         implements StatusRepository {
 
     JpaStatusRepository() {
-        super("name");
+        super("id");
     }
 
-    private EntityManager getEntityManager() {
-        EntityManagerFactory factory = Persistence.
-                createEntityManagerFactory("eapli.base");
-        EntityManager manager = factory.createEntityManager();
-        return manager;
-    }
-
-    @Override
-    public Status save(Status status) {
-        if (status == null) {
-            throw new IllegalArgumentException();
-        }
-        EntityManager em = getEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        em.persist(status);
-        tx.commit();
-        em.close();
-
-        return status;
-    }
 
     @Override
     public Status findByStatusId(final Long id) {
