@@ -26,11 +26,11 @@ public class TotalAmountWithTaxes implements ValueObject {
         return String.valueOf(totalAmountWithTaxes);
     }
 
-    public Double getTotalAmountWithTaxes() {
+    public Double totalAmountWithTaxes() {
         return totalAmountWithTaxes;
     }
 
-    public void setTotalAmountWithTaxes(Double totalAmountWithTaxes) {
+    public void modifyTotalAmountWithTaxes(Double totalAmountWithTaxes) {
         this.totalAmountWithTaxes = totalAmountWithTaxes;
     }
 }

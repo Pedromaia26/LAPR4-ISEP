@@ -26,11 +26,11 @@ public class ShipmentCost implements ValueObject {
         return String.valueOf(shipmentCost);
     }
 
-    public Double getShipmentCost() {
+    public Double shipmentCost() {
         return shipmentCost;
     }
 
-    public void setShipmentCost(Double shipmentCost) {
+    public void modifyShipmentCost(Double shipmentCost) {
         this.shipmentCost = shipmentCost;
     }
 }

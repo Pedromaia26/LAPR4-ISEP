@@ -35,4 +35,8 @@ public class Birthday implements ValueObject {
     public Birthday() {
 
     }
+
+    public Date birthDate() {
+        return birthDate;
+    }
 }

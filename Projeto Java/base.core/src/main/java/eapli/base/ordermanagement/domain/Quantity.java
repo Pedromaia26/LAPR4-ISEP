@@ -25,4 +25,11 @@ public class Quantity implements ValueObject {
         return String.valueOf(quantity);
     }
 
+    public int quantity() {
+        return quantity;
+    }
+
+    public void modifyQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 }

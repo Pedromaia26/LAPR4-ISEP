@@ -1,5 +1,6 @@
 package eapli.base.app.backoffice.console.presentation.product;
 
+import eapli.base.Warehouse.domain.Shelf;
 import eapli.base.app.backoffice.console.presentation.category.ListCategoryUI;
 import eapli.base.categorymanagement.application.ListCategoryController;
 import eapli.base.categorymanagement.domain.Category;
@@ -87,12 +88,16 @@ public class SpecifyNewProductUI extends AbstractUI {
             final double length = Double.parseDouble(Console.readLine("Length (Milimeters)"));
             final double width = Double.parseDouble(Console.readLine("Width (Milimeters)"));
             final double weight = Double.parseDouble(Console.readLine("Weight (Grams)"));
+            System.out.println("\nLOCATION\n");
+            final long aisleID = Long.parseLong(Console.readLine("Aisle identifier"));
+            final long sectionID = Long.parseLong(Console.readLine("Row identifier"));
+            final long shelfID = Long.parseLong(Console.readLine("Shelf identifier"));
 
                 try {
                     if (op)
-                        this.theController.addProduct(category, setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, productionCode, internalCode, price, barcode, height, length, width, weight);
+                        this.theController.addProduct(category, setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, productionCode, internalCode, price, barcode, height, length, width, weight, aisleID, sectionID, shelfID);
                     else
-                        this.theController.addProduct(category, setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, internalCode, price, barcode, height, length, width, weight);
+                        this.theController.addProduct(category, setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, internalCode, price, barcode, height, length, width, weight, aisleID, sectionID, shelfID);
                 } catch (final IntegrityViolationException | ConcurrencyException e) {
                     System.out.println("That code is already associated.");
                 } catch (IllegalArgumentException e) {

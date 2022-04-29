@@ -23,4 +23,8 @@ public class VerifyGender implements ValueObject {
     public VerifyGender() {
 
     }
+
+    public String gender() {
+        return gender;
+    }
 }

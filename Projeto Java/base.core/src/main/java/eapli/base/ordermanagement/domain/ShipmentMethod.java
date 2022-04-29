@@ -11,6 +11,8 @@ public class ShipmentMethod implements ValueObject {
 
     public ShipmentMethod(final String shipmentMethod){
 
+        if (shipmentMethod.isBlank() || shipmentMethod == null)
+            throw new IllegalArgumentException("Shipment Method cannot be empty!");
         if (shipmentMethod.length() > 30)
             throw new IllegalArgumentException("Shipment Method invalid!");
 
@@ -27,11 +29,11 @@ public class ShipmentMethod implements ValueObject {
         return shipmentMethod;
     }
 
-    public String getShipmentMethod() {
+    public String shipmentMethod() {
         return shipmentMethod;
     }
 
-    public void setShipmentMethod(String shipmentMethod) {
+    public void modifyShipmentMethod(String shipmentMethod) {
         this.shipmentMethod = shipmentMethod;
     }
 }

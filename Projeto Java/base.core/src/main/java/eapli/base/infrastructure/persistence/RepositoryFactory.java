@@ -30,6 +30,7 @@ import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.orderstatusmanagement.repositories.StatusRepository;
 import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.productmanagement.repositories.ProductRepository;
+import eapli.base.taskmanagement.repositories.TaskRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
 
@@ -143,6 +144,13 @@ public interface RepositoryFactory {
      * @return
      */
     StatusRepository status();
+
+    /**
+     * repository will be created in auto transaction mode
+     *
+     * @return
+     */
+    TaskRepository tasks();
 
     /**
      * repository will be created in auto transaction mode

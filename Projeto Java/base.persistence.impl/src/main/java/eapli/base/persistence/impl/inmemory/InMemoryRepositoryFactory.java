@@ -32,6 +32,7 @@ import eapli.base.ordermanagement.repositories.OrderLineRepository;
 import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.orderstatusmanagement.repositories.StatusRepository;
 import eapli.base.productmanagement.repositories.ProductRepository;
+import eapli.base.taskmanagement.repositories.TaskRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
 import eapli.framework.infrastructure.authz.repositories.impl.InMemoryUserRepository;
@@ -130,6 +131,11 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
     @Override
     public StatusRepository status() {
         return new InMemoryStatusRepository();
+    }
+
+    @Override
+    public TaskRepository tasks() {
+        return new InMemoryTaskRepository();
     }
 
     @Override

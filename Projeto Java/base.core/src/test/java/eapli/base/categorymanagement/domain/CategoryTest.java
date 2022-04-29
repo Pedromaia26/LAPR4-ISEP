@@ -1,6 +1,7 @@
 package eapli.base.categorymanagement.domain;
 
 import eapli.base.agvmanagement.domain.*;
+import eapli.base.productmanagement.domain.Product;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
@@ -39,5 +40,56 @@ public class CategoryTest {
         subject.modifyCategoryDescription(newInfo);
 
         assertEquals(newInfo, subject.CategoryDescription());
+    }
+
+    @Test
+    public void ensureCategoryEqualsFailsForDifferenteCategoryCode() {
+
+        final Category category1 = new CategoryBuilder("123abc", "description").build();
+
+        final Category category2 = new CategoryBuilder("111aaa", "description").build();
+
+        final boolean expected = category1.equals(category2);
+
+        assertFalse(expected);
+    }
+
+    @Test
+    public void ensureCategoryEqualsAreTheSameForTheSameInstance() {
+        final Category category = new Category();
+
+        final boolean expected = category.equals(category);
+
+        assertTrue(expected);
+    }
+
+    @Test
+    public void ensureCategoryEqualsFailsForDifferenteObjectTypes() {
+
+        final Category category1 = new CategoryBuilder("123abc", "description").build();
+
+        final boolean expected = category1.equals(new Product());
+
+        assertFalse(expected);
+    }
+
+    @Test
+    public void ensureCategoryIsTheSameAsItsInstance() {
+        final Category category1 = new CategoryBuilder("123abc", "description").build();
+
+        final boolean expected = category1.sameAs(category1);
+
+        assertTrue(expected);
+    }
+
+    @Test
+    public void ensureTwoCategoriesWithDifferentCategoryCodeAreNotTheSame() {
+        final Category category1 = new CategoryBuilder("123abc", "description").build();
+
+        final Category category2 = new CategoryBuilder("111aaa", "description").build();
+
+        final boolean expected = category1.sameAs(category2);
+
+        assertFalse(expected);
     }
 }

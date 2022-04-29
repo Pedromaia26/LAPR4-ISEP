@@ -1,5 +1,9 @@
 package eapli.base.productmanagement.domain;
 
+import eapli.base.Warehouse.domain.Aisle;
+import eapli.base.Warehouse.domain.AisleIdentifier;
+import eapli.base.Warehouse.domain.Section;
+import eapli.base.Warehouse.domain.Shelf;
 import eapli.base.categorymanagement.domain.Category;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
@@ -10,6 +14,8 @@ import java.util.Set;
 
 @Entity
 public class Product implements AggregateRoot<InternalCode> {
+
+
 
     @EmbeddedId
     private InternalCode internalCode;
@@ -39,8 +45,59 @@ public class Product implements AggregateRoot<InternalCode> {
     private Width width;
     @Embedded
     private Weight weight;
+    @OneToOne
+    private Shelf shelf;
     @ManyToOne(optional = false)
     private Category category;
+
+    public Product(Category category, Photo photo, ShortDescription shortDescription, ExtendedDescription extendedDescription, TechnicalDescription technicalDescription, Brand brand, Reference reference, InternalCode internalCode, Price price, Barcode barcode, Height height, Length length, Width width, Weight weight, Shelf shelf) {
+
+        if (photo == null || shortDescription == null || extendedDescription == null || technicalDescription == null || brand == null || reference == null || internalCode == null || price == null || barcode == null || height == null || length == null || width == null || weight == null || category == null || shelf == null)
+            throw new IllegalArgumentException();
+
+        this.photo = photo;
+        this.shortDescription = shortDescription;
+        this.extendedDescription = extendedDescription;
+        this.technicalDescription = technicalDescription;
+        this.brand = brand;
+        this.reference = reference;
+        this.internalCode = internalCode;
+        this.price = price;
+        this.barcode = barcode;
+        this.height = height;
+        this.length = length;
+        this.width = width;
+        this.weight = weight;
+        this.category = category;
+        this.shelf = shelf;
+    }
+
+    public Product(Category category, Photo photo, ShortDescription shortDescription, ExtendedDescription extendedDescription, TechnicalDescription technicalDescription, Brand brand, Reference reference, InternalCode internalCode, ProductionCode productionCode, Price price, Barcode barcode, Height height, Length length, Width width, Weight weight, Shelf shelf){
+
+        if (photo == null || shortDescription == null || extendedDescription == null || technicalDescription == null || brand == null || reference == null || internalCode == null || productionCode == null || price == null || barcode == null || height == null || length == null || width == null || weight== null || category == null || shelf == null)
+            throw new IllegalArgumentException();
+
+        this.photo = photo;
+        this.shortDescription = shortDescription;
+        this.extendedDescription = extendedDescription;
+        this.technicalDescription = technicalDescription;
+        this.brand = brand;
+        this.reference = reference;
+        this.internalCode = internalCode;
+        this.productionCode = productionCode;
+        this.price = price;
+        this.barcode = barcode;
+        this.height = height;
+        this.length = length;
+        this.width = width;
+        this.weight = weight;
+        this.category = category;
+        this.shelf = shelf;
+    }
+
+    public Product() {
+
+    }
 
     public Weight getWeight() {
         return weight;
@@ -94,53 +151,6 @@ public class Product implements AggregateRoot<InternalCode> {
         return photo;
     }
 
-
-    public Product(Category category, Photo photo, ShortDescription shortDescription, ExtendedDescription extendedDescription, TechnicalDescription technicalDescription, Brand brand, Reference reference, InternalCode internalCode, Price price, Barcode barcode, Height height, Length length, Width width, Weight weight) {
-
-        if (photo == null || shortDescription == null || extendedDescription == null || technicalDescription == null || brand == null || reference == null || internalCode == null || price == null || barcode == null || height == null || length == null || width == null || weight == null || category == null)
-            throw new IllegalArgumentException();
-
-        this.photo = photo;
-        this.shortDescription = shortDescription;
-        this.extendedDescription = extendedDescription;
-        this.technicalDescription = technicalDescription;
-        this.brand = brand;
-        this.reference = reference;
-        this.internalCode = internalCode;
-        this.price = price;
-        this.barcode = barcode;
-        this.height = height;
-        this.length = length;
-        this.width = width;
-        this.weight = weight;
-        this.category = category;
-    }
-
-    public Product(Category category, Photo photo, ShortDescription shortDescription, ExtendedDescription extendedDescription, TechnicalDescription technicalDescription, Brand brand, Reference reference, InternalCode internalCode, ProductionCode productionCode, Price price, Barcode barcode, Height height, Length length, Width width, Weight weight){
-
-        if (photo == null || shortDescription == null || extendedDescription == null || technicalDescription == null || brand == null || reference == null || internalCode == null || productionCode == null || price == null || barcode == null || height == null || length == null || width == null || weight== null || category == null)
-            throw new IllegalArgumentException();
-
-        this.photo = photo;
-        this.shortDescription = shortDescription;
-        this.extendedDescription = extendedDescription;
-        this.technicalDescription = technicalDescription;
-        this.brand = brand;
-        this.reference = reference;
-        this.internalCode = internalCode;
-        this.productionCode = productionCode;
-        this.price = price;
-        this.barcode = barcode;
-        this.height = height;
-        this.length = length;
-        this.width = width;
-        this.weight = weight;
-        this.category = category;
-    }
-
-    public Product() {
-
-    }
 
     @Override
     public boolean sameAs(Object other) {
@@ -281,5 +291,13 @@ public class Product implements AggregateRoot<InternalCode> {
 
     public void modifyCategory(Category category) {
         this.category = category;
+    }
+
+    public Shelf Shelf() {
+        return shelf;
+    }
+
+    public void modifyShelf(Shelf shelf) {
+        this.shelf = shelf;
     }
 }

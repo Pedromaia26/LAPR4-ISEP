@@ -33,6 +33,7 @@ import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.persistence.impl.inmemory.InMemoryOrderLineRepository;
 import eapli.base.persistence.impl.inmemory.InMemoryOrderRepository;
 import eapli.base.productmanagement.repositories.ProductRepository;
+import eapli.base.taskmanagement.repositories.TaskRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
 import eapli.framework.infrastructure.authz.repositories.impl.JpaAutoTxUserRepository;
@@ -118,6 +119,11 @@ public class JpaRepositoryFactory implements RepositoryFactory {
     @Override
     public StatusRepository status() {
         return new JpaStatusRepository();
+    }
+
+    @Override
+    public TaskRepository tasks() {
+        return new JpaTaskRepository();
     }
 
     @Override
