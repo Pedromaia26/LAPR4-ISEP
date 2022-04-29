@@ -1,0 +1,90 @@
+@startuml
+actor SalesClerk as adm
+participant "//<<presentation>>//\nSpecifyNewProductUI" as ui
+participant "//<<application>>//\nSpecifyNewProductController" as cc
+participant "//<<builder>>//\nProductBuilder" as build
+participant "//<<domain>>//\nproduct:Product" as user
+database "//<<repository>>//\nUserRepository" as db
+
+autonumber
+
+adm-->ui: Specify new product
+
+activate ui
+
+ui-->cc: create
+
+ui-->adm: asks user information
+
+adm-->ui: Category, Photo, Short description, Extended description,\n Technical description, Brand, Reference, Internal code, Price,\n Barcode, Height, Width, Weight, Shelf
+
+ui-->adm: Show list of categories
+
+adm-->ui: Category
+
+ui-->cc: addProduct(category, photo, shortDescription, extendedDescription,\n technicalDescription, brand, reference, internalCode, price,\n barcode, height, width, weight, shelf)
+
+activate cc
+
+cc-->build: create
+
+cc-->build: withPhoto(setOfPhotos)
+
+cc-->build: withShortDescription(shortDescription)
+
+cc-->build: withExtendedDescription(extendedDescription)
+
+cc-->build: withTechnicalDescription(technicalDescription)
+
+cc-->build: withBrand(brand)
+
+cc-->build: withReference(reference)
+
+cc-->build: withInternalCode(internalCode)
+
+cc-->build: withPrice(price)
+
+cc-->build: withBarcode(barcode)
+
+cc-->build: withHeight(height)
+
+cc-->build: withLength(length)
+
+cc-->build: withWidth(width)
+
+cc-->build: withWeight(weight)
+
+cc-->build: withCategory(category)
+
+cc-->build: withShelf(shelf)
+
+cc-->build: createProduct()
+
+activate build
+
+build-->user: create(category, photo, shortDescription, extendedDescription,\n technicalDescription, brand, reference, internalCode, price,\n barcode, height, width, weight, shelf)
+
+user-->build: product
+
+build-->cc: product
+
+deactivate build
+
+cc-->db: repositories()
+
+db-->cc: factory
+
+cc-->db: product()
+
+db-->cc: productRepository
+
+cc-->db: save(product)
+
+cc-->ui: product
+
+deactivate cc
+
+ui-->adm: displayProductInfo
+
+deactivate ui
+@enduml

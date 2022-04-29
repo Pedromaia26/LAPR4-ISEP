@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 public class DeliveringPostalAddresses implements ValueObject {
     @ElementCollection
-    private Set<String> deliveringAddress;
+    private Set<String> deliveringAddress= new HashSet<>();
 
     public DeliveringPostalAddresses(Set<String[]> address) {
 
@@ -18,7 +18,6 @@ public class DeliveringPostalAddresses implements ValueObject {
         if(address.isEmpty()) {
             this.deliveringAddress=null;
         }else {
-
 
             Set<String> set = new HashSet<>();
 
@@ -42,7 +41,7 @@ public class DeliveringPostalAddresses implements ValueObject {
                     throw new IllegalArgumentException("Invalid postal code, xxxx-xxx!");
 
                 String add = format[0];
-                add.concat(format[1]).concat(format[2]).concat(format[3]).concat(format[4]);
+                add=add.concat(",").concat(format[1]).concat(",").concat(format[2]).concat(",").concat(format[3]).concat(",").concat(format[4]);
                 set.add(add);
             }
 

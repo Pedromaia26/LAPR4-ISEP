@@ -10,14 +10,6 @@ import eapli.framework.domain.repositories.DomainRepository;
 public interface TaskRepository extends DomainRepository<Long, Task> {
 
     /**
-     * inserts an entity and commits
-     *
-     * @param entity
-     * @return the persisted entity
-     */
-    public Task save(Task entity);
-
-    /**
      * returns the task whose id is given
      *
      * @param id
