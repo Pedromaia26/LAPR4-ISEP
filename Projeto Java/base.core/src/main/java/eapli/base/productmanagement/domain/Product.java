@@ -13,6 +13,7 @@ import java.util.Set;
 
 
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"productionCode"}))
 public class Product implements AggregateRoot<InternalCode> {
 
 
@@ -31,7 +32,7 @@ public class Product implements AggregateRoot<InternalCode> {
     private Brand brand;
     @Embedded
     private Reference reference;
-    @Embedded
+    @Embedded//verificar se realmente é unico
     private ProductionCode productionCode;
     @Embedded
     private Price price;

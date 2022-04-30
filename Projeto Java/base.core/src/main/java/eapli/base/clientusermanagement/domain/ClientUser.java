@@ -44,6 +44,7 @@ import eapli.framework.infrastructure.authz.domain.model.SystemUser;
  *
  */
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"phoneNumber"}))
 public class ClientUser implements AggregateRoot<VAT> {
 
     @Version

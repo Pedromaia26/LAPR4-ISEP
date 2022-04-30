@@ -11,14 +11,19 @@ import javax.persistence.*;
 @Entity
 public class AGV implements AggregateRoot<AGVIdentifier> {
 
-    @Id
+    @EmbeddedId
     private AGVIdentifier agvIdentifier;
+    @Embedded
     private AGVShortDescription agvShortDescription;
+    @Embedded
     private Autonomy autonomy;
+    @Embedded
     private MaximumWeight maximumWeight;
+    @Embedded
     private Model model;
     @ManyToOne(optional = false, cascade = CascadeType.MERGE)
     private Task task;
+    @Embedded
     private Volume volume;
     @OneToOne
     private AGVDock agvDock;
