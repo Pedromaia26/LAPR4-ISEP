@@ -9,6 +9,8 @@ public class RowBeginLSquare implements ValueObject {
     private long beginLSquare;
 
     public RowBeginLSquare(long beginLSquare) {
+        if(beginLSquare<0)throw new IllegalArgumentException("Row beginLSquare < 0!");
+
         this.beginLSquare = beginLSquare;
     }
 

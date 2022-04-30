@@ -32,6 +32,9 @@ public class BillingPostalAddresses implements ValueObject {
 
                 if (format.length != 5)
                     throw new IllegalArgumentException("Invalid Address! eg: Street name, door number, postal code, city, country!");
+                if(format[0].isBlank())throw new IllegalArgumentException("Street name cannot be blank!");
+                if(format[3].isBlank())throw new IllegalArgumentException("City cannot be blank!");
+                if(format[4].isBlank())throw new IllegalArgumentException("Country cannot be blank!");
 
                 if (!format[1].matches("[0-9]+"))
                     throw new IllegalArgumentException("Invalid door number, all the digits must be numeric!");

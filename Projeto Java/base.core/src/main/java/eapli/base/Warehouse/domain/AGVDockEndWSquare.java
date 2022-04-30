@@ -10,6 +10,8 @@ public class AGVDockEndWSquare implements ValueObject {
     private long endWSquare;
 
     public AGVDockEndWSquare(long endWSquare) {
+        if(endWSquare<0)throw new IllegalArgumentException("Dock endWSquare < 0!");
+
         this.endWSquare = endWSquare;
     }
 

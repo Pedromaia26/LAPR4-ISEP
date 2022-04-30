@@ -10,6 +10,7 @@ public class AGVDockBeginLSquare implements ValueObject {
     private long beginLSquare;
 
     public AGVDockBeginLSquare(long beginLSquare) {
+        if(beginLSquare<0)throw new IllegalArgumentException("Dock BeginLSQuare < 0!");
         this.beginLSquare = beginLSquare;
     }
 

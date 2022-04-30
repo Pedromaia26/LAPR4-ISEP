@@ -22,6 +22,14 @@ public class Shelf implements AggregateRoot<ShelfIdentifier> {
 
     }
 
+    public ShelfIdentifier ShelfIdentifier() {
+        return shelfIdentifier;
+    }
+
+    public void setShelfIdentifier(ShelfIdentifier shelfIdentifier) {
+        this.shelfIdentifier = shelfIdentifier;
+    }
+
     @Override
     public boolean sameAs(Object other) {
         return DomainEntities.areEqual(this, other);

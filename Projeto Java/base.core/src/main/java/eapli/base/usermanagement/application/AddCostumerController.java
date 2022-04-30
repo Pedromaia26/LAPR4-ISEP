@@ -38,22 +38,31 @@ public class AddCostumerController {
                               final String email, final Set<Role> roles, final Calendar createdOn, final String vat, final String phoneNumber,
                               final String gender, final String birthDay, final Set<String[]> delAddress, final Set<String[]> billAddress) {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK, BaseRoles.POWER_USER, BaseRoles.ADMIN);
+
         txCtx.beginTransaction();
+        ClientUser clientUser=null;
+        try {
+
+
             final SystemUserBuilder userBuilder = UserBuilderHelper.builder();
             userBuilder.withUsername(username)
                     .withPassword(password)
-                    .withName(firstName,lastName)
+                    .withName(firstName, lastName)
                     .withEmail(email)
                     .withRoles(BaseRoles.COSTUMER_USER);
             final SystemUser newUser = userRepository.save(userBuilder.build());
 
 
-        final ClientUserBuilder clientUserBuilder = new ClientUserBuilder();
-        clientUserBuilder.withVAT(vat).withPhoneNumber(phoneNumber).withGender(gender).withBirthDay(birthDay).withBillAddress(billAddress).withDelAddress(delAddress)
-                .withSystemUser(newUser);
+            final ClientUserBuilder clientUserBuilder = new ClientUserBuilder();
+            clientUserBuilder.withVAT(vat).withPhoneNumber(phoneNumber).withGender(gender).withBirthDay(birthDay).withBillAddress(billAddress).withDelAddress(delAddress)
+                    .withSystemUser(newUser);
 
-         ClientUser clientUser= this.clientUserRepository.save(clientUserBuilder.build());
-        txCtx.commit();
+            clientUser = this.clientUserRepository.save(clientUserBuilder.build());
+            txCtx.commit();
+        }catch (Exception e){
+            txCtx.close();
+            throw new IllegalArgumentException();
+        }
         return clientUser;
     }
 

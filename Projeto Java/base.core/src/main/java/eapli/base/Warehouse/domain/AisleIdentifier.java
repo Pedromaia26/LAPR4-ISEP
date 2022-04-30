@@ -12,6 +12,8 @@ public class AisleIdentifier implements ValueObject, Comparable<AisleIdentifier>
     private long id;
 
     public AisleIdentifier(long id) {
+        if(id<0)throw new IllegalArgumentException("Aisle id < 0!");
+
         this.id = id;
     }
 
@@ -25,6 +27,10 @@ public class AisleIdentifier implements ValueObject, Comparable<AisleIdentifier>
         else if (id<o.id)return -1;
         else return 0;
 
+    }
+
+    public long Id() {
+        return id;
     }
 
     @Override

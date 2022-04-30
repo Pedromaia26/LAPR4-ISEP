@@ -8,4 +8,5 @@ import eapli.framework.domain.repositories.DomainRepository;
 
 public interface AGVRepository extends DomainRepository<AGVIdentifier, AGV> {
 
+
 }

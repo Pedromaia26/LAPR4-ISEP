@@ -12,6 +12,8 @@ public class AGVDockIdentifier implements Comparable<AGVDockIdentifier>, Seriali
     private String id;
 
     public AGVDockIdentifier(String id) {
+        if(id.isBlank())throw new IllegalArgumentException("Invalid dock id!");
+
         this.id = id;
     }
 
@@ -30,6 +32,10 @@ public class AGVDockIdentifier implements Comparable<AGVDockIdentifier>, Seriali
         if (o == null || getClass() != o.getClass()) return false;
         AGVDockIdentifier that = (AGVDockIdentifier) o;
         return id.equals(that.id);
+    }
+
+    public String Id() {
+        return id;
     }
 
     @Override

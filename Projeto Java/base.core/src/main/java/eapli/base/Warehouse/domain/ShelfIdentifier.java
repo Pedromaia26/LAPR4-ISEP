@@ -18,6 +18,8 @@ public class ShelfIdentifier implements ValueObject, Comparable<ShelfIdentifier>
     private Aisle aisle;
 
     public ShelfIdentifier(long id, Section section, Aisle aisle) {
+        if(id<0)throw new IllegalArgumentException("Shelf id < 0!");
+
         this.id = id;
         this.aisle=aisle;
         this.section=section;
@@ -26,6 +28,25 @@ public class ShelfIdentifier implements ValueObject, Comparable<ShelfIdentifier>
     public ShelfIdentifier() {
 
     }
+
+    public long Id() {
+        return id;
+    }
+
+    public void modifyId(long id) {
+        this.id = id;
+    }
+
+    public Section Section() {
+        return section;
+    }
+
+
+    public Aisle Aisle() {
+        return aisle;
+    }
+
+
 
     @Override
     public int compareTo(ShelfIdentifier o) {

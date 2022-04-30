@@ -24,7 +24,7 @@ public class JpaProductRepository extends BasepaRepositoryBase<Product, Internal
 
     public Iterable<Product> findByBrand(String brand) {
         final TypedQuery<Product> query = super.createQuery(
-                "SELECT d FROM Product d WHERE brand = '" + brand + "'",
+                "SELECT d FROM Product d WHERE brand LIKE '%" + brand + "%'",
                 Product.class);
 
         return query.getResultList();
@@ -32,7 +32,7 @@ public class JpaProductRepository extends BasepaRepositoryBase<Product, Internal
 
     public Iterable<Product> findByDescription(String description) {
         final TypedQuery<Product> query = super.createQuery(
-                "SELECT d FROM Product d WHERE shortdescription = '" + description + "'",
+                "SELECT d FROM Product d WHERE shortdescription LIKE '%" + description + "%' or extendeddescription LIKE '%" + description + "%' or technicaldescription LIKE '%" + description + "%'",
                 Product.class);
 
         return query.getResultList();
@@ -56,10 +56,5 @@ public class JpaProductRepository extends BasepaRepositoryBase<Product, Internal
         return query.getResultList();
     }
 
-    @Override
-    public Product findProductWithLocation(long aisleID, long sectionID, long shelfID) {
-        final TypedQuery<Product> query = super.createQuery(
-                "SELECT d FROM Product d WHERE d.shelf.shelfIdentifier.aisle.aisleIdentifier.id = " + aisleID + " and d.shelf.shelfIdentifier.section.rowIdentifier.rowId = " + sectionID + " and d.shelf.shelfIdentifier.id = " + shelfID, Product.class);
-        return query.getSingleResult();
-    }
+
 }

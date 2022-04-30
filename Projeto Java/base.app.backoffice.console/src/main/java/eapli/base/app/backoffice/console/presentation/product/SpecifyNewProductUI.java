@@ -1,36 +1,25 @@
 package eapli.base.app.backoffice.console.presentation.product;
 
-import eapli.base.Warehouse.domain.Shelf;
 import eapli.base.app.backoffice.console.presentation.category.ListCategoryUI;
 import eapli.base.categorymanagement.application.ListCategoryController;
 import eapli.base.categorymanagement.domain.Category;
+import eapli.base.productmanagement.application.ListProductController;
 import eapli.base.productmanagement.application.SpecifyNewProductController;
-import eapli.base.productmanagement.application.VerifyFreeStorageAreaController;
-import eapli.base.productmanagement.domain.Photo;
-import eapli.base.usermanagement.application.AddCostumerController;
-import eapli.base.usermanagement.domain.BaseRoles;
+import eapli.base.productmanagement.domain.Product;
 import eapli.framework.domain.repositories.ConcurrencyException;
 import eapli.framework.domain.repositories.IntegrityViolationException;
-import eapli.framework.infrastructure.authz.domain.model.Role;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
-import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class SpecifyNewProductUI extends AbstractUI {
 
     private final SpecifyNewProductController theController = new SpecifyNewProductController();
     private final ListCategoryController theCController = new ListCategoryController();
-    private final VerifyFreeStorageAreaController freeStorageAreaController = new VerifyFreeStorageAreaController();
+    private final ListProductController listProductController = new ListProductController();
     private boolean invalidData, invalidCategory, invalidLocation, more = true;
     private List<String> setOfPhotos = new ArrayList<>();
     private String path;
@@ -59,8 +48,7 @@ public class SpecifyNewProductUI extends AbstractUI {
 
             invalidData = false;
             boolean op = false;
-            // FIXME avoid duplication with SignUpUI. reuse UserDataWidget from
-            System.out.println("Set of Photos (Type 'DONE' when you are done adding photos)");
+            System.out.println("Set of Photos (format: png, jpeg, svg or jpg)\nType 'DONE' when you are done adding photos");
             do {
                 String photo = Console.readLine("Photo");
                 if (!photo.equals("DONE")) {
@@ -98,26 +86,19 @@ public class SpecifyNewProductUI extends AbstractUI {
             aisleID = Long.parseLong(Console.readLine("Aisle identifier"));
             sectionID = Long.parseLong(Console.readLine("Row identifier"));
             shelfID = Long.parseLong(Console.readLine("Shelf identifier"));
-                try {
-                    if (freeStorageAreaController.verify(aisleID, sectionID, shelfID)){
-                        System.out.println("Storage area already assigned to a product");
-                        invalidLocation = true;
+                    for (Product p: listProductController.allProducts()) {
+                        if (p.Shelf().identity().Aisle().identity().Id() == aisleID && p.Shelf().identity().Section().identity().RowId() == sectionID && p.Shelf().identity().Id() == shelfID) {
+                            System.out.println("Storage area already assigned to a product");
+                            invalidLocation = true;
+                        }
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }while(invalidLocation);
-
-            System.out.println("OIIIIIIIIIIIIIIIIII");
 
 
             try {
                     if (op)
                         this.theController.addProduct(category, setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, productionCode, internalCode, price, barcode, height, length, width, weight, aisleID, sectionID, shelfID);
                     else{
-                        System.out.println(aisleID);
-                        System.out.println(sectionID);
-                        System.out.println(invalidLocation);
                         this.theController.addProduct(category, setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, internalCode, price, barcode, height, length, width, weight, aisleID, sectionID, shelfID);
                     }
 
@@ -128,6 +109,7 @@ public class SpecifyNewProductUI extends AbstractUI {
                     if (Console.readLine("Do you want to try again? (Y/N)").equals("Y")){
                         System.out.println();
                         invalidData = true;
+                        setOfPhotos.clear();
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
