@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class DefineNewCategoryUI
+class DefineNewCategoryController
+class CategoryBuilder
+class CategoryRepository << (I,a777d1) >>
+
+class DefineNewCategoryController{
+    - addCategory(categoryCode, categoryDescription)
+}
+
+class CategoryBuilder{
+    - withCode(code)
+    - withDescription(description)
+}
+
+class Category{
+    - create(categoryCode, categoryDescription)
+}
+
+class CategoryRepository {
+    - instance()
+    - category()
+    - save(category)
+}
+
+
+DefineNewCategoryUI --> DefineNewCategoryController
+DefineNewCategoryController --> CategoryBuilder
+DefineNewCategoryController --> Category
+DefineNewCategoryController --> CategoryRepository 
+@enduml
