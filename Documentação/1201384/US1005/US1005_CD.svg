@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="342px" preserveAspectRatio="none" style="width:834px;height:342px;background:#FFFFFF;" version="1.1" viewBox="0 0 834 342" width="834px" zoomAndPan="magnify"><defs/><g><!--MD5=[19f3b7bf34af6c8cbbf8b93ac7739b1e]
+class DefineNewCategoryUI--><g id="elem_DefineNewCategoryUI"><rect codeLine="3" fill="#F1F1F1" height="48" id="DefineNewCategoryUI" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="189" x="269" y="7"/><ellipse cx="284" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M286.3438,18.6719 C285.4063,18.2344 284.8125,18.0938 283.9375,18.0938 C281.3125,18.0938 279.3125,20.1719 279.3125,22.8906 L279.3125,24.0156 C279.3125,26.5938 281.4219,28.4844 284.3125,28.4844 C285.5313,28.4844 286.6875,28.1875 287.4375,27.6406 C288.0156,27.2344 288.3438,26.7813 288.3438,26.3906 C288.3438,25.9375 287.9531,25.5469 287.4844,25.5469 C287.2656,25.5469 287.0625,25.625 286.875,25.8125 C286.4219,26.2969 286.4219,26.2969 286.2344,26.3906 C285.8125,26.6563 285.125,26.7813 284.3594,26.7813 C282.3125,26.7813 281.0156,25.6875 281.0156,23.9844 L281.0156,22.8906 C281.0156,21.1094 282.2656,19.7969 284,19.7969 C284.5781,19.7969 285.1875,19.9531 285.6563,20.2031 C286.1406,20.4844 286.3125,20.7031 286.4063,21.1094 C286.4688,21.5156 286.5,21.6406 286.6406,21.7656 C286.7813,21.9063 287.0156,22.0156 287.2344,22.0156 C287.5,22.0156 287.7656,21.875 287.9375,21.6563 C288.0469,21.5 288.0781,21.3125 288.0781,20.8906 L288.0781,19.4688 C288.0781,19.0313 288.0625,18.9063 287.9688,18.75 C287.8125,18.4844 287.5313,18.3438 287.2344,18.3438 C286.9375,18.3438 286.7344,18.4375 286.5156,18.75 L286.3438,18.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157" x="298" y="27.8467">DefineNewCategoryUI</text><line style="stroke:#181818;stroke-width:0.5;" x1="270" x2="457" y1="39" y2="39"/><line style="stroke:#181818;stroke-width:0.5;" x1="270" x2="457" y1="47" y2="47"/></g><!--MD5=[6f458a0601dad2e837a8424fb459b403]
+class DefineNewCategoryController--><g id="elem_DefineNewCategoryController"><rect codeLine="8" fill="#F1F1F1" height="64.2969" id="DefineNewCategoryController" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="385" x="171" y="115"/><ellipse cx="250.75" cy="131" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M253.0938,126.6719 C252.1563,126.2344 251.5625,126.0938 250.6875,126.0938 C248.0625,126.0938 246.0625,128.1719 246.0625,130.8906 L246.0625,132.0156 C246.0625,134.5938 248.1719,136.4844 251.0625,136.4844 C252.2813,136.4844 253.4375,136.1875 254.1875,135.6406 C254.7656,135.2344 255.0938,134.7813 255.0938,134.3906 C255.0938,133.9375 254.7031,133.5469 254.2344,133.5469 C254.0156,133.5469 253.8125,133.625 253.625,133.8125 C253.1719,134.2969 253.1719,134.2969 252.9844,134.3906 C252.5625,134.6563 251.875,134.7813 251.1094,134.7813 C249.0625,134.7813 247.7656,133.6875 247.7656,131.9844 L247.7656,130.8906 C247.7656,129.1094 249.0156,127.7969 250.75,127.7969 C251.3281,127.7969 251.9375,127.9531 252.4063,128.2031 C252.8906,128.4844 253.0625,128.7031 253.1563,129.1094 C253.2188,129.5156 253.25,129.6406 253.3906,129.7656 C253.5313,129.9063 253.7656,130.0156 253.9844,130.0156 C254.25,130.0156 254.5156,129.875 254.6875,129.6563 C254.7969,129.5 254.8281,129.3125 254.8281,128.8906 L254.8281,127.4688 C254.8281,127.0313 254.8125,126.9063 254.7188,126.75 C254.5625,126.4844 254.2813,126.3438 253.9844,126.3438 C253.6875,126.3438 253.4844,126.4375 253.2656,126.75 L253.0938,126.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="217" x="271.25" y="135.8467">DefineNewCategoryController</text><line style="stroke:#181818;stroke-width:0.5;" x1="172" x2="555" y1="147" y2="147"/><line style="stroke:#181818;stroke-width:0.5;" x1="172" x2="555" y1="155" y2="155"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="179" y="163"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="359" x="191" y="171.9951">addCategory(categoryCode, categoryDescription)</text></g><!--MD5=[c19dcc17d063e341d7edad0a79a2d326]
+class CategoryBuilder--><g id="elem_CategoryBuilder"><rect codeLine="12" fill="#F1F1F1" height="80.5938" id="CategoryBuilder" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="233" x="7" y="247"/><ellipse cx="61.25" cy="263" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M63.5938,258.6719 C62.6563,258.2344 62.0625,258.0938 61.1875,258.0938 C58.5625,258.0938 56.5625,260.1719 56.5625,262.8906 L56.5625,264.0156 C56.5625,266.5938 58.6719,268.4844 61.5625,268.4844 C62.7813,268.4844 63.9375,268.1875 64.6875,267.6406 C65.2656,267.2344 65.5938,266.7813 65.5938,266.3906 C65.5938,265.9375 65.2031,265.5469 64.7344,265.5469 C64.5156,265.5469 64.3125,265.625 64.125,265.8125 C63.6719,266.2969 63.6719,266.2969 63.4844,266.3906 C63.0625,266.6563 62.375,266.7813 61.6094,266.7813 C59.5625,266.7813 58.2656,265.6875 58.2656,263.9844 L58.2656,262.8906 C58.2656,261.1094 59.5156,259.7969 61.25,259.7969 C61.8281,259.7969 62.4375,259.9531 62.9063,260.2031 C63.3906,260.4844 63.5625,260.7031 63.6563,261.1094 C63.7188,261.5156 63.75,261.6406 63.8906,261.7656 C64.0313,261.9063 64.2656,262.0156 64.4844,262.0156 C64.75,262.0156 65.0156,261.875 65.1875,261.6563 C65.2969,261.5 65.3281,261.3125 65.3281,260.8906 L65.3281,259.4688 C65.3281,259.0313 65.3125,258.9063 65.2188,258.75 C65.0625,258.4844 64.7813,258.3438 64.4844,258.3438 C64.1875,258.3438 63.9844,258.4375 63.7656,258.75 L63.5938,258.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="116" x="81.75" y="267.8467">CategoryBuilder</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="239" y1="279" y2="279"/><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="239" y1="287" y2="287"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="295"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="113" x="27" y="303.9951">withCode(code)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="311.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="207" x="27" y="320.292">withDescription(description)</text></g><!--MD5=[b3c2230271250b561f28a9e8cd979a92]
+class CategoryRepository--><g id="elem_CategoryRepository"><rect codeLine="21" fill="#F1F1F1" height="96.8906" id="CategoryRepository" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="177" x="275" y="239"/><ellipse cx="290" cy="255" fill="#A777D1" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M290.9531,251.7813 L292.6719,251.7813 C293.0625,251.7813 293.25,251.75 293.375,251.6719 C293.6406,251.5156 293.7813,251.2344 293.7813,250.9375 C293.7813,250.6719 293.6719,250.4063 293.4375,250.2344 C293.2656,250.125 293.125,250.0938 292.6719,250.0938 L287.5313,250.0938 C287.0938,250.0938 286.9688,250.1094 286.8125,250.2031 C286.5625,250.3594 286.4063,250.6563 286.4063,250.9375 C286.4063,251.2188 286.5469,251.4688 286.7656,251.6406 C286.9219,251.75 287.1094,251.7813 287.5313,251.7813 L289.25,251.7813 L289.25,258.2969 L287.5313,258.2969 C287.0938,258.2969 286.9688,258.3125 286.8125,258.4219 C286.5625,258.5781 286.4063,258.8594 286.4063,259.1563 C286.4063,259.4063 286.5469,259.6719 286.7656,259.8281 C286.9219,259.9531 287.125,260 287.5313,260 L292.6719,260 C293.4219,260 293.7813,259.7188 293.7813,259.1563 C293.7813,258.875 293.6719,258.625 293.4375,258.4531 C293.2656,258.3281 293.125,258.2969 292.6719,258.2969 L290.9531,258.2969 L290.9531,251.7813 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="145" x="304" y="259.8467">CategoryRepository</text><line style="stroke:#181818;stroke-width:0.5;" x1="276" x2="451" y1="271" y2="271"/><line style="stroke:#181818;stroke-width:0.5;" x1="276" x2="451" y1="279" y2="279"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="283" y="287"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71" x="295" y="295.9951">instance()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="283" y="303.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="295" y="312.292">category()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="283" y="319.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="106" x="295" y="328.5889">save(category)</text></g><!--MD5=[a96594a83e2ecdc78cbf17c2ddf01934]
+class Category--><g id="elem_Category"><rect codeLine="17" fill="#F1F1F1" height="64.2969" id="Category" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="340" x="487.5" y="255.5"/><ellipse cx="620.25" cy="271.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M622.5938,267.1719 C621.6563,266.7344 621.0625,266.5938 620.1875,266.5938 C617.5625,266.5938 615.5625,268.6719 615.5625,271.3906 L615.5625,272.5156 C615.5625,275.0938 617.6719,276.9844 620.5625,276.9844 C621.7813,276.9844 622.9375,276.6875 623.6875,276.1406 C624.2656,275.7344 624.5938,275.2813 624.5938,274.8906 C624.5938,274.4375 624.2031,274.0469 623.7344,274.0469 C623.5156,274.0469 623.3125,274.125 623.125,274.3125 C622.6719,274.7969 622.6719,274.7969 622.4844,274.8906 C622.0625,275.1563 621.375,275.2813 620.6094,275.2813 C618.5625,275.2813 617.2656,274.1875 617.2656,272.4844 L617.2656,271.3906 C617.2656,269.6094 618.5156,268.2969 620.25,268.2969 C620.8281,268.2969 621.4375,268.4531 621.9063,268.7031 C622.3906,268.9844 622.5625,269.2031 622.6563,269.6094 C622.7188,270.0156 622.75,270.1406 622.8906,270.2656 C623.0313,270.4063 623.2656,270.5156 623.4844,270.5156 C623.75,270.5156 624.0156,270.375 624.1875,270.1563 C624.2969,270 624.3281,269.8125 624.3281,269.3906 L624.3281,267.9688 C624.3281,267.5313 624.3125,267.4063 624.2188,267.25 C624.0625,266.9844 623.7813,266.8438 623.4844,266.8438 C623.1875,266.8438 622.9844,266.9375 622.7656,267.25 L622.5938,267.1719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66" x="640.75" y="276.3467">Category</text><line style="stroke:#181818;stroke-width:0.5;" x1="488.5" x2="826.5" y1="287.5" y2="287.5"/><line style="stroke:#181818;stroke-width:0.5;" x1="488.5" x2="826.5" y1="295.5" y2="295.5"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="495.5" y="303.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="314" x="507.5" y="312.4951">create(categoryCode, categoryDescription)</text></g><!--MD5=[0f2ad1593f0b553674b229517f4dddd1]
+link DefineNewCategoryUI to DefineNewCategoryController--><g id="link_DefineNewCategoryUI_DefineNewCategoryController"><path codeLine="28" d="M363.5,55.07 C363.5,70.635 363.5,91.509 363.5,109.331 " fill="none" id="DefineNewCategoryUI-to-DefineNewCategoryController" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="363.5,114.755,367.5,105.755,363.5,109.755,359.5,105.755,363.5,114.755" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[5590710015b94997694d69f9e7f560dd]
+link DefineNewCategoryController to CategoryBuilder--><g id="link_DefineNewCategoryController_CategoryBuilder"><path codeLine="29" d="M309.639,179.082 C276.305,198.319 233.069,223.269 196.658,244.2815 " fill="none" id="DefineNewCategoryController-to-CategoryBuilder" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="192.253,246.8238,202.0475,245.7908,196.5839,244.3251,198.0496,238.8614,192.253,246.8238" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[0499f7f341b707fe32dbdcc886818d51]
+link DefineNewCategoryController to Category--><g id="link_DefineNewCategoryController_Category"><path codeLine="30" d="M429.479,179.082 C476.304,201.141 539.078,230.713 586.906,253.2441 " fill="none" id="DefineNewCategoryController-to-Category" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="591.487,255.4021,585.0506,247.9474,586.964,253.2708,581.6406,255.1842,591.487,255.4021" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[ec89a4fa0dc376f7dd6169ef6710f477]
+link DefineNewCategoryController to CategoryRepository--><g id="link_DefineNewCategoryController_CategoryRepository"><path codeLine="31" d="M363.5,179.082 C363.5,195.193 363.5,215.313 363.5,233.769 " fill="none" id="DefineNewCategoryController-to-CategoryRepository" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="363.5,238.9263,367.5,229.9263,363.5,233.9263,359.5,229.9263,363.5,238.9263" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[8c7d2a43efede84535a71e4eb4fcb94e]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class DefineNewCategoryUI
+class DefineNewCategoryController
+class CategoryBuilder
+class CategoryRepository << (I,a777d1) >>
+
+class DefineNewCategoryController{
+    - addCategory(categoryCode, categoryDescription)
+}
+
+class CategoryBuilder{
+    - withCode(code)
+    - withDescription(description)
+}
+
+class Category{
+    - create(categoryCode, categoryDescription)
+}
+
+class CategoryRepository {
+    - instance()
+    - category()
+    - save(category)
+}
+
+
+DefineNewCategoryUI - -> DefineNewCategoryController
+DefineNewCategoryController - -> CategoryBuilder
+DefineNewCategoryController - -> Category
+DefineNewCategoryController - -> CategoryRepository
+@enduml
+
+@startuml
+
+class DefineNewCategoryUI
+class DefineNewCategoryController
+class CategoryBuilder
+class CategoryRepository << (I,a777d1) >>
+
+class DefineNewCategoryController{
+    - addCategory(categoryCode, categoryDescription)
+}
+
+class CategoryBuilder{
+    - withCode(code)
+    - withDescription(description)
+}
+
+class Category{
+    - create(categoryCode, categoryDescription)
+}
+
+class CategoryRepository {
+    - instance()
+    - category()
+    - save(category)
+}
+
+
+DefineNewCategoryUI - -> DefineNewCategoryController
+DefineNewCategoryController - -> CategoryBuilder
+DefineNewCategoryController - -> Category
+DefineNewCategoryController - -> CategoryRepository
+@enduml
+
+PlantUML version 1.2022.4beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
