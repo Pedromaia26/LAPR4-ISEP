@@ -17,7 +17,7 @@ public class DefineNewCategoryUI extends AbstractUI {
         do {
             invalidData = false;
             // FIXME avoid duplication with SignUpUI. reuse UserDataWidget from
-            final String code = Console.readLine("Code (Alphanumeric code)");
+            final String code = Console.readLine("Code (Alphanumeric code with at maximum 23 chars)");
             final String description = Console.readLine("Description");
 
             try {

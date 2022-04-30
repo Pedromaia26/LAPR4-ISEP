@@ -81,7 +81,7 @@ public class AddCostumerUI extends AbstractUI {
             try {
                 this.theController.addUser(username, password, firstName, lastName, email, roleTypes, vat, phoneNumber, gender, birthDay, delAddress, bilAddress);
             } catch (Exception e) {
-                System.out.println("That username is already in use.");
+                System.out.println("Invalid data.");
 
                 if(Console.readLine("Want to try to create another customer? Y/N").equalsIgnoreCase("y")) {
                     flag = false;

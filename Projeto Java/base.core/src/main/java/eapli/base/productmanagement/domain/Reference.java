@@ -15,7 +15,7 @@ public class Reference implements ValueObject {
         if (reference == null || reference.isBlank())
             throw new IllegalArgumentException("Reference cannot be null");
 
-        String regex = "[a-zA-Z|0-9]{2,23}";
+        String regex = "[a-zA-Z|0-9]{1,23}";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(reference);
         if (!matcher.matches())

@@ -43,22 +43,25 @@ public class ConfigureAGVUI extends AbstractUI {
                     System.out.println(index + ". " + agvDock.identity().Id() + " (Free)");
             }
 
-            do{
+            do {
                 more = false;
                 final String agvDock = Console.readLine("Select one AGV Dock from the list (Identifier)");
 
-                for (AGV agv: agvListController.agv()) {
-                    if (agv.AgvDock().identity().Id().equals(agvDock)){
+                for (AGV agv : agvListController.agv()) {
+                    if (agv.AgvDock().identity().Id().equals(agvDock)) {
                         more = true;
                         System.out.println("AGV Dock already belongs to an AGV. Please, try another AGV Dock!");
                     }
                 }
 
-                for (AGVDock agvDock1: agvDockListController.agvDocks()){
-                    if (agvDock1.agvDockIdentifier().Id().equals(agvDock)){
-                        agvDockSelected = agvDock1;
+                if (!more){
+                    for (AGVDock agvDock1 : agvDockListController.agvDocks()) {
+                        if (agvDock1.agvDockIdentifier().Id().equals(agvDock)) {
+                            agvDockSelected = agvDock1;
+                        }
                     }
                 }
+
             }while(more);
 
             final String agvIdentifier = Console.readLine("Identifier (Alphanumeric code with at maximum 8 chars)");
@@ -82,8 +85,10 @@ public class ConfigureAGVUI extends AbstractUI {
                     invalidData = true;
                 }
             }
-            return false;
+
         }while(invalidData);
+
+        return false;
 
     }
 

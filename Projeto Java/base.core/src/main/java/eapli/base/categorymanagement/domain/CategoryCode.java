@@ -15,11 +15,11 @@ public class CategoryCode implements ValueObject, Comparable<CategoryCode> {
 
         if (code == null || code.isBlank())
             throw new IllegalArgumentException("Category code cannot be empty!");
-        String regex = "[a-zA-Z|0-9]{2,23}";
+        String regex = "[a-zA-Z|0-9]{1,23}";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(code);
         if (!matcher.matches())
-            throw new IllegalArgumentException("Category code must be an alphanumeric code.");
+            throw new IllegalArgumentException("Category code must be an alphanumeric code (23 chars max).");
 
         this.code = code;
     }
