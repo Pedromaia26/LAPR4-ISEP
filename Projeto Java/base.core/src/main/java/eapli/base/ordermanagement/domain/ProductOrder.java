@@ -15,6 +15,9 @@ import java.util.Calendar;
 @Entity
 public class ProductOrder implements AggregateRoot<Long> {
 
+    @Version
+    private Long version;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

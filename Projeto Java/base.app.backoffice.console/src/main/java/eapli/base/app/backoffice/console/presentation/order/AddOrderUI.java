@@ -22,7 +22,7 @@ public class AddOrderUI  extends AbstractUI {
     private final AddOrderLineController theOrderLineController = new AddOrderLineController();
     private final ListProductController theLController = new ListProductController();
     private final ListClientUsersController theUserController = new ListClientUsersController();
-    private boolean invalidData, invalidProduct, invalidShipMethod, invalidPaymentMethod;
+    private boolean invalidData, invalidProduct, invalidShipMethod = true, invalidPaymentMethod = true;
     ProductOrder productOrder;
 
     @Override
@@ -56,27 +56,29 @@ public class AddOrderUI  extends AbstractUI {
                     }
                 }while (invalidProduct);
                 final int quantity = Integer.parseInt(Console.readLine("Quantity"));
-                theOrderLineController.addOrderLine(productCode, productOrder.identity(), quantity);
+                try {
+                    theOrderLineController.addOrderLine(productCode, productOrder.identity(), quantity);
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
             }while (Console.readLine("Do you want to add more products? (Y/N)").equals("Y"));
 
             Set<String[]> deliveringPostalAddress = new HashSet<>();
             String[] strings1= new String[5];
             String strings= "default";
             strings1[0] = strings;
-            deliveringPostalAddress.add(strings1);
 
             Set<String[]> billingPostalAddress = new HashSet<>();
-            billingPostalAddress.add(strings1);
             List<String> lists;
             int index = 1;
 
             String op1 = Console.readLine("Do you want to use the client delivering postal address? (Y/N)");
             if (op1.equals("N")){
-                String s = Console.readLine("Delivering Postal Address");
-                strings1[0] = s;
-                deliveringPostalAddress.add(strings1);
+                String s = Console.readLine("Delivering Postal Address (Street name, Door number, Postal code, City, Country)");
+                deliveringPostalAddress.add(s.split(","));
             }
             else if (op1.equals("Y")){
+                System.out.println("--- List of " + clientVat + " client delivering postal addresses ---");
                 Set<String> deliveringPostalAddresses = theUserController.deliveringAddressOfAClient(clientVat);
                 lists = new ArrayList<>();
                 deliveringPostalAddresses.iterator().forEachRemaining(lists::add);
@@ -84,7 +86,13 @@ public class AddOrderUI  extends AbstractUI {
                     System.out.println(index + " - " + address);
                     index++;
                 }
-                String ad = Console.readLine("Select one of the addresses");
+                String ad = "default";
+                do{
+                    if (!ad.equals("default")){
+                        System.out.println("Invalid chosen address. Choose again!");
+                    }
+                    ad = Console.readLine("Select one of the addresses");
+                } while (Integer.parseInt(ad) >= index || Integer.parseInt(ad) <= 0);
                 deliveringPostalAddress.add(lists.get(Integer.parseInt(ad)-1).split(","));
             }
 
@@ -92,11 +100,11 @@ public class AddOrderUI  extends AbstractUI {
 
             op1 = Console.readLine("Do you want to use the client billing postal address? (Y/N)");
             if (op1.equals("N")){
-                String s = Console.readLine("Billing Postal Address");
-                strings1[0] = s;
-                billingPostalAddress.add(strings1);
+                String s = Console.readLine("Billing Postal Address (Street name, Door number, Postal code, City, Country)");
+                billingPostalAddress.add(s.split(","));
             }
             else if (op1.equals("Y")){
+                System.out.println("--- List of " + clientVat + " client delivering postal addresses ---");
                 Set<String> billingPostalAddresses = theUserController.billingAddressOfAClient(clientVat);
                 lists = new ArrayList<>();
                 billingPostalAddresses.iterator().forEachRemaining(lists::add);
@@ -104,7 +112,13 @@ public class AddOrderUI  extends AbstractUI {
                     System.out.println(index + " - " + address);
                     index++;
                 }
-                String ad = Console.readLine("Select one of the addresses");
+                String ad = "default";
+                do{
+                    if (!ad.equals("default")){
+                        System.out.println("Invalid chosen address. Choose again!");
+                    }
+                    ad = Console.readLine("Select one of the addresses");
+                } while (Integer.parseInt(ad) >= index || Integer.parseInt(ad) <= 0);
                 billingPostalAddress.add(lists.get(Integer.parseInt(ad)-1).split(","));
             }
 

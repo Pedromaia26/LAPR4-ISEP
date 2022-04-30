@@ -43,25 +43,15 @@ public class AddOrderController {
         long statusid = 1;
         Status status = statusRepository.findByStatusId(statusid);
         double cost = orderLineRepository.getAllCost(order.identity());
-        int flag=0, flag1=0;
-        if (deliveringPostalAddress.equals("default")) {
-            order.modifyDeliveringPostalAddress(clientUser.getDeleveringPostalAddresses());
-            flag=1;
-        }
-        if (billingPostalAddress.equals("default")) {
-            order.modifyBillingPostalAddress(clientUser.getBillingPostalAddresses());
-            flag1=1;
-        }
-
-        if(flag1==0)order.modifyBillingPostalAddress(new BillingPostalAddresses(billingPostalAddress));
-        if(flag==0)order.modifyDeliveringPostalAddress(new DeliveringPostalAddresses(deliveringPostalAddress));
+        order.modifyBillingPostalAddress(new BillingPostalAddresses(billingPostalAddress));
+        order.modifyDeliveringPostalAddress(new DeliveringPostalAddresses(deliveringPostalAddress));
         order.modifyTotalAmountWithoutTaxes(new TotalAmountWithoutTaxes(cost));
         order.modifyTotalAmountWithTaxes(new TotalAmountWithTaxes(cost + cost*0.23));
         order.modifyShipmentMethod(new ShipmentMethod(shipmentMethod));
         order.modifyShipmentCost(new ShipmentCost(shipmentCost));
         order.modifyPaymentMethod(new PaymentMethod(paymentMethod));
 
-        orderRepository.update(order);
+        orderRepository.save(order);
 
         return true;
     }

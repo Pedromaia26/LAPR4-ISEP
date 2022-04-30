@@ -15,9 +15,4 @@ public class InMemoryOrderRepository  extends InMemoryDomainRepository<ProductOr
     public ProductOrder findByOrderId(Long orderId) {
         return null;
     }
-
-    @Override
-    public ProductOrder update(ProductOrder order) {
-        return null;
-    }
 }

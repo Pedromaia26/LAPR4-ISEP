@@ -9,13 +9,6 @@ import javax.persistence.*;
 public class JpaOrderRepository extends BasepaRepositoryBase<ProductOrder, Long, Long>
         implements OrderRepository {
 
-    private EntityManager getEntityManager() {
-        EntityManagerFactory factory = Persistence.
-                createEntityManagerFactory("eapli.base");
-        EntityManager manager = factory.createEntityManager();
-        return manager;
-    }
-
     JpaOrderRepository() {
         super("id");
     }
@@ -27,15 +20,6 @@ public class JpaOrderRepository extends BasepaRepositoryBase<ProductOrder, Long,
                 ProductOrder.class);
 
         return query.getSingleResult();
-    }
-
-    @Override
-    public ProductOrder update(ProductOrder order) {
-        EntityManager manager = getEntityManager();
-        manager.getTransaction().begin();
-        manager.merge(order);
-        manager.getTransaction().commit();
-        return order;
     }
 }
 
