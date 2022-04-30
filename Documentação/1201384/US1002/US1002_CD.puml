@@ -9,7 +9,7 @@ class ListProductController
 class SearchProductBrandController
 class SearchProductDescriptionController
 class SearchProductCategoryController
-class ProductRepository
+class ProductRepository << (I,a777d1) >>
 
 class ListProductController{
     - repositories()
