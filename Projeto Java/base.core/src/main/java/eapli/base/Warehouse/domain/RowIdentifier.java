@@ -26,6 +26,10 @@ public class RowIdentifier implements ValueObject, Comparable<RowIdentifier> {
 
     }
 
+    public long RowId() {
+        return rowId;
+    }
+
     @Override
     public int compareTo(RowIdentifier o) {
         if(rowId>o.rowId)return 1;

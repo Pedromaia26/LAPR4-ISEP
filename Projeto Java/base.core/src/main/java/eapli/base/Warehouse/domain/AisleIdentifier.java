@@ -29,6 +29,10 @@ public class AisleIdentifier implements ValueObject, Comparable<AisleIdentifier>
 
     }
 
+    public long Id() {
+        return id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

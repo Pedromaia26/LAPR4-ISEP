@@ -34,6 +34,10 @@ public class AGVDockIdentifier implements Comparable<AGVDockIdentifier>, Seriali
         return id.equals(that.id);
     }
 
+    public String Id() {
+        return id;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(id);

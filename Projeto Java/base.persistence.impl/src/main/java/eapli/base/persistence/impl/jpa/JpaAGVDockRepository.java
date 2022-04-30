@@ -19,4 +19,5 @@ public class JpaAGVDockRepository extends BasepaRepositoryBase<AGVDock, AGVDockI
         super("agvDockIdentifier");
     }
 
+
 }

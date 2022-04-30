@@ -4,7 +4,7 @@ participant "//<<presentation>>//\nSpecifyNewProductUI" as ui
 participant "//<<application>>//\nSpecifyNewProductController" as cc
 participant "//<<builder>>//\nProductBuilder" as build
 participant "//<<domain>>//\nproduct:Product" as user
-database "//<<repository>>//\nUserRepository" as db
+database "//<<repository>>//\nProductRepository" as db
 
 autonumber
 
@@ -69,10 +69,6 @@ user-->build: product
 build-->cc: product
 
 deactivate build
-
-cc-->db: repositories()
-
-db-->cc: factory
 
 cc-->db: product()
 

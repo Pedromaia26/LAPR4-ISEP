@@ -1,6 +1,7 @@
 package eapli.base.agvmanagement.domain;
 
 
+import eapli.base.Warehouse.domain.AGVDock;
 import eapli.base.taskmanagement.domain.Task;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
@@ -19,11 +20,13 @@ public class AGV implements AggregateRoot<AGVIdentifier> {
     @ManyToOne(optional = false, cascade = CascadeType.MERGE)
     private Task task;
     private Volume volume;
+    @OneToOne
+    private AGVDock agvDock;
 
 
-    public AGV(AGVIdentifier agvIdentifier, AGVShortDescription agvShortDescription, Autonomy autonomy, MaximumWeight maximumWeight, Model model, Task task, Volume volume) {
+    public AGV(AGVIdentifier agvIdentifier, AGVShortDescription agvShortDescription, Autonomy autonomy, MaximumWeight maximumWeight, Model model, Task task, Volume volume, AGVDock agvDock) {
 
-        if (agvIdentifier == null || agvShortDescription == null || autonomy == null || maximumWeight == null || model == null || task == null || volume == null)
+        if (agvIdentifier == null || agvShortDescription == null || autonomy == null || maximumWeight == null || model == null || task == null || volume == null || agvDock == null)
             throw new IllegalArgumentException();
 
         this.agvIdentifier = agvIdentifier;
@@ -33,6 +36,7 @@ public class AGV implements AggregateRoot<AGVIdentifier> {
         this.model = model;
         this.task = task;
         this.volume = volume;
+        this.agvDock = agvDock;
     }
 
     public AGV() {
@@ -93,6 +97,14 @@ public class AGV implements AggregateRoot<AGVIdentifier> {
 
     public void modifyVolume(Volume volume) {
         this.volume = volume;
+    }
+
+    public AGVDock AgvDock() {
+        return agvDock;
+    }
+
+    public void modifyAgvDock(AGVDock agvDock) {
+        this.agvDock = agvDock;
     }
 
     @Override
