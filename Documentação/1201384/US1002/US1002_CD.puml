@@ -1,0 +1,55 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class ListProductUI
+class SearchProductBrandUI
+class SearchProductDescriptionUI
+class SearchProductCategoryUI
+class ListProductController
+class SearchProductBrandController
+class SearchProductDescriptionController
+class SearchProductCategoryController
+class ProductRepository
+
+class ListProductController{
+    - repositories()
+    - Products()
+    - list = all()
+}
+
+class SearchProductBrandController{
+    - repositories()
+    - Products()
+    - list = all()
+}
+
+class SearchProductDescriptionController{
+    - repositories()
+    - Products()
+    - list = all()
+}
+
+class SearchProductCategoryController{
+    - repositories()
+    - Products()
+    - list = all()
+}
+
+class ProductRepository {
+    - instance()
+    - getRepositoryFactory()
+}
+
+
+ListProductUI --> ListProductController
+ListProductUI --> SearchProductBrandUI 
+ListProductUI --> SearchProductDescriptionUI 
+ListProductUI --> SearchProductCategoryUI 
+SearchProductBrandUI --> SearchProductBrandController 
+SearchProductDescriptionUI --> SearchProductDescriptionController 
+SearchProductCategoryUI --> SearchProductCategoryController 
+ListProductController --> ProductRepository
+SearchProductBrandController --> ProductRepository
+SearchProductDescriptionController --> ProductRepository
+SearchProductCategoryController --> ProductRepository
+@enduml
