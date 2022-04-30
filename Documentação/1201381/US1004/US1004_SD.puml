@@ -1,0 +1,124 @@
+@startuml
+autonumber
+actor "SalesClerk" as SC
+participant "AddOrderUI" as UI
+participant "AddOrderController" as CTR
+participant "AddOrderLineController" as CTRL
+participant "<<builder>> \nProductOrderBuilder" as POBUILDER
+participant "<<builder>> \nOrderLineBuilder" as OLBUILDER
+participant "Class\n:ProductOrder" as PO
+participant "Class\n:OrderLine" as OL
+
+database OrderRepository as OREP <<repository>>
+database OrderLineRepository as OLREP <<repository>>
+
+activate SC
+SC -> UI : initiates the process of creating a new products order
+activate UI
+UI --> SC : requests client vat
+SC -> UI : type the requested data
+UI -> CTR : addOrder(clientvat, status, createdOn)
+activate CTR
+CTR -> POBUILDER : create
+activate POBUILDER
+deactivate POBUILDER
+CTR -> POBUILDER : withClientVat(clientvat)
+activate POBUILDER
+deactivate POBUILDER
+CTR -> POBUILDER : withStatus(status)
+activate POBUILDER
+deactivate POBUILDER
+CTR -> POBUILDER : withCreatedOn(createdOn)
+activate POBUILDER
+deactivate POBUILDER
+CTR -> POBUILDER : build()
+activate POBUILDER
+POBUILDER -> PO : create(clientvat, status, createdOn)
+activate PO
+PO --> POBUILDER : productOrder
+deactivate PO
+POBUILDER --> CTR : productOrder
+deactivate POBUILDER
+CTR -> OREP: save(productOrder)
+activate OREP
+deactivate OREP
+
+loop
+UI --> SC : requests data (product code, quantity)
+SC -> UI : types the requested data
+UI -> CTRL : addOrderLine(productCode, productOrderId, quantity)
+activate CTRL
+CTRL -> OLBUILDER : create
+activate OLBUILDER
+deactivate OLBUILDER
+CTRL -> OLBUILDER : withProduct(productId)
+activate OLBUILDER
+deactivate OLBUILDER
+CTRL -> OLBUILDER : withOrder(productOrderId)
+activate OLBUILDER
+deactivate OLBUILDER
+CTRL -> OLBUILDER : withQuantity(quantity)
+activate OLBUILDER
+deactivate OLBUILDER
+CTRL -> OLBUILDER : withUnitPrice(unitPrice)
+activate OLBUILDER
+deactivate OLBUILDER
+CTRL -> OLBUILDER : build()
+activate OLBUILDER
+OLBUILDER -> OL : create(productId, productOrderId, quantity, unitPrice)
+activate OL
+OL --> OLBUILDER : orderLine
+deactivate OL
+OLBUILDER --> CTRL : orderLine
+deactivate OLBUILDER
+CTRL -> OLREP: save(orderLine)
+activate OLREP
+deactivate OLREP
+CTRL --> CTR : orderLine
+deactivate CTRL
+end loop
+UI --> SC : requests data (delivering postal address, billing postal address,\nshipment method, payment method)
+SC -> UI : types the requested data
+UI -> CTR : addOrder(deliveringPostalAddress, billingPostalAddress,\nshipmentMethod, paymentMethod)
+CTR -> POBUILDER : create
+activate POBUILDER
+deactivate POBUILDER
+CTR -> POBUILDER : withDeliveringPostalAddresses(deliveringPostalAddress)
+activate POBUILDER
+deactivate POBUILDER
+CTR -> POBUILDER : withBillingPostalAddresses(billingPostalAddress)
+activate POBUILDER
+deactivate POBUILDER
+CTR -> POBUILDER : withTotalAmountWithTaxes(totalAmountWithTaxes)
+activate POBUILDER
+deactivate POBUILDER
+CTR -> POBUILDER : withTotalAmountWithoutTaxes(totalAmountWithoutTaxes)
+activate POBUILDER
+deactivate POBUILDER
+CTR -> POBUILDER : withShipmentMethod(shipmentMethod)
+activate POBUILDER
+deactivate POBUILDER
+CTR -> POBUILDER : withShipmentCost(shipmentCost)
+activate POBUILDER
+deactivate POBUILDER
+CTR -> POBUILDER : withPaymentMethod(paymentMethod)
+activate POBUILDER
+deactivate POBUILDER
+CTR -> POBUILDER : build()
+activate POBUILDER
+POBUILDER -> PO : create(productId, productOrderId, quantity, unitPrice,\n deliveringPostalAddress, billingPostalAddress, totalAmountWithTaxes, totalAmountWithoutTaxes,\nshipmentMethod, shipmentCost, paymentMethod)
+activate PO
+PO --> POBUILDER : productOrder
+deactivate PO
+POBUILDER --> CTR : productOrder
+deactivate POBUILDER
+CTR -> OREP: save(productOrder)
+activate OREP
+deactivate OREP
+CTR --> UI :
+deactivate CTR
+UI --> SC : informs operation success
+deactivate UI
+
+deactivate SC
+@enduml

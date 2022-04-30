@@ -61,14 +61,6 @@ public class OrderLine implements AggregateRoot<Long>{
         return AggregateRoot.super.hasIdentity(id);
     }
 
-    public Long Id() {
-        return id;
-    }
-
-    public void modifyId(Long id) {
-        this.id = id;
-    }
-
     public Quantity Quantity() {
         return quantity;
     }
