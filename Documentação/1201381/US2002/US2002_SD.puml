@@ -1,0 +1,55 @@
+@startuml
+autonumber
+actor "Warehouse Employee" as WE
+participant "ConfigureAGVUI" as UI
+participant "AGVController" as CTR
+participant "<<builder>> \nAGVBuilder" as BUILDER
+participant "AGV" as AGV
+
+database AGVRepository as REP <<repository>>
+
+activate WE
+WE -> UI : initiates the process of configuring an AGV
+activate UI
+UI -> CTR : create
+
+UI -> CTR : validateData()
+activate CTR
+deactivate CTR
+UI --> WE : requests data (id, briefDescription, \nmodel, maxWeightCapacity, range)
+deactivate UI
+WE -> UI : type the requested data
+activate UI
+UI -> CTR : configureAGV(id, briefDescription, model,\n maxWeightCapacity, range)
+activate CTR
+CTR -> BUILDER : create
+CTR -> BUILDER : withId(id)
+CTR -> BUILDER : associateWithAGVDock()
+CTR -> BUILDER : withBriefDescription(briefDescription)
+CTR -> BUILDER : withModel(model)
+CTR -> BUILDER : withWeight(weight)
+CTR -> BUILDER : withMaxWeightCapacity(maxWeightCapacity)
+CTR -> BUILDER : withRange(range)
+CTR -> BUILDER : createAGV()
+activate BUILDER
+BUILDER -> AGV : createAGV(id, briefDescription, model,\n maxWeightCapacity, range)
+AGV --> BUILDER : agv
+BUILDER --> CTR : agv
+deactivate BUILDER
+CTR -> REP : repoConfigureAGV = repositoryFactory
+activate REP 
+REP -> REP : create
+REP --> CTR : factory
+CTR -> REP : agv()
+REP -> REP : create
+REP --> CTR : agvRepository
+CTR -> REP : save(AGV)
+deactivate REP 
+CTR -> UI : agv
+deactivate CTR
+
+UI --> WE : informs operation sucess
+deactivate UI
+
+deactivate WE
+@enduml
