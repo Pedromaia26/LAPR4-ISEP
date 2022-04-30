@@ -17,4 +17,7 @@ public class AGVDockBeginWSquare implements ValueObject {
     public AGVDockBeginWSquare() {
 
     }
+    public long BeginWSquare() {
+        return beginWSquare;
+    }
 }

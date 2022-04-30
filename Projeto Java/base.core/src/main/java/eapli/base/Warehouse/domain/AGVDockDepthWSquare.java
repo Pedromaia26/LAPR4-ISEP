@@ -18,4 +18,8 @@ public class AGVDockDepthWSquare implements ValueObject {
     public AGVDockDepthWSquare() {
 
     }
+    public long DepthWSquare() {
+        return depthWSquare;
+    }
+
 }

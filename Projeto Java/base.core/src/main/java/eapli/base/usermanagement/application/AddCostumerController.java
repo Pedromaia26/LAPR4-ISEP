@@ -29,8 +29,8 @@ public class AddCostumerController {
     private final TransactionalContext txCtx = PersistenceContext.repositories()
             .newTransactionalContext();
     private final ClientUserRepository clientUserRepository = PersistenceContext
-            .repositories().clientUsers();
-    private final UserRepository userRepository = PersistenceContext.repositories().users();
+            .repositories().clientUsers(txCtx);
+    private final UserRepository userRepository = PersistenceContext.repositories().users(txCtx);
 
 
     public ClientUser addUser(final String username, final String password, final String firstName,
@@ -60,7 +60,7 @@ public class AddCostumerController {
             clientUser = this.clientUserRepository.save(clientUserBuilder.build());
             txCtx.commit();
         }catch (Exception e){
-            txCtx.close();
+            txCtx.rollback();
             throw new IllegalArgumentException();
         }
         return clientUser;

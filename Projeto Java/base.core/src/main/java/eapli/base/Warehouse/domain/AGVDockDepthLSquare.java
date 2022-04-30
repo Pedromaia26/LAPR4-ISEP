@@ -17,4 +17,7 @@ public class AGVDockDepthLSquare implements ValueObject {
     public AGVDockDepthLSquare() {
 
     }
+    public long DepthLSquare() {
+        return depthLSquare;
+    }
 }

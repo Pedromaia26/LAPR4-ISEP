@@ -15,7 +15,7 @@ public class CategoryCodeTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void ensureCategoryCodeMustNotHaveLengthLess2() {
-        new CategoryCode("1");
+        new CategoryCode("");
     }
 
     @Test(expected = IllegalArgumentException.class)

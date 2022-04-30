@@ -18,4 +18,7 @@ public class AGVDockEndWSquare implements ValueObject {
     public AGVDockEndWSquare() {
 
     }
+    public long EndWSquare() {
+        return endWSquare;
+    }
 }
