@@ -7,6 +7,7 @@ import eapli.framework.domain.model.DomainEntities;
 import javax.persistence.*;
 import java.util.Set;
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"name"}))
 public class Warehouse implements AggregateRoot<Long> {
     @Id
     @Column(name = "id", nullable = false)

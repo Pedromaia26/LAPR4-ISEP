@@ -50,7 +50,7 @@ public class AddCostumerUI extends AbstractUI {
                 delAdd[3] = cityDel;
                 final String countryDel = Console.readLine("Country");
                 delAdd[4] = countryDel;
-                delAddress.add(delAdd);
+                delAddress.add(delAdd.clone());
                 opt = Console.readLine("Do you want to register another Delivering Postal Addresses? 1->Yes/2->No");
             }
 
@@ -69,7 +69,7 @@ public class AddCostumerUI extends AbstractUI {
                 bilAdd[3] = cityBil;
                 final String countryBil = Console.readLine("Country");
                 bilAdd[4] = countryBil;
-                bilAddress.add(bilAdd);
+                bilAddress.add(bilAdd.clone());
                 opt1 = Console.readLine("Do you want to register another Delivering Postal Addresses? 1->Yes/2->No");
             }
 
@@ -81,7 +81,7 @@ public class AddCostumerUI extends AbstractUI {
             try {
                 this.theController.addUser(username, password, firstName, lastName, email, roleTypes, vat, phoneNumber, gender, birthDay, delAddress, bilAddress);
             } catch (Exception e) {
-                System.out.println("That username is already in use.");
+                System.out.println("Invalid data.");
 
                 if(Console.readLine("Want to try to create another customer? Y/N").equalsIgnoreCase("y")) {
                     flag = false;

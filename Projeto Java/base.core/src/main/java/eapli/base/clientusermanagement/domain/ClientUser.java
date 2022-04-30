@@ -46,6 +46,7 @@ import java.util.Objects;
  *
  */
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"phoneNumber"}))
 public class ClientUser implements AggregateRoot<VAT> {
 
     @Version
