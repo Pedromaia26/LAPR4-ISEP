@@ -86,6 +86,7 @@ public class ConfigureAGVUI extends AbstractUI {
                 }
             }
 
+
         }while(invalidData);
 
         return false;
