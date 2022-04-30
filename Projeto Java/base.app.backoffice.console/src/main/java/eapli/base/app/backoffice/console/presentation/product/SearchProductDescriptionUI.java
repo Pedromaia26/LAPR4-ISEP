@@ -13,7 +13,7 @@ public class SearchProductDescriptionUI extends AbstractListUI<Product>
 
     @Override
     protected Iterable<Product> elements() {
-        final String descriptionread = Console.readLine("Short description:");
+        final String descriptionread = Console.readLine("Description:");
         ShortDescription description = new ShortDescription(descriptionread);
 
         return this.theController.listarProductDescription(description);
