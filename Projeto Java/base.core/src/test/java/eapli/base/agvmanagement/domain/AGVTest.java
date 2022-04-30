@@ -1,13 +1,9 @@
-/*package eapli.base.agvmanagement.domain;
+package eapli.base.agvmanagement.domain;
 
-import eapli.base.categorymanagement.domain.Category;
-import eapli.base.categorymanagement.domain.CategoryBuilder;
+import eapli.base.Warehouse.domain.AGVDock;
 import eapli.base.productmanagement.domain.Product;
-import eapli.base.productmanagement.domain.ShortDescription;
 import eapli.base.taskmanagement.domain.Description;
 import eapli.base.taskmanagement.domain.Task;
-import eapli.framework.general.domain.model.Designation;
-import eapli.framework.general.domain.model.Money;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
@@ -25,7 +21,8 @@ public class AGVTest {
     private AGV AGVBuild() {
         Description description = new Description(TASK);
         Task task = new Task(description);
-        return new AGVBuilder(AGV_IDENTIFIER, SHORT_DESCRIPTION, AUTONOMY, MAXIMUM_WEIGHT, MODEL, task, VOLUME).build();
+        AGVDock agvDock = new AGVDock();
+        return new AGVBuilder(AGV_IDENTIFIER, SHORT_DESCRIPTION, AUTONOMY, MAXIMUM_WEIGHT, MODEL, task, VOLUME, agvDock).build();
     }
 
     @Test
@@ -33,7 +30,7 @@ public class AGVTest {
         Description description = new Description(TASK);
         new AGV(new AGVIdentifier(AGV_IDENTIFIER), new AGVShortDescription(SHORT_DESCRIPTION)
                 , new Autonomy(AUTONOMY), new MaximumWeight(MAXIMUM_WEIGHT), new Model(MODEL)
-                , new Task(description), new Volume(VOLUME));
+                , new Task(description), new Volume(VOLUME), new AGVDock());
         assertTrue(true);
     }
 
@@ -42,7 +39,7 @@ public class AGVTest {
         Description description = new Description(TASK);
         new AGV(null, new AGVShortDescription(SHORT_DESCRIPTION)
                 , new Autonomy(AUTONOMY), new MaximumWeight(MAXIMUM_WEIGHT), new Model(MODEL)
-                , new Task(description), new Volume(VOLUME));
+                , new Task(description), new Volume(VOLUME), new AGVDock());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -50,7 +47,7 @@ public class AGVTest {
         Description description = new Description(TASK);
         new AGV(new AGVIdentifier(AGV_IDENTIFIER), null
                 , new Autonomy(AUTONOMY), new MaximumWeight(MAXIMUM_WEIGHT), new Model(MODEL)
-                , new Task(description), new Volume(VOLUME));
+                , new Task(description), new Volume(VOLUME), new AGVDock());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -58,7 +55,7 @@ public class AGVTest {
         Description description = new Description(TASK);
         new AGV(new AGVIdentifier(AGV_IDENTIFIER), new AGVShortDescription(SHORT_DESCRIPTION)
                 , null, new MaximumWeight(MAXIMUM_WEIGHT), new Model(MODEL)
-                , new Task(description), new Volume(VOLUME));
+                , new Task(description), new Volume(VOLUME), new AGVDock());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -66,7 +63,7 @@ public class AGVTest {
         Description description = new Description(TASK);
         new AGV(new AGVIdentifier(AGV_IDENTIFIER), new AGVShortDescription(SHORT_DESCRIPTION)
                 , new Autonomy(AUTONOMY), null, new Model(MODEL)
-                , new Task(description), new Volume(VOLUME));
+                , new Task(description), new Volume(VOLUME), new AGVDock());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -74,14 +71,14 @@ public class AGVTest {
         Description description = new Description(TASK);
         new AGV(new AGVIdentifier(AGV_IDENTIFIER), new AGVShortDescription(SHORT_DESCRIPTION)
                 , new Autonomy(AUTONOMY), new MaximumWeight(MAXIMUM_WEIGHT), null
-                , new Task(description), new Volume(VOLUME));
+                , new Task(description), new Volume(VOLUME), new AGVDock());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void ensureMustHaveTask() {
         new AGV(new AGVIdentifier(AGV_IDENTIFIER), new AGVShortDescription(SHORT_DESCRIPTION)
                 , new Autonomy(AUTONOMY), new MaximumWeight(MAXIMUM_WEIGHT), new Model(MODEL)
-                , null, new Volume(VOLUME));
+                , null, new Volume(VOLUME), new AGVDock());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -89,7 +86,15 @@ public class AGVTest {
         Description description = new Description(TASK);
         new AGV(new AGVIdentifier(AGV_IDENTIFIER), new AGVShortDescription(SHORT_DESCRIPTION)
                 , new Autonomy(AUTONOMY), new MaximumWeight(MAXIMUM_WEIGHT), new Model(MODEL)
-                , new Task(description), null);
+                , new Task(description), null, new AGVDock());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void ensureMustHaveAGVDock() {
+        Description description = new Description(TASK);
+        new AGV(new AGVIdentifier(AGV_IDENTIFIER), new AGVShortDescription(SHORT_DESCRIPTION)
+                , new Autonomy(AUTONOMY), new MaximumWeight(MAXIMUM_WEIGHT), new Model(MODEL)
+                , new Task(description), new Volume(VOLUME), null);
     }
 
     @Test
@@ -167,8 +172,9 @@ public class AGVTest {
 
         Description description = new Description(TASK);
         Task task = new Task(description);
+        AGVDock agvDock = new AGVDock();
 
-        final AGV AGV2 = new AGVBuilder("aaa111", SHORT_DESCRIPTION, AUTONOMY, MAXIMUM_WEIGHT, MODEL, task, VOLUME).build();
+        final AGV AGV2 = new AGVBuilder("aaa111", SHORT_DESCRIPTION, AUTONOMY, MAXIMUM_WEIGHT, MODEL, task, VOLUME, agvDock).build();
 
         final boolean expected = AGV1.equals(AGV2);
 
@@ -210,11 +216,12 @@ public class AGVTest {
 
         Description description = new Description(TASK);
         Task task = new Task(description);
+        AGVDock agvDock = new AGVDock();
 
-        final AGV AGV2 = new AGVBuilder("aaa111", SHORT_DESCRIPTION, AUTONOMY, MAXIMUM_WEIGHT, MODEL, task, VOLUME).build();
+        final AGV AGV2 = new AGVBuilder("aaa111", SHORT_DESCRIPTION, AUTONOMY, MAXIMUM_WEIGHT, MODEL, task, VOLUME, agvDock).build();
 
         final boolean expected = AGV1.sameAs(AGV2);
 
-        assertTrue(expected);
+        assertFalse(expected);
     }
-}*/
+}

@@ -30,8 +30,7 @@ public class BillingPostalAddresses implements ValueObject {
 
                 String[] format = lists.get(i);
 
-                if (format.length != 5)
-                    throw new IllegalArgumentException("Invalid Address! eg: Street name, door number, postal code, city, country!");
+                if (format.length != 5) throw new IllegalArgumentException("Invalid Address! eg: Street name, door number, postal code, city, country!");
                 if(format[0].isBlank())throw new IllegalArgumentException("Street name cannot be blank!");
                 if(format[3].isBlank())throw new IllegalArgumentException("City cannot be blank!");
                 if(format[4].isBlank())throw new IllegalArgumentException("Country cannot be blank!");
@@ -40,7 +39,7 @@ public class BillingPostalAddresses implements ValueObject {
                     throw new IllegalArgumentException("Invalid door number, all the digits must be numeric!");
 
                 if (format[2].length() != 8) throw new IllegalArgumentException("Invalid postal code, xxxx-xxx!");
-                if (!format[2].matches("[0-9]+[-][0-9]+"))
+                if (!format[2].matches("[0-9]{4}[-][0-9]{3}"))
                     throw new IllegalArgumentException("Invalid postal code, xxxx-xxx!");
 
                 String add = format[0];
@@ -58,11 +57,11 @@ public class BillingPostalAddresses implements ValueObject {
 
     }
 
-    public Set<String> getBillingAddress() {
+    public Set<String> billingAddress() {
         return billingAddress;
     }
 
-    public void setBillingAddress(Set<String> billingAddress) {
+    public void modifyBillingAddress(Set<String> billingAddress) {
         this.billingAddress = billingAddress;
     }
 }

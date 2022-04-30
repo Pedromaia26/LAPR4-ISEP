@@ -2,17 +2,16 @@ package eapli.base.clientusermanagement.domain;
 
 import org.junit.Test;
 
-
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class VerifyGenderTest {
     private static final String GENDER1 = "male";
     private static final String GENDER2 = "female";
     private static final String GENDER3 = "other";
 
-    @Test(expected = IllegalArgumentException.class)
-    public void ensureGenderMustBeNotEmpty() {
-        new VerifyGender("");
+    public void ensureGenderCanBeEmpty() {
+        VerifyGender gender = new VerifyGender("");
+        assertNull(gender.gender);
     }
 
     @Test(expected = IllegalArgumentException.class)

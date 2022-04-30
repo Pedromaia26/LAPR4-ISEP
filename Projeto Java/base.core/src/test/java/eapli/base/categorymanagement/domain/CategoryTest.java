@@ -1,6 +1,5 @@
 package eapli.base.categorymanagement.domain;
 
-import eapli.base.agvmanagement.domain.*;
 import eapli.base.productmanagement.domain.Product;
 import org.junit.Test;
 

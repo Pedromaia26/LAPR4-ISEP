@@ -30,8 +30,7 @@ public class DeliveringPostalAddresses implements ValueObject {
 
                 String[] format = lists.get(i);
 
-                if (format.length != 5)
-                    throw new IllegalArgumentException("Invalid Address! eg: Street name, door number, postal code, city, country!");
+                if (format.length != 5) throw new IllegalArgumentException("Invalid Address! eg: Street name, door number, postal code, city, country!");
                 if(format[0].isBlank())throw new IllegalArgumentException("Street name cannot be blank!");
                 if(format[3].isBlank())throw new IllegalArgumentException("City cannot be blank!");
                 if(format[4].isBlank())throw new IllegalArgumentException("Country cannot be blank!");
@@ -58,12 +57,12 @@ public class DeliveringPostalAddresses implements ValueObject {
 
     }
 
-    public Set<String> getDeliveringAddress() {
+    public Set<String> deliveringAddress() {
 
         return deliveringAddress;
     }
 
-    public void setDeliveringAddress(Set<String> deliveringAddress) {
+    public void modifyDeliveringAddress(Set<String> deliveringAddress) {
         this.deliveringAddress = deliveringAddress;
     }
 }

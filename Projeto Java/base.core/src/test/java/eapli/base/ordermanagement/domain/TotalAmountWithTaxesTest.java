@@ -1,9 +1,8 @@
 package eapli.base.ordermanagement.domain;
 
-import eapli.base.agvmanagement.domain.Volume;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class TotalAmountWithTaxesTest {
     private static final Double TOTAL_AMOUNT_WITH_TAXES = 20d;

@@ -1,9 +1,8 @@
 package eapli.base.clientusermanagement.domain;
 
-import eapli.base.categorymanagement.domain.CategoryCode;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class VATTest {
     private static final String VAT = "123456789";

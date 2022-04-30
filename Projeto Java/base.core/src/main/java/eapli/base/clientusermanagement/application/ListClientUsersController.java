@@ -49,10 +49,10 @@ public class ListClientUsersController {
     }
 
     public Set<String> billingAddressOfAClient(String clientVat){
-        return repo.findByVAT(clientVat).getBillingPostalAddresses().getBillingAddress();
+        return repo.findByVAT(clientVat).getBillingPostalAddresses().billingAddress();
     }
 
     public Set<String> deliveringAddressOfAClient(String clientVat){
-        return repo.findByVAT(clientVat).getDeleveringPostalAddresses().getDeliveringAddress();
+        return repo.findByVAT(clientVat).getDeleveringPostalAddresses().deliveringAddress();
     }
 }

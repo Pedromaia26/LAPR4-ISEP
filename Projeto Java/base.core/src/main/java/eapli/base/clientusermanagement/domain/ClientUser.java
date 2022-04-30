@@ -29,6 +29,8 @@ import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
 import eapli.framework.infrastructure.authz.domain.model.SystemUser;
 
+import java.util.Objects;
+
 /**
  * A Client User.
  *
@@ -49,7 +51,6 @@ public class ClientUser implements AggregateRoot<VAT> {
     @Version
     private Long version;
 
-    //private MecanographicNumber mecanographicNumber;
     @EmbeddedId
     private VAT vat;
 
@@ -84,18 +85,6 @@ public class ClientUser implements AggregateRoot<VAT> {
         return deliveringPostalAddresses;
     }
 
-    public Birthday getBirthday() {
-        return birthday;
-    }
-
-    public VerifyGender getGender() {
-        return gender;
-    }
-
-    public PhoneNumber getPhoneNumber() {
-        return phoneNumber;
-    }
-
     public ClientUser(final SystemUser user, final VAT vat, final PhoneNumber phoneNumber, final VerifyGender gender, final Birthday birthday, final DeliveringPostalAddresses deliveringPostalAddresses, final BillingPostalAddresses billingPostalAddresses) {
         if (vat == null || user == null || phoneNumber == null || gender == null || birthday == null || deliveringPostalAddresses == null || billingPostalAddresses == null) {
             throw new IllegalArgumentException();
@@ -109,17 +98,6 @@ public class ClientUser implements AggregateRoot<VAT> {
         this.billingPostalAddresses = billingPostalAddresses;
 
     }
-    public ClientUser(final SystemUser user, final VAT vat, final PhoneNumber phoneNumber, final VerifyGender gender, final Birthday birthday, final DeliveringPostalAddresses deliveringPostalAddresses) {
-        if (vat == null || user == null || phoneNumber == null || gender == null || birthday == null || deliveringPostalAddresses == null) {
-            throw new IllegalArgumentException();
-        }
-        this.systemUser = user;
-        this.vat = vat;
-        this.phoneNumber = phoneNumber;
-        this.gender = gender;
-        this.birthday = birthday;
-        this.deliveringPostalAddresses = deliveringPostalAddresses;
-    }
 
     protected ClientUser() {
         // for ORM only
@@ -130,8 +108,11 @@ public class ClientUser implements AggregateRoot<VAT> {
     }
 
     @Override
-    public boolean equals(final Object o) {
-        return DomainEntities.areEqual(this, o);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ClientUser that = (ClientUser) o;
+        return Objects.equals(vat, that.vat) && Objects.equals(systemUser, that.systemUser);
     }
 
     @Override
@@ -144,12 +125,10 @@ public class ClientUser implements AggregateRoot<VAT> {
         return DomainEntities.areEqual(this, other);
     }
 
-    public VAT vat() {
-        return identity();
-    }
-
     @Override
     public VAT identity() {
         return this.vat;
     }
+
+
 }

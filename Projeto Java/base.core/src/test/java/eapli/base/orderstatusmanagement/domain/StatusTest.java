@@ -1,9 +1,5 @@
 package eapli.base.orderstatusmanagement.domain;
 
-import eapli.base.categorymanagement.domain.Category;
-import eapli.base.categorymanagement.domain.CategoryBuilder;
-import eapli.base.categorymanagement.domain.CategoryCode;
-import eapli.base.categorymanagement.domain.CategoryDescription;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

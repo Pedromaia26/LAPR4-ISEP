@@ -68,18 +68,8 @@ public class ClientUserBuilder implements DomainFactory<ClientUser> {
         return this;
     }
 
-    public ClientUserBuilder withVAT(final VAT vat) {
-        this.vat = vat;
-        return this;
-    }
-
     public ClientUserBuilder withVAT(final String vat) {
         this.vat = new VAT(vat);
-        return this;
-    }
-
-    public ClientUserBuilder withPhoneNumber(final PhoneNumber phoneNumber) {
-        this.phoneNumber = phoneNumber;
         return this;
     }
 
@@ -88,18 +78,8 @@ public class ClientUserBuilder implements DomainFactory<ClientUser> {
         return this;
     }
 
-    public ClientUserBuilder withGender(final VerifyGender gender) {
-        this.gender = gender;
-        return this;
-    }
-
     public ClientUserBuilder withGender(final String gender) {
         this.gender = new VerifyGender(gender);
-        return this;
-    }
-
-    public ClientUserBuilder withBirthDay(final Birthday birthday) {
-        this.birthday = birthday;
         return this;
     }
 
@@ -107,17 +87,9 @@ public class ClientUserBuilder implements DomainFactory<ClientUser> {
         this.birthday = new Birthday(birthday);
         return this;
     }
-    public ClientUserBuilder withDelAddress(final DeliveringPostalAddresses delAddress) {
-        this.deliveringPostalAddresses = delAddress;
-        return this;
-    }
 
     public ClientUserBuilder withDelAddress(final Set<String[]> delAddress) {
         this.deliveringPostalAddresses = new DeliveringPostalAddresses(delAddress);
-        return this;
-    }
-    public ClientUserBuilder withBillAddress(final BillingPostalAddresses billAddress) {
-        this.billingPostalAddresses = billAddress;
         return this;
     }
 

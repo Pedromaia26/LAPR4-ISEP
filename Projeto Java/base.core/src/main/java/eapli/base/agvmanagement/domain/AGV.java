@@ -43,10 +43,6 @@ public class AGV implements AggregateRoot<AGVIdentifier> {
 
     }
 
-    public AGVIdentifier AgvIdentifier() {
-        return agvIdentifier;
-    }
-
     public void modifyAgvIdentifier(AGVIdentifier agvIdentifier) {
         this.agvIdentifier = agvIdentifier;
     }
@@ -119,7 +115,7 @@ public class AGV implements AggregateRoot<AGVIdentifier> {
 
     @Override
     public AGVIdentifier identity() {
-        return null;
+        return agvIdentifier;
     }
 
     @Override

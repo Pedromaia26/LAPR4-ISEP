@@ -1,6 +1,5 @@
 package eapli.base.categorymanagement.domain;
 
-import eapli.base.agvmanagement.domain.AGVIdentifier;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

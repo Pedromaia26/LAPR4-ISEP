@@ -7,25 +7,25 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Cost implements ValueObject {
 
-        private double cost;
+    private double cost;
 
-        public Cost(final double cost){
+    public Cost(final double cost){
 
-            if (cost < 0)
-                throw new IllegalArgumentException("Cost cannot be negative!");
+        if (cost < 0)
+            throw new IllegalArgumentException("Cost cannot be negative!");
 
-            this.cost = cost;
-        }
+        this.cost = cost;
+    }
 
-        public Cost() {
+    public Cost() {
 
-        }
+    }
 
-        @Override
-        public String toString(){
+    @Override
+    public String toString(){
 
-            return String.valueOf(cost);
-        }
+        return String.valueOf(cost);
+    }
 
     public double cost() {
         return cost;

@@ -1,7 +1,5 @@
 package eapli.base.orderstatusmanagement.domain;
 
-import eapli.base.categorymanagement.domain.Category;
-import eapli.base.categorymanagement.domain.CategoryBuilder;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

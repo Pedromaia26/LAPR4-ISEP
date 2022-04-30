@@ -14,7 +14,7 @@ public class PhoneNumber implements ValueObject {
         //check if is numeric and has 12 numbers + "+"
         if (!phoneNumber.matches("[+][0-9]+"))  throw new IllegalArgumentException("Invalid Phone number, follow the pattern (eg. +351912345678)!");
 
-        if(phoneNumber.length()!=max)throw new IllegalArgumentException("Invalid Phone number, follow the pattern (eg. +351912345678)!!");
+        if(phoneNumber.length()!=max)throw new IllegalArgumentException("Invalid Phone number, follow the pattern (eg. +351912345678)!");
 
 
         this.phoneNumber = phoneNumber;
@@ -22,5 +22,9 @@ public class PhoneNumber implements ValueObject {
 
     public PhoneNumber() {
 
+    }
+
+    public String phoneNumber() {
+        return phoneNumber;
     }
 }

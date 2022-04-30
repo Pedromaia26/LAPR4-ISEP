@@ -1,7 +1,5 @@
 package eapli.base.categorymanagement.domain;
 
-import eapli.base.agvmanagement.domain.AGV;
-import eapli.base.agvmanagement.domain.AGVBuilder;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

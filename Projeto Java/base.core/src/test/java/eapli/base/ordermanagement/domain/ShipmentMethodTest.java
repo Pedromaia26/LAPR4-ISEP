@@ -1,9 +1,8 @@
 package eapli.base.ordermanagement.domain;
 
-import eapli.base.agvmanagement.domain.AGVShortDescription;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class ShipmentMethodTest {
     private static final String SHIPMENT_METHOD = "shipment method";
