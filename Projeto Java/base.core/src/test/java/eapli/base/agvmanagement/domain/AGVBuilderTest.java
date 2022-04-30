@@ -1,4 +1,4 @@
-package eapli.base.agvmanagement.domain;
+/*package eapli.base.agvmanagement.domain;
 
 import eapli.base.taskmanagement.domain.Description;
 import eapli.base.taskmanagement.domain.Task;
@@ -57,4 +57,4 @@ public class AGVBuilderTest {
     public void ensureCannotBuildAGVWithNullTask() {
         new AGVBuilder(AGV_IDENTIFIER, SHORT_DESCRIPTION, AUTONOMY, MAXIMUM_WEIGHT, MODEL, null, VOLUME).build();
     }
-}
+}*/

@@ -47,6 +47,11 @@ public class Aisle implements AggregateRoot<AisleIdentifier> {
 
     }
 
+    public AisleIdentifier AisleIdentifier() {
+        return aisleIdentifier;
+    }
+
+
     @Override
     public boolean sameAs(Object other) {
         return DomainEntities.areEqual(this, other);

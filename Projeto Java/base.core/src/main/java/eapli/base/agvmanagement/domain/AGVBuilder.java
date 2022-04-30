@@ -1,5 +1,6 @@
 package eapli.base.agvmanagement.domain;
 
+import eapli.base.Warehouse.domain.AGVDock;
 import eapli.base.productmanagement.domain.Product;
 import eapli.base.taskmanagement.domain.Description;
 import eapli.base.taskmanagement.domain.Task;
@@ -15,8 +16,9 @@ public class AGVBuilder {
     private Model model;
     private Task task;
     private Volume volume;
+    private AGVDock agvDock;
 
-    public AGVBuilder(final String agvIdentifier, final String agvShortDescription, final double autonomy, final double maximumWeight, final String model, final Task task, final double volume) {
+    public AGVBuilder(final String agvIdentifier, final String agvShortDescription, final double autonomy, final double maximumWeight, final String model, final Task task, final double volume, final AGVDock agvDock) {
 
         withAGVIdentifier(agvIdentifier);
         withAGVDescription(agvShortDescription);
@@ -25,6 +27,7 @@ public class AGVBuilder {
         withModel(model);
         withTask(task);
         withVolume(volume);
+        withAGVDock(agvDock);
     }
 
 
@@ -63,11 +66,17 @@ public class AGVBuilder {
         return this;
     }
 
+    public AGVBuilder withAGVDock (AGVDock agvDock){
+        this.agvDock = agvDock;
+        return this;
+    }
+
+
     private AGV buildOrThrow() {
         if (agv != null) {
             return agv;
-        } else if (agvIdentifier != null && agvShortDescription != null && autonomy != null && maximumWeight != null && model != null && task != null && volume != null) {
-            agv = new AGV(agvIdentifier, agvShortDescription, autonomy, maximumWeight, model, task, volume);
+        } else if (agvIdentifier != null && agvShortDescription != null && autonomy != null && maximumWeight != null && model != null && task != null && volume != null && agvDock != null) {
+            agv = new AGV(agvIdentifier, agvShortDescription, autonomy, maximumWeight, model, task, volume, agvDock);
             return agv;
         } else {
             throw new IllegalStateException();

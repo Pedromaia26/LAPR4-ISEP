@@ -56,10 +56,5 @@ public class JpaProductRepository extends BasepaRepositoryBase<Product, Internal
         return query.getResultList();
     }
 
-    @Override
-    public Product findProductWithLocation(long aisleID, long sectionID, long shelfID) {
-        final TypedQuery<Product> query = super.createQuery(
-                "SELECT d FROM Product d WHERE d.shelf.shelfIdentifier.aisle.aisleIdentifier.id = " + aisleID + " and d.shelf.shelfIdentifier.section.rowIdentifier.rowId = " + sectionID + " and d.shelf.shelfIdentifier.id = " + shelfID, Product.class);
-        return query.getSingleResult();
-    }
+
 }

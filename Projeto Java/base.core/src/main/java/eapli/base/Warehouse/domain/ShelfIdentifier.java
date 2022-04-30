@@ -27,6 +27,25 @@ public class ShelfIdentifier implements ValueObject, Comparable<ShelfIdentifier>
 
     }
 
+    public long Id() {
+        return id;
+    }
+
+    public void modifyId(long id) {
+        this.id = id;
+    }
+
+    public Section Section() {
+        return section;
+    }
+
+
+    public Aisle Aisle() {
+        return aisle;
+    }
+
+
+
     @Override
     public int compareTo(ShelfIdentifier o) {
         if(id>o.id)return 1;
