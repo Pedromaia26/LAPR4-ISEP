@@ -1,0 +1,58 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class SpecifyNewProductUI
+class SpecifyNewProductController
+class ProductBuilder
+class ProductRepository << (I,a777d1) >>
+
+class SpecifyNewProductController{
+    - addProduct(category, photo, shortDescription, extendedDescription,\n technicalDescription, brand, reference, internalCode, price,\n barcode, height, width, weight, shelf)
+}
+
+class ProductBuilder{
+    - withPhoto(photo)
+    - withShortDescription(shortDescription)
+    - withExtendedDescription(extendedDescription)
+    - withTechnicalDescription(technicalDescription)
+    - withBrand(brand)
+    - withReference(reference)
+    - withInternalCode(internalCode)
+    - withPrice(price)
+    - withBarcode(barcode)
+    - withHeight(height)
+    - withWidth(width)
+    - withWeight(weight)
+    - withShelf(shelf)
+}
+
+class Product{
+    - create(category, photo, shortDescription, extendedDescription,\n technicalDescription, brand, reference, internalCode, price,\n barcode, height, width, weight, shelf)
+    + photo
+    + shortDescription
+    + extendedDescription
+    + technicalDescription
+    + brand
+    + reference
+    + internalCode
+    + price
+    + barcode
+    + height
+    + width
+    + weight
+    + shelf
+}
+
+class ProductRepository {
+    - instance()
+    - product()
+    - save(Product)
+}
+
+
+SpecifyNewProductUI--> SpecifyNewProductController
+SpecifyNewProductController--> ProductBuilder
+SpecifyNewProductController--> Product
+ProductBuilder--> Product
+SpecifyNewProductController--> ProductRepository
+@enduml
