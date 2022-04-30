@@ -41,19 +41,18 @@ public class JsonImporter
 
             Warehouse warehouse=null;
 
-            warehousePlant.forEach( wh -> parsewarehousePlant( (JSONObject) wh ) );
+          //  warehousePlant.forEach( wh -> parsewarehousePlant( (JSONObject) wh ) );
 
-            /*for (Object object :  warehousePlant){
+            for (Object object :  warehousePlant){
                 JSONObject jSonO= (JSONObject) object;
                 warehouse= parsewarehousePlant(jSonO);
-            }*/
+            }
 
             return warehouse;
 
         } catch (IOException | ParseException e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException("Invalid file name!");
         }
-        return null;
     }
 
     private static Warehouse parsewarehousePlant(JSONObject warehousePlant)

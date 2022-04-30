@@ -16,6 +16,8 @@ public class RowIdentifier implements ValueObject, Comparable<RowIdentifier> {
     private Aisle aisle;
 
     public RowIdentifier(long id,Aisle aisle) {
+        if(rowId<0)throw new IllegalArgumentException("Row id < 0!");
+
         this.rowId = id;
         this.aisle=aisle;
     }

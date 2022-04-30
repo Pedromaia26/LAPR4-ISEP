@@ -29,6 +29,7 @@ import eapli.base.app.backoffice.console.presentation.category.DefineNewCategory
 import eapli.base.app.backoffice.console.presentation.category.ListCategoryUI;
 import eapli.base.app.backoffice.console.presentation.order.AddOrderUI;
 import eapli.base.app.backoffice.console.presentation.product.*;
+import eapli.base.app.backoffice.console.presentation.warehouse.JsonImporterUI;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
 import eapli.base.app.backoffice.console.presentation.clientuser.AcceptRefuseSignupRequestAction;

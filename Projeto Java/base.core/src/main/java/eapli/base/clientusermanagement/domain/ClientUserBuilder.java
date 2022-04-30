@@ -130,64 +130,8 @@ public class ClientUserBuilder implements DomainFactory<ClientUser> {
     private ClientUser buildOrThrow() {
         if (clientUser != null) {
             return clientUser;
-        } else if (systemUser != null && vat != null && phoneNumber != null && gender != null && birthday != null && deliveringPostalAddresses != null && billingPostalAddresses != null) {
+        } else if (systemUser != null && vat != null && phoneNumber != null /*&& gender != null && birthday != null && deliveringPostalAddresses != null && billingPostalAddresses != null*/) {
             clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses,billingPostalAddresses);
-            return clientUser;
-        }
-         else if (systemUser != null && vat != null && phoneNumber != null && gender != null && birthday != null && deliveringPostalAddresses != null) {
-            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
-            return clientUser;
-        }
-         else if (systemUser != null && vat != null && phoneNumber != null && gender != null && birthday != null && billingPostalAddresses != null) {
-            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
-            return clientUser;
-        }
-        else if (systemUser != null && vat != null && phoneNumber != null && gender != null && birthday == null && deliveringPostalAddresses != null && billingPostalAddresses != null) {
-            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
-            return clientUser;
-        }
-        else if (systemUser != null && vat != null && phoneNumber != null && gender == null && birthday != null && deliveringPostalAddresses != null && billingPostalAddresses != null) {
-            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
-            return clientUser;
-        }
-        else if (systemUser != null && vat != null && phoneNumber != null && gender != null && birthday != null) {
-            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
-            return clientUser;
-        }
-        else if (systemUser != null && vat != null && phoneNumber != null && gender != null && deliveringPostalAddresses != null) {
-            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
-            return clientUser;
-        }
-        else if (systemUser != null && vat != null && phoneNumber != null && gender == null && birthday != null && deliveringPostalAddresses != null) {
-            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
-            return clientUser;
-        }
-        else if (systemUser != null && vat != null && phoneNumber != null && gender != null && billingPostalAddresses != null) {
-            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
-            return clientUser;
-        }
-        else if (systemUser != null && vat != null && phoneNumber != null && gender == null && birthday != null && billingPostalAddresses != null) {
-            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
-            return clientUser;
-        }
-        else if (systemUser != null && vat != null && phoneNumber != null && gender != null) {
-            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
-            return clientUser;
-        }
-        else if (systemUser != null && vat != null && phoneNumber != null && birthday != null) {
-            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
-            return clientUser;
-        }
-        else if (systemUser != null && vat != null && phoneNumber != null && deliveringPostalAddresses != null && billingPostalAddresses == null) {
-            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
-            return clientUser;
-        }
-        else if (systemUser != null && vat != null && phoneNumber != null && deliveringPostalAddresses == null && billingPostalAddresses != null) {
-            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
-            return clientUser;
-        }
-        else if (systemUser != null && vat != null && phoneNumber != null && deliveringPostalAddresses == null) {
-            clientUser = new ClientUser(systemUser,vat,phoneNumber,gender,birthday,deliveringPostalAddresses);
             return clientUser;
         }
          else {

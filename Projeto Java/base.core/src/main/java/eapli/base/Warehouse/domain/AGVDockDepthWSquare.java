@@ -10,6 +10,8 @@ public class AGVDockDepthWSquare implements ValueObject {
     private long depthWSquare;
 
     public AGVDockDepthWSquare(long depthWSquare) {
+        if(depthWSquare<0)throw new IllegalArgumentException("Dock depthWSquare < 0!");
+
         this.depthWSquare = depthWSquare;
     }
 

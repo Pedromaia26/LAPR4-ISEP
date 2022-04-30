@@ -35,6 +35,10 @@ public class AGVDock implements AggregateRoot<AGVDockIdentifier> {
 
 
     public AGVDock(AGVDockIdentifier agvDockIdentifier, AGVDockBeginLSquare agvDockBeginLSquare, AGVDockBeginWSquare agvDockBeginWSquare, AGVDockEndLSquare agvDockEndLSquare, AGVDockEndWSquare agvDockEndWSquare, AGVDockDepthLSquare agvDockDepthLSquare, AGVDockDepthWSquare agvDockDepthWSquare, String accessibility, Warehouse warehouse) {
+
+        if(accessibility.isBlank())throw new IllegalArgumentException("Accessibility cannot be blank!");
+
+
         this.agvDockIdentifier = agvDockIdentifier;
         this.agvDockBeginLSquare = agvDockBeginLSquare;
         this.agvDockBeginWSquare = agvDockBeginWSquare;

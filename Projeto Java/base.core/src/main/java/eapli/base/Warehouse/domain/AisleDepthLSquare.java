@@ -7,10 +7,12 @@ import javax.persistence.Embeddable;
 @Embeddable
 
 public class AisleDepthLSquare implements ValueObject {
-    private long DepthLSquare;
+    private long depthLSquare;
 
-    public AisleDepthLSquare(long DepthLSquare) {
-        this.DepthLSquare = DepthLSquare;
+    public AisleDepthLSquare(long depthLSquare) {
+        if(depthLSquare<0)throw new IllegalArgumentException("Aisle DepthLSquare < 0!");
+
+        this.depthLSquare = depthLSquare;
     }
 
     public AisleDepthLSquare() {

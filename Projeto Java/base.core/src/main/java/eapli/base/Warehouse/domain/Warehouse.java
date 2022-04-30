@@ -37,6 +37,17 @@ public class Warehouse implements AggregateRoot<Long> {
 
 
     public Warehouse(String name, long length, long width, long square, String unit/*, Set<Aisle> aisles, Set<AGVDock> agvDocks*/) {
+        if(name.isBlank())throw new IllegalArgumentException("Warehouse name cannot be blank!");
+
+        if(unit.isBlank())throw new IllegalArgumentException("Unit cannot be blank!");
+
+        if(length<1)throw new IllegalArgumentException("length cannot be 0 or bellow!");
+
+        if(width<1)throw new IllegalArgumentException("width cannot be 0 or bellow!");
+
+        if(square<1)throw new IllegalArgumentException("square dimensions cannot be 0 or bellow!");
+
+
         this.name = name;
         this.length = length;
         this.width = width;

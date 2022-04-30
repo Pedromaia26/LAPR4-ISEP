@@ -1,4 +1,4 @@
-package eapli.base.app.backoffice.console.presentation.authz;
+package eapli.base.app.backoffice.console.presentation.warehouse;
 
 import eapli.base.Warehouse.application.JsonImporterController;
 import eapli.base.usermanagement.application.AddCostumerController;
@@ -14,20 +14,27 @@ import java.util.Set;
 
 public class JsonImporterUI extends AbstractUI {
     private final JsonImporterController theController = new JsonImporterController();
+    private boolean flag=true;
 
     @Override
     protected boolean doShow() {
+        do {
+            flag=true;
+            final String fileName = Console.readLine("File Name");
 
-        final String fileName = Console.readLine("File Name");
 
+            try {
+                this.theController.jsonImporter(fileName);
+            } catch (Exception e) {
+                System.out.println("Invalid file name.");
+                if(Console.readLine("Want to try another file? Y/N").equalsIgnoreCase("y")) {
+                    flag = false;
+                }
+            }
+        }while (!flag);
 
-        try {
-            this.theController.jsonImporter(fileName);
-        } catch (final IntegrityViolationException | ConcurrencyException e) {
-            System.out.println("Invalid file name.");
-        }
+            return false;
 
-        return false;
     }
 
     @Override

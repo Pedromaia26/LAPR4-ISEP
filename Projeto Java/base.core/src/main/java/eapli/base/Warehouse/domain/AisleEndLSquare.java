@@ -7,10 +7,12 @@ import javax.persistence.Embeddable;
 @Embeddable
 
 public class AisleEndLSquare implements ValueObject {
-    private long EndLSquare;
+    private long endLSquare;
 
-    public AisleEndLSquare(long EndLSquare) {
-        this.EndLSquare = EndLSquare;
+    public AisleEndLSquare(long endLSquare) {
+        if(endLSquare<0)throw new IllegalArgumentException("Aisle EndLSquare < 0!");
+
+        this.endLSquare = endLSquare;
     }
 
     public AisleEndLSquare() {

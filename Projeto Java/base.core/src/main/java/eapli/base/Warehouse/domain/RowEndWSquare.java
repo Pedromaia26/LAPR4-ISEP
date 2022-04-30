@@ -9,6 +9,8 @@ public class RowEndWSquare implements ValueObject {
     private long endWSquare;
 
     public RowEndWSquare(long endWSquare) {
+        if(endWSquare<0)throw new IllegalArgumentException("Row endWSquare < 0!");
+
         this.endWSquare = endWSquare;
     }
 
