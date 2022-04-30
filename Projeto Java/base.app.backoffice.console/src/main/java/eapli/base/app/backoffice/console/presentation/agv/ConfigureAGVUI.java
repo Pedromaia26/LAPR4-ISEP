@@ -82,9 +82,9 @@ public class ConfigureAGVUI extends AbstractUI {
                     invalidData = true;
                 }
             }
-            return false;
-        }while(invalidData);
 
+        }while(invalidData);
+        return false;
     }
 
     @Override
