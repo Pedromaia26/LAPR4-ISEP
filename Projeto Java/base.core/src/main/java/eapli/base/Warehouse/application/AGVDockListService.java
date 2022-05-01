@@ -17,7 +17,7 @@ public class AGVDockListService {
     private final AGVDockRepository agvDockRepository = PersistenceContext.repositories().agvDock();
 
     public Iterable<AGVDock> agvDocks() {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.WAREHOUSE_EMPLOYEE);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.WAREHOUSE_EMPLOYEE, BaseRoles.POWER_USER, BaseRoles.ADMIN);
         return agvDockRepository.findAll();
     }
 }

@@ -28,7 +28,7 @@ public class ConfigureAGVController {
 
 
     public AGV addAGV(final String agvIdentifier, final String agvShortDescription, final double autonomy, final double maximumWeight, final String model, final double volume, final AGVDock agvDock) {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.WAREHOUSE_EMPLOYEE);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.WAREHOUSE_EMPLOYEE, BaseRoles.POWER_USER, BaseRoles.ADMIN);
         long taskid = 1;
         Task task = taskRepository.findTaskByID(taskid);
         final var newAGV = new AGVBuilder(agvIdentifier, agvShortDescription, autonomy, maximumWeight, model, task, volume, agvDock);
