@@ -1,0 +1,24 @@
+@startuml
+actor SalesClerk as adm
+participant "//<<presentation>>//\nAddCostumerUI" as ui
+
+
+autonumber
+
+adm-->ui: Add costumer
+
+activate ui
+
+
+ui-->adm: asks user information
+
+deactivate ui
+
+
+adm-->ui: Username, password, First name, Last name,\nE-mail, Role, Calendar, VAT, Phone Number,\nGender, Birthday, Del address, Bill address
+activate ui
+
+ui-->adm: displayUserInfo
+
+deactivate ui
+@enduml

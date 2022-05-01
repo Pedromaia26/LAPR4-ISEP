@@ -1,0 +1,43 @@
+@startuml
+actor SalesClerk as adm
+participant "//<<presentation>>//\nListProductUI" as ui1
+
+autonumber
+
+adm-->ui1: show
+
+activate ui1
+
+alt
+else listAll
+
+ui1-->adm: displayProducts
+
+else list by brand
+
+ui1-->adm: request data
+
+adm-->ui1: types requested data
+
+ui1-->adm: displayProducts
+
+else list by description
+
+ui1-->adm: request data
+
+adm-->ui1: types requested data
+
+ui1-->adm: displayProducts
+
+else list by category
+
+ui1-->adm: request data
+
+adm-->ui1: types requested data
+
+ui1-->adm: displayProducts
+
+end
+
+deactivate ui1
+@enduml

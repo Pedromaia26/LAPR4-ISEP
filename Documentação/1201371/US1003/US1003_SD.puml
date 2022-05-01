@@ -37,9 +37,29 @@ activate cc
 
 cc-->SUbuild: create
 
-
-
 cc-->build: create
+
+cc-->pc: repositories()
+
+activate pc
+
+pc-->rf: create
+
+pc-->cc: factory
+
+deactivate pc
+
+cc-->rf: users()
+
+activate rf
+
+rf-->db: create
+
+rf-->sysdb: create
+
+rf-->cc: userRepository
+
+deactivate rf
 
 
 cc-->SUbuild: createSystemUser(Username, password, First name, Last name, E-mail,roles)
@@ -58,33 +78,19 @@ cc-->build: createUser(systemUser,vat, phoneNumber, gender,birthDay, delAddress,
 
 activate build
 
-build-->user: clientUser=create(systemUser,vat, phoneNumber, gender,birthDay, delAddress, billAddress)
+build-->CliUser: clientUser=create(systemUser,vat, phoneNumber, gender,birthDay, delAddress, billAddress)
 
 build-->cc: clientUser
 
 deactivate build
 
-cc-->pc: repositories()
-
-activate pc
-
-pc-->rf: create
-
-pc-->cc: factory
-
-deactivate pc
-
-cc-->rf: users()
-
-activate rf
-
-rf-->db: create
-
-rf-->cc: userRepository
-
 deactivate rf
 
 cc-->db: save(clientUser)
+
+activate db
+
+deactivate db
 
 cc-->ui: user
 

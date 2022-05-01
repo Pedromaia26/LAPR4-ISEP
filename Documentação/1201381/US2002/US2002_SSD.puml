@@ -1,0 +1,18 @@
+@startuml
+autonumber
+actor "Warehouse Employee" as WE
+participant "ConfigureAGVUI" as UI
+
+activate WE
+WE -> UI : initiates the process of configuring an AGV
+activate UI
+UI --> WE : requests data (id, briefDescription, \nmodel, maxWeightCapacity, range)
+deactivate UI
+WE -> UI : type the requested data
+activate UI
+
+UI --> WE : informs operation sucess
+deactivate UI
+
+deactivate WE
+@enduml
