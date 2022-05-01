@@ -36,6 +36,7 @@ public class AddOrderUI  extends AbstractUI {
                 System.out.println("Invalid VAT. Client does not exist!");
                 AddCostumerUI addCostumerUI = new AddCostumerUI();
                 addCostumerUI.show();
+                productOrder = theOrderController.addOrder(clientVat);
             }
 
             if (Console.readLine("Do you want to see the products catalog? (Y/N)").equals("Y")) {
@@ -78,22 +79,29 @@ public class AddOrderUI  extends AbstractUI {
                 deliveringPostalAddress.add(s.split(","));
             }
             else if (op1.equals("Y")){
-                System.out.println("--- List of " + clientVat + " client delivering postal addresses ---");
                 Set<String> deliveringPostalAddresses = theUserController.deliveringAddressOfAClient(clientVat);
                 lists = new ArrayList<>();
                 deliveringPostalAddresses.iterator().forEachRemaining(lists::add);
-                for (String address : lists){
-                    System.out.println(index + " - " + address);
-                    index++;
-                }
-                String ad = "default";
-                do{
-                    if (!ad.equals("default")){
-                        System.out.println("Invalid chosen address. Choose again!");
+                if (lists.size() > 0){
+                    System.out.println("--- List of " + clientVat + " client delivering postal addresses ---");
+                    for (String address : lists){
+                        System.out.println(index + " - " + address);
+                        index++;
                     }
-                    ad = Console.readLine("Select one of the addresses");
-                } while (Integer.parseInt(ad) >= index || Integer.parseInt(ad) <= 0);
-                deliveringPostalAddress.add(lists.get(Integer.parseInt(ad)-1).split(","));
+                    String ad = "default";
+                    do{
+                        if (!ad.equals("default")){
+                            System.out.println("Invalid chosen address. Choose again!");
+                        }
+                        ad = Console.readLine("Select one of the addresses");
+                    } while (Integer.parseInt(ad) >= index || Integer.parseInt(ad) <= 0);
+                    deliveringPostalAddress.add(lists.get(Integer.parseInt(ad)-1).split(","));
+                }
+                else {
+                    System.out.println("There are no delivering postal addresses associated to the client!");
+                    String s = Console.readLine("Delivering Postal Address (Street name, Door number, Postal code, City, Country)");
+                    deliveringPostalAddress.add(s.split(","));
+                }
             }
 
             index = 1;
@@ -104,22 +112,29 @@ public class AddOrderUI  extends AbstractUI {
                 billingPostalAddress.add(s.split(","));
             }
             else if (op1.equals("Y")){
-                System.out.println("--- List of " + clientVat + " client delivering postal addresses ---");
                 Set<String> billingPostalAddresses = theUserController.billingAddressOfAClient(clientVat);
                 lists = new ArrayList<>();
                 billingPostalAddresses.iterator().forEachRemaining(lists::add);
-                for (String address : lists){
-                    System.out.println(index + " - " + address);
-                    index++;
-                }
-                String ad = "default";
-                do{
-                    if (!ad.equals("default")){
-                        System.out.println("Invalid chosen address. Choose again!");
+                if (lists.size() > 0){
+                    System.out.println("--- List of " + clientVat + " client billing postal addresses ---");
+                    for (String address : lists){
+                        System.out.println(index + " - " + address);
+                        index++;
                     }
-                    ad = Console.readLine("Select one of the addresses");
-                } while (Integer.parseInt(ad) >= index || Integer.parseInt(ad) <= 0);
-                billingPostalAddress.add(lists.get(Integer.parseInt(ad)-1).split(","));
+                    String ad = "default";
+                    do{
+                        if (!ad.equals("default")){
+                            System.out.println("Invalid chosen address. Choose again!");
+                        }
+                        ad = Console.readLine("Select one of the addresses");
+                    } while (Integer.parseInt(ad) >= index || Integer.parseInt(ad) <= 0);
+                    billingPostalAddress.add(lists.get(Integer.parseInt(ad)-1).split(","));
+                }
+                else{
+                    System.out.println("There are no billing postal addresses associated to the client!");
+                    String s = Console.readLine("Billing Postal Address (Street name, Door number, Postal code, City, Country)");
+                    billingPostalAddress.add(s.split(","));
+                }
             }
 
             double shipmentCost = 0;
