@@ -2,11 +2,15 @@
 actor SalesClerk as adm
 participant "//<<presentation>>//\nAddCostumerUI" as ui
 participant "//<<application>>//\nAddCostumerController" as cc
-participant "//<<builder>>//\nUserBuilder" as build
-participant "//<<domain>>//\nuser:User" as user
+participant "//<<CUbuilder>>//\nClientUserBuilder" as build
+participant "//<<SUbuilder>>//\nSystemUserBuilder" as SUbuild
+participant "//<<domain>>//\nsystemUser:SystemUser" as SysUser
+participant "//<<domain>>//\nclientUser:ClientUser" as CliUser
 participant "//<<persistance>>//\nPersistanceContext" as pc
 participant "//<<factory>>//\nRepositoryFactory" as rf
-database "//<<repository>>//\nUserRepository" as db
+database "//<<repository>>//\nClientUserRepository" as db
+database "//<<repository>>//\nSystemUserRepository" as sysdb
+
 
 autonumber
 
@@ -16,35 +20,47 @@ activate ui
 
 ui-->cc: create
 
+
 ui-->adm: asks user information
 
+deactivate ui
+
+
 adm-->ui: Username, password, First name, Last name,\nE-mail, Role, Calendar, VAT, Phone Number,\nGender, Birthday, Del address, Bill address
+activate ui
 
-loop option != 0
-
-ui-->adm: Show list of role types
-
-adm-->ui: Role type
-
-end
 
 ui-->cc: addUser(username, password, firstName, lastName,\nemail, roles, createdOn, vat, phoneNumber, gender,\n birthDay, delAddress, billAddress)
 
+
 activate cc
+
+cc-->SUbuild: create
+
+
 
 cc-->build: create
 
-cc-->build: setUsername(username)
 
-cc-->build: createUser()
+cc-->SUbuild: createSystemUser(Username, password, First name, Last name, E-mail,roles)
+activate SUbuild
+
+SUbuild-->SysUser: systemUser=create(Username, password, First name, Last name, E-mail,roles)
+SUbuild-->cc:systemUser
+
+deactivate SUbuild
+cc-->sysdb:save(systemUser)
+
+activate sysdb
+deactivate sysdb
+
+cc-->build: createUser(systemUser,vat, phoneNumber, gender,birthDay, delAddress, billAddress)
 
 activate build
 
-build-->user: create(username, password, firstName, lastName,\nemail, roles, createdOn, vat, phoneNumber, gender,\n birthDay, delAddress, billAddress)
+build-->user: clientUser=create(systemUser,vat, phoneNumber, gender,birthDay, delAddress, billAddress)
 
-user-->build: user
-
-build-->cc: user
+build-->cc: clientUser
 
 deactivate build
 
@@ -68,7 +84,7 @@ rf-->cc: userRepository
 
 deactivate rf
 
-cc-->db: save(user)
+cc-->db: save(clientUser)
 
 cc-->ui: user
 
