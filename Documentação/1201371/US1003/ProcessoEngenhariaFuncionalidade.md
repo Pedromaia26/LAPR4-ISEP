@@ -1,26 +1,19 @@
-# USDemo1
+US1003
 =======================================
-
 
 # 1. Requisitos
 
-*Nesta secção a equipa deve indicar a funcionalidade desenvolvida bem como descrever a sua interpretação sobre a mesma e sua correlação e/ou dependência de/com outros requisitos.*
+Como um Sales Clerk:
+* Eu quero registar um cliente
 
-*Exemplo*
-
-**Demo1** Como {Ator} pretendo...
-
-- Demo1.1. Blá Blá Blá ...
-
-- Demo1.2. Blá Blá Blá ...
-
-A interpretação feita deste requisito foi no sentido de ...
+A interpretação feita deste requisito foi no sentido de criar um objeto AGV, e indicar, para além das suas características, o AGV dock (localizado na warehouse) a que está associado, sendo que este não deve estar associado a outro AGV.
+Esta funcionalidade tem dependência da US 2001 (Criar uma warehouse).
 
 # 2. Análise
 
-*Neste secção a equipa deve relatar o estudo/análise/comparação que fez com o intuito de tomar as melhores opções de design para a funcionalidade bem como aplicar diagramas/artefactos de análise adequados.*
+Na user story 1003, depois de o sales clerk fazer login no sistema e selecionar a opção de registar o customer, este vai ter de inserir os dados do customer, desde o username, até ao número de telefone, para além disto tem também a opção de inserir campus não obrigatórios, tais como a data de nascimento ou as moradas. Após a inserção os dados são enviados para o controller onde temos dois repositórios, o de systemuser e o de clientuser, onde primeiramente vamos dar “save” ao system user( campus como username, email, etc) e posteriormente o client user(campos como o vat, phone numeber, etc) . Para garantir que ambos são inseridos se acontecer algum erro, criamos uma transação antes do primeiro save, e damos comit no fim do segundo. Antes de fazer o save os dados são enviados para um builder, onde criam o objeto que eventualmente vai levar “save”.
 
-*Recomenda-se que organize este conteúdo por subsecções.*
+# 3. Design
 
 ## 3.1. Realização da Funcionalidade
 
@@ -36,31 +29,12 @@ A interpretação feita deste requisito foi no sentido de ...
 
 ## 3.3. Padrões Aplicados
 
-*Nesta secção deve apresentar e explicar quais e como foram os padrões de design aplicados e as melhores práticas.*
-
-## 3.4. Testes 
-*Nesta secção deve sistematizar como os testes foram concebidos para permitir uma correta aferição da satisfação dos requisitos.*
-
-**Teste 1:** Verificar que não é possível criar uma instância da classe Exemplo com valores nulos.
-
-	@Test(expected = IllegalArgumentException.class)
-		public void ensureNullIsNotAllowed() {
-		Exemplo instance = new Exemplo(null, null);
-	}
+- Controller
+- Builder
+- Repository
+- Factory
 
 # 4. Implementação
 
-*Nesta secção a equipa deve providenciar, se necessário, algumas evidências de que a implementação está em conformidade com o design efetuado. Para além disso, deve mencionar/descrever a existência de outros ficheiros (e.g. de configuração) relevantes e destacar commits relevantes;*
-
-*Recomenda-se que organize este conteúdo por subsecções.*
-
-# 5. Integração/Demonstração
-
-*Nesta secção a equipa deve descrever os esforços realizados no sentido de integrar a funcionalidade desenvolvida com as restantes funcionalidades do sistema.*
-
-# 6. Observações
-
-*Nesta secção sugere-se que a equipa apresente uma perspetiva critica sobre o trabalho desenvolvido apontando, por exemplo, outras alternativas e ou trabalhos futuros relacionados.*
-
-
+Na user story 1003, depois de o sales clerk fazer login no sistema e selecionar a opção de registar o customer, este vai ter de inserir os dados do customer, desde o username, até ao número de telefone, para além disto tem também a opção de inserir campus não obrigatórios, tais como a data de nascimento ou as moradas. Após a inserção os dados são enviados para o controller onde temos dois repositórios, o de systemuser e o de clientuser, onde primeiramente vamos dar “save” ao system user( campus como username, email, etc) e posteriormente o client user(campos como o vat, phone numeber, etc) . Para garantir que ambos são inseridos se acontecer algum erro, criamos uma transação antes do primeiro save, e damos comit no fim do segundo. Antes de fazer o save os dados são enviados para um builder, onde criam o objeto que eventualmente vai levar “save”.
 

@@ -1,26 +1,30 @@
-# USDemo1
+US1004
 =======================================
 
 
 # 1. Requisitos
 
-*Nesta secção a equipa deve indicar a funcionalidade desenvolvida bem como descrever a sua interpretação sobre a mesma e sua correlação e/ou dependência de/com outros requisitos.*
+Como um Sales Clerk:
+* Eu quero criar um pedido de produtos dado um cliente
 
-*Exemplo*
-
-**Demo1** Como {Ator} pretendo...
-
-- Demo1.1. Blá Blá Blá ...
-
-- Demo1.2. Blá Blá Blá ...
-
-A interpretação feita deste requisito foi no sentido de ...
+A interpretação feita deste requisito foi no sentido de criar um objeto ProductOrder (constituído por orderLines), e indicar, para além dos seus atributos, a que cliente está associado. Poderá também escolher se quer usar um dos endereços de entrega e cobrança do cliente ou então introduzir novos endereços.<br>
+Esta funcionalidade tem dependência da US 1001 (Criar um produto), da US 1003 (Criar um cliente) e da US 1002 (Apresentar o catálogo de produtos), uma vez que existe a opção de visualizar o catálogo antes de inserir os produtos.
 
 # 2. Análise
 
-*Neste secção a equipa deve relatar o estudo/análise/comparação que fez com o intuito de tomar as melhores opções de design para a funcionalidade bem como aplicar diagramas/artefactos de análise adequados.*
+##Criação de OrderLines
 
-*Recomenda-se que organize este conteúdo por subsecções.*
+A solução adotada nesta US passa pela criação de linhas do pedido, em que cada linha remte para um produto e a quantidade pedida do mesmo. O pedido de produtos em si é o conjunto de todas as orderLines associadas a ele.
+
+##Taxas aplicadas aos produtos
+
+Dado que existe pouca informação relativamente às taxas aplicadas ao produto, consideramos (não só nesta US) que o país de utilização da aplicação é Portugal e, então, aplicamos o IVA aos produtos selecionados.
+
+##Atribuição de Status
+
+No final da criação do ProductOrder, associamos o status de "Registered" de início.
+
+# 3. Design
 
 ## 3.1. Realização da Funcionalidade
 
@@ -36,31 +40,7 @@ A interpretação feita deste requisito foi no sentido de ...
 
 ## 3.3. Padrões Aplicados
 
-*Nesta secção deve apresentar e explicar quais e como foram os padrões de design aplicados e as melhores práticas.*
-
-## 3.4. Testes 
-*Nesta secção deve sistematizar como os testes foram concebidos para permitir uma correta aferição da satisfação dos requisitos.*
-
-**Teste 1:** Verificar que não é possível criar uma instância da classe Exemplo com valores nulos.
-
-	@Test(expected = IllegalArgumentException.class)
-		public void ensureNullIsNotAllowed() {
-		Exemplo instance = new Exemplo(null, null);
-	}
-
-# 4. Implementação
-
-*Nesta secção a equipa deve providenciar, se necessário, algumas evidências de que a implementação está em conformidade com o design efetuado. Para além disso, deve mencionar/descrever a existência de outros ficheiros (e.g. de configuração) relevantes e destacar commits relevantes;*
-
-*Recomenda-se que organize este conteúdo por subsecções.*
-
-# 5. Integração/Demonstração
-
-*Nesta secção a equipa deve descrever os esforços realizados no sentido de integrar a funcionalidade desenvolvida com as restantes funcionalidades do sistema.*
-
-# 6. Observações
-
-*Nesta secção sugere-se que a equipa apresente uma perspetiva critica sobre o trabalho desenvolvido apontando, por exemplo, outras alternativas e ou trabalhos futuros relacionados.*
-
-
-
+- Controller
+- Builder
+- Repository
+- Factory

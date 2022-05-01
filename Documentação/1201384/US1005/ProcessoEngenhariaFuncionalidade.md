@@ -1,4 +1,4 @@
-US1001
+US1005
 =======================================
 
 
@@ -34,10 +34,7 @@ As categorias são necessárias criar para podermos especificar um produto para 
 
 ## 3.3. Padrões Aplicados
 
-*Nesta secção deve apresentar e explicar quais e como foram os padrões de design aplicados e as melhores práticas.*
-
-# 4. Implementação
-
-*Nesta secção a equipa deve providenciar, se necessário, algumas evidências de que a implementação está em conformidade com o design efetuado. Para além disso, deve mencionar/descrever a existência de outros ficheiros (e.g. de configuração) relevantes e destacar commits relevantes;*
-
-*Recomenda-se que organize este conteúdo por subsecções.*
+- Controller
+- Builder
+- Repository
+- Factory
