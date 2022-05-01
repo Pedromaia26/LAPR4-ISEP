@@ -8,3 +8,4 @@
 | Sprint | Funcionalidade    |
 |--------|-------------------|
 | **B**  | [US1002](USDemo1) |
+| **B**  | [US1005](USDemo1) |
