@@ -10,22 +10,21 @@ entity User
 enum WarehouseEmployee
 enum SalesClerk
 enum SalesManager
-enum Administrator
-
-object VAT_id
-object email
-object Phone_number
+enum Admin
+object VAT
+object Email
+object PhoneNumber
 object Birthday
 object Gender
-object Delivering_postal_addresses
-object Billing_postal_addresses
-Customer --> VAT_id
-Customer --> email
-Customer --> Phone_number
+object DeliveringPostalAddresses
+object BillingPostalAddresses
+Customer --> VAT
+Customer --> Email
+Customer --> PhoneNumber
 Customer --> Birthday
 Customer --> Gender
-Customer --> Delivering_postal_addresses
-Customer --> Billing_postal_addresses
+Customer --> DeliveringPostalAddresses
+Customer --> BillingPostalAddresses
 
 object User_id
 object Name
@@ -36,6 +35,6 @@ Customer -left--|> User
 WarehouseEmployee --|> User
 SalesClerk -up--|> User
 SalesManager -right--|> User
-Administrator -right--|> User
+Admin -right--|> User
 
 @enduml

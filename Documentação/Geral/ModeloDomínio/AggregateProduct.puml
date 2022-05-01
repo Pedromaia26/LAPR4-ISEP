@@ -1,0 +1,42 @@
+@startuml Modelo de domínio
+' hide the spot
+
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+entity Product
+object Barcode
+object Brand
+object ShortDescription
+object TechnicalDescription
+object ExtendedDescription
+object InternalCode
+object ProductionCode
+object Height
+object Length
+object Width
+object Weight
+object Photo
+object Price
+object Reference
+
+
+Product --> Barcode
+Product --> Brand
+Product --> ShortDescription
+Product --> TechnicalDescription
+Product --> ExtendedDescription
+Product --> InternalCode
+Product --> ProductionCode
+Product --> Height
+Product --> Length
+Product --> Width
+Product --> Weight
+Product --> Photo
+Product --> Price
+Product --> Reference
+
+
+
+@enduml

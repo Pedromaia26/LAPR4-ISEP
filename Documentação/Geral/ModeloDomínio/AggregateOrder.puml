@@ -1,0 +1,30 @@
+@startuml Modelo de domínio
+' hide the spot
+
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+entity Order
+entity OrderLine
+object Cost
+object PaymentMethod
+object Quantity
+object ShipmentCost
+object TotalAmountWithoutTaxes
+object TotalAmountWithTaxes
+
+Order "1" --> "1..*" OrderLine : contains
+
+
+Order --> OrderLine
+Order --> PaymentMethod
+Order --> ShipmentCost
+Order --> TotalAmountWithoutTaxes
+Order --> TotalAmountWithTaxes
+OrderLine --> Cost
+OrderLine --> Quantity
+
+
+
+@enduml

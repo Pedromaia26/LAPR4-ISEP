@@ -1,0 +1,14 @@
+@startuml Modelo de domínio
+' hide the spot
+
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+entity Task
+object Description
+
+Task --> Description
+
+
+@enduml

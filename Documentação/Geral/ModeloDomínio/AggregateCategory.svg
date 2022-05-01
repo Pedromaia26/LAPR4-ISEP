@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="164px" preserveAspectRatio="none" style="width:275px;height:164px;background:#FFFFFF;" version="1.1" viewBox="0 0 275 164" width="275px" zoomAndPan="magnify"><defs><filter height="300%" id="fmjcm5sdvvv89" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[a96594a83e2ecdc78cbf17c2ddf01934]
+class Category--><rect codeLine="7" fill="#FEFECE" filter="url(#fmjcm5sdvvv89)" height="48" id="Category" style="stroke:#A80036;stroke-width:1.5;" width="81" x="85" y="7"/><ellipse cx="100" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M98.5,24 L98.5,26 L102.5,26 L102.5,25 L102.5,24.5156 L103.125,24 L103.5,24 L103.875,24 L104.5,24.5156 L104.5,25 L104.5,28 L96.5,28 L96.0156,28 L95.5,27.375 L95.5,27 L95.5,26.625 L96.0156,26 L96.5,26 L96.5,26 L96.5,20 L96.5,20 L96.0156,20 L95.5,19.375 L95.5,19 L95.5,18.625 L96.0156,18 L96.5,18 L104.5,18 L104.5,21 L104.5,21.4844 L103.875,22 L103.5,22 L103.125,22 L102.5,21.4844 L102.5,21 L102.5,20 L98.5,20 L98.5,22 L99.5,22 L99.5,21.5156 L99.5,21.5156 L100.125,21 L100.5,21 L100.875,21 L101.5,21.5156 L101.5,22 L101.5,24 L101.5,24.4844 L100.875,25 L100.875,25 L100.5,25 L100.125,25 L99.5,24.4844 L99.5,24.4844 L99.5,24 L98.5,24 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="49" x="114" y="27.9102">Category</text><line style="stroke:#A80036;stroke-width:1.5;" x1="86" x2="165" y1="39" y2="39"/><line style="stroke:#A80036;stroke-width:1.5;" x1="86" x2="165" y1="47" y2="47"/><rect fill="#FEFECE" filter="url(#fmjcm5sdvvv89)" height="35.0938" style="stroke:#A80036;stroke-width:1.5;" width="93" x="7" y="115"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="79" x="14" y="129.457">CategoryCode</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="99" y1="134.0938" y2="134.0938"/><rect fill="#FEFECE" filter="url(#fmjcm5sdvvv89)" height="35.0938" style="stroke:#A80036;stroke-width:1.5;" width="126" x="135.5" y="115"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="112" x="142.5" y="129.457">CategoryDescription</text><line style="stroke:#A80036;stroke-width:1.5;" x1="136.5" x2="260.5" y1="134.0938" y2="134.0938"/><!--MD5=[46a55804caabf61b4c086e5fd3a9bceb]
+link Category to CategoryCode--><path codeLine="11" d="M92.5,55.05 C92.5,55.05 92.5,109.97 92.5,109.97 " fill="none" id="Category-to-CategoryCode" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="92.5,114.97,96.5,105.97,92.5,109.97,88.5,105.97,92.5,114.97" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[308b781f5c16e3905781d51317e758af]
+link Category to CategoryDescription--><path codeLine="12" d="M150.75,55.05 C150.75,55.05 150.75,109.97 150.75,109.97 " fill="none" id="Category-to-CategoryDescription" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="150.75,114.97,154.75,105.97,150.75,109.97,146.75,105.97,150.75,114.97" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[693db10679205aa8eed4ff49128c6ea1]
+@startuml Modelo de domínio
+' hide the spot
+
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+entity Category
+object CategoryCode
+object CategoryDescription
+
+Category - -> CategoryCode
+Category - -> CategoryDescription
+
+
+@enduml
+
+@startuml Modelo de domínio
+
+
+skinparam linetype ortho
+
+entity Category
+object CategoryCode
+object CategoryDescription
+
+Category - -> CategoryCode
+Category - -> CategoryDescription
+
+
+@enduml
+
+PlantUML version 1.2022.1(Tue Feb 01 18:19:58 GMT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: Dynamic Code Evolution 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>
