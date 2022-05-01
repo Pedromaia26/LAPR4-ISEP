@@ -1,0 +1,68 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class AddCostumerUI
+class AddCostumerController
+class ClientUserBuilder
+class SystemUserBuilder
+class ClientUser
+class SystemUser
+class PersistanceContext
+class RepositoryFactory
+class ClientUserRepository << (I,a777d1) >>
+class SystemUserRepository << (I,a777d1) >>
+
+class AddCostumerController{
+    - addUser(username, password, firstName, lastName,\nemail, roles, createdOn, vat, phoneNumber, gender,\n birthDay, delAddress, billAddress)
+}
+
+class ClientUserBuilder{
+    - createUser(systemUser,vat, phoneNumber,\n gender,birthDay, delAddress, billAddress)
+}
+
+class SystemUserBuilder{
+    - createUser(Username, password, First name, Last name, E-mail,roles)
+}
+
+class ClientUser{
+    - create(systemUser,vat, phoneNumber,\n gender,birthDay, delAddress, billAddress)
+}
+
+class SystemUser{
+    - create(Username, password, First name, Last name, E-mail,roles)
+}
+
+class PersistanceContext{
+    - repositories()
+}
+
+class RepositoryFactory{
+    - users()
+}
+
+class ClientUserRepository {
+    - instance()
+    - save(clientUser)
+}
+
+class SystemUserRepository {
+    - instance()
+    - save(systemUser)
+}
+
+
+AddCostumerUI--> AddCostumerController
+AddCostumerController--> ClientUserBuilder
+ClientUserBuilder--> ClientUser
+AddCostumerController--> SystemUserBuilder
+SystemUserBuilder--> SystemUser
+AddCostumerController--> PersistanceContext
+AddCostumerController--> RepositoryFactory
+AddCostumerController--> ClientUser
+AddCostumerController--> SystemUser
+AddCostumerController--> ClientUserRepository 
+AddCostumerController--> SystemUserRepository 
+PersistanceContext--> RepositoryFactory
+RepositoryFactory--> ClientUserRepository 
+RepositoryFactory--> SystemUserRepository 
+@enduml
