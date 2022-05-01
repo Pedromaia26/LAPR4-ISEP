@@ -20,4 +20,8 @@ public class Length implements ValueObject {
     public Length() {
 
     }
+
+    public double length() {
+        return length;
+    }
 }

@@ -100,59 +100,6 @@ public class Product implements AggregateRoot<InternalCode> {
 
     }
 
-    public Weight getWeight() {
-        return weight;
-    }
-
-    public Width getWidth() {
-        return width;
-    }
-
-    public Length getLength() {
-        return length;
-    }
-
-    public Height getHeight() {
-        return height;
-    }
-
-    public Barcode getBarcode() {
-        return barcode;
-    }
-
-    public Price getPrice() {
-        return price;
-    }
-
-    public ProductionCode getProductionCode() {
-        return productionCode;
-    }
-
-    public Reference getReference() {
-        return reference;
-    }
-
-    public Brand getBrand() {
-        return brand;
-    }
-
-    public TechnicalDescription getTechnicalDescription() {
-        return technicalDescription;
-    }
-
-    public ExtendedDescription getExtendedDescription() {
-        return extendedDescription;
-    }
-
-    public ShortDescription getShortDescription() {
-        return shortDescription;
-    }
-
-    public Photo getPhoto() {
-        return photo;
-    }
-
-
     @Override
     public boolean sameAs(Object other) {
         return DomainEntities.areEqual(this, other);
@@ -194,7 +141,7 @@ public class Product implements AggregateRoot<InternalCode> {
         return shortDescription;
     }
 
-    public void modifysetShortDescription(ShortDescription shortDescription) {
+    public void modifyShortDescription(ShortDescription shortDescription) {
         this.shortDescription = shortDescription;
     }
 

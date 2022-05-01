@@ -20,4 +20,8 @@ public class Width implements ValueObject {
     public Width() {
 
     }
+
+    public double width() {
+        return width;
+    }
 }

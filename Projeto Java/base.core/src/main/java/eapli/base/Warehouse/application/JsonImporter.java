@@ -1,9 +1,10 @@
-package eapli.base.Warehouse.domain;
+package eapli.base.Warehouse.application;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
+import eapli.base.Warehouse.domain.*;
 import eapli.base.Warehouse.repositories.*;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.framework.domain.repositories.TransactionalContext;

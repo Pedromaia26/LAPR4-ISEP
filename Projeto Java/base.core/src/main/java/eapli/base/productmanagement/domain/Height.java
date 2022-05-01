@@ -20,4 +20,8 @@ public class Height implements ValueObject {
     public Height() {
 
     }
+
+    public double height() {
+        return height;
+    }
 }

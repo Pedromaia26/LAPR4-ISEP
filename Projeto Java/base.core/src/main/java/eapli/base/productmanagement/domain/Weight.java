@@ -20,4 +20,8 @@ public class Weight implements ValueObject {
     public Weight() {
 
     }
+
+    public double weight() {
+        return weight;
+    }
 }

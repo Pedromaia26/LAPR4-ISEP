@@ -55,7 +55,6 @@ public class ProductBuilder implements DomainFactory<Product> {
         withWeight(weight);
         withCategory(category);
         withShelf(shelf);
-
     }
 
 
