@@ -1,0 +1,85 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class AddOrderUI
+class AddOrderController
+class AddOrderLineController
+class ProductOrder
+class OrderLine
+class OrderRepository << (I,a777d1) >>
+class OrderLineRepository << (I,a777d1) >>
+
+class AddOrderController{
+    - addOrder(clientvat, status, createdOn)
+    - addOrder(deliveringPostalAddress, billingPostalAddress, shippingMethod, paymentMethod)
+}
+
+class AddOrderLineController{
+    - addOrderLine(productId, order, quantity, unitPrice)
+}
+
+class ProductOrderBuilder{
+    - withClientvat(clientvat)
+    - withStatus(status)
+    - withCreatedOn(createdOn)
+    - withDeliveringPostalAddress(deliveringPostalAddress)
+    - withBillingPostalAddress(billingPostalAddress)
+    - withShippingMethod(shippingMethod)
+    - withBillingPaymentMethod(paymentMethod)
+    - withTotalAmmountWithTaxes(totalAmmountWithTaxes)
+    - withShipmentCost(shipmentCost)
+}
+
+class OrderLineBuilder{
+    - withProduct(productId)
+    - withOrder(order)
+    - withQuantity(quantity)
+    - withUnitPrice(unitPrice)
+}
+
+class ProductOrder{
+    + clientvat
+    + status
+    + createdOn
+    + deliveringPostalAddress
+    + billingPostalAddress
+    + shippingMethod
+    + paymentMethod
+    + totalAmmountWithTaxes
+    + shipmentCost
+    - create(clientvat, status, cratedOn, deliveringPostalAddress, billingPostalAddress,\nshippingMethod, paymentMethod, totalAmmountWithTaxes, shipmentCost)
+}
+
+class OrderLine{
+    + productId
+    + order
+    + quantity
+    + unitPrice
+    - create(productId, order, quantity, unitPrice)
+}
+
+
+class OrderRepository {
+    - instance()
+    - productOrder()
+    - save(productOrder)
+}
+
+class OrderLineRepository {
+    - instance()
+    - OrderLine()
+    - save(orderLine)
+}
+
+
+AddOrderUI--> AddOrderController
+AddOrderUI--> AddOrderLineController
+AddOrderController--> ProductOrderBuilder
+AddOrderController--> ProductOrder
+ProductOrderBuilder--> ProductOrder
+AddOrderController--> OrderRepository
+AddOrderLineController--> OrderLineBuilder
+AddOrderLineController--> OrderLine
+OrderLineBuilder--> OrderLine
+AddOrderLineController--> OrderLineRepository
+@enduml
