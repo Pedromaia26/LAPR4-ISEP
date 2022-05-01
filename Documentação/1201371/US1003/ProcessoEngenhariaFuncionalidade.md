@@ -22,19 +22,17 @@ A interpretação feita deste requisito foi no sentido de ...
 
 *Recomenda-se que organize este conteúdo por subsecções.*
 
-# 3. Design
-
-*Nesta secção a equipa deve descrever o design adotado para satisfazer a funcionalidade. Entre outros, a equipa deve apresentar diagrama(s) de realização da funcionalidade, diagrama(s) de classes, identificação de padrões aplicados e quais foram os principais testes especificados para validar a funcionalidade.*
-
-*Para além das secções sugeridas, podem ser incluídas outras.*
-
 ## 3.1. Realização da Funcionalidade
 
-*Nesta secção deve apresentar e descrever o fluxo/sequência que permite realizar a funcionalidade.*
+###Diagrama SSD
+![US1003_SSD](US1003_SSD.svg)
+
+###Diagrama SD
+![US1003_SD](US1003_SD.svg)
 
 ## 3.2. Diagrama de Classes
 
-*Nesta secção deve apresentar e descrever as principais classes envolvidas na realização da funcionalidade.*
+![US1003_CD](US1003_CD.svg)
 
 ## 3.3. Padrões Aplicados
 
