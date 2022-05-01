@@ -4,7 +4,7 @@ skinparam linetype ortho
 
 entity Warehouse
 entity Aisle
-entity Row
+entity Section
 entity Shelf
 object AisleIdentifer
 object AisleLocation
@@ -17,12 +17,12 @@ object ShelfLocation
 
 
 Warehouse "1" --> "1..*" Aisle : organized by
-Aisle "1" --> "1..*" Row : divided by
-Row "1" --> "1..*" Shelf  : contains
+Aisle "1" --> "1..*" Section : divided by
+Section "1" --> "1..*" Shelf  : contains
 Aisle --> AisleIdentifer
 Aisle --> AisleLocation
-Row --> RowIdentifier
-Row --> RowLocation
+Section --> RowIdentifier
+Section --> RowLocation
 Shelf --> ShelfIdentifier
 Shelf --> ShelfLocation
 

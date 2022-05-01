@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="164px" preserveAspectRatio="none" style="width:1496px;height:164px;background:#FFFFFF;" version="1.1" viewBox="0 0 1496 164" width="1496px" zoomAndPan="magnify"><defs><filter height="300%" id="f1delk58vkquym" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[72136138052d025cffdce3c22fbd185f]
+class Product--><rect codeLine="7" fill="#FEFECE" filter="url(#f1delk58vkquym)" height="48" id="Product" style="stroke:#A80036;stroke-width:1.5;" width="74" x="845" y="7"/><ellipse cx="860" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M858.5,24 L858.5,26 L862.5,26 L862.5,25 L862.5,24.5156 L863.125,24 L863.5,24 L863.875,24 L864.5,24.5156 L864.5,25 L864.5,28 L856.5,28 L856.0156,28 L855.5,27.375 L855.5,27 L855.5,26.625 L856.0156,26 L856.5,26 L856.5,26 L856.5,20 L856.5,20 L856.0156,20 L855.5,19.375 L855.5,19 L855.5,18.625 L856.0156,18 L856.5,18 L864.5,18 L864.5,21 L864.5,21.4844 L863.875,22 L863.5,22 L863.125,22 L862.5,21.4844 L862.5,21 L862.5,20 L858.5,20 L858.5,22 L859.5,22 L859.5,21.5156 L859.5,21.5156 L860.125,21 L860.5,21 L860.875,21 L861.5,21.5156 L861.5,22 L861.5,24 L861.5,24.4844 L860.875,25 L860.875,25 L860.5,25 L860.125,25 L859.5,24.4844 L859.5,24.4844 L859.5,24 L858.5,24 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="42" x="874" y="27.9102">Product</text><line style="stroke:#A80036;stroke-width:1.5;" x1="846" x2="918" y1="39" y2="39"/><line style="stroke:#A80036;stroke-width:1.5;" x1="846" x2="918" y1="47" y2="47"/><rect fill="#FEFECE" filter="url(#f1delk58vkquym)" height="35.0938" style="stroke:#A80036;stroke-width:1.5;" width="60" x="7" y="115"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="46" x="14" y="129.457">Barcode</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="66" y1="134.0938" y2="134.0938"/><rect fill="#FEFECE" filter="url(#f1delk58vkquym)" height="35.0938" style="stroke:#A80036;stroke-width:1.5;" width="47" x="102.5" y="115"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="33" x="109.5" y="129.457">Brand</text><line style="stroke:#A80036;stroke-width:1.5;" x1="103.5" x2="148.5" y1="134.0938" y2="134.0938"/><rect fill="#FEFECE" filter="url(#f1delk58vkquym)" height="35.0938" style="stroke:#A80036;stroke-width:1.5;" width="106" x="185" y="115"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="92" x="192" y="129.457">ShortDescription</text><line style="stroke:#A80036;stroke-width:1.5;" x1="186" x2="290" y1="134.0938" y2="134.0938"/><rect fill="#FEFECE" filter="url(#f1delk58vkquym)" height="35.0938" style="stroke:#A80036;stroke-width:1.5;" width="130" x="326" y="115"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="116" x="333" y="129.457">TechnicalDescription</text><line style="stroke:#A80036;stroke-width:1.5;" x1="327" x2="455" y1="134.0938" y2="134.0938"/><rect fill="#FEFECE" filter="url(#f1delk58vkquym)" height="35.0938" style="stroke:#A80036;stroke-width:1.5;" width="128" x="491" y="115"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="114" x="498" y="129.457">ExtendedDescription</text><line style="stroke:#A80036;stroke-width:1.5;" x1="492" x2="618" y1="134.0938" y2="134.0938"/><rect fill="#FEFECE" filter="url(#f1delk58vkquym)" height="35.0938" style="stroke:#A80036;stroke-width:1.5;" width="85" x="654.5" y="115"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="71" x="661.5" y="129.457">InternalCode</text><line style="stroke:#A80036;stroke-width:1.5;" x1="655.5" x2="738.5" y1="134.0938" y2="134.0938"/><rect fill="#FEFECE" filter="url(#f1delk58vkquym)" height="35.0938" style="stroke:#A80036;stroke-width:1.5;" width="103" x="774.5" y="115"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="89" x="781.5" y="129.457">ProductionCode</text><line style="stroke:#A80036;stroke-width:1.5;" x1="775.5" x2="876.5" y1="134.0938" y2="134.0938"/><rect fill="#FEFECE" filter="url(#f1delk58vkquym)" height="35.0938" style="stroke:#A80036;stroke-width:1.5;" width="50" x="913" y="115"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="36" x="920" y="129.457">Height</text><line style="stroke:#A80036;stroke-width:1.5;" x1="914" x2="962" y1="134.0938" y2="134.0938"/><rect fill="#FEFECE" filter="url(#f1delk58vkquym)" height="35.0938" style="stroke:#A80036;stroke-width:1.5;" width="52" x="998" y="115"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="38" x="1005" y="129.457">Length</text><line style="stroke:#A80036;stroke-width:1.5;" x1="999" x2="1049" y1="134.0938" y2="134.0938"/><rect fill="#FEFECE" filter="url(#f1delk58vkquym)" height="35.0938" style="stroke:#A80036;stroke-width:1.5;" width="45" x="1085.5" y="115"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="31" x="1092.5" y="129.457">Width</text><line style="stroke:#A80036;stroke-width:1.5;" x1="1086.5" x2="1129.5" y1="134.0938" y2="134.0938"/><rect fill="#FEFECE" filter="url(#f1delk58vkquym)" height="35.0938" style="stroke:#A80036;stroke-width:1.5;" width="52" x="1166" y="115"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="38" x="1173" y="129.457">Weight</text><line style="stroke:#A80036;stroke-width:1.5;" x1="1167" x2="1217" y1="134.0938" y2="134.0938"/><rect fill="#FEFECE" filter="url(#f1delk58vkquym)" height="35.0938" style="stroke:#A80036;stroke-width:1.5;" width="46" x="1253" y="115"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="32" x="1260" y="129.457">Photo</text><line style="stroke:#A80036;stroke-width:1.5;" x1="1254" x2="1298" y1="134.0938" y2="134.0938"/><rect fill="#FEFECE" filter="url(#f1delk58vkquym)" height="35.0938" style="stroke:#A80036;stroke-width:1.5;" width="42" x="1334" y="115"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="28" x="1341" y="129.457">Price</text><line style="stroke:#A80036;stroke-width:1.5;" x1="1335" x2="1375" y1="134.0938" y2="134.0938"/><rect fill="#FEFECE" filter="url(#f1delk58vkquym)" height="35.0938" style="stroke:#A80036;stroke-width:1.5;" width="71" x="1411.5" y="115"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="57" x="1418.5" y="129.457">Reference</text><line style="stroke:#A80036;stroke-width:1.5;" x1="1412.5" x2="1481.5" y1="134.0938" y2="134.0938"/><!--MD5=[d52d4675e9eec1727cacff8adb24bf93]
+link Product to Barcode--><path codeLine="24" d="M844.88,14 C681.79,14 37,14 37,14 C37,14 37,109.76 37,109.76 " fill="none" id="Product-to-Barcode" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="37,114.76,41,105.76,37,109.76,33,105.76,37,114.76" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5aa13b7ab9f0c275d874c3b024766aa8]
+link Product to Brand--><path codeLine="25" d="M844.77,21 C692.6,21 126,21 126,21 C126,21 126,109.59 126,109.59 " fill="none" id="Product-to-Brand" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="126,114.59,130,105.59,126,109.59,122,105.59,126,114.59" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[ff6f7e6c179b97a3a11d359eab0adb49]
+link Product to ShortDescription--><path codeLine="26" d="M844.59,28 C707.15,28 238,28 238,28 C238,28 238,109.77 238,109.77 " fill="none" id="Product-to-ShortDescription" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="238,114.77,242,105.77,238,109.77,234,105.77,238,114.77" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[308bef9f33132c2b243ec8e9138be5c6]
+link Product to TechnicalDescription--><path codeLine="27" d="M844.69,35 C730.11,35 391,35 391,35 C391,35 391,109.62 391,109.62 " fill="none" id="Product-to-TechnicalDescription" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="391,114.62,395,105.62,391,109.62,387,105.62,391,114.62" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[f6039fb79c6ecc2101f694a642168494]
+link Product to ExtendedDescription--><path codeLine="28" d="M844.81,42 C759.1,42 555,42 555,42 C555,42 555,109.62 555,109.62 " fill="none" id="Product-to-ExtendedDescription" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="555,114.62,559,105.62,555,109.62,551,105.62,555,114.62" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[0821e12892cf20577cca50dd9d3655ef]
+link Product to InternalCode--><path codeLine="29" d="M844.56,49 C790.5,49 697,49 697,49 C697,49 697,109.79 697,109.79 " fill="none" id="Product-to-InternalCode" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="697,114.79,701,105.79,697,109.79,693,105.79,697,114.79" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[7119557809726774d3ef77edfe01616b]
+link Product to ProductionCode--><path codeLine="30" d="M861.25,55.05 C861.25,55.05 861.25,109.97 861.25,109.97 " fill="none" id="Product-to-ProductionCode" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="861.25,114.97,865.25,105.97,861.25,109.97,857.25,105.97,861.25,114.97" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[e9fe9366e1630c4a88b61ab5254f7a24]
+link Product to Height--><path codeLine="31" d="M895.25,55.17 C895.25,85.34 895.25,133 895.25,133 C895.25,133 907.64,133 907.64,133 " fill="none" id="Product-to-Height" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="912.64,133,903.64,129,907.64,133,903.64,137,912.64,133" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[fc4123f09278632b0f1be3b05acd3345]
+link Product to Length--><path codeLine="32" d="M919.31,49 C961.38,49 1024,49 1024,49 C1024,49 1024,109.79 1024,109.79 " fill="none" id="Product-to-Length" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1024,114.79,1028,105.79,1024,109.79,1020,105.79,1024,114.79" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[0c7c84c43e194efa454ae0b7e549dad0]
+link Product to Width--><path codeLine="33" d="M919.07,42 C983.18,42 1108,42 1108,42 C1108,42 1108,109.62 1108,109.62 " fill="none" id="Product-to-Width" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1108,114.62,1112,105.62,1108,109.62,1104,105.62,1108,114.62" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[21c45546ac8489a13fec8a125b2763ab]
+link Product to Weight--><path codeLine="34" d="M919.09,35 C1001.37,35 1192,35 1192,35 C1192,35 1192,109.62 1192,109.62 " fill="none" id="Product-to-Weight" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1192,114.62,1196,105.62,1192,109.62,1188,105.62,1192,114.62" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d712a9affdb0a2e6fd883f05aa145395]
+link Product to Photo--><path codeLine="35" d="M919.07,28 C1017.15,28 1276,28 1276,28 C1276,28 1276,109.77 1276,109.77 " fill="none" id="Product-to-Photo" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1276,114.77,1280,105.77,1276,109.77,1272,105.77,1276,114.77" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5fa2e163e1a5922a0d0ebcb119c05bb7]
+link Product to Price--><path codeLine="36" d="M919.12,21 C1030.62,21 1355,21 1355,21 C1355,21 1355,109.59 1355,109.59 " fill="none" id="Product-to-Price" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1355,114.59,1359,105.59,1355,109.59,1351,105.59,1355,114.59" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[a08fded9ab29299d2f06160dc61bc428]
+link Product to Reference--><path codeLine="37" d="M919.07,14 C1044.77,14 1447,14 1447,14 C1447,14 1447,109.76 1447,109.76 " fill="none" id="Product-to-Reference" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1447,114.76,1451,105.76,1447,109.76,1443,105.76,1447,114.76" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[1514f07bfde41ab57b4357506435d385]
+@startuml Modelo de domínio
+' hide the spot
+
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+entity Product
+object Barcode
+object Brand
+object ShortDescription
+object TechnicalDescription
+object ExtendedDescription
+object InternalCode
+object ProductionCode
+object Height
+object Length
+object Width
+object Weight
+object Photo
+object Price
+object Reference
+
+
+Product - -> Barcode
+Product - -> Brand
+Product - -> ShortDescription
+Product - -> TechnicalDescription
+Product - -> ExtendedDescription
+Product - -> InternalCode
+Product - -> ProductionCode
+Product - -> Height
+Product - -> Length
+Product - -> Width
+Product - -> Weight
+Product - -> Photo
+Product - -> Price
+Product - -> Reference
+
+
+
+@enduml
+
+@startuml Modelo de domínio
+
+
+skinparam linetype ortho
+
+entity Product
+object Barcode
+object Brand
+object ShortDescription
+object TechnicalDescription
+object ExtendedDescription
+object InternalCode
+object ProductionCode
+object Height
+object Length
+object Width
+object Weight
+object Photo
+object Price
+object Reference
+
+
+Product - -> Barcode
+Product - -> Brand
+Product - -> ShortDescription
+Product - -> TechnicalDescription
+Product - -> ExtendedDescription
+Product - -> InternalCode
+Product - -> ProductionCode
+Product - -> Height
+Product - -> Length
+Product - -> Width
+Product - -> Weight
+Product - -> Photo
+Product - -> Price
+Product - -> Reference
+
+
+
+@enduml
+
+PlantUML version 1.2022.1(Tue Feb 01 18:19:58 GMT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: Dynamic Code Evolution 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

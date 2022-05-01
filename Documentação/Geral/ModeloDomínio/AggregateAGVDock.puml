@@ -1,0 +1,13 @@
+@startuml
+
+skinparam linetype ortho
+
+entity AGVDock
+object AGVDockIdentifier
+object AGVDockLocation
+
+
+AGVDock --> AGVDockIdentifier
+AGVDock --> AGVDockLocation
+
+@enduml

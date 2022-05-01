@@ -15,7 +15,7 @@ package User{
   enum WarehouseEmployee
   enum SalesClerk
   enum SalesManager
-  enum Administrator
+  enum Admin
 
 }
 
@@ -70,7 +70,7 @@ package Task{
 WarehouseEmployee --|> User
 SalesClerk --|> User
 SalesManager --|> User
-Administrator --|> User
+Admin --|> User
 "<<root>>\nCustomer" "1..*" --> "1..*" "<<root>>\nProduct": views
 "<<root>>\nProduct" "*" --> "1"  "<<root>>\nCategory" : belongs to
 "<<root>>\nOrder" "1" ..> "1" ShoppingCart : corresponds
@@ -92,7 +92,7 @@ Row "1" --> "1..*" Shelf  : contains
 SalesClerk "1" --> "1..*" "<<root>>\nProduct": specifies
 SalesClerk "1" --> "1..*" "<<root>>\nCategory": creates
 SalesClerk "1" --> "1..*" "<<root>>\nOrder": performs
-Administrator "1" --> "1..*" User: manages
+Admin "1" --> "1..*" User: manages
 "<<root>>\nWarehouse" "1" --> "1..*" "<<root>>\nAGVDock": houses
 WarehouseEmployee "1" --> "1..*" "<<root>>\nAGV": configures
 
