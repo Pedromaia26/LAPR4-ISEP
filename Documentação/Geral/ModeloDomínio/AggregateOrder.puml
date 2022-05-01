@@ -15,15 +15,15 @@ object TotalAmountWithoutTaxes
 object TotalAmountWithTaxes
 
 Order "1" --> "1..*" OrderLine : contains
-Order "1" --> "1..*" Status : has
 
-Order --> Cost
+
 Order --> OrderLine
 Order --> PaymentMethod
-Order --> Quantity
 Order --> ShipmentCost
 Order --> TotalAmountWithoutTaxes
 Order --> TotalAmountWithTaxes
+OrderLine --> Cost
+OrderLine --> Quantity
 
 
 
