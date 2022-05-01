@@ -1,0 +1,133 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class JsonImporterUI
+class JsonImporterController
+class JsonImporter
+class WarehouseBuilder
+class AisleBuilder
+class AGVDockBuilder
+class SectionBuilder
+class ShelfBuilder
+class Warehouse
+class Aisle
+class AGVDock
+class Section
+class Shelf
+class WarehouseRepository<< (I,a777d1) >>
+class AisleRepository<< (I,a777d1) >>
+class AGVDockRepository<< (I,a777d1) >>
+class SectionRepository<< (I,a777d1) >>
+class ShelfRepository << (I,a777d1) >>
+
+class JsonImporterController{
+    - jsonImporter(filename)
+}
+
+class WarehouseBuilder{
+    - create()
+}
+
+class AisleBuilder{
+    - create()
+}
+
+class AGVDockBuilder{
+    - create()
+}
+
+class SectionBuilder{
+    - create()
+}
+
+class ShelfBuilder{
+    - create()
+}
+
+class JsonImporter{
+    - importer(filename)
+    - parsewarehousePlant()
+    - create()
+}
+
+class Warehouse{
+    - create()
+}
+
+class Aisle{
+    - create()
+}
+
+class AGVDock{
+    - create()
+}
+
+class Shelf{
+    - create()
+}
+
+class Section{
+    - create()
+}
+
+class WarehouseRepository {
+    - instance()
+    - warehouse()
+    - save(warehouse)
+}
+
+class AisleRepository {
+    - instance()
+    - aisle()
+    - save(aisle)
+}
+
+class AGVDockRepository {
+    - instance()
+    - avgdock()
+    - save(avgdock)
+}
+
+class ShelfRepository {
+    - instance()
+    - shelf()
+    - save(shelf)
+}
+
+class SectionRepository {
+    - instance()
+    - section()
+    - save(section)
+}
+
+JsonImporterUI--> JsonImporterController
+JsonImporterController--> AGVBuilder
+JsonImporterController--> JsonImporter
+JsonImporterController--> WarehouseBuilder
+JsonImporterController--> AisleBuilder
+JsonImporterController--> AGVDockBuilder
+JsonImporterController--> ShelfBuilder
+JsonImporterController--> SectionBuilder
+JsonImporter--> WarehouseBuilder
+JsonImporter--> AisleBuilder
+JsonImporter--> AGVDockBuilder
+JsonImporter--> ShelfBuilder
+JsonImporter--> SectionBuilder
+WarehouseBuilder--> Warehouse
+JsonImporter--> WarehouseRepository 
+JsonImporterController--> WarehouseRepository 
+JsonImporter--> AisleRepository 
+JsonImporterController--> AisleRepository
+JsonImporter--> AGVDockRepository 
+JsonImporterController--> AGVDockRepository
+JsonImporter--> ShelfRepository 
+JsonImporterController--> ShelfRepository
+JsonImporter--> SectionRepository 
+JsonImporterController--> SectionRepository
+WarehouseBuilder--> Warehouse
+AisleBuilder--> Aisle
+AGVDockBuilder--> AGVDock
+ShelfBuilder--> Shelf
+SectionBuilder--> Section
+
+@enduml
