@@ -11,6 +11,8 @@ public class PaymentMethod implements ValueObject {
 
     public PaymentMethod(final String paymentMethod){
 
+        if (paymentMethod.isBlank() || paymentMethod == null)
+            throw new IllegalArgumentException("Payment Method cannot be empty!");
         if (paymentMethod.length() > 30)
             throw new IllegalArgumentException("Payment Method invalid!");
 
@@ -27,11 +29,11 @@ public class PaymentMethod implements ValueObject {
         return paymentMethod;
     }
 
-    public String getPaymentMethod() {
+    public String paymentMethod() {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
+    public void modifyPaymentMethod(String paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 }

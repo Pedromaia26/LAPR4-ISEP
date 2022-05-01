@@ -16,6 +16,7 @@ package User{
   enum SalesClerk
   enum SalesManager
   enum Administrator
+
 }
 
 package Questionnaire{
@@ -33,7 +34,6 @@ package Warehouse{
 
 package AGV{
     entity "<<root>>\nAGV"
-    entity AGVDock
 }
 
 package Category{
@@ -42,7 +42,7 @@ package Category{
 
 
 package Status{
-    entity "<<root>>\nStatus"
+        entity "<<root>>\nStatus"
 }
 
 package Order{
@@ -51,6 +51,18 @@ package Order{
   entity Order_Line
   entity ShoppingCart
 }
+package AGVDock{
+  entity "<<root>>\nAGVDock"
+}
+
+package Category{
+  entity "<<root>>\nCategory"
+}
+
+package Task{
+  entity "<<root>>\nTask"
+}
+
 
 
 
@@ -64,20 +76,25 @@ Administrator --|> User
 "<<root>>\nOrder" "1" ..> "1" ShoppingCart : corresponds
 ShoppingCart "1" --> "1..*" ShoppingCart_Line : contains
 "<<root>>\nOrder" "1..*" --> "1" "<<root>>\nStatus" : has
-"<<root>>\nWarehouse" "1" --> "0..*" "<<root>>\nProduct" : stores
+"<<root>>\nProduct" "1..*" --> "1" "<<root>>\nWarehouse" : stored
 "<<root>>\nQuestionnaire" "1" --> "1..*" Question : contains
 "<<root>>\nQuestionnaire" "1" --> "1..*" Section : has
 Section "1" --> "1..*" Question : contains
 "<<root>>\nWarehouse" "1" --> "1*.." "<<root>>\nAGV" : contains
 "<<root>>\nCustomer" "1..*" --> "1..*" "<<root>>\nQuestionnaire" : answers
 "<<root>>\nWarehouse" "1" --> "1..*" Aisle : organized by
-"<<root>>\nAGV" "1" --> "1" AGVDock : has
+"<<root>>\nAGV" "1" --> "1" "<<root>>\nAGVDock" : has
 Aisle "1" --> "1..*" Row : divided by
 Row "1" --> "1..*" Shelf  : contains
 "<<root>>\nOrder" "1" --> "1..*" "<<root>>\nProduct" : contains
 "<<root>>\nOrder" "1" --> "1..*" Order_Line : contains
-
-
+"<<root>>\nAGV" "1..*" --> "1" "<<root>>\nTask": performs
+SalesClerk "1" --> "1..*" "<<root>>\nProduct": specifies
+SalesClerk "1" --> "1..*" "<<root>>\nCategory": creates
+SalesClerk "1" --> "1..*" "<<root>>\nOrder": performs
+Administrator "1" --> "1..*" User: manages
+"<<root>>\nWarehouse" "1" --> "1..*" "<<root>>\nAGVDock": houses
+WarehouseEmployee "1" --> "1..*" "<<root>>\nAGV": configures
 
 
 

@@ -24,8 +24,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class ProductOrderTest {
-    private static final String AGV_IDENTIFIER = "abc123";
-    private static final String SHORT_DESCRIPTION = "description";
     private static final Calendar CREATEDON = Calendars.now();
     private static final String DELIVERING_POSTAL_ADDRESS = "a,1,4555-423,a,a";
     private static final String BILLING_POSTAL_ADDRESS = "a,1,4555-423,a,a";
@@ -110,17 +108,6 @@ public class ProductOrderTest {
         assertEquals(newInfo, subject.TotalAmountWithoutTaxes());
     }
 
-    /*@Test
-    public void ensureCanChangeTotalAmountWithTaxes() {
-        final ProductOrder subject = ProductOrderBuild();
-
-        final TotalAmountWithTaxes newInfo = new TotalAmountWithTaxes(2d);
-
-        subject.modifyTotalAmountWithTaxes(newInfo);
-
-        assertEquals(newInfo, subject.TotalAmountWithTaxes());
-    }
-
     @Test
     public void ensureCanChangeTotalAmountWithTaxes() {
         final ProductOrder subject = ProductOrderBuild();
@@ -133,46 +120,126 @@ public class ProductOrderTest {
     }
 
     @Test
-    public void ensureAGVEqualsAreTheSameForTheSameInstance() {
-        final AGV AGV1 = AGVBuild();
+    public void ensureCanChangeCreatedOn() {
+        final ProductOrder subject = ProductOrderBuild();
 
-        final boolean expected = AGV1.equals(AGV1);
+        final Calendar newInfo = Calendars.now();
+
+        subject.modifyCreatedOn(newInfo);
+
+        assertEquals(newInfo, subject.CreatedOn());
+    }
+
+    @Test
+    public void ensureCanChangeShipmentMethod() {
+        final ProductOrder subject = ProductOrderBuild();
+
+        final ShipmentMethod newInfo = new ShipmentMethod("Standard");
+
+        subject.modifyShipmentMethod(newInfo);
+
+        assertEquals(newInfo, subject.ShipmentMethod());
+    }
+
+    @Test
+    public void ensureCanChangeShipmentCost() {
+        final ProductOrder subject = ProductOrderBuild();
+
+        final ShipmentCost newInfo = new ShipmentCost(5d);
+
+        subject.modifyShipmentCost(newInfo);
+
+        assertEquals(newInfo, subject.ShipmentCost());
+    }
+
+    @Test
+    public void ensureCanChangePaymentMethod() {
+        final ProductOrder subject = ProductOrderBuild();
+
+        final PaymentMethod newInfo = new PaymentMethod("Paypal");
+
+        subject.modifyPaymentMethod(newInfo);
+
+        assertEquals(newInfo, subject.PaymentMethod());
+    }
+
+    @Test
+    public void ensureCanChangeDeliveringAddress() {
+        final ProductOrder subject = ProductOrderBuild();
+
+        Set<String[]> set = new HashSet<>();
+        String[] s = new String[5];
+        s[0] = "abc";
+        s[1] = "1";
+        s[2] = "4555-423";
+        s[3] = "abc";
+        s[4] = "abc";
+        set.add(s);
+
+        final DeliveringPostalAddresses newInfo = new DeliveringPostalAddresses(set);
+
+        subject.modifyDeliveringPostalAddress(newInfo);
+
+        assertEquals(newInfo, subject.DeliveringPostalAddress());
+    }
+
+    @Test
+    public void ensureCanChangeBillingAddress() {
+        final ProductOrder subject = ProductOrderBuild();
+
+        Set<String[]> set = new HashSet<>();
+        String[] s = new String[5];
+        s[0] = "abc";
+        s[1] = "1";
+        s[2] = "4555-423";
+        s[3] = "abc";
+        s[4] = "abc";
+        set.add(s);
+
+        final BillingPostalAddresses newInfo = new BillingPostalAddresses(set);
+
+        subject.modifyBillingPostalAddress(newInfo);
+
+        assertEquals(newInfo, subject.BillingPostalAddress());
+    }
+
+    @Test
+    public void ensureProductOrderEqualsAreTheSameForTheSameInstance() {
+        final ProductOrder productOrder = ProductOrderBuild();
+
+        final boolean expected = productOrder.equals(productOrder);
 
         assertTrue(expected);
     }
 
     @Test
-    public void ensureAGVEqualsFailsForDifferenteObjectTypes() {
+    public void ensureProductOrderEqualsFailsForDifferenteObjectTypes() {
 
-        final AGV AGV1 = AGVBuild();
+        final ProductOrder productOrder = ProductOrderBuild();
 
-        final boolean expected = AGV1.equals(new Product());
+        final boolean expected = productOrder.equals(new Product());
 
         assertFalse(expected);
     }
 
     @Test
-    public void ensureAGVIsTheSameAsItsInstance() {
+    public void ensureProductOrderIsTheSameAsItsInstance() {
 
-        final AGV AGV1 = AGVBuild();
+        final ProductOrder productOrder = ProductOrderBuild();
 
-        final boolean expected = AGV1.sameAs(AGV1);
+        final boolean expected = productOrder.sameAs(productOrder);
 
         assertTrue(expected);
     }
 
     @Test
-    public void ensureTwoAGVWithDifferentAGVIdentifierAreNotTheSame() {
-        final AGV AGV1 = AGVBuild();
+    public void ensureTwoProductOrderWithDifferentAGVIdentifierAreNotTheSame() {
+        final ProductOrder productOrder = ProductOrderBuild();
 
-        Description description = new Description(TASK);
-        Task task = new Task(description);
-        AGVDock agvDock = new AGVDock();
+        final ProductOrder productOrder1 = ProductOrderBuild();
+        productOrder1.modifyShipmentMethod(new ShipmentMethod("Blue"));
+        final boolean expected = productOrder.sameAs(productOrder1);
 
-        final AGV AGV2 = new AGVBuilder("aaa111", SHORT_DESCRIPTION, AUTONOMY, MAXIMUM_WEIGHT, MODEL, task, VOLUME, agvDock).build();
-
-        final boolean expected = AGV1.sameAs(AGV2);
-
-        assertFalse(expected);
-    }*/
+        assertTrue(expected);
+    }
 }

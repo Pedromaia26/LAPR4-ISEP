@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="907px" preserveAspectRatio="none" style="width:767px;height:907px;background:#FFFFFF;" version="1.1" viewBox="0 0 767 907" width="767px" zoomAndPan="magnify"><defs/><g><!--MD5=[60980612b141bad7eafb87f24579ed74]
+class SpecifyNewProductUI--><g id="elem_SpecifyNewProductUI"><rect codeLine="3" fill="#F1F1F1" height="48" id="SpecifyNewProductUI" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="185" x="406" y="7"/><ellipse cx="421" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M423.3438,18.6719 C422.4063,18.2344 421.8125,18.0938 420.9375,18.0938 C418.3125,18.0938 416.3125,20.1719 416.3125,22.8906 L416.3125,24.0156 C416.3125,26.5938 418.4219,28.4844 421.3125,28.4844 C422.5313,28.4844 423.6875,28.1875 424.4375,27.6406 C425.0156,27.2344 425.3438,26.7813 425.3438,26.3906 C425.3438,25.9375 424.9531,25.5469 424.4844,25.5469 C424.2656,25.5469 424.0625,25.625 423.875,25.8125 C423.4219,26.2969 423.4219,26.2969 423.2344,26.3906 C422.8125,26.6563 422.125,26.7813 421.3594,26.7813 C419.3125,26.7813 418.0156,25.6875 418.0156,23.9844 L418.0156,22.8906 C418.0156,21.1094 419.2656,19.7969 421,19.7969 C421.5781,19.7969 422.1875,19.9531 422.6563,20.2031 C423.1406,20.4844 423.3125,20.7031 423.4063,21.1094 C423.4688,21.5156 423.5,21.6406 423.6406,21.7656 C423.7813,21.9063 424.0156,22.0156 424.2344,22.0156 C424.5,22.0156 424.7656,21.875 424.9375,21.6563 C425.0469,21.5 425.0781,21.3125 425.0781,20.8906 L425.0781,19.4688 C425.0781,19.0313 425.0625,18.9063 424.9688,18.75 C424.8125,18.4844 424.5313,18.3438 424.2344,18.3438 C423.9375,18.3438 423.7344,18.4375 423.5156,18.75 L423.3438,18.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="153" x="435" y="27.8467">SpecifyNewProductUI</text><line style="stroke:#181818;stroke-width:0.5;" x1="407" x2="590" y1="39" y2="39"/><line style="stroke:#181818;stroke-width:0.5;" x1="407" x2="590" y1="47" y2="47"/></g><!--MD5=[ab63ddbbe11f7d2a0302e90075dc46cf]
+class SpecifyNewProductController--><g id="elem_SpecifyNewProductController"><rect codeLine="8" fill="#F1F1F1" height="96.8906" id="SpecifyNewProductController" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="524" x="236.5" y="115"/><ellipse cx="387.75" cy="131" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M390.0938,126.6719 C389.1563,126.2344 388.5625,126.0938 387.6875,126.0938 C385.0625,126.0938 383.0625,128.1719 383.0625,130.8906 L383.0625,132.0156 C383.0625,134.5938 385.1719,136.4844 388.0625,136.4844 C389.2813,136.4844 390.4375,136.1875 391.1875,135.6406 C391.7656,135.2344 392.0938,134.7813 392.0938,134.3906 C392.0938,133.9375 391.7031,133.5469 391.2344,133.5469 C391.0156,133.5469 390.8125,133.625 390.625,133.8125 C390.1719,134.2969 390.1719,134.2969 389.9844,134.3906 C389.5625,134.6563 388.875,134.7813 388.1094,134.7813 C386.0625,134.7813 384.7656,133.6875 384.7656,131.9844 L384.7656,130.8906 C384.7656,129.1094 386.0156,127.7969 387.75,127.7969 C388.3281,127.7969 388.9375,127.9531 389.4063,128.2031 C389.8906,128.4844 390.0625,128.7031 390.1563,129.1094 C390.2188,129.5156 390.25,129.6406 390.3906,129.7656 C390.5313,129.9063 390.7656,130.0156 390.9844,130.0156 C391.25,130.0156 391.5156,129.875 391.6875,129.6563 C391.7969,129.5 391.8281,129.3125 391.8281,128.8906 L391.8281,127.4688 C391.8281,127.0313 391.8125,126.9063 391.7188,126.75 C391.5625,126.4844 391.2813,126.3438 390.9844,126.3438 C390.6875,126.3438 390.4844,126.4375 390.2656,126.75 L390.0938,126.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="213" x="408.25" y="135.8467">SpecifyNewProductController</text><line style="stroke:#181818;stroke-width:0.5;" x1="237.5" x2="759.5" y1="147" y2="147"/><line style="stroke:#181818;stroke-width:0.5;" x1="237.5" x2="759.5" y1="155" y2="155"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="244.5" y="163"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="498" x="256.5" y="171.9951">addProduct(category, photo, shortDescription, extendedDescription,</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="429" x="260.5" y="188.292">technicalDescription, brand, reference, internalCode, price,</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="267" x="260.5" y="204.5889">barcode, height, width, weight, shelf)</text></g><!--MD5=[929016e0e3600cf0cff4aa121242a21b]
+class ProductBuilder--><g id="elem_ProductBuilder"><rect codeLine="12" fill="#F1F1F1" height="259.8594" id="ProductBuilder" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="373" x="7" y="272"/><ellipse cx="136.25" cy="288" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M138.5938,283.6719 C137.6563,283.2344 137.0625,283.0938 136.1875,283.0938 C133.5625,283.0938 131.5625,285.1719 131.5625,287.8906 L131.5625,289.0156 C131.5625,291.5938 133.6719,293.4844 136.5625,293.4844 C137.7813,293.4844 138.9375,293.1875 139.6875,292.6406 C140.2656,292.2344 140.5938,291.7813 140.5938,291.3906 C140.5938,290.9375 140.2031,290.5469 139.7344,290.5469 C139.5156,290.5469 139.3125,290.625 139.125,290.8125 C138.6719,291.2969 138.6719,291.2969 138.4844,291.3906 C138.0625,291.6563 137.375,291.7813 136.6094,291.7813 C134.5625,291.7813 133.2656,290.6875 133.2656,288.9844 L133.2656,287.8906 C133.2656,286.1094 134.5156,284.7969 136.25,284.7969 C136.8281,284.7969 137.4375,284.9531 137.9063,285.2031 C138.3906,285.4844 138.5625,285.7031 138.6563,286.1094 C138.7188,286.5156 138.75,286.6406 138.8906,286.7656 C139.0313,286.9063 139.2656,287.0156 139.4844,287.0156 C139.75,287.0156 140.0156,286.875 140.1875,286.6563 C140.2969,286.5 140.3281,286.3125 140.3281,285.8906 L140.3281,284.4688 C140.3281,284.0313 140.3125,283.9063 140.2188,283.75 C140.0625,283.4844 139.7813,283.3438 139.4844,283.3438 C139.1875,283.3438 138.9844,283.4375 138.7656,283.75 L138.5938,283.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="106" x="156.75" y="292.8467">ProductBuilder</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="379" y1="304" y2="304"/><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="379" y1="312" y2="312"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="320"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="27" y="328.9951">withPhoto(photo)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="336.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="287" x="27" y="345.292">withShortDescription(shortDescription)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="352.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="347" x="27" y="361.5889">withExtendedDescription(extendedDescription)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="368.8906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="343" x="27" y="377.8857">withTechnicalDescription(technicalDescription)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="385.1875"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125" x="27" y="394.1826">withBrand(brand)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="401.4844"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="187" x="27" y="410.4795">withReference(reference)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="417.7813"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="227" x="27" y="426.7764">withInternalCode(internalCode)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="434.0781"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="114" x="27" y="443.0732">withPrice(price)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="450.375"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="159" x="27" y="459.3701">withBarcode(barcode)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="466.6719"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="136" x="27" y="475.667">withHeight(height)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="482.9688"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="124" x="27" y="491.9639">withWidth(width)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="499.2656"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="142" x="27" y="508.2607">withWeight(weight)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="515.5625"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="113" x="27" y="524.5576">withShelf(shelf)</text></g><!--MD5=[f9761e4ec0e5a044b983a0fb01ce84a9]
+class ProductRepository--><g id="elem_ProductRepository"><rect codeLine="45" fill="#F1F1F1" height="96.8906" id="ProductRepository" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="167" x="415" y="353.5"/><ellipse cx="430" cy="369.5" fill="#A777D1" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M430.9531,366.2813 L432.6719,366.2813 C433.0625,366.2813 433.25,366.25 433.375,366.1719 C433.6406,366.0156 433.7813,365.7344 433.7813,365.4375 C433.7813,365.1719 433.6719,364.9063 433.4375,364.7344 C433.2656,364.625 433.125,364.5938 432.6719,364.5938 L427.5313,364.5938 C427.0938,364.5938 426.9688,364.6094 426.8125,364.7031 C426.5625,364.8594 426.4063,365.1563 426.4063,365.4375 C426.4063,365.7188 426.5469,365.9688 426.7656,366.1406 C426.9219,366.25 427.1094,366.2813 427.5313,366.2813 L429.25,366.2813 L429.25,372.7969 L427.5313,372.7969 C427.0938,372.7969 426.9688,372.8125 426.8125,372.9219 C426.5625,373.0781 426.4063,373.3594 426.4063,373.6563 C426.4063,373.9063 426.5469,374.1719 426.7656,374.3281 C426.9219,374.4531 427.125,374.5 427.5313,374.5 L432.6719,374.5 C433.4219,374.5 433.7813,374.2188 433.7813,373.6563 C433.7813,373.375 433.6719,373.125 433.4375,372.9531 C433.2656,372.8281 433.125,372.7969 432.6719,372.7969 L430.9531,372.7969 L430.9531,366.2813 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="135" x="444" y="374.3467">ProductRepository</text><line style="stroke:#181818;stroke-width:0.5;" x1="416" x2="581" y1="385.5" y2="385.5"/><line style="stroke:#181818;stroke-width:0.5;" x1="416" x2="581" y1="393.5" y2="393.5"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="423" y="401.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71" x="435" y="410.4951">instance()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="423" y="417.7969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="67" x="435" y="426.792">product()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="423" y="434.0938"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="98" x="435" y="443.0889">save(Product)</text></g><!--MD5=[72136138052d025cffdce3c22fbd185f]
+class Product--><g id="elem_Product"><rect codeLine="28" fill="#F1F1F1" height="308.75" id="Product" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="489" x="170" y="592"/><ellipse cx="382.25" cy="608" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M384.5938,603.6719 C383.6563,603.2344 383.0625,603.0938 382.1875,603.0938 C379.5625,603.0938 377.5625,605.1719 377.5625,607.8906 L377.5625,609.0156 C377.5625,611.5938 379.6719,613.4844 382.5625,613.4844 C383.7813,613.4844 384.9375,613.1875 385.6875,612.6406 C386.2656,612.2344 386.5938,611.7813 386.5938,611.3906 C386.5938,610.9375 386.2031,610.5469 385.7344,610.5469 C385.5156,610.5469 385.3125,610.625 385.125,610.8125 C384.6719,611.2969 384.6719,611.2969 384.4844,611.3906 C384.0625,611.6563 383.375,611.7813 382.6094,611.7813 C380.5625,611.7813 379.2656,610.6875 379.2656,608.9844 L379.2656,607.8906 C379.2656,606.1094 380.5156,604.7969 382.25,604.7969 C382.8281,604.7969 383.4375,604.9531 383.9063,605.2031 C384.3906,605.4844 384.5625,605.7031 384.6563,606.1094 C384.7188,606.5156 384.75,606.6406 384.8906,606.7656 C385.0313,606.9063 385.2656,607.0156 385.4844,607.0156 C385.75,607.0156 386.0156,606.875 386.1875,606.6563 C386.2969,606.5 386.3281,606.3125 386.3281,605.8906 L386.3281,604.4688 C386.3281,604.0313 386.3125,603.9063 386.2188,603.75 C386.0625,603.4844 385.7813,603.3438 385.4844,603.3438 C385.1875,603.3438 384.9844,603.4375 384.7656,603.75 L384.5938,603.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56" x="402.75" y="612.8467">Product</text><line style="stroke:#181818;stroke-width:0.5;" x1="171" x2="658" y1="624" y2="624"/><ellipse cx="181" cy="635" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="44" x="190" y="640.9951">photo</text><ellipse cx="181" cy="651.2969" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="122" x="190" y="657.292">shortDescription</text><ellipse cx="181" cy="667.5938" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="153" x="190" y="673.5889">extendedDescription</text><ellipse cx="181" cy="683.8906" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="150" x="190" y="689.8857">technicalDescription</text><ellipse cx="181" cy="700.1875" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="42" x="190" y="706.1826">brand</text><ellipse cx="181" cy="716.4844" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71" x="190" y="722.4795">reference</text><ellipse cx="181" cy="732.7813" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93" x="190" y="738.7764">internalCode</text><ellipse cx="181" cy="749.0781" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="190" y="755.0732">price</text><ellipse cx="181" cy="765.375" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59" x="190" y="771.3701">barcode</text><ellipse cx="181" cy="781.6719" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="47" x="190" y="787.667">height</text><ellipse cx="181" cy="797.9688" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="40" x="190" y="803.9639">width</text><ellipse cx="181" cy="814.2656" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="190" y="820.2607">weight</text><ellipse cx="181" cy="830.5625" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="35" x="190" y="836.5576">shelf</text><line style="stroke:#181818;stroke-width:0.5;" x1="171" x2="658" y1="843.8594" y2="843.8594"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="178" y="851.8594"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="463" x="190" y="860.8545">create(category, photo, shortDescription, extendedDescription,</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="429" x="194" y="877.1514">technicalDescription, brand, reference, internalCode, price,</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="267" x="194" y="893.4482">barcode, height, width, weight, shelf)</text></g><!--MD5=[20ba0d3f866826d0cd8ac1f3585cc6dd]
+link SpecifyNewProductUI to SpecifyNewProductController--><g id="link_SpecifyNewProductUI_SpecifyNewProductController"><path codeLine="52" d="M498.5,55.03 C498.5,70.146 498.5,90.559 498.5,109.534 " fill="none" id="SpecifyNewProductUI-to-SpecifyNewProductController" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="498.5,114.843,502.5,105.843,498.5,109.843,494.5,105.843,498.5,114.843" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[e75001ceb413562211e3df2565b53893]
+link SpecifyNewProductController to ProductBuilder--><g id="link_SpecifyNewProductController_ProductBuilder"><path codeLine="53" d="M437.146,212.075 C415.597,228.784 390.214,248.466 364.113,268.705 " fill="none" id="SpecifyNewProductController-to-ProductBuilder" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="359.918,271.958,369.4813,269.6036,363.8691,268.8939,364.5788,263.2818,359.918,271.958" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[4dd9c7566709ee17763f23c0c4fc2fc4]
+link SpecifyNewProductController to Product--><g id="link_SpecifyNewProductController_Product"><path codeLine="54" d="M557.733,212.006 C574.494,228.964 590.589,249.501 599.5,272 C642.052,379.435 639.883,423.73 599.5,532 C592.35,551.169 582.618,569.76 571.336,587.452 " fill="none" id="SpecifyNewProductController-to-Product" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="568.434,591.931,576.684,586.5517,571.1522,587.7344,569.9695,582.2026,568.434,591.931" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[05ee4548aaab947720a05fa74047e08a]
+link ProductBuilder to Product--><g id="link_ProductBuilder_Product"><path codeLine="55" d="M277.051,532.485 C288.601,550.385 300.569,568.933 312.408,587.281 " fill="none" id="ProductBuilder-to-Product" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="315.415,591.94,313.8957,582.209,312.7038,587.7389,307.1739,586.547,315.415,591.94" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[af6006d968c9c855ad70db3e4d16f7cf]
+link SpecifyNewProductController to ProductRepository--><g id="link_SpecifyNewProductController_ProductRepository"><path codeLine="56" d="M498.5,212.075 C498.5,251.318 498.5,306.965 498.5,347.702 " fill="none" id="SpecifyNewProductController-to-ProductRepository" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="498.5,353.096,502.5,344.096,498.5,348.096,494.5,344.096,498.5,353.096" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[6ff74c3fa751126ba2a0ee1abd4d0cd8]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class SpecifyNewProductUI
+class SpecifyNewProductController
+class ProductBuilder
+class ProductRepository << (I,a777d1) >>
+
+class SpecifyNewProductController{
+    - addProduct(category, photo, shortDescription, extendedDescription,\n technicalDescription, brand, reference, internalCode, price,\n barcode, height, width, weight, shelf)
+}
+
+class ProductBuilder{
+    - withPhoto(photo)
+    - withShortDescription(shortDescription)
+    - withExtendedDescription(extendedDescription)
+    - withTechnicalDescription(technicalDescription)
+    - withBrand(brand)
+    - withReference(reference)
+    - withInternalCode(internalCode)
+    - withPrice(price)
+    - withBarcode(barcode)
+    - withHeight(height)
+    - withWidth(width)
+    - withWeight(weight)
+    - withShelf(shelf)
+}
+
+class Product{
+    - create(category, photo, shortDescription, extendedDescription,\n technicalDescription, brand, reference, internalCode, price,\n barcode, height, width, weight, shelf)
+    + photo
+    + shortDescription
+    + extendedDescription
+    + technicalDescription
+    + brand
+    + reference
+    + internalCode
+    + price
+    + barcode
+    + height
+    + width
+    + weight
+    + shelf
+}
+
+class ProductRepository {
+    - instance()
+    - product()
+    - save(Product)
+}
+
+
+SpecifyNewProductUI- -> SpecifyNewProductController
+SpecifyNewProductController- -> ProductBuilder
+SpecifyNewProductController- -> Product
+ProductBuilder- -> Product
+SpecifyNewProductController- -> ProductRepository
+@enduml
+
+@startuml
+
+class SpecifyNewProductUI
+class SpecifyNewProductController
+class ProductBuilder
+class ProductRepository << (I,a777d1) >>
+
+class SpecifyNewProductController{
+    - addProduct(category, photo, shortDescription, extendedDescription,\n technicalDescription, brand, reference, internalCode, price,\n barcode, height, width, weight, shelf)
+}
+
+class ProductBuilder{
+    - withPhoto(photo)
+    - withShortDescription(shortDescription)
+    - withExtendedDescription(extendedDescription)
+    - withTechnicalDescription(technicalDescription)
+    - withBrand(brand)
+    - withReference(reference)
+    - withInternalCode(internalCode)
+    - withPrice(price)
+    - withBarcode(barcode)
+    - withHeight(height)
+    - withWidth(width)
+    - withWeight(weight)
+    - withShelf(shelf)
+}
+
+class Product{
+    - create(category, photo, shortDescription, extendedDescription,\n technicalDescription, brand, reference, internalCode, price,\n barcode, height, width, weight, shelf)
+    + photo
+    + shortDescription
+    + extendedDescription
+    + technicalDescription
+    + brand
+    + reference
+    + internalCode
+    + price
+    + barcode
+    + height
+    + width
+    + weight
+    + shelf
+}
+
+class ProductRepository {
+    - instance()
+    - product()
+    - save(Product)
+}
+
+
+SpecifyNewProductUI- -> SpecifyNewProductController
+SpecifyNewProductController- -> ProductBuilder
+SpecifyNewProductController- -> Product
+ProductBuilder- -> Product
+SpecifyNewProductController- -> ProductRepository
+@enduml
+
+PlantUML version 1.2022.4beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

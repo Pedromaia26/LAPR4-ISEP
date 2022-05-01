@@ -1,0 +1,42 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class ConfigureAVGUI
+class ConfigureAVGController
+class AGVBuilder
+class AGVRepository << (I,a777d1) >>
+
+class ConfigureAVGController{
+    - validateData()
+    - configureAGV(id, briefDescription, model, maxWeightCapacity, range)
+}
+
+class AGVBuilder{
+    - withId(id)
+    - withBriefDescription(briefDescription)
+    - withModel(model)
+    - withMaxWeightCapacity(maxWeightCapacity)
+    - withRange(range)
+}
+
+class AGV{
+    + id
+    + briefDescription
+    + model
+    + maxWeightCapacity
+    + range
+}
+
+class AGVRepository {
+    - instance()
+    - agv()
+    - save(AGV)
+}
+
+
+ConfigureAVGUI--> ConfigureAVGController
+ConfigureAVGController--> AGVBuilder
+ConfigureAVGController--> AGV
+AGVBuilder--> AGV
+ConfigureAVGController--> AGVRepository 
+@enduml
