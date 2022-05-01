@@ -1,0 +1,21 @@
+@startuml
+autonumber
+actor "SalesClerk" as SC
+participant "AddOrderUI" as UI
+
+activate SC
+SC -> UI : initiates the process of creating a new products order
+activate UI
+UI --> SC : requests client vat
+SC -> UI : type the requested data
+loop
+UI --> SC : requests data (product code, quantity)
+SC -> UI : types the requested data
+end loop
+UI --> SC : requests data (delivering postal address, billing postal address,\nshipment method, payment method)
+SC -> UI : types the requested data
+UI --> SC : informs operation success
+deactivate UI
+
+deactivate SC
+@enduml

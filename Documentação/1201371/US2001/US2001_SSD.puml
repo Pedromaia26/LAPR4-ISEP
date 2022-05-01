@@ -1,0 +1,24 @@
+@startuml
+actor WarehouseEmployee as adm
+participant "//<<presentation>>//\nJsonImporterUI" as ui
+
+
+autonumber
+
+adm-->ui: Import a Json File
+
+activate ui
+
+
+ui-->adm: asks user information
+
+deactivate ui
+
+
+adm-->ui: Filename
+activate ui
+
+ui-->adm: displayWarehouseInfo
+
+deactivate ui
+@enduml
