@@ -11,4 +11,5 @@ public class InMemoryAGVRepository extends InMemoryDomainRepository<AGV, AGVIden
     static {
         InMemoryInitializer.init();
     }
+
 }

@@ -1,5 +1,6 @@
 package eapli.base.ordermanagement.domain;
 
+import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.clientusermanagement.domain.BillingPostalAddresses;
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.domain.DeliveringPostalAddresses;
@@ -22,6 +23,7 @@ public class ProductOrderBuilder implements DomainFactory<ProductOrder> {
     private ShipmentMethod shipmentMethod;
     private ShipmentCost shipmentCost;
     private PaymentMethod paymentMethod;
+    private AGV agv;
 
     public ProductOrderBuilder(final ClientUser clientvat, final Calendar createdOn, final Status status) {
         withClientVat(clientvat);
@@ -46,6 +48,21 @@ public class ProductOrderBuilder implements DomainFactory<ProductOrder> {
         withShipmentMethod(shipmentMethod);
         withShipmentCost(shipmentCost);
         withPaymentMethod(paymentMethod);
+    }
+
+    public ProductOrderBuilder(final ClientUser clientvat, final Status status, final Calendar createdOn, final Set<String[]> deliveringPostalAddress, final Set<String[]> billingPostalAddress,
+                               final double totalAmountWithTaxes, final double totalAmountWithoutTaxes, final String shipmentMethod, final double shipmentCost, final String paymentMethod, final AGV agv) {
+        withClientVat(clientvat);
+        withStatus(status);
+        withCreatedOn(createdOn);
+        withDeliveringPostalAddresses(deliveringPostalAddress);
+        withBillingPostalAddresses(billingPostalAddress);
+        withTotalAmountWithTaxes(totalAmountWithTaxes);
+        withTotalAmountWithoutTaxes(totalAmountWithoutTaxes);
+        withShipmentMethod(shipmentMethod);
+        withShipmentCost(shipmentCost);
+        withPaymentMethod(paymentMethod);
+        withAGV(agv);
     }
 
     public ProductOrderBuilder withClientVat(ClientUser client) {
@@ -100,6 +117,11 @@ public class ProductOrderBuilder implements DomainFactory<ProductOrder> {
         return this;
     }
 
+    public ProductOrderBuilder withAGV(final AGV agv) {
+       this.agv = agv;
+       return this;
+    }
+
     private ProductOrder buildOrThrow() {
         if (productOrder != null) {
             return productOrder;
@@ -108,6 +130,9 @@ public class ProductOrderBuilder implements DomainFactory<ProductOrder> {
             return productOrder;
         } else if (clientUser != null && status != null && createdOn != null && shipmentCost != null && totalAmountWithoutTaxes != null && totalAmountWithTaxes != null) {
             productOrder = new ProductOrder(clientUser, status, createdOn);
+            return productOrder;
+        } else if (clientUser != null && status != null && createdOn != null && deliveringPostalAddress != null && billingPostalAddress != null && totalAmountWithTaxes != null && totalAmountWithoutTaxes != null && shipmentMethod != null && shipmentCost != null && paymentMethod != null && agv != null){
+            productOrder = new ProductOrder(clientUser, status, createdOn, deliveringPostalAddress, billingPostalAddress, totalAmountWithTaxes, totalAmountWithoutTaxes, shipmentMethod, shipmentCost, paymentMethod, agv);
             return productOrder;
         } else {
             throw new IllegalStateException();

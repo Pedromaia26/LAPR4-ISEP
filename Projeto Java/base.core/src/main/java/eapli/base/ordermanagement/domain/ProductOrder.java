@@ -1,5 +1,7 @@
 package eapli.base.ordermanagement.domain;
 
+import eapli.base.agvmanagement.domain.AGV;
+import eapli.base.categorymanagement.domain.Category;
 import eapli.base.clientusermanagement.domain.BillingPostalAddresses;
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.domain.DeliveringPostalAddresses;
@@ -17,6 +19,8 @@ public class ProductOrder implements AggregateRoot<Long> {
 
     @Version
     private Long version;
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,6 +56,9 @@ public class ProductOrder implements AggregateRoot<Long> {
     @Embedded
     private PaymentMethod paymentMethod;
 
+    @OneToOne
+    private AGV agv;
+
     public ProductOrder(ClientUser clientUser_id, Status status, Calendar createdOn, DeliveringPostalAddresses deliveringPostalAddress, BillingPostalAddresses billingPostalAddress, TotalAmountWithTaxes totalAmountWithTaxes, TotalAmountWithoutTaxes totalAmountWithoutTaxes, ShipmentMethod shipmentMethod, ShipmentCost shipmentCost, PaymentMethod paymentMethod){
 
         if (clientUser_id == null || createdOn == null || deliveringPostalAddress == null || billingPostalAddress == null || totalAmountWithTaxes == null || totalAmountWithoutTaxes == null || shipmentMethod == null || shipmentCost == null || paymentMethod == null)
@@ -76,6 +83,24 @@ public class ProductOrder implements AggregateRoot<Long> {
         this.clientUser = clientUser_id;
         this.status = status;
         this.createdOn = createdOn;
+    }
+
+    public ProductOrder(ClientUser clientUser_id, Status status, Calendar createdOn, DeliveringPostalAddresses deliveringPostalAddress, BillingPostalAddresses billingPostalAddress, TotalAmountWithTaxes totalAmountWithTaxes, TotalAmountWithoutTaxes totalAmountWithoutTaxes, ShipmentMethod shipmentMethod, ShipmentCost shipmentCost, PaymentMethod paymentMethod, AGV agv){
+
+        if (clientUser_id == null || createdOn == null || deliveringPostalAddress == null || billingPostalAddress == null || totalAmountWithTaxes == null || totalAmountWithoutTaxes == null || shipmentMethod == null || shipmentCost == null || paymentMethod == null)
+            throw new IllegalArgumentException();
+
+        this.clientUser = clientUser_id;
+        this.status = status;
+        this.createdOn = createdOn;
+        this.deliveringPostalAddress = deliveringPostalAddress;
+        this.billingPostalAddress = billingPostalAddress;
+        this.totalAmountWithTaxes = totalAmountWithTaxes;
+        this.totalAmountWithoutTaxes = totalAmountWithoutTaxes;
+        this.shipmentMethod = shipmentMethod;
+        this.shipmentCost = shipmentCost;
+        this.paymentMethod = paymentMethod;
+        this.agv = agv;
     }
 
     public ProductOrder() {
@@ -165,5 +190,13 @@ public class ProductOrder implements AggregateRoot<Long> {
 
     public void modifyPaymentMethod(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
+    }
+
+    public AGV Agv() {
+        return agv;
+    }
+
+    public void modifyAgv(AGV agv) {
+        this.agv = agv;
     }
 }

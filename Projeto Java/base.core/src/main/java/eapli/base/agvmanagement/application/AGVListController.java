@@ -3,6 +3,7 @@ package eapli.base.agvmanagement.application;
 import eapli.base.Warehouse.application.AGVDockListService;
 import eapli.base.Warehouse.domain.AGVDock;
 import eapli.base.agvmanagement.domain.AGV;
+import eapli.base.usermanagement.domain.BaseRoles;
 
 public class AGVListController {
 
@@ -11,4 +12,5 @@ public class AGVListController {
     public Iterable<AGV> agv() {
         return svc.agv();
     }
+
 }

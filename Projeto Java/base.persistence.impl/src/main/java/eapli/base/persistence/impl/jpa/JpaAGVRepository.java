@@ -6,6 +6,10 @@ import eapli.base.Warehouse.repositories.AGVDockRepository;
 import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.agvmanagement.domain.AGVIdentifier;
 import eapli.base.agvmanagement.repositories.AGVRepository;
+import eapli.base.categorymanagement.domain.Category;
+import eapli.base.taskmanagement.domain.Task;
+
+import javax.persistence.TypedQuery;
 
 public class JpaAGVRepository extends BasepaRepositoryBase<AGV, AGVIdentifier, AGVIdentifier>
         implements AGVRepository {
@@ -13,5 +17,6 @@ public class JpaAGVRepository extends BasepaRepositoryBase<AGV, AGVIdentifier, A
     JpaAGVRepository(){
         super("agvIdentifier");
     }
+
 }
 
