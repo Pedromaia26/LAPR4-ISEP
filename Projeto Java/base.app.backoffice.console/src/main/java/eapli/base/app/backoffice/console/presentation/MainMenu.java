@@ -27,6 +27,7 @@ import eapli.base.app.backoffice.console.presentation.agv.ConfigureAGVUI;
 import eapli.base.app.backoffice.console.presentation.authz.*;
 import eapli.base.app.backoffice.console.presentation.category.DefineNewCategoryUI;
 import eapli.base.app.backoffice.console.presentation.category.ListCategoryUI;
+import eapli.base.app.backoffice.console.presentation.forceOrder.ForceOrderUI;
 import eapli.base.app.backoffice.console.presentation.order.AddOrderUI;
 import eapli.base.app.backoffice.console.presentation.product.*;
 import eapli.base.app.backoffice.console.presentation.warehouse.JsonImporterUI;
@@ -90,6 +91,7 @@ public class MainMenu extends AbstractUI {
     // ORDER
     private static final int CREATE_NEW_ORDER = 1;
 
+
     // SETTINGS
     private static final int SET_KITCHEN_ALERT_LIMIT_OPTION = 1;
 
@@ -108,6 +110,9 @@ public class MainMenu extends AbstractUI {
     // AGV
     private static final int CONFIGURE_AGV = 1;
 
+    //Force order
+    private static final int FORCING_ORDER=1;
+    private static final int FORCE_ORDER=4;
 
 
 
@@ -178,6 +183,8 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(JSON_WAREHOUSE_PLANT_IMPORTER_MENU, importJson);
             final Menu configureAGV = buildConfigureAGV();
             mainMenu.addSubMenu(AGV, configureAGV);
+            final Menu forceOrder = buildForceOrder();
+            mainMenu.addSubMenu(FORCE_ORDER, forceOrder);
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -280,6 +287,14 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("AGV >");
 
         menu.addItem(CONFIGURE_AGV, "Configure AGV", new ConfigureAGVUI()::show);
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+    private Menu buildForceOrder(){
+        final Menu menu = new Menu("Force Order >");
+
+        menu.addItem(FORCING_ORDER, "Force Order", new ForceOrderUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;

@@ -8,6 +8,7 @@ import eapli.base.clientusermanagement.domain.DeliveringPostalAddresses;
 import eapli.base.orderstatusmanagement.domain.Status;
 import eapli.base.productmanagement.domain.Price;
 import eapli.base.productmanagement.domain.Product;
+import eapli.base.taskmanagement.domain.Task;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
 
@@ -198,5 +199,9 @@ public class ProductOrder implements AggregateRoot<Long> {
 
     public void modifyAgv(AGV agv) {
         this.agv = agv;
+    }
+
+    public void modifyStatus(Status status) {
+        this.status = status;
     }
 }

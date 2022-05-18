@@ -10,12 +10,16 @@ public class StatusBootstrapper extends StatusBootstrapperBase implements Action
         addStatus("Registered");
         addStatus("Payment pending");
         addStatus("To be prepared");
+        //edu add
+        addStatus("Being prepared by agv");
         addStatus("Prepared on the warehouse");
         addStatus("Ready for packaging");
         addStatus("Ready for carrier dispatching");
         addStatus("Dispatched");
         addStatus("Delivered");
         addStatus("Received");
+
+
         return true;
     }
 }
