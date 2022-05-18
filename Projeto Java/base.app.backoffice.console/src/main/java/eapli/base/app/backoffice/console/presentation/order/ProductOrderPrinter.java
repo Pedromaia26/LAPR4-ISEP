@@ -8,6 +8,6 @@ public class ProductOrderPrinter implements Visitor<ProductOrder> {
 
     @Override
     public void visit(final ProductOrder visitee) {
-        System.out.printf("%-10s|%-10s|%-10s", visitee.identity(), visitee.clientUser().identity(), visitee.Agv().identity());
+        System.out.printf("%-10s|%-10s|%-10s", visitee.identity(), visitee.clientUser().identity().vat(), visitee.Agv().identity().AgvIdentifier());
     }
 }
