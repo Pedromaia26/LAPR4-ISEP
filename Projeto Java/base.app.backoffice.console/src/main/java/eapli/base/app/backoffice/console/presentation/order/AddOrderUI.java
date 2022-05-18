@@ -1,6 +1,7 @@
 package eapli.base.app.backoffice.console.presentation.order;
 
 import eapli.base.agvmanagement.application.AGVListController;
+import eapli.base.agvmanagement.application.AssignTaskController;
 import eapli.base.agvmanagement.application.ConfigureAGVController;
 import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.app.backoffice.console.presentation.authz.AddCostumerUI;
@@ -8,6 +9,7 @@ import eapli.base.app.backoffice.console.presentation.product.ListProductUI;
 import eapli.base.clientusermanagement.application.ListClientUsersController;
 import eapli.base.ordermanagement.application.AddOrderController;
 import eapli.base.ordermanagement.application.AddOrderLineController;
+import eapli.base.ordermanagement.application.UpdateOrderStatusController;
 import eapli.base.ordermanagement.domain.ProductOrder;
 import eapli.base.productmanagement.application.ListProductController;
 import eapli.base.taskmanagement.application.TasksListController;
@@ -26,10 +28,9 @@ public class AddOrderUI  extends AbstractUI {
     private final AddOrderLineController theOrderLineController = new AddOrderLineController();
     private final ListProductController theLController = new ListProductController();
     private final ListClientUsersController theUserController = new ListClientUsersController();
-    private boolean invalidData, invalidProduct, invalidShipMethod = true, invalidPaymentMethod = true, notFound = true;
-    private final TasksListController tasksListController = new TasksListController();
-    private final AGVListController agvListController = new AGVListController();
-    private final ConfigureAGVController configureAGVController = new ConfigureAGVController();
+    private boolean invalidData, invalidProduct, invalidShipMethod = true, invalidPaymentMethod = true;
+    private final AssignTaskController assignTaskController = new AssignTaskController();
+    UpdateOrderStatusController updateOrderStatusController = new UpdateOrderStatusController();
     ProductOrder productOrder;
 
     @Override
@@ -171,20 +172,15 @@ public class AddOrderUI  extends AbstractUI {
             invalidData = false;
 
             try {
-                Task task = tasksListController.findTaskById(3L);
-                for (AGV agv: agvListController.agv()){
-                    if (agv.Task().hasIdentity(1L)){
-                        configureAGVController.modifyAGVTask(agv, task);
-                        System.out.println("AGV assigned to perform the task!");
+              AGV agv = assignTaskController.assignTask();
+              if (agv != null){
+                        System.out.printf("AGV %s assigned to perform the task!\n", agv.identity().AgvIdentifier());
                         theOrderController.addOrder(clientVat, productOrder, deliveringPostalAddress, billingPostalAddress, shipmentMethod,  shipmentCost, paymentMethod, agv);
-                        notFound = false;
-                        break;
-                    }
-                }
-
-                if (notFound == true) {
+                        updateOrderStatusController.updateOrderBeingPreparedByAnAGV(productOrder.identity().toString());
+              }else{
+                    System.out.println("No AGV is free!");
                     theOrderController.addOrder(clientVat, productOrder, deliveringPostalAddress, billingPostalAddress, shipmentMethod, shipmentCost, paymentMethod);
-                }
+              }
             } catch (IllegalArgumentException e) {
                 System.out.println("\n"+ e.getMessage());
                 if (Console.readLine("Do you want to try again? (Y/N)").equals("Y")){

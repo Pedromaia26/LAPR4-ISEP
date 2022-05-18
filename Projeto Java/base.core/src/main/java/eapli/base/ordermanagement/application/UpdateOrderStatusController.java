@@ -1,5 +1,6 @@
 package eapli.base.ordermanagement.application;
 
+import com.fasterxml.jackson.databind.ser.Serializers;
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
@@ -21,8 +22,17 @@ public class UpdateOrderStatusController {
     private final StatusRepository statusRepository = PersistenceContext.repositories().status();
 
     public ProductOrder UpdateOrderToDispatched(String orderId){
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.WAREHOUSE_EMPLOYEE);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.ADMIN, BaseRoles.POWER_USER, BaseRoles.WAREHOUSE_EMPLOYEE);
         long statusid = 7;
+        Status status = statusRepository.findByStatusId(statusid);
+        final ProductOrder order = orderRepository.findByOrderId(Long.parseLong(orderId));
+        order.modifyStatus(status);
+        return orderRepository.save(order);
+    }
+
+    public ProductOrder updateOrderBeingPreparedByAnAGV(String orderId){
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.ADMIN, BaseRoles.POWER_USER, BaseRoles.WAREHOUSE_EMPLOYEE, BaseRoles.SALES_CLERK);
+        long statusid = 4;
         Status status = statusRepository.findByStatusId(statusid);
         final ProductOrder order = orderRepository.findByOrderId(Long.parseLong(orderId));
         order.modifyStatus(status);

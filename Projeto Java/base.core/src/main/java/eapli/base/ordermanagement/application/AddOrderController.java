@@ -1,5 +1,6 @@
 package eapli.base.ordermanagement.application;
 
+import com.fasterxml.jackson.databind.ser.Serializers;
 import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.clientusermanagement.domain.BillingPostalAddresses;
 import eapli.base.clientusermanagement.domain.ClientUser;
@@ -28,7 +29,7 @@ public class AddOrderController {
     private final OrderLineRepository orderLineRepository = PersistenceContext.repositories().orderlines();
 
     public ProductOrder addOrder(final String clientvat) {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK, BaseRoles.POWER_USER, BaseRoles.ADMIN);
         ClientUser clientUser = userRepository.findByVAT(clientvat);
         long statusid = 1;
         Status status = statusRepository.findByStatusId(statusid);
