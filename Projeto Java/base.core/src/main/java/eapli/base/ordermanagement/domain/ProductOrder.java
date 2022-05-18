@@ -204,4 +204,8 @@ public class ProductOrder implements AggregateRoot<Long> {
     public void modifyStatus(Status status) {
         this.status = status;
     }
+
+    public ClientUser clientUser() {
+        return clientUser;
+    }
 }

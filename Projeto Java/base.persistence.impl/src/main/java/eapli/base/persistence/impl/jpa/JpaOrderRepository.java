@@ -21,5 +21,14 @@ public class JpaOrderRepository extends BasepaRepositoryBase<ProductOrder, Long,
 
         return query.getSingleResult();
     }
+
+    @Override
+    public Iterable<ProductOrder> findProductOrdersPrepared() {
+        final TypedQuery<ProductOrder> query = super.createQuery(
+                "SELECT d FROM ProductOrder d WHERE status_id = 5",
+                ProductOrder.class);
+
+        return query.getResultList();
+    }
 }
 

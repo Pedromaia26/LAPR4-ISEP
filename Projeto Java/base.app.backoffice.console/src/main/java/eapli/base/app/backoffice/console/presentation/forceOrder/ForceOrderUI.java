@@ -4,7 +4,7 @@ import eapli.base.agvmanagement.application.AGVListController;
 import eapli.base.agvmanagement.application.ConfigureAGVController;
 import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.ordermanagement.application.ForceOrderController;
-import eapli.base.ordermanagement.application.OrderListController;
+import eapli.base.ordermanagement.application.ListProductOrderController;
 import eapli.base.ordermanagement.domain.ProductOrder;
 import eapli.base.taskmanagement.application.TasksListController;
 import eapli.base.taskmanagement.domain.Task;
@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ForceOrderUI extends AbstractUI {
     private ForceOrderController theController = new ForceOrderController();
-    private OrderListController orderListController = new OrderListController();
+    private ListProductOrderController orderListController = new ListProductOrderController();
     private AGVListController agvListController = new AGVListController();
     private boolean invalidData;
     private AGV agvSelected;

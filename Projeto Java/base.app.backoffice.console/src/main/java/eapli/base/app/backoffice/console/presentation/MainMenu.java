@@ -29,6 +29,7 @@ import eapli.base.app.backoffice.console.presentation.category.DefineNewCategory
 import eapli.base.app.backoffice.console.presentation.category.ListCategoryUI;
 import eapli.base.app.backoffice.console.presentation.forceOrder.ForceOrderUI;
 import eapli.base.app.backoffice.console.presentation.order.AddOrderUI;
+import eapli.base.app.backoffice.console.presentation.order.UpdateOrderDispatchedUI;
 import eapli.base.app.backoffice.console.presentation.product.*;
 import eapli.base.app.backoffice.console.presentation.warehouse.JsonImporterUI;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
@@ -114,6 +115,10 @@ public class MainMenu extends AbstractUI {
     private static final int FORCING_ORDER=1;
     private static final int FORCE_ORDER=4;
 
+    //Update order
+    private static final int UPDATING_ORDER=1;
+    private static final int UPDATE_ORDER = 5;
+
 
 
 
@@ -185,6 +190,8 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(AGV, configureAGV);
             final Menu forceOrder = buildForceOrder();
             mainMenu.addSubMenu(FORCE_ORDER, forceOrder);
+            final Menu updateOrder = buildUpdateOrderMenu();
+            mainMenu.addSubMenu(UPDATE_ORDER, updateOrder);
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -295,6 +302,15 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("Force Order >");
 
         menu.addItem(FORCING_ORDER, "Force Order", new ForceOrderUI()::show);
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
+    private Menu buildUpdateOrderMenu(){
+        final Menu menu = new Menu("Update Order >");
+
+        menu.addItem(UPDATING_ORDER, "Update Order", new UpdateOrderDispatchedUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;

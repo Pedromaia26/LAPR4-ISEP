@@ -6,4 +6,6 @@ import eapli.framework.domain.repositories.DomainRepository;
 public interface OrderRepository extends DomainRepository<Long, ProductOrder> {
 
     ProductOrder findByOrderId(Long id);
+
+    Iterable<ProductOrder> findProductOrdersPrepared();
 }
