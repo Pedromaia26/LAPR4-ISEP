@@ -1,5 +1,4 @@
 package eapli.base.ordermanagement.application;
-
 import eapli.base.agvmanagement.application.ConfigureAGVController;
 import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.clientusermanagement.domain.ClientUser;
@@ -30,7 +29,7 @@ public class UpdateOrderStatusController {
     private final StatusRepository statusRepository = PersistenceContext.repositories().status();
 
     public ProductOrder UpdateOrderToDispatched(String orderId){
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.WAREHOUSE_EMPLOYEE);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.ADMIN, BaseRoles.POWER_USER, BaseRoles.WAREHOUSE_EMPLOYEE);
         long statusid = 8;
         Status status = statusRepository.findByStatusId(statusid);
         final ProductOrder order = orderRepository.findByOrderId(Long.parseLong(orderId));
@@ -44,8 +43,17 @@ public class UpdateOrderStatusController {
         return cagvcontroller.modifyAGVTask(agv, task);
     }
 
-    public boolean verifyIfExistsOrdersPrepared(){
-        List<ProductOrder> list = (List<ProductOrder>)listProductOrderController.productOrdersPrepared();
+    public boolean verifyIfExistsOrdersPrepared() {
+        List<ProductOrder> list = (List<ProductOrder>) listProductOrderController.productOrdersPrepared();
         return list.size() > 0;
+    }
+
+    public ProductOrder updateOrderBeingPreparedByAnAGV(String orderId){
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.ADMIN, BaseRoles.POWER_USER, BaseRoles.WAREHOUSE_EMPLOYEE, BaseRoles.SALES_CLERK);
+        long statusid = 4;
+        Status status = statusRepository.findByStatusId(statusid);
+        final ProductOrder order = orderRepository.findByOrderId(Long.parseLong(orderId));
+        order.modifyStatus(status);
+        return orderRepository.save(order);
     }
 }
