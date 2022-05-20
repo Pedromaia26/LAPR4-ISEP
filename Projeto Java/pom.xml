@@ -25,6 +25,7 @@
         <module>base.app.user.console</module>
         <module>base.app.other.console</module>
         <module>base.app.common.console</module>
+        <module>base.app.orderServer</module>
         <module>base.app.bootstrap</module>
         <module>base.bootstrappers</module>
         <module>base.core</module>
