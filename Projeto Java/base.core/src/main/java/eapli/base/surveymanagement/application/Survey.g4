@@ -33,7 +33,7 @@ otherId: INT;
 
 rep: INT;
 
-content: otherId end question end wMessage? end? type end obli end phrase? end?;
+content: otherId end question end wMessage? end? type;
 
 question: phrase INTE;
 
@@ -46,14 +46,14 @@ signal: COMMA
 | INTE
 | EXCL;
 
-type:FREE_TEXT
-| NUMERIC
-|SINGLE_CHOICE
-|SINGLE_CHOICE_INPUT
-|MULTIPLE_CHOICE
-|MULTIPLE_CHOICE_INPUT
-|SORTING_OPTIONS
-|SCALING_OPTIONS
+type:FREE_TEXT end obli end FT_TEXT
+| NUMERIC end obli end NUM_TEXT
+|SINGLE_CHOICE end obli end SC_TEXT
+|SINGLE_CHOICE_INPUT end obli end SCI_TEXT
+|MULTIPLE_CHOICE end obli end MC_TEXT
+|MULTIPLE_CHOICE_INPUT end obli end MCI_TEXT
+|SORTING_OPTIONS end obli end SO_TEXT
+|SCALING_OPTIONS end obli end SCO_TEXT
 ;
 
 end: FIM
@@ -75,6 +75,14 @@ MULTIPLE_CHOICE:'Multiple-Choice';
 MULTIPLE_CHOICE_INPUT:'Multiple-Choice with input value';
 SORTING_OPTIONS:'Sorting Options';
 SCALING_OPTIONS:'Scaling Options';
+FT_TEXT:'it means the person answers the question by typing some text.';
+NUM_TEXT:': it means the person answers the question by typing a numeric value.';
+SC_TEXT:'it means the person answers the question by selection one (and just one) of the provided options.';
+SCI_TEXT:'very similar to the “single choice” but the last option, if selected, implies that the person must type a numeric value or a free text.';
+MC_TEXT:'very similar to the “single choice”, but instead of selection just one, the answering person might select more than one.';
+MCI_TEXT:' very similar to the “multiple choice”, but the last option, if selected, implies that the person must type a numeric value or a free text.';
+SO_TEXT:'given two or more option the person answers the question by sorting the options as desired and in accordance with the instructions provided.';
+SCO_TEXT:': it means the person answers the question by selecting a value of a given scale (e.g.: unimportant, neutral, important) to each of the specified options.';
 INT:[0-9]+;
 WORD:[a-zA-Z]+;
 SPACE:' ';

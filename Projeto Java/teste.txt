@@ -11,5 +11,5 @@ Why is Maia so beautiful?
 Obvious yes.
 Free-text
 optional
-So ez
+it means the person answers the question by typing some text.
 FIM.;
