@@ -1,9 +1,5 @@
 package eapli.base.app.backoffice.console.presentation.order;
 
-import eapli.base.agvmanagement.application.AGVListController;
-import eapli.base.agvmanagement.application.AssignTaskController;
-import eapli.base.agvmanagement.application.ConfigureAGVController;
-import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.app.backoffice.console.presentation.authz.AddCostumerUI;
 import eapli.base.app.backoffice.console.presentation.product.ListProductUI;
 import eapli.base.clientusermanagement.application.ListClientUsersController;
@@ -12,8 +8,6 @@ import eapli.base.ordermanagement.application.AddOrderLineController;
 import eapli.base.ordermanagement.application.UpdateOrderStatusController;
 import eapli.base.ordermanagement.domain.ProductOrder;
 import eapli.base.productmanagement.application.ListProductController;
-import eapli.base.taskmanagement.application.TasksListController;
-import eapli.base.taskmanagement.domain.Task;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
 
@@ -29,10 +23,9 @@ public class AddOrderUI  extends AbstractUI {
     private final ListProductController theLController = new ListProductController();
     private final ListClientUsersController theUserController = new ListClientUsersController();
     private boolean invalidData, invalidProduct, invalidShipMethod = true, invalidPaymentMethod = true;
-    private final AssignTaskController assignTaskController = new AssignTaskController();
     UpdateOrderStatusController updateOrderStatusController = new UpdateOrderStatusController();
     ProductOrder productOrder;
-
+    
     @Override
     protected boolean doShow() {
 
@@ -172,15 +165,9 @@ public class AddOrderUI  extends AbstractUI {
             invalidData = false;
 
             try {
-              AGV agv = assignTaskController.assignTask();
-              if (agv != null){
-                        System.out.printf("AGV %s assigned to perform the task!\n", agv.identity().AgvIdentifier());
-                        theOrderController.addOrder(clientVat, productOrder, deliveringPostalAddress, billingPostalAddress, shipmentMethod,  shipmentCost, paymentMethod, agv);
-                        updateOrderStatusController.updateOrderBeingPreparedByAnAGV(productOrder.identity().toString());
-              }else{
-                    System.out.println("No AGV is free!");
-                    theOrderController.addOrder(clientVat, productOrder, deliveringPostalAddress, billingPostalAddress, shipmentMethod, shipmentCost, paymentMethod);
-              }
+                    if (!theOrderController.addOrderWithAGV(clientVat, productOrder, deliveringPostalAddress, billingPostalAddress, shipmentMethod, shipmentCost, paymentMethod)){
+                        theOrderController.addOrder(clientVat, productOrder, deliveringPostalAddress, billingPostalAddress, shipmentMethod, shipmentCost, paymentMethod);
+                    }
             } catch (IllegalArgumentException e) {
                 System.out.println("\n"+ e.getMessage());
                 if (Console.readLine("Do you want to try again? (Y/N)").equals("Y")){
