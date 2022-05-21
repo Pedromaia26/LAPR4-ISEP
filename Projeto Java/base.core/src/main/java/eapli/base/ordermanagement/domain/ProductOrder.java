@@ -205,6 +205,10 @@ public class ProductOrder implements AggregateRoot<Long> {
         this.status = status;
     }
 
+    public Status Status() {
+        return status;
+    }
+
     public ClientUser clientUser() {
         return clientUser;
     }

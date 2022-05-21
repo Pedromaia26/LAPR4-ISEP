@@ -7,6 +7,10 @@ import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.categorymanagement.domain.Category;
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.infrastructure.persistence.PersistenceContext;
+import eapli.base.ordermanagement.application.AddOrderController;
+import eapli.base.ordermanagement.application.ListProductOrderService;
+import eapli.base.ordermanagement.domain.ProductOrder;
+import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.orderstatusmanagement.domain.Status;
 import eapli.base.productmanagement.domain.Product;
 import eapli.base.productmanagement.domain.ProductBuilder;
@@ -25,6 +29,10 @@ public class ConfigureAGVController {
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final TaskRepository taskRepository = PersistenceContext.repositories().tasks();
     private final AGVRepository agvRepository = PersistenceContext.repositories().agv();
+    private final OrderRepository orderRepository = PersistenceContext.repositories().orders();;
+    private final ListProductOrderService listProductOrderService = new ListProductOrderService();
+    private ProductOrder productOrder;
+
 
 
     public AGV addAGV(final String agvIdentifier, final String agvShortDescription, final double autonomy, final double maximumWeight, final String model, final double volume, final AGVDock agvDock) {
@@ -42,4 +50,22 @@ public class ConfigureAGVController {
         agv.modifyTask(taskId);
         return agvRepository.save(agv);
     }
+
+    public ProductOrder assignAGVToAGivenOrder (AGV agv){
+
+        for (ProductOrder order: listProductOrderService.orderList()){
+            if (order.Agv() == null && order.Status().identity()==1L){
+                order.modifyAgv(agv);
+                productOrder = order;
+                break;
+            }
+        }
+
+        if (productOrder == null){
+            return null;
+        }
+
+        return orderRepository.save(productOrder);
+    }
+
 }
