@@ -1,7 +1,10 @@
 package eapli.base.ordermanagement.application;
 
 import com.fasterxml.jackson.databind.ser.Serializers;
+import eapli.base.agvmanagement.application.AGVListService;
+import eapli.base.agvmanagement.application.ConfigureAGVController;
 import eapli.base.agvmanagement.domain.AGV;
+import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.clientusermanagement.domain.BillingPostalAddresses;
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.domain.DeliveringPostalAddresses;
@@ -12,6 +15,8 @@ import eapli.base.ordermanagement.repositories.OrderLineRepository;
 import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.orderstatusmanagement.domain.Status;
 import eapli.base.orderstatusmanagement.repositories.StatusRepository;
+import eapli.base.taskmanagement.application.TasksListService;
+import eapli.base.taskmanagement.domain.Task;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.application.UseCaseController;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
@@ -27,6 +32,10 @@ public class AddOrderController {
     private final ClientUserRepository userRepository = PersistenceContext.repositories().clientUsers();
     private final StatusRepository statusRepository = PersistenceContext.repositories().status();
     private final OrderLineRepository orderLineRepository = PersistenceContext.repositories().orderlines();
+    private TasksListService svcTask = new TasksListService();
+    private AGVListService svcAGV = new AGVListService();
+    private final ConfigureAGVController configureAGVController = new ConfigureAGVController();
+    private AGV agv;
 
     public ProductOrder addOrder(final String clientvat) {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK, BaseRoles.POWER_USER, BaseRoles.ADMIN);
@@ -58,8 +67,8 @@ public class AddOrderController {
         return true;
     }
 
-    public boolean addOrder(final String clientvat, final ProductOrder order, final Set<String[]> deliveringPostalAddress, final Set<String[]> billingPostalAddress,
-                            final String shipmentMethod, final double shipmentCost, final String paymentMethod, final AGV agv) {
+    public boolean addOrderWithAGV(final String clientvat, final ProductOrder order, final Set<String[]> deliveringPostalAddress, final Set<String[]> billingPostalAddress,
+                            final String shipmentMethod, final double shipmentCost, final String paymentMethod) {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
 
         ClientUser clientUser = userRepository.findByVAT(clientvat);
@@ -73,10 +82,27 @@ public class AddOrderController {
         order.modifyShipmentMethod(new ShipmentMethod(shipmentMethod));
         order.modifyShipmentCost(new ShipmentCost(shipmentCost));
         order.modifyPaymentMethod(new PaymentMethod(paymentMethod));
+
+        Task task = svcTask.findTaskById(3L);
+        for (AGV atAgv: svcAGV.agv()){
+            if (atAgv.Task().hasIdentity(1L)){
+                atAgv.modifyTask(task);
+                agv = atAgv;
+                break;
+            }
+        }
+
+        if (agv==null){
+            return false;
+        }
+
         order.modifyAgv(agv);
 
+        configureAGVController.modifyAGVTask(agv, task);
         orderRepository.save(order);
 
         return true;
     }
+
+
 }
