@@ -34,7 +34,10 @@ public class UpdateOrderStatusController {
         Status status = statusRepository.findByStatusId(statusid);
         final ProductOrder order = orderRepository.findByOrderId(Long.parseLong(orderId));
         order.modifyStatus(status);
-        updateAGVToFree(order.Agv());
+        if(cagvcontroller.assignAGVToAGivenOrder(order.Agv()) == null){
+            updateAGVToFree(order.Agv());
+        }
+        unlinkAGV(order);
         return orderRepository.save(order);
     }
 
@@ -55,5 +58,9 @@ public class UpdateOrderStatusController {
         final ProductOrder order = orderRepository.findByOrderId(Long.parseLong(orderId));
         order.modifyStatus(status);
         return orderRepository.save(order);
+    }
+
+    public void unlinkAGV(ProductOrder order){
+        order.modifyAgv(null);
     }
 }
