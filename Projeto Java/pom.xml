@@ -25,9 +25,9 @@
         <module>base.app.user.console</module>
         <module>base.app.other.console</module>
         <module>base.app.common.console</module>
-        <module>base.app.orderServer</module>
-        <module>base.app.agvDigitalTwin</module>
-        <module>base.app.agvManager</module>
+        <module>base.daemon.orderServer</module>
+        <module>base.daemon.agvDigitalTwin</module>
+        <module>base.daemon.agvManager</module>
         <module>base.app.bootstrap</module>
         <module>base.bootstrappers</module>
         <module>base.core</module>
