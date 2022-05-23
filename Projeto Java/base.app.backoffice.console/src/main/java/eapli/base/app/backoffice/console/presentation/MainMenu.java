@@ -31,6 +31,7 @@ import eapli.base.app.backoffice.console.presentation.forceOrder.ForceOrderUI;
 import eapli.base.app.backoffice.console.presentation.order.AddOrderUI;
 import eapli.base.app.backoffice.console.presentation.order.UpdateOrderDispatchedUI;
 import eapli.base.app.backoffice.console.presentation.product.*;
+import eapli.base.app.backoffice.console.presentation.survey.CreateSurveyUI;
 import eapli.base.app.backoffice.console.presentation.warehouse.JsonImporterUI;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
@@ -119,8 +120,11 @@ public class MainMenu extends AbstractUI {
     private static final int UPDATING_ORDER=1;
     private static final int UPDATE_ORDER = 5;
 
+    //Survey Main Menu
+    private static final int SURVEY_MENU = 2;
 
-
+    //Survey
+    private static final int CREATE_SURVEY = 1;
 
 
     private static final String SEPARATOR_LABEL = "--------------";
@@ -192,6 +196,11 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(FORCE_ORDER, forceOrder);
             final Menu updateOrder = buildUpdateOrderMenu();
             mainMenu.addSubMenu(UPDATE_ORDER, updateOrder);
+        }
+
+        if(authz.isAuthenticatedUserAuthorizedTo(BaseRoles.SALES_MANAGER)){
+            final Menu createSurvey = buildCreateSurvey();
+            mainMenu.addSubMenu(SURVEY_MENU, createSurvey);
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -311,6 +320,16 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("Update Order >");
 
         menu.addItem(UPDATING_ORDER, "Update Order", new UpdateOrderDispatchedUI()::show);
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
+    private Menu buildCreateSurvey() {
+        final Menu menu = new Menu("Survey >");
+
+        menu.addItem(CREATE_SURVEY, "Create Survey", new CreateSurveyUI()::show);
+
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
