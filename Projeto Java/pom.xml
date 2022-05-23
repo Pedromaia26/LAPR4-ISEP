@@ -96,7 +96,7 @@
             <dependency><!--Necessary to avoid drop-and-create failure with latest spring boot version-->
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-core</artifactId>
-                <version>5.4.14.Final</version>
+                <version>5.6.7.Final</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
