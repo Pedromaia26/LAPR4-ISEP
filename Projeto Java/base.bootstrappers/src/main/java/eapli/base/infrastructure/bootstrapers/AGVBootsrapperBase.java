@@ -17,16 +17,24 @@ public class AGVBootsrapperBase {
     final ConfigureAGVController configureAGVController = new ConfigureAGVController();
     final AGVDockListController agvDockListController = new AGVDockListController();
 
+
     public AGVBootsrapperBase() {
         super();
     }
 
 
-    protected boolean addAGV(final String agvIdentifier, final String agvDescription, final double autonomy, final double maxWeight, final String model, final double volume) {
+    protected boolean addAGV(final String agvIdentifier, final String agvDescription, final double autonomy, final double maxWeight, final String model, final double volume, final String dock) {
         try {
-            List<AGVDock> list = (List<AGVDock>)agvDockListController.agvDocks();
-            AGVDock agvDock = list.get(0);
-            configureAGVController.addAGV(agvIdentifier, agvDescription, autonomy, maxWeight, model, volume, agvDock);
+
+            AGVDock agvDock1 = null;
+
+            for (AGVDock agvDock : agvDockListController.agvDocks()) {
+                if (agvDock.identity().Id().equals(dock)){
+                     agvDock1 = agvDock;
+                }
+            }
+
+            configureAGVController.addAGV(agvIdentifier, agvDescription, autonomy, maxWeight, model, volume, agvDock1);
             LOGGER.debug("»»» %s", agvIdentifier);
         } catch (final IntegrityViolationException | ConcurrencyException e) {
             // assuming it is just a primary key violation due to the tentative

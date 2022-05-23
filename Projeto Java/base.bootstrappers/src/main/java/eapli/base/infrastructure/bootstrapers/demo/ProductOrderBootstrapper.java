@@ -9,6 +9,7 @@ public class ProductOrderBootstrapper extends ProductOrderBootstrapperBase imple
     @Override
     public boolean execute() {
         addProductOrder("123123124");
+        addProductOrder("123123124");
         return true;
     }
 }
