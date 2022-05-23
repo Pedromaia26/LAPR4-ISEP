@@ -46,9 +46,16 @@ public class ConfigureAGVController {
     }
 
     public AGV modifyAGVTask(AGV agv, Task taskId){
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.WAREHOUSE_EMPLOYEE, BaseRoles.POWER_USER, BaseRoles.ADMIN, BaseRoles.SALES_CLERK);
+
         agv.modifyTask(taskId);
         return agvRepository.save(agv);
+    }
+
+    public AGV modifyAGVTask(AGV agv, Task taskId, AGVRepository agvRepository){
+
+        agv.modifyTask(taskId);
+        return agvRepository.save(agv);
+
     }
 
     public ProductOrder assignAGVToAGivenOrder (AGV agv){

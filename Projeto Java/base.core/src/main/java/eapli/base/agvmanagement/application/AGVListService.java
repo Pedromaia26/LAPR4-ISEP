@@ -14,7 +14,7 @@ public class AGVListService {
     private final AGVRepository agvRepository = PersistenceContext.repositories().agv();
 
     public Iterable<AGV> agv() {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.WAREHOUSE_EMPLOYEE, BaseRoles.POWER_USER, BaseRoles.ADMIN, BaseRoles.SALES_CLERK);
+
         return agvRepository.findAll();
     }
 }

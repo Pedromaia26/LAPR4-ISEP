@@ -21,7 +21,6 @@ public class TasksListService {
     }
 
     public Task findTaskById(Long id){
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.WAREHOUSE_EMPLOYEE, BaseRoles.POWER_USER, BaseRoles.ADMIN, BaseRoles.SALES_CLERK);
         return taskRepository.findTaskByID(id);
     }
 

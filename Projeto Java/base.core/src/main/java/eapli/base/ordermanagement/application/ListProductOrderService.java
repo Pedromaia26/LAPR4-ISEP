@@ -23,7 +23,6 @@ public class ListProductOrderService {
     }
 
     public ProductOrder findByCode(String orderId) {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.WAREHOUSE_EMPLOYEE);
 
         return productOrderRepository.findByOrderId(Long.parseLong(orderId));
     }

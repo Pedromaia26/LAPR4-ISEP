@@ -25,7 +25,7 @@ public class AddOrderUI  extends AbstractUI {
     private boolean invalidData, invalidProduct, invalidShipMethod = true, invalidPaymentMethod = true;
     UpdateOrderStatusController updateOrderStatusController = new UpdateOrderStatusController();
     ProductOrder productOrder;
-    
+
     @Override
     protected boolean doShow() {
 
@@ -165,9 +165,9 @@ public class AddOrderUI  extends AbstractUI {
             invalidData = false;
 
             try {
-                    if (!theOrderController.addOrderWithAGV(clientVat, productOrder, deliveringPostalAddress, billingPostalAddress, shipmentMethod, shipmentCost, paymentMethod)){
+
                         theOrderController.addOrder(clientVat, productOrder, deliveringPostalAddress, billingPostalAddress, shipmentMethod, shipmentCost, paymentMethod);
-                    }
+
             } catch (IllegalArgumentException e) {
                 System.out.println("\n"+ e.getMessage());
                 if (Console.readLine("Do you want to try again? (Y/N)").equals("Y")){
