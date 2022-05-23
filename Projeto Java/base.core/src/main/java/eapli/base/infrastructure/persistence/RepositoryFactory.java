@@ -100,6 +100,15 @@ public interface RepositoryFactory {
     AGVRepository agv();
 
     /**
+     *
+     * @param autoTx
+     *            the transactional context to enroll
+     * @return
+     */
+
+    AGVRepository agv(TransactionalContext autoTx);
+
+    /**
      * repository will be created in auto transaction mode
      *
      * @return
@@ -159,6 +168,14 @@ public interface RepositoryFactory {
      */
     OrderRepository orders();
 
+    /**
+     *
+     * @param autoTx
+     *            the transactional context to enroll
+     * @return
+     */
+
+    OrderRepository orders(TransactionalContext autoTx);
     /**
      * repository will be created in auto transaction mode
      *

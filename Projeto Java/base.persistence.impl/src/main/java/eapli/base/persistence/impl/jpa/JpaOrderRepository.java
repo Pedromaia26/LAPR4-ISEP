@@ -1,20 +1,30 @@
 package eapli.base.persistence.impl.jpa;
 
+import eapli.base.Application;
 import eapli.base.ordermanagement.domain.ProductOrder;
 import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.productmanagement.domain.Product;
+import eapli.framework.domain.repositories.TransactionalContext;
+import eapli.framework.infrastructure.repositories.impl.jpa.JpaAutoTxRepository;
 
 import javax.persistence.*;
 
-public class JpaOrderRepository extends BasepaRepositoryBase<ProductOrder, Long, Long>
+public class JpaOrderRepository extends JpaAutoTxRepository<ProductOrder, Long, Long>
         implements OrderRepository {
 
-    JpaOrderRepository() {
-        super("id");
+
+    public JpaOrderRepository(final String puname){
+        super(puname, Application.settings().getExtendedPersistenceProperties(), "id");
     }
+
+    public JpaOrderRepository(TransactionalContext autoTx){
+        super(autoTx, "id");
+    }
+
 
     @Override
     public ProductOrder findByOrderId(Long orderId) {
+        System.out.println("find");
         final TypedQuery<ProductOrder> query = super.createQuery(
                 "SELECT d FROM ProductOrder d WHERE id = '" + orderId + "'",
                 ProductOrder.class);

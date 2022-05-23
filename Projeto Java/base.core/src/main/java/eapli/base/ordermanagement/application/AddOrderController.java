@@ -64,45 +64,12 @@ public class AddOrderController {
 
         orderRepository.save(order);
 
-        return true;
-    }
-
-    public boolean addOrderWithAGV(final String clientvat, final ProductOrder order, final Set<String[]> deliveringPostalAddress, final Set<String[]> billingPostalAddress,
-                            final String shipmentMethod, final double shipmentCost, final String paymentMethod) {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
-
-        ClientUser clientUser = userRepository.findByVAT(clientvat);
-        long statusid = 1;
-        Status status = statusRepository.findByStatusId(statusid);
-        double cost = orderLineRepository.getAllCost(order.identity());
-        order.modifyBillingPostalAddress(new BillingPostalAddresses(billingPostalAddress));
-        order.modifyDeliveringPostalAddress(new DeliveringPostalAddresses(deliveringPostalAddress));
-        order.modifyTotalAmountWithoutTaxes(new TotalAmountWithoutTaxes(cost));
-        order.modifyTotalAmountWithTaxes(new TotalAmountWithTaxes(cost + cost*0.23));
-        order.modifyShipmentMethod(new ShipmentMethod(shipmentMethod));
-        order.modifyShipmentCost(new ShipmentCost(shipmentCost));
-        order.modifyPaymentMethod(new PaymentMethod(paymentMethod));
-
-        Task task = svcTask.findTaskById(3L);
-        for (AGV atAgv: svcAGV.agv()){
-            if (atAgv.Task().hasIdentity(1L)){
-                atAgv.modifyTask(task);
-                agv = atAgv;
-                break;
-            }
-        }
-
-        if (agv==null){
-            return false;
-        }
-
-        order.modifyAgv(agv);
-
-        configureAGVController.modifyAGVTask(agv, task);
-        orderRepository.save(order);
+        //chamar server e enviar id order
 
         return true;
     }
+
+
 
 
 }

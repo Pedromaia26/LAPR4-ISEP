@@ -30,6 +30,11 @@
         </dependency>
         <dependency>
             <groupId>eapli</groupId>
+            <artifactId>base.core</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>eapli</groupId>
             <artifactId>base.persistence.impl</artifactId>
             <version>${project.parent.version}</version>
             <scope>runtime</scope>
