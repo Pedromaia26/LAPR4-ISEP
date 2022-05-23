@@ -113,7 +113,12 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 
     @Override
     public OrderRepository orders() {
-        return new JpaOrderRepository();
+        return new JpaOrderRepository(Application.settings().getPersistenceUnitName());
+    }
+
+    @Override
+    public OrderRepository orders(TransactionalContext autoTx) {
+        return new JpaOrderRepository(autoTx);
     }
 
     @Override
@@ -127,7 +132,12 @@ public class JpaRepositoryFactory implements RepositoryFactory {
     }
 
     @Override
-    public AGVRepository agv() { return new JpaAGVRepository(); }
+    public AGVRepository agv() { return new JpaAGVRepository(Application.settings().getPersistenceUnitName()); }
+
+    @Override
+    public AGVRepository agv(TransactionalContext autoTx) {
+        return new JpaAGVRepository(autoTx);
+    }
 
     @Override
     public SignupRequestRepository signupRequests(final TransactionalContext autoTx) {
