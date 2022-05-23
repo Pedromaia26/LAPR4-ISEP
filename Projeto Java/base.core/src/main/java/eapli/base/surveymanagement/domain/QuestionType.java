@@ -1,0 +1,6 @@
+package eapli.base.surveymanagement.domain;
+
+public enum QuestionType {
+    FREE_TEXT, NUMERIC, SINGLE_CHOICE, SINGLE_CHOICE_INPUT,
+    MULTIPLE_CHOICE, MULTIPLE_CHOICE_INPUT, SORTING_OPTIONS, SCALING_OPTIONS,
+}
