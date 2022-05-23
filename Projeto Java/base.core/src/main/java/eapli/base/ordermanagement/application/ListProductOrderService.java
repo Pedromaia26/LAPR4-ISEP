@@ -28,7 +28,8 @@ public class ListProductOrderService {
     }
 
     public Iterable<ProductOrder> orderList() {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.WAREHOUSE_EMPLOYEE, BaseRoles.POWER_USER, BaseRoles.ADMIN, BaseRoles.SALES_CLERK);
         return productOrderRepository.findAll();
     }
+
+
 }

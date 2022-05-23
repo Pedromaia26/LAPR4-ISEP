@@ -19,7 +19,6 @@ public class StatusListService {
     }
 
     public Status findStatusById(Long id){
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.WAREHOUSE_EMPLOYEE, BaseRoles.POWER_USER, BaseRoles.ADMIN, BaseRoles.SALES_CLERK);
         return statusRepository.findByStatusId(id);
     }
 }

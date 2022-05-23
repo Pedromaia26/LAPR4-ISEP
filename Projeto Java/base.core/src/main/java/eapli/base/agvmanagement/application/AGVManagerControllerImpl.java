@@ -6,12 +6,16 @@ import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.ordermanagement.application.ListProductOrderService;
 import eapli.base.ordermanagement.domain.*;
 import eapli.base.ordermanagement.repositories.OrderRepository;
+import eapli.base.orderstatusmanagement.domain.Status;
+import eapli.base.statusManagement.StatusListController;
 import eapli.base.taskmanagement.application.TasksListService;
 import eapli.base.taskmanagement.domain.Task;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
+
+import java.util.List;
 
 public class AGVManagerControllerImpl implements AGVManagerController {
 
@@ -23,38 +27,33 @@ public class AGVManagerControllerImpl implements AGVManagerController {
     private AGVListService svcAGV = new AGVListService();
     private final ConfigureAGVController configureAGVController = new ConfigureAGVController();
     private final AGVRepository agvRepository = PersistenceContext.repositories().agv(txCtx);
+    private final StatusListController statusListController = new StatusListController();
     private AGV agv;
 
     @Override
-    public boolean addOrderWithAGV(String orderID) {
-
-        txCtx.beginTransaction();
+    public boolean addOrderWithAGV() {
 
         try{
             Task task = svcTask.findTaskById(3L);
-            System.out.println(task);
             for (AGV atAgv: svcAGV.agv()){
+                txCtx.beginTransaction();
                 if (atAgv.Task().hasIdentity(1L)){
                     atAgv.modifyTask(task);
                     agv = atAgv;
-                    break;
+                    for (ProductOrder pO: listProductOrderService.orderList()){
+                        if (pO.Status().hasIdentity(1L)){
+                            configureAGVController.modifyAGVTask(agv, task, agvRepository);
+                            pO.modifyAgv(agv);
+                            Status status = statusListController.findStatusById(4L);
+                            pO.modifyStatus(status);
+                            orderRepository.save(pO);
+                            txCtx.commit();
+                            break;
+                        }
+                    }
                 }
+                txCtx.close();
             }
-
-            if (agv==null){
-                throw new IllegalArgumentException("No AGV is free!");
-            }
-
-            ProductOrder productOrder = listProductOrderService.findByCode(orderID);
-
-            configureAGVController.modifyAGVTask(agv, task, agvRepository);
-
-            productOrder.modifyAgv(agv);
-
-            orderRepository.save(productOrder);
-
-            txCtx.commit();
-
         }catch (Exception e){
             txCtx.rollback();
         }

@@ -24,8 +24,7 @@ public class JpaOrderRepository extends JpaAutoTxRepository<ProductOrder, Long, 
 
     @Override
     public ProductOrder findByOrderId(Long orderId) {
-        System.out.println("find");
-        final TypedQuery<ProductOrder> query = super.createQuery(
+                final TypedQuery<ProductOrder> query = super.createQuery(
                 "SELECT d FROM ProductOrder d WHERE id = '" + orderId + "'",
                 ProductOrder.class);
 
