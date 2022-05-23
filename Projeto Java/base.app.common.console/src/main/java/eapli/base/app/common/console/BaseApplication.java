@@ -27,12 +27,20 @@ import eapli.base.Application;
 import eapli.framework.infrastructure.eventpubsub.EventDispatcher;
 import eapli.framework.infrastructure.eventpubsub.impl.inprocess.InProcessPubSub;
 
+import java.io.*;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
 /**
  *
  * @author Paulo Gandra Sousa
  */
 @SuppressWarnings("squid:S106")
 public abstract class BaseApplication {
+
+    static InetAddress serverIP;
+    static Socket sock;
 
     // we are assuming we will always use the in process event
     // dispatcher. check the Spring version of the Base project
@@ -46,7 +54,24 @@ public abstract class BaseApplication {
      * @param args
      *            the command line arguments
      */
-    public void run(final String[] args) {
+    public void run(final String[] args) throws IOException {
+
+        try { serverIP = InetAddress.getByName("192.168.1.90"); }
+        catch(UnknownHostException ex) {
+            System.out.println("Invalid server specified");
+            System.exit(1); }
+        try { sock = new Socket(serverIP, 8899); }
+        catch(IOException ex) {
+            System.out.println("Failed to establish TCP connection");
+            System.exit(1); }
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        DataOutputStream sOut = new DataOutputStream(sock.getOutputStream());
+        DataInputStream sIn = new DataInputStream(sock.getInputStream());
+
+        sOut.write(1);
+
+        sock.close();
+
         printHeader();
 
         try {
