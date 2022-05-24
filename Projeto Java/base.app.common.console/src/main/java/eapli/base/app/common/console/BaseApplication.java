@@ -20,6 +20,7 @@
  */
 package eapli.base.app.common.console;
 
+import eapli.base.agvmanagement.application.AssignAGVService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -39,13 +40,12 @@ import java.net.UnknownHostException;
 @SuppressWarnings("squid:S106")
 public abstract class BaseApplication {
 
-    static InetAddress serverIP;
-    static Socket sock;
 
     // we are assuming we will always use the in process event
     // dispatcher. check the Spring version of the Base project
     // for an alternative
     final EventDispatcher dispatcher = InProcessPubSub.dispatcher();
+
 
     protected static final String SEPARATOR_HR = "=====================================";
     private static final Logger LOGGER = LogManager.getLogger(BaseApplication.class);
@@ -54,29 +54,9 @@ public abstract class BaseApplication {
      * @param args
      *            the command line arguments
      */
-    public void run(final String[] args) throws IOException {
+    public void run(final String[] args){
 
-        try{
-            try { serverIP = InetAddress.getByName("192.168.1.90"); }
-            catch(UnknownHostException ex) {
-                System.out.println("Invalid server specified");
-                System.exit(1); }
-            try { sock = new Socket(serverIP, 8899); }
-            catch(IOException ex) {
-                System.out.println("Failed to establish TCP connection");
-               // System.exit(1);
-            }
-            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-            DataOutputStream sOut = new DataOutputStream(sock.getOutputStream());
-            DataInputStream sIn = new DataInputStream(sock.getInputStream());
 
-           //sOut.write(3);
-
-            sock.close();
-
-        }catch (Exception e){
-            System.out.println("Server down");
-        }
 
         printHeader();
 

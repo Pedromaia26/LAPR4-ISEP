@@ -23,6 +23,7 @@
  */
 package eapli.base.app.backoffice.console;
 
+import eapli.base.agvmanagement.application.AssignAGVService;
 import eapli.base.app.common.console.BaseApplication;
 import eapli.base.app.common.console.presentation.authz.LoginUI;
 import eapli.base.app.backoffice.console.presentation.MainMenu;
@@ -44,7 +45,7 @@ import java.io.IOException;
  */
 @SuppressWarnings("squid:S106")
 public final class BaseBackoffice extends BaseApplication {
-
+    private final AssignAGVService assignAGVService = new AssignAGVService();
     /**
      * avoid instantiation of this class.
      */
@@ -65,6 +66,7 @@ public final class BaseBackoffice extends BaseApplication {
 
     @Override
     protected void doMain(final String[] args) {
+        assignAGVService.assignAGVService();
         // login and go to main menu
         if (new LoginUI().show()) {
             // go to main menu

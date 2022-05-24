@@ -1,5 +1,6 @@
 package daemon.agvmanager;
 
+import com.fasterxml.jackson.core.Base64Variant;
 import daemon.agvmanager.presentation.AgvManagerTcpServer;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.usermanagement.domain.BasePasswordPolicy;
@@ -8,7 +9,9 @@ import eapli.framework.infrastructure.authz.domain.model.PlainTextEncoder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.net.InetAddress;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 
 public class AGVManagerDaemon {
@@ -23,11 +26,11 @@ public class AGVManagerDaemon {
     private AGVManagerDaemon() {
     }
 
-    public static void main(final String[] args) {
+    public static void main(final String[] args) throws UnknownHostException {
 
 
         LOGGER.info("Configuring the daemon");
-
+        System.out.println(InetAddress.getLocalHost().getHostAddress());
         AuthzRegistry.configure(PersistenceContext.repositories().users(),
                 new BasePasswordPolicy(),
                 new PlainTextEncoder());

@@ -2,6 +2,7 @@ package eapli.base.ordermanagement.application;
 
 import com.fasterxml.jackson.databind.ser.Serializers;
 import eapli.base.agvmanagement.application.AGVListService;
+import eapli.base.agvmanagement.application.AssignAGVService;
 import eapli.base.agvmanagement.application.ConfigureAGVController;
 import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.agvmanagement.repositories.AGVRepository;
@@ -34,7 +35,7 @@ public class AddOrderController {
     private final OrderLineRepository orderLineRepository = PersistenceContext.repositories().orderlines();
     private TasksListService svcTask = new TasksListService();
     private AGVListService svcAGV = new AGVListService();
-    private final ConfigureAGVController configureAGVController = new ConfigureAGVController();
+    private final AssignAGVService assignAGVService = new AssignAGVService();
     private AGV agv;
 
     public ProductOrder addOrder(final String clientvat) {
@@ -63,6 +64,8 @@ public class AddOrderController {
         order.modifyPaymentMethod(new PaymentMethod(paymentMethod));
 
         orderRepository.save(order);
+
+        assignAGVService.assignAGVService();
 
         //chamar server e enviar id order
 
