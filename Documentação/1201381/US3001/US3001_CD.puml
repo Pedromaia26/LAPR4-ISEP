@@ -1,0 +1,79 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class CreateSurveyUI
+class CreateSurveyController
+class Survey
+class Section
+class Question
+class SurvVisitor << (V,a777d1) >>
+
+class CreateSurveyController{
+    - createSurvey(file)
+}
+
+class Survey{
+    + id
+    + title
+    + welcomeMessage
+    + sections
+    + finalMessage
+    - create(id, title, welcomeMessage, finalMessage)
+    - create(id, title, finalMessage)
+}
+
+class Section{
+    + id
+    + title
+    + sectionDescription
+    + obligatoriness
+    + repeatability
+    - create(id, title, sectionDescription, obligatoriness, repeatability, questions)
+    - create(id, title, sectionDescription, obligatoriness, repeatability)
+    - create(id, title, obligatoriness, repeatability, questions)
+    - create(id, title, sectionDescription, obligatoriness, questions)
+    - create(id, title, obligatoriness, questions)
+}
+
+class Question{
+    + id
+    + questionText
+    + instruction
+    + questionType
+    + obligatoriness
+    + extraInfo
+    - create(identifier, questionText, instruction, questionType, obligatoriness, extraInfo)
+    - create(identifier, questionText, questionType, obligatoriness, extraInfo)
+}
+
+class SurvVisitor {
+    + survey
+    + section
+    + question
+    - visitProg(ctx);
+    - visitSurveys(ctx);
+    - visitId(ctx);
+    - visitAlphanumeric(ctx);
+    - visitTitle(ctx);
+    - visitObli(ctx);
+    - visitWMessage(ctx);
+    - visitSection(ctx);
+    - visitOtherId(ctx);
+    - visitRep(ctx);
+    - visitContent(ctx);
+    - visitQuestion(ctx);
+    - visitPhrase(ctx);
+    - visitSignal(ctx);
+    - visitType(ctx);
+    - visitEnd(ctx)
+}
+
+CreateSurveyUI --> CreateSurveyController
+CreateSurveyController --> Survey
+CreateSurveyController --> SurvVisitor
+Survey --> Section
+Section --> Question
+SurvVisitor --> Survey
+SurvVisitor --> Section
+SurvVisitor --> Question
+@enduml
