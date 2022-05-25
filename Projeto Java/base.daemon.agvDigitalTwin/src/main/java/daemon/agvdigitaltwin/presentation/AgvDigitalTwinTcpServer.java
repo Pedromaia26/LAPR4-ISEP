@@ -31,13 +31,12 @@ public class AgvDigitalTwinTcpServer {
 
             LOGGER.debug("Accepted connection from {}:{}", clientIP.getHostAddress(), clientSocket.getPort());
 
-            try (var out = new PrintWriter(clientSocket.getOutputStream(), true);
-                 var in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) {
-                String inputLine = in.readLine();
+            try (var out = new DataOutputStream(clientSocket.getOutputStream());
+                 var in = new DataInputStream(clientSocket.getInputStream())) {
+                String inputLine = in.readUTF();
                 LOGGER.debug("Received message:----\n{}\n----", inputLine);
                 final AgvDigitalTwinProtocolRequest request = InputMessage.input(inputLine);
                 final String response = request.execute();
-                out.println(response);
                 LOGGER.debug("Sent message:----\n{}\n----", response);
                 //if (request.isGoodbye()) {
                 //  break;

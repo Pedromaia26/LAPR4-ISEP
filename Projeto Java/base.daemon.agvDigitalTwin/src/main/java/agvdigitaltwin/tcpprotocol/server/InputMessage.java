@@ -33,19 +33,19 @@ public class InputMessage {
 
         // parse to determine which type of request and if it is sintactally valid
 
-      //  request = inputAssignTask(inputLine);
+        request = inputAssignTask(inputLine);
 
         return request;
     }
 
 
-   /* private static AgvDigitalTwinProtocolRequest inputAssignTask(final String inputLine) {
+    private static AgvDigitalTwinProtocolRequest inputAssignTask(final String inputLine) {
         AgvDigitalTwinProtocolRequest request;
 
 
-        request = new AssignTaskRequest(controller, inputLine);
+        request = new UpdateStatusRequest(controller, inputLine);
 
         return request;
-    }*/
+    }
 
 }
