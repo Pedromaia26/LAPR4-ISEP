@@ -19,7 +19,7 @@ import java.util.List;
 
 public class AGVManagerControllerImpl implements AGVManagerController {
 
-    private final TransactionalContext txCtx = PersistenceContext.repositories().newTransactionalContext();
+    private static final TransactionalContext txCtx = PersistenceContext.repositories().newTransactionalContext();
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final OrderRepository orderRepository = PersistenceContext.repositories().orders(txCtx);
     private final ListProductOrderService listProductOrderService = new ListProductOrderService();
@@ -28,6 +28,7 @@ public class AGVManagerControllerImpl implements AGVManagerController {
     private final ConfigureAGVController configureAGVController = new ConfigureAGVController();
     private final AGVRepository agvRepository = PersistenceContext.repositories().agv(txCtx);
     private final StatusListController statusListController = new StatusListController();
+    private final UpdateStatusService updateStatusService = new UpdateStatusService();
     private AGV agv;
 
     @Override
@@ -42,12 +43,16 @@ public class AGVManagerControllerImpl implements AGVManagerController {
                     agv = atAgv;
                     for (ProductOrder pO: listProductOrderService.orderList()){
                         if (pO.Status().hasIdentity(1L)){
-                            configureAGVController.modifyAGVTask(agv, task, agvRepository);
                             pO.modifyAgv(agv);
                             Status status = statusListController.findStatusById(4L);
                             pO.modifyStatus(status);
                             orderRepository.save(pO);
-                            txCtx.commit();
+                            if(!updateStatusService.updateStatusService(pO.Agv().identity().AgvIdentifier())) {
+                                txCtx.rollback();
+                                throw new IllegalArgumentException("Server down, cannot assign AGVs to available orders!\n");
+                            }else {
+                                txCtx.commit();
+                            }
                             break;
                         }
                     }
@@ -56,10 +61,15 @@ public class AGVManagerControllerImpl implements AGVManagerController {
             }
         }catch (Exception e){
             txCtx.rollback();
+            throw new IllegalArgumentException("Server down, cannot assign AGVs to available orders!\n");
         }
 
         return true;
 
+    }
+
+    public static TransactionalContext transaction(){
+        return txCtx;
     }
 
 }
