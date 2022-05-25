@@ -19,7 +19,7 @@ public class AssignAGVService {
     public boolean assignAGVService() {
         try {
             try {
-                serverIP = InetAddress.getByName("127.0.0.1");
+                serverIP = InetAddress.getByName("192.168.1.90");
             } catch (UnknownHostException ex) {
                 System.out.println("Invalid server specified");
                 System.exit(1);

@@ -15,12 +15,12 @@ public class AgvManagerTcpServer {
 
     private static final Logger LOGGER = LogManager.getLogger(AgvManagerTcpServer.class);
 
-    private static class BackofficeHandler extends Thread {
+    private static class AGVManagerHandler extends Thread {
 
 
         private Socket clientSocket;
 
-        public BackofficeHandler(final Socket socket) {
+        public AGVManagerHandler(final Socket socket) {
             this.clientSocket = socket;
         }
 
@@ -84,7 +84,7 @@ public class AgvManagerTcpServer {
         try (var serverSocket = new ServerSocket(port)) {
             while (true) {
                 final var clientSocket = serverSocket.accept();
-                new BackofficeHandler(clientSocket).start();
+                new AGVManagerHandler(clientSocket).start();
             }
         } catch (final IOException e) {
             LOGGER.error(e);
