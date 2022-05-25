@@ -1,0 +1,34 @@
+@startuml
+participant "//<<client>>//\nBackOffice" as UI
+participant "AgvDigitalTwinDaemon" as DAEMON
+participant "AgvDigitalTwinTcpServer" as SERVER
+participant "//<<thread>>//\nAgvDigitalTwinHandler" as THREAD
+participant "//<<abstract>>//\nAgvDigitalTwinProtocolRequest" as REQUEST
+
+
+autonumber
+
+DAEMON->SERVER: new
+
+DAEMON->SERVER: start
+activate SERVER
+
+SERVER->SERVER: accept
+
+UI-->SERVER: request
+
+SERVER->THREAD:start
+deactivate SERVER
+activate THREAD
+
+THREAD -> REQUEST: execute
+activate REQUEST
+
+REQUEST->REQUEST: buildResponse
+
+REQUEST-->THREAD: response
+deactivate REQUEST
+THREAD -->UI: response
+deactivate thread
+
+@enduml
