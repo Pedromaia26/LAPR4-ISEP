@@ -19,7 +19,7 @@ public class AssignAGVService {
     public boolean assignAGVService() {
         try {
             try {
-                serverIP = InetAddress.getByName("192.168.1.90");
+                serverIP = InetAddress.getByName("localhost");
             } catch (UnknownHostException ex) {
                 System.out.println("Invalid server specified");
                 System.exit(1);
@@ -35,7 +35,10 @@ public class AssignAGVService {
             DataOutputStream sOut = new DataOutputStream(sock.getOutputStream());
             DataInputStream sIn = new DataInputStream(sock.getInputStream());
 
-            sOut.write(1);
+            sOut.writeUTF("1");
+
+            String response=sIn.readUTF();
+            System.out.println(response);
             sock.close();
             return true;
         } catch (Exception e) {

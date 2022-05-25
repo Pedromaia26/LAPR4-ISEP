@@ -31,19 +31,21 @@ public class AgvManagerTcpServer {
 
             LOGGER.debug("Accepted connection from {}:{}", clientIP.getHostAddress(), clientSocket.getPort());
 
-            try (var out = new PrintWriter(clientSocket.getOutputStream(), true);
-                 var in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) {
-                String inputLine = in.readLine();
+            try (var out = new DataOutputStream(clientSocket.getOutputStream());
+                 var in = new DataInputStream(clientSocket.getInputStream())) {
+                    String inputLine = in.readUTF();
                     LOGGER.debug("Received message:----\n{}\n----", inputLine);
                     final AgvManagerProtocolRequest request = InputMessage.input(inputLine);
                     final String response = request.execute();
-                    out.println(response);
+                    //out.println(response);
+                    out.writeUTF(response);
                     LOGGER.debug("Sent message:----\n{}\n----", response);
                     //if (request.isGoodbye()) {
                       //  break;
                     //}
 
-            } catch (final IOException e) {
+            } catch (final Exception e) {
+                System.out.println("AAAAAAAA");
                 LOGGER.error(e);
             } finally {
                 try {
