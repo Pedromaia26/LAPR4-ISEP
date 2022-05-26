@@ -10,12 +10,9 @@ import eapli.base.orderstatusmanagement.domain.Status;
 import eapli.base.statusManagement.StatusListController;
 import eapli.base.taskmanagement.application.TasksListService;
 import eapli.base.taskmanagement.domain.Task;
-import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
-
-import java.util.List;
 
 public class AGVManagerControllerImpl implements AGVManagerController {
 
@@ -29,6 +26,7 @@ public class AGVManagerControllerImpl implements AGVManagerController {
     private final AGVRepository agvRepository = PersistenceContext.repositories().agv(txCtx);
     private final StatusListController statusListController = new StatusListController();
     private final UpdateStatusService updateStatusService = new UpdateStatusService();
+    private final UpdateStatusFreeService updateStatusFreeService = new UpdateStatusFreeService();
     private AGV agv;
 
     @Override
@@ -68,8 +66,12 @@ public class AGVManagerControllerImpl implements AGVManagerController {
 
     }
 
-    public static TransactionalContext transaction(){
-        return txCtx;
-    }
+    @Override
+    public boolean freeAgv(String id){
 
+
+        updateStatusFreeService.updateStatusFreeService(id);
+
+        return false;
+    }
 }

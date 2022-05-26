@@ -8,11 +8,11 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Arrays;
 
-public class FreeAgvService {
+public class UpdateStatusFreeService {
     private InetAddress serverIP;
     private Socket sock;
 
-    public boolean freeAgvService(String id) {
+    public boolean updateStatusFreeService(String id) {
 
         try {
             try {
@@ -36,7 +36,7 @@ public class FreeAgvService {
             if(!communicationTest(sIn, sOut)){
                 throw new IllegalArgumentException("Error testing the communication");
             }
-            if(!freeAGV(sIn, sOut, id)){
+            if(!UpdateStatusfreeAGV(sIn, sOut, id)){
                 throw new IllegalArgumentException("Error requesting the data");
             }
             if(!endOfSession(sIn, sOut)){
@@ -63,10 +63,10 @@ public class FreeAgvService {
         }
     }
 
-    public boolean freeAGV(DataInputStream sIn, DataOutputStream sOut, String id) {
+    public boolean UpdateStatusfreeAGV(DataInputStream sIn, DataOutputStream sOut, String id) {
         try {
             byte[] dataLength = CommunicationProtocol.dataLengthCalculator(id);
-            byte[] array = new byte[]{CommunicationProtocol.PROTOCOL_V1, CommunicationProtocol.FREE_AGV_CODE, dataLength[0], dataLength[1]};
+            byte[] array = new byte[]{CommunicationProtocol.PROTOCOL_V1, CommunicationProtocol.UPDATE_AGV_STATUS_FREE_CODE, dataLength[0], dataLength[1]};
 
             sOut.write(array);
             sOut.write(id.getBytes());
