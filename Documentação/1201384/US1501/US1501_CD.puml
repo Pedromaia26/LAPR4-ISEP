@@ -1,0 +1,61 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class AddProductShoppingCartUI
+class AddProductShoppingCartController
+class ShoppingCartRepository<< (I,a777d1) >>
+class ShoppingCartLineRepository<< (I,a777d1) >>
+class ProductRepository << (I,a777d1) >>
+
+
+class AddProductShoppingCartController{
+    - addProductShoppingCart(productReference, quantity)
+    - getShoppingCartUser()
+}
+
+class ListProductController{
+    - repositories()
+    - Products()
+    - list = all()
+}
+
+class ProductRepository {
+    - instance()
+    - getRepositoryFactory()
+}
+
+class ShoppingCart{
+    + id
+    + clientUser
+    + shoppingCartLines
+}
+
+class ShoppingCartLine{
+    + id
+    + product
+    + quantity
+    + unitPrice
+}
+
+
+class ShoppingCartRepository {
+    - instance()
+    - shoppingCart()
+    - save(shoppingCart)
+}
+
+class ShoppingCartLineRepository {
+    - instance()
+    - shoppingCartLine()
+    - save(shoppingCartLine)
+}
+
+
+AddProductShoppingCartUI--> AddProductShoppingCartController
+AddProductShoppingCartUI--> ListProductController
+AddProductShoppingCartController--> ShoppingCart
+AddProductShoppingCartController--> ShoppingCartRepository
+AddProductShoppingCartController--> ShoppingCartLineRepository
+AddProductShoppingCartController--> ShoppingCartLine
+ListProductController--> ProductRepository 
+@enduml
