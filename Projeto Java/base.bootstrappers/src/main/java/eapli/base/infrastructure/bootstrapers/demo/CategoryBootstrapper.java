@@ -17,6 +17,7 @@ public class CategoryBootstrapper extends CategoryBootstrapperBase implements Ac
     @Override
     public boolean execute() {
         addCategory("cat1", "Clothing");
+        addCategory("cat2", "Drinks");
         return true;
     }
 }
