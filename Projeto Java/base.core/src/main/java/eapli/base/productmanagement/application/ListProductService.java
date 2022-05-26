@@ -16,14 +16,24 @@ public class ListProductService {
     private final ProductRepository productRepository = PersistenceContext.repositories().products();
 
     public Iterable<Product> allProducts() {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+        /*authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.COSTUMER_USER);*/
+
 
         return productRepository.findAll();
     }
 
     public Product findByCode(String productCode) {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+        /*authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.COSTUMER_USER);*/
 
         return productRepository.findByCode(productCode);
+    }
+
+    public Product findByReference(String productReference) {
+        /*authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.COSTUMER_USER);*/
+
+        return productRepository.findByReference(productReference);
     }
 }
