@@ -9,6 +9,7 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 public class AgvDigitalTwinTcpServer {
 
@@ -33,14 +34,25 @@ public class AgvDigitalTwinTcpServer {
 
             try (var out = new DataOutputStream(clientSocket.getOutputStream());
                  var in = new DataInputStream(clientSocket.getInputStream())) {
-                String inputLine = in.readUTF();
-                LOGGER.debug("Received message:----\n{}\n----", inputLine);
-                final AgvDigitalTwinProtocolRequest request = InputMessage.input(inputLine);
+
+                byte [] array_comm_test = in.readNBytes(4);
+                LOGGER.debug("Initial request message received");
+                InputMessage.parseMessage(array_comm_test, in, out);
+                LOGGER.debug("Response from initial request sent\n");
+
+                byte[] array = in.readNBytes(4);
+                LOGGER.debug("Received message: {}", array);
+                final AgvDigitalTwinProtocolRequest request = InputMessage.parseMessage(array, in, out);
                 final String response = request.execute();
-                LOGGER.debug("Sent message:----\n{}\n----", response);
-                //if (request.isGoodbye()) {
-                //  break;
-                //}
+                final byte[] responseByte = request.outputProtocol();
+                out.write(responseByte);
+                out.write(response.getBytes(StandardCharsets.UTF_8));
+                LOGGER.debug("Sent message: {}\n", response);
+
+                byte [] array_end_of_session = in.readNBytes(4);
+                LOGGER.debug("End of session request");
+                InputMessage.parseMessage(array_end_of_session, in, out);
+                LOGGER.debug("End of session request received\n");
 
             } catch (final IOException e) {
                 LOGGER.error(e);

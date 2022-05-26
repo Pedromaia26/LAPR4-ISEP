@@ -4,6 +4,7 @@ import eapli.base.agvmanagement.application.AGVManagerController;
 import eapli.base.agvmanagement.application.AGVManagerControllerImpl;
 import eapli.base.agvmanagement.application.AGVStatusController;
 import eapli.base.agvmanagement.application.AGVStatusControllerImpl;
+import eapli.base.communicationprotocol.CommunicationProtocol;
 
 public class UpdateStatusRequest  extends AgvDigitalTwinProtocolRequest {
 
@@ -28,6 +29,14 @@ public class UpdateStatusRequest  extends AgvDigitalTwinProtocolRequest {
         // response
         return buildResponse();
 
+    }
+
+    @Override
+    public byte[] outputProtocol() {
+        byte[] dataLength = CommunicationProtocol.dataLengthCalculator(buildResponse());
+        byte[] array = new byte[]{CommunicationProtocol.PROTOCOL_V1,
+                CommunicationProtocol.UPDATE_AGV_STATUS_RESPONSE_CODE, dataLength[0], dataLength[1]};
+        return array;
     }
 
     private String buildResponse() {

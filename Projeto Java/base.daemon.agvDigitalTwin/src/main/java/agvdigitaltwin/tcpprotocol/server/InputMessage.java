@@ -2,8 +2,12 @@ package agvdigitaltwin.tcpprotocol.server;
 
 import eapli.base.agvmanagement.application.AGVManagerController;
 import eapli.base.agvmanagement.application.AGVManagerControllerImpl;
+import eapli.base.communicationprotocol.CommunicationProtocol;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.io.*;
+import java.net.Socket;
 
 public class InputMessage {
 
@@ -26,24 +30,47 @@ public class InputMessage {
         return new AGVManagerControllerImpl();
     }*/
 
-    public static AgvDigitalTwinProtocolRequest input(final String inputLine) {
+    public static AgvDigitalTwinProtocolRequest parseMessage(byte[] arr, DataInputStream in, DataOutputStream dataOutputStream) throws IOException {
 
-        // as a fallback make sure we return unknown
-        AgvDigitalTwinProtocolRequest request = new UnknownRequest(inputLine);
+        AgvDigitalTwinProtocolRequest agvDigitalTwinProtocolRequest = null;
 
-        // parse to determine which type of request and if it is sintactally valid
+        if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.COMM_TEST_CODE) {
+            dataOutputStream.write(CommunicationProtocol.ACK_MESSAGE_V1);
+            dataOutputStream.flush();
+        }
 
-        request = inputAssignTask(inputLine);
+        if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.DISCONN_CODE) {
+            dataOutputStream.write(CommunicationProtocol.ACK_MESSAGE_V1);
+            dataOutputStream.flush();
+        }
 
-        return request;
+        if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.UPDATE_AGV_STATUS_CODE) {
+
+            agvDigitalTwinProtocolRequest = inputUpdateStatus(arr, in);
+        }
+
+
+
+        return agvDigitalTwinProtocolRequest;
     }
 
 
-    private static AgvDigitalTwinProtocolRequest inputAssignTask(final String inputLine) {
+    private static AgvDigitalTwinProtocolRequest inputUpdateStatus(final byte[] array, DataInputStream in) {
         AgvDigitalTwinProtocolRequest request;
 
+        String parsedData = null;
 
-        request = new UpdateStatusRequest(controller, inputLine);
+
+        int dataLength = array[2] + 256*array[3];
+
+        try {
+            byte[] data = in.readNBytes(dataLength);
+            parsedData = new String(data);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        request = new UpdateStatusRequest(controller, parsedData);
 
         return request;
     }
