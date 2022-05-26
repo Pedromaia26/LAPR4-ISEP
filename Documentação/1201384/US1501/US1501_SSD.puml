@@ -1,0 +1,17 @@
+@startuml
+autonumber
+actor "Client" as SC
+participant "System" as UI
+
+activate SC
+SC -> UI : view/search in the product catalog
+activate UI
+loop
+UI --> SC : asks if the client wants to add a product to his shopping cart
+SC -> UI : type the requested data
+end
+UI --> SC : informs operation success
+deactivate UI
+
+deactivate SC
+@enduml
