@@ -13,4 +13,12 @@ public class AGVListController {
         return svc.agv();
     }
 
+    public Iterable<AGV> freeAgvs(){
+        return svc.freeAgvs();
+    }
+
+    public AGV findAgvById(String id){
+        return svc.findAgvById(id);
+    }
+
 }

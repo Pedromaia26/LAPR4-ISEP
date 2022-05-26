@@ -12,4 +12,13 @@ public class InMemoryAGVRepository extends InMemoryDomainRepository<AGV, AGVIden
         InMemoryInitializer.init();
     }
 
+    @Override
+    public Iterable<AGV> findFreeAGV() {
+        return null;
+    }
+
+    @Override
+    public AGV findByOrderId(String id) {
+        return null;
+    }
 }
