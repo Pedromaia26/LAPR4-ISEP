@@ -34,9 +34,7 @@ public class UpdateOrderStatusController {
         Status status = statusRepository.findByStatusId(statusid);
         final ProductOrder order = orderRepository.findByOrderId(Long.parseLong(orderId));
         order.modifyStatus(status);
-        if(cagvcontroller.assignAGVToAGivenOrder(order.Agv()) == null){
-            updateAGVToFree(order.Agv());
-        }
+        updateAGVToFree(order.Agv());
         unlinkAGV(order);
         return orderRepository.save(order);
     }
