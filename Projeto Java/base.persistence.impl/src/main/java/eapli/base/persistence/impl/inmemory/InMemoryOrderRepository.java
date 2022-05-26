@@ -21,4 +21,9 @@ public class InMemoryOrderRepository  extends InMemoryDomainRepository<ProductOr
     public Iterable<ProductOrder> findProductOrdersPrepared() {
         return null;
     }
+
+    @Override
+    public Iterable<ProductOrder> findProductOrdersToBePrepared() {
+        return null;
+    }
 }

@@ -39,5 +39,13 @@ public class JpaOrderRepository extends JpaAutoTxRepository<ProductOrder, Long, 
 
         return query.getResultList();
     }
+    @Override
+    public Iterable<ProductOrder> findProductOrdersToBePrepared() {
+        final TypedQuery<ProductOrder> query = super.createQuery(
+                "SELECT d FROM ProductOrder d WHERE status_id = 1",
+                ProductOrder.class);
+
+        return query.getResultList();
+    }
 }
 
