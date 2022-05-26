@@ -2,6 +2,7 @@ package daemon.agvmanager.presentation;
 
 import agvmanager.tcpprotocol.server.AgvManagerProtocolRequest;
 import agvmanager.tcpprotocol.server.InputMessage;
+import eapli.base.communicationprotocol.CommunicationProtocol;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,6 +10,7 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 public class AgvManagerTcpServer {
 
@@ -32,20 +34,26 @@ public class AgvManagerTcpServer {
             LOGGER.debug("Accepted connection from {}:{}", clientIP.getHostAddress(), clientSocket.getPort());
 
             try (var out = new DataOutputStream(clientSocket.getOutputStream());
-                 var in = new DataInputStream(clientSocket.getInputStream())) {
-                    String inputLine = in.readUTF();
-                    LOGGER.debug("Received message:----\n{}\n----", inputLine);
-                    final AgvManagerProtocolRequest request = InputMessage.input(inputLine);
-                    final String response = request.execute();
-                    //out.println(response);
-                    out.writeUTF(response);
-                    LOGGER.debug("Sent message:----\n{}\n----", response);
-                    //if (request.isGoodbye()) {
-                      //  break;
-                    //}
+                 var in = new DataInputStream(clientSocket.getInputStream()); BufferedOutputStream bufferedOut = new BufferedOutputStream(out)) {
+                    byte [] array_comm_test = in.readNBytes(4);
+                    LOGGER.debug("Initial request message received");
+                    InputMessage.parseMessage(array_comm_test, in, out);
+                    LOGGER.debug("Response from initial request sent\n");
 
+                    byte[] array = in.readNBytes(4);
+                    LOGGER.debug("Received message: {}", array);
+                    final AgvManagerProtocolRequest request = InputMessage.parseMessage(array, in, out);
+                    final String response = request.execute();
+                    final byte[] responseByte = request.outputProtocol();
+                    out.write(responseByte);
+                    out.write(response.getBytes(StandardCharsets.UTF_8));
+                    LOGGER.debug("Sent message: {}\n", response);
+
+                    byte [] array_end_of_session = in.readNBytes(4);
+                    LOGGER.debug("End of session request");
+                    InputMessage.parseMessage(array_end_of_session, in, out);
+                    LOGGER.debug("End of session request received\n");
             } catch (final Exception e) {
-                System.out.println("AAAAAAAA");
                 LOGGER.error(e);
             } finally {
                 try {

@@ -2,6 +2,7 @@ package agvmanager.tcpprotocol.server;
 
 import eapli.base.agvmanagement.application.AGVManagerController;
 import eapli.base.agvmanagement.application.AGVManagerControllerImpl;
+import eapli.base.communicationprotocol.CommunicationProtocol;
 
 public class AssignTaskRequest extends AgvManagerProtocolRequest {
 
@@ -20,6 +21,7 @@ public class AssignTaskRequest extends AgvManagerProtocolRequest {
     public String execute() {
 
         String response;
+
         // execution
         try{
             agvManagerController.addOrderWithAGV();
@@ -31,6 +33,15 @@ public class AssignTaskRequest extends AgvManagerProtocolRequest {
         // response
         return response;
 
+    }
+
+    @Override
+    public byte[] outputProtocol() {
+
+        byte[] dataLength = CommunicationProtocol.dataLengthCalculator(buildResponse());
+        byte[] array = new byte[]{CommunicationProtocol.PROTOCOL_V1,
+                CommunicationProtocol.ASSIGN_AGV_TO_ORDER_REPONSE_CODE, dataLength[0], dataLength[1]};
+        return array;
     }
 
     private String buildResponse() {
