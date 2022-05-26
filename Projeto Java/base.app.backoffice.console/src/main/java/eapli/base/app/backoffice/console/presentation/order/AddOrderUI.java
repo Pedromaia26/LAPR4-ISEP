@@ -175,28 +175,6 @@ public class AddOrderUI  extends AbstractUI {
 
                 theOrderController.addOrder(clientVat, productOrder, deliveringPostalAddress, billingPostalAddress, shipmentMethod, shipmentCost, paymentMethod);
 
-                try{
-                    try { serverIP = InetAddress.getByName("192.168.1.90"); }
-                    catch(UnknownHostException ex) {
-                        System.out.println("Invalid server specified");
-                        System.exit(1); }
-                    try { sock = new Socket(serverIP, 8899); }
-                    catch(IOException ex) {
-                        System.out.println("Failed to establish TCP connection");
-                        // System.exit(1);
-                    }
-                    BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-                    DataOutputStream sOut = new DataOutputStream(sock.getOutputStream());
-                    DataInputStream sIn = new DataInputStream(sock.getInputStream());
-
-                    sOut.write(1);
-
-                    System.out.println("ADD ORDER UI");
-                    sock.close();
-
-                }catch (Exception e){
-                    System.out.println("Server down");
-                }
             } catch (IllegalArgumentException e) {
                 System.out.println("\n"+ e.getMessage());
                 if (Console.readLine("Do you want to try again? (Y/N)").equals("Y")){

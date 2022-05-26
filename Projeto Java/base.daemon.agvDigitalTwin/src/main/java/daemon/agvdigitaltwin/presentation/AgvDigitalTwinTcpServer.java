@@ -1,7 +1,7 @@
-package daemon.agvmanager.presentation;
+package daemon.agvdigitaltwin.presentation;
 
-import agvmanager.tcpprotocol.server.AgvManagerProtocolRequest;
-import agvmanager.tcpprotocol.server.InputMessage;
+import agvdigitaltwin.tcpprotocol.server.AgvDigitalTwinProtocolRequest;
+import agvdigitaltwin.tcpprotocol.server.InputMessage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -10,17 +10,17 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class AgvManagerTcpServer {
+public class AgvDigitalTwinTcpServer {
 
 
-    private static final Logger LOGGER = LogManager.getLogger(AgvManagerTcpServer.class);
+    private static final Logger LOGGER = LogManager.getLogger(AgvDigitalTwinTcpServer.class);
 
-    private static class AGVManagerHandler extends Thread {
+    private static class AgvDigitalTwinHandler extends Thread {
 
 
         private Socket clientSocket;
 
-        public AGVManagerHandler(final Socket socket) {
+        public AgvDigitalTwinHandler(final Socket socket) {
             this.clientSocket = socket;
         }
 
@@ -33,19 +33,16 @@ public class AgvManagerTcpServer {
 
             try (var out = new DataOutputStream(clientSocket.getOutputStream());
                  var in = new DataInputStream(clientSocket.getInputStream())) {
-                    String inputLine = in.readUTF();
-                    LOGGER.debug("Received message:----\n{}\n----", inputLine);
-                    final AgvManagerProtocolRequest request = InputMessage.input(inputLine);
-                    final String response = request.execute();
-                    //out.println(response);
-                    out.writeUTF(response);
-                    LOGGER.debug("Sent message:----\n{}\n----", response);
-                    //if (request.isGoodbye()) {
-                      //  break;
-                    //}
+                String inputLine = in.readUTF();
+                LOGGER.debug("Received message:----\n{}\n----", inputLine);
+                final AgvDigitalTwinProtocolRequest request = InputMessage.input(inputLine);
+                final String response = request.execute();
+                LOGGER.debug("Sent message:----\n{}\n----", response);
+                //if (request.isGoodbye()) {
+                //  break;
+                //}
 
-            } catch (final Exception e) {
-                System.out.println("AAAAAAAA");
+            } catch (final IOException e) {
                 LOGGER.error(e);
             } finally {
                 try {
@@ -86,7 +83,7 @@ public class AgvManagerTcpServer {
         try (var serverSocket = new ServerSocket(port)) {
             while (true) {
                 final var clientSocket = serverSocket.accept();
-                new AGVManagerHandler(clientSocket).start();
+                new AgvDigitalTwinHandler(clientSocket).start();
             }
         } catch (final IOException e) {
             LOGGER.error(e);

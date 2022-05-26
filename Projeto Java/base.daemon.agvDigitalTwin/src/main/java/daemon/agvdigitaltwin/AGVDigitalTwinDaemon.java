@@ -1,7 +1,7 @@
-package daemon.agvmanager;
+package daemon.agvdigitaltwin;
 
 import com.fasterxml.jackson.core.Base64Variant;
-import daemon.agvmanager.presentation.AgvManagerTcpServer;
+import daemon.agvdigitaltwin.presentation.AgvDigitalTwinTcpServer;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.usermanagement.domain.BasePasswordPolicy;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
@@ -14,16 +14,16 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 
-public class AGVManagerDaemon {
+public class AGVDigitalTwinDaemon {
 
     // TODO read port number from property file
-    private static final int BOOKING_PORT = 8899;
-    private static final Logger LOGGER = LogManager.getLogger(AGVManagerDaemon.class);
+    private static final int BOOKING_PORT = 8897;
+    private static final Logger LOGGER = LogManager.getLogger(AGVDigitalTwinDaemon.class);
 
     /**
      * Avoid instantiation of this class.
      */
-    private AGVManagerDaemon() {
+    private AGVDigitalTwinDaemon() {
     }
 
     public static void main(final String[] args) throws UnknownHostException {
@@ -36,7 +36,7 @@ public class AGVManagerDaemon {
                 new PlainTextEncoder());
 
         LOGGER.info("Starting the server socket");
-        final var server = new AgvManagerTcpServer();
+        final var server = new AgvDigitalTwinTcpServer();
         server.start(BOOKING_PORT, true);
 
         LOGGER.info("Exiting the daemon");

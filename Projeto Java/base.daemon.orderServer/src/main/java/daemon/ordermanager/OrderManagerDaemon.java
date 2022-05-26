@@ -1,7 +1,6 @@
-package daemon.agvmanager;
+package daemon.ordermanager;
 
-import com.fasterxml.jackson.core.Base64Variant;
-import daemon.agvmanager.presentation.AgvManagerTcpServer;
+import daemon.ordermanager.presentation.OrderManagerTcpServer;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.usermanagement.domain.BasePasswordPolicy;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
@@ -10,20 +9,19 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.net.InetAddress;
-import java.net.Socket;
 import java.net.UnknownHostException;
 
 
-public class AGVManagerDaemon {
+public class OrderManagerDaemon {
 
     // TODO read port number from property file
-    private static final int BOOKING_PORT = 8899;
-    private static final Logger LOGGER = LogManager.getLogger(AGVManagerDaemon.class);
+    private static final int BOOKING_PORT = 8898;
+    private static final Logger LOGGER = LogManager.getLogger(OrderManagerDaemon.class);
 
     /**
      * Avoid instantiation of this class.
      */
-    private AGVManagerDaemon() {
+    private OrderManagerDaemon() {
     }
 
     public static void main(final String[] args) throws UnknownHostException {
@@ -36,7 +34,7 @@ public class AGVManagerDaemon {
                 new PlainTextEncoder());
 
         LOGGER.info("Starting the server socket");
-        final var server = new AgvManagerTcpServer();
+        final var server = new OrderManagerTcpServer();
         server.start(BOOKING_PORT, true);
 
         LOGGER.info("Exiting the daemon");

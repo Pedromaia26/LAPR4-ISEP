@@ -19,17 +19,21 @@ public class AssignTaskRequest extends AgvManagerProtocolRequest {
     @Override
     public String execute() {
 
-        // semantic validation
-
+        String response;
         // execution
-
+        try{
             agvManagerController.addOrderWithAGV();
-            // response
-            return buildResponse();
+            response = buildResponse();
+        }catch (Exception e){
+            response = e.getMessage();
+
+        }
+        // response
+        return response;
 
     }
 
     private String buildResponse() {
-        return "Assigned";
+        return "Available orders are now being prepared by free AGVs";
     }
 }
