@@ -16,6 +16,8 @@ public class CommunicationProtocol {
     public static final int ASSIGN_AGV_TO_ORDER_REPONSE_CODE = 101;
     public static final int UPDATE_AGV_STATUS_CODE = 102;
     public static final int UPDATE_AGV_STATUS_RESPONSE_CODE = 103;
+    public static final int ADD_PRODUCT_SHOPPING_CART_CODE = 104;
+    public static final int ADD_PRODUCT_SHOPPING_CART_RESPONSE_CODE = 104;
 
 
 
