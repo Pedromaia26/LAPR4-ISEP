@@ -36,6 +36,6 @@ public class ListOrderToForceUI extends AbstractListUI<ProductOrder> {
 
     @Override
     public String headline() {
-        return "List product orders already prepared";
+        return "List product orders to be prepared";
     }
 }

@@ -69,8 +69,18 @@ public class AGVManagerControllerImpl implements AGVManagerController {
     @Override
     public boolean freeAgv(String id){
 
+        txCtx.beginTransaction();
 
-        updateStatusFreeService.updateStatusFreeService(id);
+        ProductOrder productOrder = orderRepository.findOrderByAGVId(id);
+        Status status = statusListController.findStatusById(8L);
+        productOrder.modifyStatus(status);
+        orderRepository.save(productOrder);
+
+        if(!updateStatusFreeService.updateStatusFreeService(id)) {
+            txCtx.rollback();
+        }else{
+            txCtx.commit();
+        }
 
         return false;
     }
