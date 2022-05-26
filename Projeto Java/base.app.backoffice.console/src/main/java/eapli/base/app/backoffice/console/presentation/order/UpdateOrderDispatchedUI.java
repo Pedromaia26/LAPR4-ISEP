@@ -27,6 +27,7 @@ public class UpdateOrderDispatchedUI extends AbstractUI {
     protected boolean doShow() {
 
         do{
+            invalidData = false;
             ListOrderPreparedUI listOrderPreparedUI = new ListOrderPreparedUI();
             listOrderPreparedUI.show();
 

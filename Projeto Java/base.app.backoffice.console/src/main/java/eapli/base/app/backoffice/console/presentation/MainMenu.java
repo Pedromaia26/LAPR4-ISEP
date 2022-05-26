@@ -24,6 +24,7 @@
 package eapli.base.app.backoffice.console.presentation;
 
 import eapli.base.app.backoffice.console.presentation.agv.ConfigureAGVUI;
+import eapli.base.app.backoffice.console.presentation.agv.UpdateAGVStatusUI;
 import eapli.base.app.backoffice.console.presentation.authz.*;
 import eapli.base.app.backoffice.console.presentation.category.DefineNewCategoryUI;
 import eapli.base.app.backoffice.console.presentation.category.ListCategoryUI;
@@ -111,6 +112,7 @@ public class MainMenu extends AbstractUI {
 
     // AGV
     private static final int CONFIGURE_AGV = 1;
+    private static final int AGV_TASK_FINISHED = 2;
 
     //Force order
     private static final int FORCING_ORDER=1;
@@ -303,6 +305,7 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("AGV >");
 
         menu.addItem(CONFIGURE_AGV, "Configure AGV", new ConfigureAGVUI()::show);
+        menu.addItem(AGV_TASK_FINISHED, "Update AGV status", new UpdateAGVStatusUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
