@@ -21,4 +21,9 @@ public class InMemoryAGVRepository extends InMemoryDomainRepository<AGV, AGVIden
     public AGV findByOrderId(String id) {
         return null;
     }
+
+    @Override
+    public Iterable<AGV> findAGVServingOrder() {
+        return null;
+    }
 }
