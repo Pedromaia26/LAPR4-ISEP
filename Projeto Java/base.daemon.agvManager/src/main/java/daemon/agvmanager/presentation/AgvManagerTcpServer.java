@@ -2,12 +2,9 @@ package daemon.agvmanager.presentation;
 
 import agvmanager.tcpprotocol.server.AgvManagerProtocolRequest;
 import agvmanager.tcpprotocol.server.InputMessage;
-import eapli.base.communicationprotocol.CommunicationProtocol;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.io.*;
-import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;

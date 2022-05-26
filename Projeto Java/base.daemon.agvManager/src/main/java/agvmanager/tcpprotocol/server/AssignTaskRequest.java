@@ -6,14 +6,12 @@ import eapli.base.communicationprotocol.CommunicationProtocol;
 
 public class AssignTaskRequest extends AgvManagerProtocolRequest {
 
-    private String orderId;
-    private Long id;
 
     private AGVManagerController agvManagerController = new AGVManagerControllerImpl();
 
-    protected AssignTaskRequest(AGVManagerController controller, String inputRequest) {
-        super(controller, inputRequest);
-        this.orderId = inputRequest;
+    protected AssignTaskRequest(AGVManagerController controller) {
+        super(controller, null);
+
     }
 
 
