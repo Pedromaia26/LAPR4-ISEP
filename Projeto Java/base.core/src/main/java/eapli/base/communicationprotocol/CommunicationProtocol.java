@@ -17,10 +17,11 @@ public class CommunicationProtocol {
     public static final int UPDATE_AGV_STATUS_CODE = 102;
     public static final int UPDATE_AGV_STATUS_RESPONSE_CODE = 103;
     public static final int ADD_PRODUCT_SHOPPING_CART_CODE = 104;
-    public static final int ADD_PRODUCT_SHOPPING_CART_RESPONSE_CODE = 104;
-
-
-
+    public static final int ADD_PRODUCT_SHOPPING_CART_RESPONSE_CODE = 105;
+    public static final int FREE_AGV_CODE = 106;
+    public static final int FREE_AGV_RESPONSE_CODE = 107;
+    public static final int UPDATE_AGV_STATUS_FREE_CODE = 108;
+    public static final int UPDATE_AGV_STATUS_FREE_RESPONSE_CODE = 109;
 
     public static byte[] dataLengthCalculator(String data){
         int dataLength = data.length();
