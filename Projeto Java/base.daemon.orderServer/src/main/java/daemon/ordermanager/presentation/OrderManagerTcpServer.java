@@ -6,12 +6,10 @@ import ordermanager.tcpprotocol.server.OrderManagerProtocolRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 public class OrderManagerTcpServer {
 
@@ -34,17 +32,26 @@ public class OrderManagerTcpServer {
 
             LOGGER.debug("Accepted connection from {}:{}", clientIP.getHostAddress(), clientSocket.getPort());
 
-            try (var out = new PrintWriter(clientSocket.getOutputStream(), true);
-                 var in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) {
-                String inputLine = in.readLine();
-                    LOGGER.debug("Received message:----\n{}\n----", inputLine);
-                    final OrderManagerProtocolRequest request = InputMessage.input(inputLine);
+            try (var out = new DataOutputStream(clientSocket.getOutputStream());
+                 var in = new DataInputStream(clientSocket.getInputStream())) {
+                    byte [] array_comm_test = in.readNBytes(4);
+                    LOGGER.debug("Initial request message received");
+                    InputMessage.parseMessage(array_comm_test, in, out);
+                    LOGGER.debug("Response from initial request sent\n");
+
+                    byte[] array = in.readNBytes(4);
+                    LOGGER.debug("Received message: {}", array);
+                    final OrderManagerProtocolRequest request = InputMessage.parseMessage(array, in, out);
                     final String response = request.execute();
-                    out.println(response);
-                    LOGGER.debug("Sent message:----\n{}\n----", response);
-                    //if (request.isGoodbye()) {
-                      //  break;
-                    //}
+                    final byte[] responseByte = request.outputProtocol();
+                    out.write(responseByte);
+                    out.write(response.getBytes(StandardCharsets.UTF_8));
+                    LOGGER.debug("Sent message: {}\n", response);
+
+                    byte [] array_end_of_session = in.readNBytes(4);
+                    LOGGER.debug("End of session request");
+                    InputMessage.parseMessage(array_end_of_session, in, out);
+                    LOGGER.debug("End of session request received\n");
 
             } catch (final IOException e) {
                 LOGGER.error(e);
