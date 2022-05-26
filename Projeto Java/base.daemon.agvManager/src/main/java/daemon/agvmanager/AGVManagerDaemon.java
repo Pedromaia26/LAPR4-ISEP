@@ -17,7 +17,7 @@ import java.net.UnknownHostException;
 public class AGVManagerDaemon {
 
     // TODO read port number from property file
-    private static final int BOOKING_PORT = 8899;
+    private static final int AGVMANAGER_PORT = 8899;
     private static final Logger LOGGER = LogManager.getLogger(AGVManagerDaemon.class);
 
     /**
@@ -37,7 +37,7 @@ public class AGVManagerDaemon {
 
         LOGGER.info("Starting the server socket");
         final var server = new AgvManagerTcpServer();
-        server.start(BOOKING_PORT, true);
+        server.start(AGVMANAGER_PORT, true);
 
         LOGGER.info("Exiting the daemon");
         System.exit(0);
