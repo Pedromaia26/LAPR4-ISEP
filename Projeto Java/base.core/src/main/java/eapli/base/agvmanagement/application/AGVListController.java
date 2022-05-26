@@ -20,8 +20,17 @@ public class AGVListController {
         return svc.freeAgvs();
     }
 
+    public Iterable<AGV> agvsServingOrders(){
+        return svc.agvsServingOrder();
+    }
+
     public boolean verifyIfFreeAgvsExist(){
         List<AGV> list = (List<AGV>) freeAgvs();
+        return list.size() > 0;
+    }
+
+    public boolean verifyIfAGVsServingOrdersExist(){
+        List<AGV> list = (List<AGV>) agvsServingOrders();
         return list.size() > 0;
     }
 

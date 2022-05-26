@@ -18,14 +18,20 @@ public class AGVListService {
         return agvRepository.findAll();
     }
 
-    public Iterable<AGV> freeAgvs(){
+    public Iterable<AGV> freeAgvs() {
 
         return agvRepository.findFreeAGV();
     }
+
     public AGV findAgvById(String id) {
         return agvRepository.findByOrderId(id);
     }
 
+
+    public Iterable<AGV> agvsServingOrder() {
+        return agvRepository.findAGVServingOrder();
     }
+
+}
 
 
