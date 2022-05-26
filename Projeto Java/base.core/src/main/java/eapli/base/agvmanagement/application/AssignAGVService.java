@@ -1,11 +1,5 @@
 package eapli.base.agvmanagement.application;
 
-import eapli.base.agvmanagement.repositories.AGVRepository;
-import eapli.base.infrastructure.persistence.PersistenceContext;
-import eapli.framework.infrastructure.authz.application.AuthorizationService;
-import eapli.framework.infrastructure.authz.application.AuthzRegistry;
-import org.eclipse.persistence.sessions.server.Server;
-
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
