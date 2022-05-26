@@ -1,24 +1,10 @@
 package eapli.base.app.user.console.presentation.product;
 
-import eapli.base.app.backoffice.console.presentation.category.ListCategoryUI;
-import eapli.base.categorymanagement.application.ListCategoryController;
-import eapli.base.categorymanagement.domain.Category;
-import eapli.base.clientusermanagement.application.ListClientUsersController;
-import eapli.base.ordermanagement.application.AddOrderController;
-import eapli.base.ordermanagement.application.AddOrderLineController;
-import eapli.base.ordermanagement.application.UpdateOrderStatusController;
 import eapli.base.productmanagement.application.ListProductController;
-import eapli.base.productmanagement.application.SpecifyNewProductController;
-import eapli.base.productmanagement.domain.Product;
 import eapli.base.shoppingcartmanagement.application.AddProductShoppingCartController;
-import eapli.framework.domain.repositories.ConcurrencyException;
-import eapli.framework.domain.repositories.IntegrityViolationException;
+import eapli.base.shoppingcartmanagement.application.ShoppingCartControllerImpl;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AddProductShoppingCartUI extends AbstractUI {
     private final AddProductShoppingCartController theSCController = new AddProductShoppingCartController();
