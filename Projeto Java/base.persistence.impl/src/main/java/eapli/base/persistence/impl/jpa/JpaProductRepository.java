@@ -48,6 +48,15 @@ public class JpaProductRepository extends BasepaRepositoryBase<Product, Internal
     }
 
     @Override
+    public Product findByReference(String productReference) {
+        final TypedQuery<Product> query = super.createQuery(
+                "SELECT d FROM Product d WHERE reference = '" + productReference + "'",
+                Product.class);
+
+        return query.getSingleResult();
+    }
+
+    @Override
     public Iterable<Product> findByCategoryCode(String code) {
         final TypedQuery<Product> query = super.createQuery(
                 "SELECT d FROM Product d WHERE category_code = '" + code + "'",
