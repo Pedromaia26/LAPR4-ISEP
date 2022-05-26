@@ -33,9 +33,15 @@ public class UpdateStatusService {
             DataInputStream sIn = new DataInputStream(sock.getInputStream());
 
 
-            communicationTest(sIn, sOut);
-            choosedAGV(sOut,sIn, id);
-            endOfSession(sIn, sOut);
+            if(!communicationTest(sIn, sOut)){
+                throw new IllegalArgumentException("Error testing the communication");
+            }
+            if(!choosedAGV(sOut,sIn, id)){
+                throw new IllegalArgumentException("Error requesting the data");
+            }
+            if(!endOfSession(sIn, sOut)){
+                throw new IllegalArgumentException("Error ending the communication");
+            }
 
 
 
@@ -69,20 +75,25 @@ public class UpdateStatusService {
         }
 
     }
-    public boolean communicationTest(DataInputStream sIn, DataOutputStream sOut) throws IOException {
-        byte[] array_comm_test = new byte[]{1, 0, 0, 0};
-        sOut.write(array_comm_test);
+    public boolean communicationTest(DataInputStream sIn, DataOutputStream sOut) {
+       try {
+           byte[] array_comm_test = new byte[]{1, 0, 0, 0};
+           sOut.write(array_comm_test);
 
-        System.out.println(Arrays.toString(sIn.readNBytes(4)));
-
-
-
-        return false;
+           System.out.println(Arrays.toString(sIn.readNBytes(4)));
+           return true;
+       }catch (Exception e) {
+           return false;
+       }
     }
-    public boolean endOfSession(DataInputStream sIn, DataOutputStream sOut) throws IOException {
-        byte[] array_end_session = new byte[]{1, 1, 0, 0};
-        sOut.write(array_end_session);
-        System.out.println(Arrays.toString(sIn.readNBytes(4)));
-        return false;
+    public boolean endOfSession(DataInputStream sIn, DataOutputStream sOut) {
+        try {
+            byte[] array_end_session = new byte[]{1, 1, 0, 0};
+            sOut.write(array_end_session);
+            System.out.println(Arrays.toString(sIn.readNBytes(4)));
+            return true;
+        }catch (Exception e) {
+            return false;
+        }
     }
 }

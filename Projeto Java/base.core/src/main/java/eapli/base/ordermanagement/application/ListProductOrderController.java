@@ -12,6 +12,11 @@ public class ListProductOrderController {
         return svc.productOrdersPrepared();
     }
 
+    public Iterable<ProductOrder> productOrdersToBePrepared() {
+        return svc.productOrdersToBePrepared();
+    }
+
+
     public ProductOrder findByCode(String productOrderId) {
         return svc.findByCode(productOrderId);
     }

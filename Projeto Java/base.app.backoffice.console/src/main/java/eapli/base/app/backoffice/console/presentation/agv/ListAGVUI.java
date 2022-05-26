@@ -13,7 +13,7 @@ public class ListAGVUI extends AbstractListUI<AGV>
 
     @Override
     protected Iterable<AGV> elements() {
-        return this.agvListController.agv();
+        return this.agvListController.freeAgvs();
     }
 
     @Override
@@ -28,7 +28,7 @@ public class ListAGVUI extends AbstractListUI<AGV>
 
     @Override
     protected String listHeader() {
-        return "MAXIMUM WEIGHT SUPPORTED | MAXIMUM VOLUME SUPPORTED";
+        return "AGV ID | MAXIMUM WEIGHT SUPPORTED | MAXIMUM VOLUME SUPPORTED";
     }
 
     @Override

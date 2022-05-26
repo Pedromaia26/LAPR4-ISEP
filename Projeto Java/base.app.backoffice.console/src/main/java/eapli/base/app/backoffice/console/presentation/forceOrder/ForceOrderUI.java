@@ -3,6 +3,7 @@ package eapli.base.app.backoffice.console.presentation.forceOrder;
 import eapli.base.agvmanagement.application.AGVListController;
 import eapli.base.agvmanagement.application.ConfigureAGVController;
 import eapli.base.agvmanagement.domain.AGV;
+import eapli.base.app.backoffice.console.presentation.agv.ListAGVUI;
 import eapli.base.ordermanagement.application.ForceOrderController;
 import eapli.base.ordermanagement.application.ListProductOrderController;
 import eapli.base.ordermanagement.domain.ProductOrder;
@@ -19,9 +20,10 @@ public class ForceOrderUI extends AbstractUI {
     private ForceOrderController theController = new ForceOrderController();
     private ListProductOrderController orderListController = new ListProductOrderController();
     private AGVListController agvListController = new AGVListController();
-    private boolean invalidData;
+    private boolean invalidData, invalidProductOrder;
     private AGV agvSelected;
     private ProductOrder orderSelected;
+    private String productOrderId;
 
 
     @Override
@@ -29,26 +31,24 @@ public class ForceOrderUI extends AbstractUI {
 
         do {
             try {
-
-
-                int index=0;
-                for (ProductOrder productOrder: orderListController.productOrders()) {
-                    index++;
-                    System.out.println(index+" - "+productOrder);
+                try {
+                    ListOrderToForceUI listOrderToForceUI = new ListOrderToForceUI();
+                    listOrderToForceUI.show();
+                    productOrderId = Console.readLine("Please select one of the product orders (Enter the id)");
+                    orderSelected = orderListController.findByCode(productOrderId);
+                }catch (Exception e){
+                    invalidData = true;
+                    throw new IllegalArgumentException("Invalid order");
                 }
-                final int opt= Integer.parseInt(Console.readLine("Select the number of the chosen order"));
-
-                List<ProductOrder> productOrders=(List<ProductOrder>)orderListController.productOrders();
-                orderSelected=productOrders.get(opt-1);
-                index=0;
-                for (AGV agv : agvListController.agv()) {
-                    index++;
-                    System.out.println(index+ " - "+agv);
+                try {
+                    ListAGVUI listAGVUI = new ListAGVUI();
+                    listAGVUI.show();
+                    final String opt2 = Console.readLine("Select the number of the chosen agv(Enter AGV id)");
+                    agvSelected = agvListController.findAgvById(opt2);
+                }catch (Exception e){
+                    invalidData = true;
+                    throw new IllegalArgumentException("Invalid AGV");
                 }
-                final int opt2= Integer.parseInt(Console.readLine("Select the number of the chosen agv"));
-
-                List<AGV> agvs=(List<AGV>)agvListController.agv();
-                agvSelected=agvs.get(opt2-1);
             }catch (Exception e){
                 System.out.println(e.getMessage());
                 invalidData=true;

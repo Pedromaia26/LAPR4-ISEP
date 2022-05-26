@@ -22,6 +22,12 @@ public class ListProductOrderService {
         return productOrderRepository.findProductOrdersPrepared();
     }
 
+    public Iterable<ProductOrder> productOrdersToBePrepared() {
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.WAREHOUSE_EMPLOYEE);
+
+        return productOrderRepository.findProductOrdersToBePrepared();
+    }
+
     public ProductOrder findByCode(String orderId) {
 
         return productOrderRepository.findByOrderId(Long.parseLong(orderId));

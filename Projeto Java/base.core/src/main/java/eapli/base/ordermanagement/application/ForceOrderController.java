@@ -18,6 +18,8 @@ import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 
+import java.util.List;
+
 public class ForceOrderController {
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final TaskRepository taskRepository = PersistenceContext.repositories().tasks();
@@ -25,7 +27,7 @@ public class ForceOrderController {
     private final OrderRepository orderRepository= PersistenceContext.repositories().orders();
     private final ConfigureAGVController configureAGVController = new ConfigureAGVController();
     private final TasksListController tasksListController = new TasksListController();
-
+    private final ListProductOrderController listProductOrderController = new ListProductOrderController();
     private final TransactionalContext txCtx = PersistenceContext.repositories()
             .newTransactionalContext();
     private final StatusListController statusListController= new StatusListController();
@@ -46,6 +48,7 @@ public class ForceOrderController {
             //Provavelmente vai chamar a US do maia e nela o estado do agv volta ao mesmo e a order avanca para finalizada
 
             Status status = statusListController.findStatusById(4L);
+            productOrder.modifyAgv(agv);
             productOrder.modifyStatus(status);
             this.productOrder= orderRepository.save(productOrder);
             txCtx.commit();
@@ -54,5 +57,10 @@ public class ForceOrderController {
         }
 
         return this.productOrder;
+    }
+
+    public boolean verifyExistsOrdersToBePrepared(){
+        List<ProductOrder> list =  (List<ProductOrder>) listProductOrderController.productOrdersPrepared();
+        return list.size() > 0;
     }
 }
