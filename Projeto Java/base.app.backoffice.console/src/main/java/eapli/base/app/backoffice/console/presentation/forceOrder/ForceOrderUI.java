@@ -20,7 +20,7 @@ public class ForceOrderUI extends AbstractUI {
     private ForceOrderController theController = new ForceOrderController();
     private ListProductOrderController orderListController = new ListProductOrderController();
     private AGVListController agvListController = new AGVListController();
-    private boolean invalidData, invalidProductOrder;
+    private boolean invalidData = false, freeAGV = false;
     private AGV agvSelected;
     private ProductOrder orderSelected;
     private String productOrderId;
@@ -30,47 +30,53 @@ public class ForceOrderUI extends AbstractUI {
     protected boolean doShow() {
 
         do {
-            try {
+
+            ListOrderToForceUI listOrderToForceUI = new ListOrderToForceUI();
+            listOrderToForceUI.show();
+
+            if (orderListController.verifyIfExistsOrdersPrepared()) {
                 try {
-                    ListOrderToForceUI listOrderToForceUI = new ListOrderToForceUI();
-                    listOrderToForceUI.show();
-                    productOrderId = Console.readLine("Please select one of the product orders (Enter the id)");
-                    orderSelected = orderListController.findByCode(productOrderId);
-                }catch (Exception e){
-                    invalidData = true;
-                    throw new IllegalArgumentException("Invalid order");
-                }
-                try {
+                    try {
+                        productOrderId = Console.readLine("Please select one of the product orders (Enter the id)");
+                        orderSelected = orderListController.findByCode(productOrderId);
+                    } catch (Exception e) {
+                        invalidData = true;
+                        throw new IllegalArgumentException("Invalid order");
+                    }
+
                     ListAGVUI listAGVUI = new ListAGVUI();
                     listAGVUI.show();
-                    final String opt2 = Console.readLine("Select the number of the chosen agv(Enter AGV id)");
-                    agvSelected = agvListController.findAgvById(opt2);
-                }catch (Exception e){
-                    invalidData = true;
-                    throw new IllegalArgumentException("Invalid AGV");
-                }
-            }catch (Exception e){
-                System.out.println(e.getMessage());
-                invalidData=true;
-            }
 
-
-
-            try {
-
-
-                this.theController.forceOrder(agvSelected,orderSelected);
-            } catch (final IntegrityViolationException | ConcurrencyException e) {
-                System.out.println("That code is already associated.");
-            } catch (IllegalArgumentException e) {
-                System.out.println("\n" + e.getMessage());
-                if (Console.readLine("Do you want to try again? (Y/N)").equals("Y")) {
-                    System.out.println();
+                    if (agvListController.verifyIfFreeAgvsExist()){
+                        freeAGV = true;
+                        try {
+                            final String opt2 = Console.readLine("Select the number of the chosen agv(Enter AGV id)");
+                            agvSelected = agvListController.findAgvById(opt2);
+                        } catch (Exception e) {
+                            invalidData = true;
+                            throw new IllegalArgumentException("Invalid AGV");
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
                     invalidData = true;
                 }
+
+                if(freeAGV) {
+                    try {
+                        this.theController.forceOrder(agvSelected, orderSelected);
+                    } catch (final IntegrityViolationException | ConcurrencyException e) {
+                        System.out.println("That code is already associated.");
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("\n" + e.getMessage());
+                        if (Console.readLine("Do you want to try again? (Y/N)").equals("Y")) {
+                            System.out.println();
+                            invalidData = true;
+                        }
+                    }
+                }
+
             }
-
-
         }while(invalidData);
 
         return false;

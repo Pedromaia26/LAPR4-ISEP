@@ -34,7 +34,7 @@ public class JpaOrderRepository extends JpaAutoTxRepository<ProductOrder, Long, 
     @Override
     public Iterable<ProductOrder> findProductOrdersPrepared() {
         final TypedQuery<ProductOrder> query = super.createQuery(
-                "SELECT d FROM ProductOrder d WHERE status_id = 5",
+                "SELECT d FROM ProductOrder d WHERE status_id = 5 and agv_agvidentifier IS NOT NULL",
                 ProductOrder.class);
 
         return query.getResultList();
