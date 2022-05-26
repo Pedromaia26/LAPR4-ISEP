@@ -18,6 +18,11 @@ public class InMemoryOrderRepository  extends InMemoryDomainRepository<ProductOr
     }
 
     @Override
+    public ProductOrder findOrderByAGVId(String id) {
+        return null;
+    }
+
+    @Override
     public Iterable<ProductOrder> findProductOrdersPrepared() {
         return null;
     }

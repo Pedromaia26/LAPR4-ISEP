@@ -6,6 +6,7 @@ import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.productmanagement.domain.Product;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.repositories.impl.jpa.JpaAutoTxRepository;
+import org.stringtemplate.v4.ST;
 
 import javax.persistence.*;
 
@@ -47,5 +48,14 @@ public class JpaOrderRepository extends JpaAutoTxRepository<ProductOrder, Long, 
 
         return query.getResultList();
     }
+    @Override
+    public ProductOrder findOrderByAGVId(String agvID) {
+        final TypedQuery<ProductOrder> query = super.createQuery(
+                "SELECT d FROM ProductOrder d WHERE agv_agvidentifier = '" + agvID + "'",
+                ProductOrder.class);
+
+        return query.getSingleResult();
+    }
+
 }
 

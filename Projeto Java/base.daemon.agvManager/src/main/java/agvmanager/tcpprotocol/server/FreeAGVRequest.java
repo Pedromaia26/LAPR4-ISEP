@@ -44,6 +44,6 @@ public class FreeAGVRequest extends AgvManagerProtocolRequest {
     }
 
     private String buildResponse() {
-        return "Available orders are now being prepared by free AGVs";
+        return String.format("AGV %s is now free", agvID);
     }
 }
