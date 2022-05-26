@@ -14,6 +14,9 @@ public class CommunicationProtocol {
     public static final int ACK_CODE = 2;
     public static final int ASSIGN_AGV_TO_ORDER_CODE = 100;
     public static final int ASSIGN_AGV_TO_ORDER_REPONSE_CODE = 101;
+    public static final int UPDATE_AGV_STATUS_CODE = 102;
+    public static final int UPDATE_AGV_STATUS_RESPONSE_CODE = 103;
+
 
 
 
