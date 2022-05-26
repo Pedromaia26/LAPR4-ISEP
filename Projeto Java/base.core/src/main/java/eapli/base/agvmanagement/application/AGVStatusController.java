@@ -6,4 +6,6 @@ import eapli.base.agvmanagement.repositories.AGVRepository;
 public interface AGVStatusController {
 
     boolean updateStatus(String id);
+
+    boolean updateStatusFree(String id);
 }

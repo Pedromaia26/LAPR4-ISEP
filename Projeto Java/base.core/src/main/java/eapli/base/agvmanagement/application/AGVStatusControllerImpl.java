@@ -34,4 +34,23 @@ public class AGVStatusControllerImpl implements AGVStatusController{
         }
         return false;
     }
+
+    @Override
+    public boolean updateStatusFree(String id) {
+        try {
+            Task task = svcTask.findTaskById(1L);
+            for (AGV agv: svcAGV.agv()){
+                if (agv.identity().AgvIdentifier().equals(id)){
+                    agv.modifyTask(task);
+                    this.agv = agv;
+                    agvRepository.save(agv);
+                    return true;
+                }
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return false;
+    }
 }

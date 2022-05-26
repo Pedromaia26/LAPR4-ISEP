@@ -48,7 +48,10 @@ public class InputMessage {
 
             agvDigitalTwinProtocolRequest = inputUpdateStatus(arr, in);
         }
+        if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.UPDATE_AGV_STATUS_FREE_CODE) {
 
+            agvDigitalTwinProtocolRequest = inputUpdateStatusFree(arr, in);
+        }
 
 
         return agvDigitalTwinProtocolRequest;
@@ -71,6 +74,26 @@ public class InputMessage {
         }
 
         request = new UpdateStatusRequest(controller, parsedData);
+
+        return request;
+    }
+
+    private static AgvDigitalTwinProtocolRequest inputUpdateStatusFree(final byte[] array, DataInputStream in) {
+        AgvDigitalTwinProtocolRequest request;
+
+        String parsedData = null;
+
+
+        int dataLength = array[2] + 256*array[3];
+
+        try {
+            byte[] data = in.readNBytes(dataLength);
+            parsedData = new String(data);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        request = new UpdateStatusFreeRequest(controller, parsedData);
 
         return request;
     }
