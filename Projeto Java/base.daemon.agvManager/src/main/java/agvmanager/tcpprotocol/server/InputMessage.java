@@ -55,7 +55,10 @@ public class InputMessage {
 
             agvManagerProtocolRequest = inputAssignTask(arr, in);
         }
+        if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.FREE_AGV_CODE) {
 
+            agvManagerProtocolRequest = inputUpdateStatus(arr, in);
+        }
 
 
         return agvManagerProtocolRequest;
@@ -67,7 +70,28 @@ public class InputMessage {
         AgvManagerProtocolRequest request;
 
 
+
         request = new AssignTaskRequest(controller);
+
+        return request;
+    }
+
+    private static AgvManagerProtocolRequest inputUpdateStatus(final byte[] array, DataInputStream in) {
+        AgvManagerProtocolRequest request;
+
+        String parsedData = null;
+
+
+        int dataLength = array[2] + 256*array[3];
+
+        try {
+            byte[] data = in.readNBytes(dataLength);
+            parsedData = new String(data);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        request = new FreeAGVRequest(controller, parsedData);
 
         return request;
     }
