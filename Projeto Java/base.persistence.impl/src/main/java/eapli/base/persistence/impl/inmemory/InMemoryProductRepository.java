@@ -34,5 +34,9 @@ public class InMemoryProductRepository extends InMemoryDomainRepository<Product,
         return null;
     }
 
+    @Override
+    public Product findByReference(String productReference) {
+        return null;
+    }
 
 }

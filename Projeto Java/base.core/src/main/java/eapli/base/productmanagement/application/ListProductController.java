@@ -16,4 +16,8 @@ public class ListProductController {
     public Product findByCode(String productCode) {
         return svc.findByCode(productCode);
     }
+
+    public Product findByReference(String productReference) {
+        return svc.findByReference(productReference);
+    }
 }

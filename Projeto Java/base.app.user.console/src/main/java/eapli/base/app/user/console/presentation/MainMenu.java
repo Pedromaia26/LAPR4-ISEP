@@ -24,6 +24,8 @@
 package eapli.base.app.user.console.presentation;
 
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
+import eapli.base.app.user.console.presentation.product.*;
+import eapli.framework.actions.Actions;
 import eapli.framework.actions.menu.Menu;
 import eapli.framework.actions.menu.MenuItem;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
@@ -38,6 +40,8 @@ import eapli.framework.presentation.console.menu.VerticalMenuRenderer;
  */
 class MainMenu extends ClientUserBaseUI {
 
+    private static final String RETURN_LABEL = "Return ";
+
     private static final String SEPARATOR_LABEL = "--------------";
 
     private static final String RETURN = "Return ";
@@ -48,19 +52,23 @@ class MainMenu extends ClientUserBaseUI {
 
     // MAIN MENU
     private static final int MY_USER_OPTION = 1;
-    private static final int BOOKINGS_OPTION = 2;
-    private static final int ACCOUNT_OPTION = 3;
-    private static final int SETTINGS_OPTION = 4;
+    private static final int PRODUCT_CATALOG = 2;
+    private static final int SHOPPING_CART = 3;
 
-    // BOOKINGS MENU
-    private static final int BOOK_A_MEAL_OPTION = 2;
-    private static final int LIST_MY_BOOKINGS_OPTION = 3;
+    //PRODUCT CATALOG
 
-    // ACCOUNT MENU
-    private static final int LIST_MOVEMENTS_OPTION = 1;
+    private static final int VIEW_PRODUCT_CATALOG = 1;
+    private static final int SEARCH_PRODUCT_CATALOG = 2;
 
-    // SETTINGS
-    private static final int SET_USER_ALERT_LIMIT_OPTION = 1;
+    //SEARCH PRODUCTS CATALOG SUB MENU
+
+    private static final int SEARCH_BRAND_PRODUCT = 1;
+    private static final int SEARCH_DESCRIPTION_PRODUCT = 2;
+
+    //SHOPPING CART
+    private static final int ADD_PRODUCT_SHOPPING_CART = 1;
+    private static final int MY_SHOPPING_CART = 2;
+
 
     private final AuthorizationService authz =
             AuthzRegistry.authorizationService();
@@ -88,12 +96,49 @@ class MainMenu extends ClientUserBaseUI {
         final Menu myUserMenu = new MyUserMenu();
         mainMenu.addSubMenu(MY_USER_OPTION, myUserMenu);
 
-        mainMenu.addItem(MenuItem.separator(SEPARATOR_LABEL));
+        final Menu buildProductsCatalogMenu = buildProductsCatalogMenu();
+        mainMenu.addSubMenu(PRODUCT_CATALOG, buildProductsCatalogMenu);
 
-        mainMenu.addSubMenu(BOOKINGS_OPTION,myUserMenu);
+        final Menu buildAddProductsShoppingCartMenu = buildAddProductsShoppingCartMenu();
+        mainMenu.addSubMenu(SHOPPING_CART, buildAddProductsShoppingCartMenu);
 
         mainMenu.addItem(EXIT_OPTION, "Exit", new ExitWithMessageAction("Bye, Bye"));
 
         return mainMenu;
+    }
+
+    private Menu buildProductsCatalogMenu() {
+        final Menu menu = new Menu("Product Catalog >");
+
+        menu.addItem(VIEW_PRODUCT_CATALOG, "View Product Catalog", new ViewAddProductCatalog()::show);
+
+        final Menu SearchProduct = SearchProductsMenu();
+        menu.addSubMenu(SEARCH_PRODUCT_CATALOG, SearchProduct);
+
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
+    private Menu SearchProductsMenu(){
+        final Menu menu = new Menu("Search Product Catalog");
+
+        menu.addItem(SEARCH_BRAND_PRODUCT, "Search by Product Brand", new SearchAddProductBrand()::show);
+        menu.addItem(SEARCH_DESCRIPTION_PRODUCT, "Search by Product Description", new SearchAddProductDescription()::show);
+
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
+    private Menu buildAddProductsShoppingCartMenu() {
+       final Menu menu = new Menu("Shopping cart >");
+
+        menu.addItem(ADD_PRODUCT_SHOPPING_CART, "Add a product to shopping cart", new AddProductShoppingCartUI()::show);
+        menu.addItem(MY_SHOPPING_CART, "View my shopping cart", new ViewShoppingCartUI()::show);
+
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
     }
 }

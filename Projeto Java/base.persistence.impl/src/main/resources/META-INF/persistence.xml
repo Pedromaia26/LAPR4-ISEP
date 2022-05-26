@@ -24,6 +24,8 @@
     <class>eapli.base.Warehouse.domain.Section</class>
     <class>eapli.base.agvmanagement.domain.AGV</class>
     <class>eapli.base.taskmanagement.domain.Task</class>
+    <class>eapli.base.shoppingcartmanagement.domain.ShoppingCart</class>
+    <class>eapli.base.shoppingcartmanagement.domain.ShoppingCartLine</class>
 
     <properties>
       <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/base"/>-->
@@ -31,11 +33,11 @@
       <property name="javax.persistence.jdbc.user" value="sa"/>
       <property name="javax.persistence.jdbc.password" value="eapli"/>
       <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
-      <!-- <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/> -->
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
       <!-- <property name="eclipselink.logging.level" value="FINE"/> -->
       <!-- <property name = "hibernate.show_sql" value = "true" /> -->
       <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
-      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+      <!-- property name="javax.persistence.schema-generation.database.action" value="create"/-->
 
 
     </properties>

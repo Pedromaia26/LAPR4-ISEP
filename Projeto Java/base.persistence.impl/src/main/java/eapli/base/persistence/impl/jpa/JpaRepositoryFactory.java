@@ -33,6 +33,8 @@ import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.persistence.impl.inmemory.InMemoryOrderLineRepository;
 import eapli.base.persistence.impl.inmemory.InMemoryOrderRepository;
 import eapli.base.productmanagement.repositories.ProductRepository;
+import eapli.base.shoppingcartmanagement.repositories.ShoppingCartLineRepository;
+import eapli.base.shoppingcartmanagement.repositories.ShoppingCartRepository;
 import eapli.base.taskmanagement.repositories.TaskRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
@@ -129,6 +131,16 @@ public class JpaRepositoryFactory implements RepositoryFactory {
     @Override
     public TaskRepository tasks() {
         return new JpaTaskRepository();
+    }
+
+    @Override
+    public ShoppingCartRepository shoppingCarts(TransactionalContext autoTx) {
+        return new JpaShoppingCartRepository(autoTx);
+    }
+
+    @Override
+    public ShoppingCartLineRepository shoppingCartLines(TransactionalContext autoTx) {
+        return new JpaShoppingCartLineRepository(autoTx);
     }
 
     @Override

@@ -7,7 +7,7 @@ public class ProductPrinter implements Visitor<Product> {
 
     @Override
     public void visit(final Product visitee) {
-        System.out.printf("%-10s|%-10s|%-10s|%-4s€", visitee.InternalCode(), visitee.ShortDescription(),
+        System.out.printf("%-10s | %-10s | %-10s | %-4s€", visitee.InternalCode(), visitee.ShortDescription(),
                 visitee.Brand(), visitee.Price());
     }
 }

@@ -13,7 +13,8 @@ public class SearchProductBrandService {
     private final ProductRepository productRepository = PersistenceContext.repositories().products();
 
     public Iterable<Product> listarProductBrand(Brand brand) {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+        /*authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.COSTUMER_USER);*/
         return productRepository.findByBrand(brand.toString());
     }
 }

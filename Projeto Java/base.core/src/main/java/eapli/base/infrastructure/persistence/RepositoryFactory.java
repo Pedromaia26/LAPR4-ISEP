@@ -30,6 +30,8 @@ import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.orderstatusmanagement.repositories.StatusRepository;
 import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.productmanagement.repositories.ProductRepository;
+import eapli.base.shoppingcartmanagement.repositories.ShoppingCartLineRepository;
+import eapli.base.shoppingcartmanagement.repositories.ShoppingCartRepository;
 import eapli.base.taskmanagement.repositories.TaskRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
@@ -167,6 +169,20 @@ public interface RepositoryFactory {
      * @return
      */
     OrderRepository orders();
+
+    /**
+     * repository will be created in auto transaction mode
+     *
+     * @return
+     */
+    ShoppingCartRepository shoppingCarts(TransactionalContext autoTx);
+
+    /**
+     * repository will be created in auto transaction mode
+     *
+     * @return
+     */
+    ShoppingCartLineRepository shoppingCartLines(TransactionalContext autoTx);
 
     /**
      *

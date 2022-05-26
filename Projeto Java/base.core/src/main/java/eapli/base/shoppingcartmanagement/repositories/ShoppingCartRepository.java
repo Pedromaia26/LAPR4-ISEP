@@ -18,23 +18,15 @@
  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package eapli.base.productmanagement.repositories;
+package eapli.base.shoppingcartmanagement.repositories;
 
-import eapli.base.productmanagement.domain.*;
+import eapli.base.productmanagement.domain.InternalCode;
+import eapli.base.productmanagement.domain.Product;
+import eapli.base.shoppingcartmanagement.domain.ShoppingCart;
+import eapli.base.shoppingcartmanagement.domain.ShoppingCartLine;
 import eapli.framework.domain.repositories.DomainRepository;
 
-public interface ProductRepository extends DomainRepository<InternalCode, Product> {
+public interface ShoppingCartRepository extends DomainRepository<Long, ShoppingCart> {
 
-    Product findByCode(String productCode);
-
-    Product findByReference(String productReference);
-
-    Iterable<Product> findByBrand(String brand);
-
-    Iterable<Product> findByDescription(String description);
-
-    Iterable<Product> findByCategoryCode(String code);
-
-    Iterable<Product> findAll();
-
+    public ShoppingCart findByVat(String Vat);
 }

@@ -20,7 +20,6 @@
  */
 package eapli.base.persistence.impl.inmemory;
 
-import eapli.base.Warehouse.domain.Warehouse;
 import eapli.base.Warehouse.repositories.*;
 import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.categorymanagement.repositories.CategoryRepository;
@@ -32,6 +31,8 @@ import eapli.base.ordermanagement.repositories.OrderLineRepository;
 import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.orderstatusmanagement.repositories.StatusRepository;
 import eapli.base.productmanagement.repositories.ProductRepository;
+import eapli.base.shoppingcartmanagement.repositories.ShoppingCartLineRepository;
+import eapli.base.shoppingcartmanagement.repositories.ShoppingCartRepository;
 import eapli.base.taskmanagement.repositories.TaskRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
@@ -146,6 +147,16 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
     @Override
     public TaskRepository tasks() {
         return new InMemoryTaskRepository();
+    }
+
+    @Override
+    public ShoppingCartRepository shoppingCarts(TransactionalContext autoTx) {
+        return new InMemoryShoppingCartRepository();
+    }
+
+    @Override
+    public ShoppingCartLineRepository shoppingCartLines(TransactionalContext autoTx) {
+        return new InMemoryShoppingCartLineRepository();
     }
 
     @Override

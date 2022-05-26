@@ -1,0 +1,106 @@
+@startuml
+autonumber
+actor "Client" as SC
+participant "//<<presentation>>//\nAddProductShoppingCartUI" as UI
+participant "//<<application>>//\nListProductController" as cc1
+participant "//<<application>>//\nAddProductShoppingCartController" as cc2
+participant "//<<application>>//\nShoppingCartLine" as scl
+participant "//<<app>>//\nAppSettings" as app
+database "//<<repository>>//\nProductRepository" as db
+database "//<<repository>>//\nShoppingCartRepository" as db2
+database "//<<repository>>//\nShoppingCartLineRepository" as db3
+
+activate SC
+SC -> UI : view/search in the product catalog
+activate UI
+
+
+
+UI-->cc1: allProducts()
+
+activate cc1
+
+cc1-->db: repositories()
+
+activate db
+
+db-->app: instance()
+
+activate app
+
+db-->app: getRepositoryFactory()
+
+app-->db: create
+
+db-->app
+
+app-->cc1
+
+deactivate app
+
+cc1-->db: Products()
+
+cc1-->db: list = all()
+
+db-->cc1
+
+deactivate db
+
+cc1-->UI: list
+
+deactivate cc1
+
+
+
+
+loop
+UI --> SC : asks if the client wants to add a product to his shopping cart
+
+SC -> UI : type the requested data
+
+
+UI--> cc2: addProductShoppingCart(productReference, quantity)
+
+activate cc2
+
+cc2--> db: findByReference(productReference)
+
+activate db
+
+db-->cc2: product
+
+deactivate db
+
+cc2--> scl: newShoppingCartLine(product, q, product.Price())
+
+cc2 --> db3: save(newShoppingCartLine)
+
+activate db3
+
+deactivate db3
+
+cc2 --> cc2: getShoppingCartUser()
+
+cc2 --> db2: findByVat(cvat.vat())
+
+activate db2
+
+db2 --> cc2: vat
+
+cc2 --> db2: save(shoppingCart)
+
+db2 --> cc2
+
+deactivate db2
+
+
+
+
+
+
+end
+UI --> SC : informs operation success
+deactivate UI
+
+deactivate SC
+@enduml

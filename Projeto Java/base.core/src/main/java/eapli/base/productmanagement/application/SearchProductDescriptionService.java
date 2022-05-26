@@ -13,7 +13,8 @@ public class SearchProductDescriptionService {
     private final ProductRepository productRepository = PersistenceContext.repositories().products();
 
     public Iterable<Product> listarProductDescription(ShortDescription description) {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+        /*authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.COSTUMER_USER);*/
         return productRepository.findByDescription(description.toString());
     }
 }
