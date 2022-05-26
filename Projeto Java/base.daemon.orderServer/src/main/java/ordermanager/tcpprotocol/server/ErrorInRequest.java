@@ -10,4 +10,9 @@ public class ErrorInRequest extends BaseErrorRequest {
     protected String messageType() {
         return "ERROR_IN_REQUEST";
     }
+
+    @Override
+    public byte[] outputProtocol() {
+        return new byte[0];
+    }
 }

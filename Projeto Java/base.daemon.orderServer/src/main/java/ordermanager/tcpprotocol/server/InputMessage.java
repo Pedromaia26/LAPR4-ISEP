@@ -1,9 +1,14 @@
 package ordermanager.tcpprotocol.server;
 
-import eapli.base.agvmanagement.application.AGVManagerController;
-import eapli.base.agvmanagement.application.AGVManagerControllerImpl;
+import eapli.base.communicationprotocol.CommunicationProtocol;
+import eapli.base.shoppingcartmanagement.application.ShoppingCartController;
+import eapli.base.shoppingcartmanagement.application.ShoppingCartControllerImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 
 public class InputMessage {
 
@@ -11,7 +16,7 @@ public class InputMessage {
 
     private static final Object lock = new Object();
 
-    private static AGVManagerController controller = new AGVManagerControllerImpl();
+    private static ShoppingCartController controller = new ShoppingCartControllerImpl();
 
     private InputMessage() {
         // avoid instantiation
@@ -26,25 +31,48 @@ public class InputMessage {
         return new AGVManagerControllerImpl();
     }*/
 
-    public static OrderManagerProtocolRequest input(final String inputLine) {
+    public static OrderManagerProtocolRequest parseMessage(byte[] arr, DataInputStream in, DataOutputStream dataOutputStream) throws IOException {
 
-        // as a fallback make sure we return unknown
-        OrderManagerProtocolRequest request = new UnknownRequest(inputLine);
+        OrderManagerProtocolRequest agvManagerProtocolRequest = null;
 
-        // parse to determine which type of request and if it is sintactally valid
+        if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.COMM_TEST_CODE) {
+            dataOutputStream.write(CommunicationProtocol.ACK_MESSAGE_V1);
+            dataOutputStream.flush();
+        }
 
-     //   request = inputAssignTask(inputLine);
+        if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.DISCONN_CODE) {
+            dataOutputStream.write(CommunicationProtocol.ACK_MESSAGE_V1);
+            dataOutputStream.flush();
+        }
+
+        if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.ADD_PRODUCT_SHOPPING_CART_CODE) {
+
+            agvManagerProtocolRequest = inputAddProduct(arr, in);
+        }
+
+
+
+        return agvManagerProtocolRequest;
+    }
+
+    private static OrderManagerProtocolRequest inputAddProduct(final byte[] array, DataInputStream in) {
+        OrderManagerProtocolRequest request;
+
+        String parsedData = null;
+
+
+        int dataLength = array[2] + 256*array[3];
+
+        try {
+            byte[] data = in.readNBytes(dataLength);
+            parsedData = new String(data);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        request = new AddProductShoppingCart(controller, parsedData);
 
         return request;
     }
-
-   /* private static OrderManagerProtocolRequest inputAssignTask(final String inputLine) {
-        OrderManagerProtocolRequest request;
-
-
-        request = new AssignTaskRequest(controller, inputLine);
-
-        return request;
-    }*/
 
 }

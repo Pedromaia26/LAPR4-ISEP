@@ -10,4 +10,9 @@ public class UnknownRequest extends BaseErrorRequest {
     protected String messageType() {
         return "UNKNOWN_REQUEST";
     }
+
+    @Override
+    public byte[] outputProtocol() {
+        return new byte[0];
+    }
 }
