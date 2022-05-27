@@ -1,0 +1,21 @@
+@startuml
+autonumber
+actor "WarehouseEmployee" as SC
+participant "System" as UI
+
+activate SC
+SC -> UI : Ask/force any of unprepared orders to be immediately prepared 
+activate UI
+UI --> SC : asks to select an order
+
+SC -> UI : selects an order
+
+UI --> SC : asks to select an AGV
+
+SC -> UI : selects an AGV
+
+UI --> SC : informs operation success
+deactivate UI
+
+deactivate SC
+@enduml
