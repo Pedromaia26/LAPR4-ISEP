@@ -1,0 +1,66 @@
+@startuml
+participant "//<<client>>//\nBackOffice" as ui
+participant "AGVManagerDaemon" as omd
+participant "AGVManagerTcpServer" as omServer
+participant "//<<thread>>//\nAGVManagerHandler" as thread
+participant "//<<abstract>>//\nAgvManagerProtocolRequest" as request
+participant "AssignTaskRequest" as absImpl
+participant "//<<Interface>>//\nAGVManagerController" as cInterface
+participant "AGVManagerControllerImpl" as cImpls
+participant "ProductOrder\n pO" as po
+database "//<<repository>>//\nProductOrderRepository" as poRepository
+
+
+autonumber
+
+omd->omServer: new
+
+omd->omServer: start
+activate omServer
+
+omServer->omServer: accept
+
+ui-->omServer: request
+
+omServer->thread:start
+deactivate omServer
+activate thread
+
+thread -> request: execute
+activate request
+
+request->absImpl: execute
+
+activate absImpl
+
+absImpl->cInterface : addOrderWithAGV
+
+activate cInterface
+
+cInterface->cImpls : addOrderWithAGV
+
+activate cImpls
+loop
+cImpls->po: modifyAGV()
+
+activate po
+deactivate po
+cImpls->poRepository: save
+activate poRepository
+deactivate poRepository
+
+end loop
+deactivate cImpls
+
+deactivate cInterface
+
+
+request->absImpl: buildResponse
+deactivate absImpl
+
+request-->thread: response
+deactivate request
+thread -->ui: response
+deactivate thread
+
+@enduml
