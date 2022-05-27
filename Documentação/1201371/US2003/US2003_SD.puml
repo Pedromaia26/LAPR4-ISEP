@@ -1,0 +1,120 @@
+@startuml
+autonumber
+actor "WarehouseEmployee" as SC
+participant "//<<presentation>>//\nForceOrderUI" as UI
+participant "//<<presentation>>//\nListOrderToForceUI" as ui2
+participant "//<<presentation>>//\nListAGVUI" as ui3
+participant "//<<application>>//\nListProductOrderController" as cc1
+participant "//<<application>>//\nForceOrderController" as cc2
+participant "//<<application>>//\nAGVListController" as cc3
+participant "//<<app>>//\nAppSettings" as app
+database "//<<repository>>//\nOrderRepository" as db1
+database "//<<repository>>//\nTaskRepository" as db2
+database "//<<repository>>//\nAGVRepository" as db3
+
+activate SC
+SC -> UI : Ask/force any of unprepared orders to be immediately prepared 
+activate UI
+
+UI--> ui2: show()
+
+activate ui2
+
+ui2 --> UI
+
+deactivate ui2
+
+UI-->cc1: verifyIfExistsOrdersPrepared()
+
+activate cc1
+
+cc1-->UI
+
+deactivate cc1
+
+UI --> SC : asks to select a product order
+
+deactivate UI
+
+SC -> UI : selects an Order
+
+activate UI
+
+UI --> cc1: findByCode(productOrderId)
+
+activate cc1
+
+cc1 --> db1: findByCode(productOrderId)
+
+activate db1
+
+db1 --> cc1: productOrderId
+
+deactivate db1
+
+cc1 --> UI
+
+deactivate cc1
+
+UI--> ui3: show()
+
+activate ui3
+
+ui3 --> UI
+
+deactivate ui3
+
+UI --> SC : asks to select an AGV available
+
+deactivate UI
+
+SC --> UI: selects an AGV
+
+activate UI
+
+UI --> cc3: findAgvById(id)
+
+activate cc3
+
+cc3 --> db3: findAgvById(id)
+
+activate db3
+
+db3 --> cc3: id
+
+deactivate db3
+
+cc3 --> UI
+
+deactivate cc3
+
+UI --> cc2: forceOrder(agvSelected, orderSelected)
+
+activate cc2
+
+cc2 --> db2: findTaskByID(id)
+
+activate db2
+
+db2 --> cc2: id
+
+deactivate db2
+
+cc2 --> db3: agvRepository.save(agv)
+
+activate db3
+
+db3 --> cc2: agv
+
+deactivate db3
+
+cc2 --> UI
+
+deactivate cc2
+
+UI --> SC : informs operation success
+
+deactivate UI
+
+deactivate SC
+@enduml
