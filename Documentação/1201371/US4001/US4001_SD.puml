@@ -1,0 +1,68 @@
+@startuml
+participant "//<<client>>//\nBackOffice" as ui
+participant "AGVManagerDaemon" as omd
+participant "AGVDigitalTwinDaemon" as omd2
+participant "AGVManagerTcpServer" as omServer
+participant "//<<thread>>//\nAGVManagerHandler" as thread
+participant "//<<abstract>>//\nAgvManagerProtocolRequest" as request
+participant "AssignTaskRequest" as AbsImpl
+participant "//<<Interface>>//\nAGVManagerController" as cInterface
+participant "AGVManagerControllerImpl" as cImpls
+participant "AGVDigitalTwinTcpServer" as omServer2
+participant "//<<thread>>//\nAGVDigitalTwinHandler" as thread2
+participant "//<<abstract>>//\nAgvDigitalTwinProtocolRequest" as request2
+participant "UpdateStatusRequest" as AbsImpl2
+participant "//<<Interface>>//\nAGVStatusController" as cInterface2
+participant "AGVStatusControllerImpl" as cImpls2
+
+
+autonumber
+
+omd->omServer: new
+
+omd2->omServer2
+
+omd->omServer: start
+activate omServer
+
+omd2->omServer2:start
+activate omServer2
+
+omServer->omServer: accept
+
+ui-->omServer: request
+
+omServer->thread:start
+deactivate omServer
+activate thread
+
+thread -> request: execute
+activate request
+
+request->omServer2: service()
+
+omServer2->omServer2: accept()
+
+omServer2->thread2: start
+deactivate omServer2
+activate thread2
+thread2->request2: execute
+
+activate request2
+
+request2->request2: buildResponse
+
+request2-->thread2: response
+
+deactivate request2
+
+thread2 --> request
+deactivate thread2
+request->request: buildResponse
+
+request-->thread: response
+deactivate request
+thread -->ui: response
+deactivate thread
+
+@enduml
