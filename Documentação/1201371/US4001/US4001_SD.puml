@@ -5,15 +5,9 @@ participant "AGVDigitalTwinDaemon" as omd2
 participant "AGVManagerTcpServer" as omServer
 participant "//<<thread>>//\nAGVManagerHandler" as thread
 participant "//<<abstract>>//\nAgvManagerProtocolRequest" as request
-participant "AssignTaskRequest" as AbsImpl
-participant "//<<Interface>>//\nAGVManagerController" as cInterface
-participant "AGVManagerControllerImpl" as cImpls
 participant "AGVDigitalTwinTcpServer" as omServer2
 participant "//<<thread>>//\nAGVDigitalTwinHandler" as thread2
 participant "//<<abstract>>//\nAgvDigitalTwinProtocolRequest" as request2
-participant "UpdateStatusRequest" as AbsImpl2
-participant "//<<Interface>>//\nAGVStatusController" as cInterface2
-participant "AGVStatusControllerImpl" as cImpls2
 
 
 autonumber
