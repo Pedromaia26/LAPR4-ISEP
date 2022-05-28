@@ -18,4 +18,8 @@ public class AisleDepthLSquare implements ValueObject {
     public AisleDepthLSquare() {
 
     }
+
+    public long DepthLSquare() {
+        return depthLSquare;
+    }
 }

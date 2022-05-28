@@ -18,4 +18,8 @@ public class AisleBeginWSquare implements ValueObject {
     public AisleBeginWSquare() {
 
     }
+
+    public long BeginWSquare() {
+        return beginWSquare;
+    }
 }

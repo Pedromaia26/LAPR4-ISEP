@@ -18,4 +18,8 @@ public class AisleDepthWSquare implements ValueObject {
     public AisleDepthWSquare() {
 
     }
+
+    public long DepthWSquare() {
+        return depthWSquare;
+    }
 }

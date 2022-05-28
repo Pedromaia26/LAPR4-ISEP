@@ -18,4 +18,8 @@ public class AisleEndLSquare implements ValueObject {
     public AisleEndLSquare() {
 
     }
+
+    public long EndLSquare() {
+        return endLSquare;
+    }
 }
