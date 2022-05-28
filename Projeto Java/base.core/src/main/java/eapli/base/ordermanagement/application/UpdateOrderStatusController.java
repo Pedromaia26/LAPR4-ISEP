@@ -20,7 +20,7 @@ import eapli.framework.time.util.Calendars;
 import java.util.List;
 
 @UseCaseController
-public class UpdateOrderStatusController {
+    public class UpdateOrderStatusController {
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final ConfigureAGVController cagvcontroller = new ConfigureAGVController();
     private final TasksListController tasksListController = new TasksListController();
@@ -28,21 +28,15 @@ public class UpdateOrderStatusController {
     private final OrderRepository orderRepository = PersistenceContext.repositories().orders();
     private final StatusRepository statusRepository = PersistenceContext.repositories().status();
 
-    public ProductOrder UpdateOrderToDispatched(String orderId){
+    public ProductOrder updateOrderToDispatched(String orderId){
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.ADMIN, BaseRoles.POWER_USER, BaseRoles.WAREHOUSE_EMPLOYEE);
         long statusid = 8;
         Status status = statusRepository.findByStatusId(statusid);
         final ProductOrder order = orderRepository.findByOrderId(Long.parseLong(orderId));
         order.modifyStatus(status);
-        updateAGVToFree(order.Agv());
-        unlinkAGV(order);
         return orderRepository.save(order);
     }
 
-    public AGV updateAGVToFree(AGV agv){
-        Task task = tasksListController.findTaskById(1L);
-        return cagvcontroller.modifyAGVTask(agv, task);
-    }
 
     public boolean verifyIfExistsOrdersPrepared() {
         List<ProductOrder> list = (List<ProductOrder>) listProductOrderController.productOrdersPrepared();
@@ -56,9 +50,5 @@ public class UpdateOrderStatusController {
         final ProductOrder order = orderRepository.findByOrderId(Long.parseLong(orderId));
         order.modifyStatus(status);
         return orderRepository.save(order);
-    }
-
-    public void unlinkAGV(ProductOrder order){
-        order.modifyAgv(null);
     }
 }

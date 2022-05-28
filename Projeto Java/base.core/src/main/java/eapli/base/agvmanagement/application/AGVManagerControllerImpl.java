@@ -72,8 +72,9 @@ public class AGVManagerControllerImpl implements AGVManagerController {
         txCtx.beginTransaction();
 
         ProductOrder productOrder = orderRepository.findOrderByAGVId(id);
-        Status status = statusListController.findStatusById(8L);
+        Status status = statusListController.findStatusById(5L);
         productOrder.modifyStatus(status);
+        productOrder.modifyAgv(null);
         orderRepository.save(productOrder);
 
         if(!updateStatusFreeService.updateStatusFreeService(id)) {

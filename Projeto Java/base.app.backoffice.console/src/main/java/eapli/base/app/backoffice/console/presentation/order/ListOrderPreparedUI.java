@@ -28,7 +28,7 @@ public class ListOrderPreparedUI  extends AbstractListUI<ProductOrder> {
 
     @Override
     protected String listHeader() {
-        return "PRODUCT ORDER ID | CLIENT | AGV";
+        return "PRODUCT ORDER ID | CLIENT";
     }
 
     @Override

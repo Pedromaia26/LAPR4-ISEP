@@ -1,0 +1,41 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Warehouse Employee" as WE
+participant ":UpdateOrderDispatchedUI" as UI
+participant ":UpdateOrderStatusController" as CONTROLLER
+participant "order\n:ProductOrder" as ORDER
+database "<<repo>>\n:OrderRepository" as REPO
+participant "orderId\n:String"
+participant "dispatched\n:Status"
+
+
+activate WE
+
+WE -> UI: asks for the list of orders that have already been prepared
+activate UI
+UI --> WE: shows the list and asks for the id \nwhose status order the Warehouse Employee wants to update
+deactivate UI
+WE -> UI: types the requested data
+activate UI
+UI -> CONTROLLER: updateOrderToDispatched(orderId)
+activate CONTROLLER
+CONTROLLER -> REPO: order = findByOrderId(orderId)
+activate REPO
+deactivate REPO
+CONTROLLER -> ORDER: modifyStatus(dispatched)
+activate ORDER
+deactivate ORDER
+
+CONTROLLER -> REPO: save(order)
+activate REPO
+deactivate REPO
+deactivate CONTROLLER
+UI --> WE: informs operation success
+
+deactivate UI
+deactivate WE
+
+@enduml
