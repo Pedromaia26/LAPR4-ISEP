@@ -1,0 +1,59 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class ForceOrderUI
+class OrderRepository << (I,a777d1) >>
+class TaskRepository << (I,a777d1) >>
+class AGVRepository << (I,a777d1) >>
+
+class ListProductOrderController{
+    - findByCode(productOrderId)
+}
+
+class ForceOrderController{
+    - findTaskById(id)
+    - agvRepository.save(agv)
+}
+
+class AGVListController{
+    - findAgvById(id)
+}
+
+class ListOrderToForceUI{
+
+    - show()
+}
+
+class ListAGVUI{
+
+    - show()
+}
+
+class AGVRepository {
+    - instance()
+    - agv()
+    - save(AGV)
+}
+
+class OrderRepository {
+    - instance()
+    - order()
+    - save(order)
+}
+
+class TaskRepository {
+    - instance()
+    - task()
+    - save(task)
+}
+
+
+ForceOrderUI--> ListProductOrderController
+ForceOrderUI--> ForceOrderController
+ForceOrderUI--> AGVListController
+ForceOrderUI--> ListOrderToForceUI
+ForceOrderUI--> ListAGVUI
+ListProductOrderController--> OrderRepository
+ForceOrderController--> TaskRepository
+AGVListController--> AGVRepository
+@enduml
