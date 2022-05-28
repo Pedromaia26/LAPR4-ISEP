@@ -18,4 +18,7 @@ public class InMemoryWarehouseRepository extends InMemoryDomainRepository<Wareho
     public Warehouse save(Warehouse warehouse) {
         return warehouse;
     }
+
+    @Override
+    public Warehouse findById(String id){return null;}
 }
