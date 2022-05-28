@@ -2,15 +2,41 @@
 autonumber
 actor "Client" as SC
 participant "//<<presentation>>//\nAddProductShoppingCartUI" as UI
+participant "OrderManagerDaemon" as omd
 participant "//<<application>>//\nListProductController" as cc1
 participant "//<<application>>//\nAddProductShoppingCartController" as cc2
-participant "//<<application>>//\nShoppingCartLine" as scl
+
+
+
+participant "AddProductShoppingCartController" as service
+participant "OrderManagerTcpServer" as omServer
+
+
 participant "//<<app>>//\nAppSettings" as app
+
+participant "//<<thread>>//\nOrderManagerHandler" as thread
+participant "//<<abstract>>//\nOrderManagerProtocolRequest" as request
+participant "AddProductShoppingCart" as absImpl
+participant "//<<Interface>>//\nShoppingCartController" as cInterface
+participant "ShoppingCartControllerImpl" as cImpls
+
+participant "//<<application>>//\nShoppingCartLine" as scl
 database "//<<repository>>//\nProductRepository" as db
 database "//<<repository>>//\nShoppingCartRepository" as db2
 database "//<<repository>>//\nShoppingCartLineRepository" as db3
 
+
 activate SC
+omd->omServer: new
+
+omd->omServer: start
+activate omServer
+
+
+
+
+
+
 SC -> UI : view/search in the product catalog
 activate UI
 
@@ -63,42 +89,93 @@ UI--> cc2: addProductShoppingCart(productReference, quantity)
 
 activate cc2
 
-cc2--> db: findByReference(productReference)
+cc2 -> service: addProductShoppingCartService
+
+activate service
+
+omServer->omServer: accept
+
+service-->omServer: request
+
+omServer->thread:start
+deactivate omServer
+activate thread
+
+thread -> request: execute
+activate request
+
+request->absImpl:execute
+activate absImpl
+
+absImpl->cInterface: addProductShoppingCart
+
+activate cInterface
+
+cInterface->cImpls: addProductShoppingCart
+
+activate cImpls
+
+cImpls--> db: findByReference(productReference)
 
 activate db
 
-db-->cc2: product
+db-->cImpls: product
 
 deactivate db
 
-cc2--> scl: newShoppingCartLine(product, q, product.Price())
+cImpls--> scl: newShoppingCartLine(product, q, product.Price())
 
-cc2 --> db3: save(newShoppingCartLine)
+cImpls --> db3: save(newShoppingCartLine)
 
 activate db3
 
 deactivate db3
 
-cc2 --> cc2: getShoppingCartUser()
+cImpls --> cImpls: getShoppingCartUser()
 
-cc2 --> db2: findByVat(cvat.vat())
+cImpls --> db2: findByVat(cvat.vat())
 
 activate db2
 
-db2 --> cc2: vat
+db2 --> cImpls: vat
 
-cc2 --> db2: save(shoppingCart)
+cImpls --> db2: save(shoppingCart)
 
-db2 --> cc2
 
 deactivate db2
 
 
+deactivate cImpls
+
+
+deactivate cInterface
+
+request->absImpl: buildResponse
+
+absImpl->absImpl:buildResponse
+
+absImpl-->request:response
+
+deactivate absImpl
+
+request-->thread: response
+deactivate request
+thread -->service: response
+deactivate thread
+
+service-->cc2 : response
+deactivate service
 
 
 
+
+
+
+
+cc2-->UI : response
 
 end
+deactivate cc2
 UI --> SC : informs operation success
 deactivate UI
 
