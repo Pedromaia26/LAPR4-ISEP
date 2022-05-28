@@ -8,9 +8,9 @@ optional
 1
 Question 1?
 Yes or no.
-Free-text
+Multiple-Choice with input value
 optional
-it means the person answers the question by typing some text.
+very similar to the multiple choice, but the last option, if selected, implies that the person must type a numeric value or a free text.
 2
 Question 2?
 Numeric
