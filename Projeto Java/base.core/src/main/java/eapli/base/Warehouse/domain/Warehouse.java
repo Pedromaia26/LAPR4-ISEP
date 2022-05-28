@@ -76,4 +76,16 @@ public class Warehouse implements AggregateRoot<Long> {
     public boolean equals(final Object o) {
         return DomainEntities.areEqual(this, o);
     }
+
+    public long Length() {
+        return length;
+    }
+
+    public long Width() {
+        return width;
+    }
+
+    public long Square() {
+        return square;
+    }
 }

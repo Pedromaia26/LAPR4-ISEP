@@ -76,7 +76,27 @@ public class AGVDock implements AggregateRoot<AGVDockIdentifier> {
         return identity();
     }
 
+    public AGVDockBeginLSquare AgvDockBeginLSquare() {
+        return agvDockBeginLSquare;
+    }
 
+    public AGVDockBeginWSquare AgvDockBeginWSquare() {
+        return agvDockBeginWSquare;
+    }
 
+    public AGVDockEndLSquare AgvDockEndLSquare() {
+        return agvDockEndLSquare;
+    }
 
+    public AGVDockEndWSquare AgvDockEndWSquare() {
+        return agvDockEndWSquare;
+    }
+
+    public AGVDockDepthLSquare AgvDockDepthLSquare() {
+        return agvDockDepthLSquare;
+    }
+
+    public AGVDockDepthWSquare AgvDockDepthWSquare() {
+        return agvDockDepthWSquare;
+    }
 }

@@ -70,4 +70,28 @@ public class Aisle implements AggregateRoot<AisleIdentifier> {
     public AisleIdentifier aisleIdentifier() {
         return identity();
     }
+
+    public AisleBeginLSquare AisleBeginLSquare() {
+        return aisleBeginLSquare;
+    }
+
+    public AisleBeginWSquare AisleBeginWSquare() {
+        return aisleBeginWSquare;
+    }
+
+    public AisleDepthLSquare AisleDepthLSquare() {
+        return aisleDepthLSquare;
+    }
+
+    public AisleDepthWSquare AisleDepthWSquare() {
+        return aisleDepthWSquare;
+    }
+
+    public AisleEndLSquare AisleEndLSquare() {
+        return aisleEndLSquare;
+    }
+
+    public AisleEndWSquare AisleEndWSquare() {
+        return aisleEndWSquare;
+    }
 }
