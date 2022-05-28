@@ -28,6 +28,7 @@ import eapli.base.app.backoffice.console.presentation.agv.UpdateAGVStatusUI;
 import eapli.base.app.backoffice.console.presentation.authz.*;
 import eapli.base.app.backoffice.console.presentation.category.DefineNewCategoryUI;
 import eapli.base.app.backoffice.console.presentation.category.ListCategoryUI;
+import eapli.base.app.backoffice.console.presentation.dashboard.ShowDashboardUI;
 import eapli.base.app.backoffice.console.presentation.forceOrder.ForceOrderUI;
 import eapli.base.app.backoffice.console.presentation.order.AddOrderUI;
 import eapli.base.app.backoffice.console.presentation.order.UpdateOrderDispatchedUI;
@@ -128,6 +129,10 @@ public class MainMenu extends AbstractUI {
     //Survey
     private static final int CREATE_SURVEY = 1;
 
+    //Dashboard
+    private static final int DASHBOARD = 6;
+    private static final int OPEN_DASHBOARD = 1;
+
 
     private static final String SEPARATOR_LABEL = "--------------";
 
@@ -198,6 +203,8 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(FORCE_ORDER, forceOrder);
             final Menu updateOrder = buildUpdateOrderMenu();
             mainMenu.addSubMenu(UPDATE_ORDER, updateOrder);
+            final Menu dashboard = buildDashboardMenu();
+            mainMenu.addSubMenu(DASHBOARD, dashboard);
         }
 
         if(authz.isAuthenticatedUserAuthorizedTo(BaseRoles.SALES_MANAGER)){
@@ -333,6 +340,15 @@ public class MainMenu extends AbstractUI {
 
         menu.addItem(CREATE_SURVEY, "Create Survey", new CreateSurveyUI()::show);
 
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
+    private Menu buildDashboardMenu(){
+        final Menu menu = new Menu("Dashboard >");
+
+        menu.addItem(OPEN_DASHBOARD, "Open Dashboard", new ShowDashboardUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
