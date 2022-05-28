@@ -1,0 +1,12 @@
+h1{
+    text-align: center;
+}
+
+td{
+    width: 40px;
+}
+
+table{
+    border: 1px solid black;
+    margin: auto;
+}
