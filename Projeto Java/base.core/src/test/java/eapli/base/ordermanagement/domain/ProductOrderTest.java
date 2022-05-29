@@ -242,4 +242,45 @@ public class ProductOrderTest {
 
         assertTrue(expected);
     }
+
+    @Test
+    public void ensureModifyAgv() {
+
+        Description description = new Description("task");
+        Task task = new Task(description);
+        AGVDock agvDock = new AGVDock();
+        AGV agv=new AGVBuilder("abc123", "description", 120d, 500d, "model", task, 100d, agvDock).build();
+
+
+        final ProductOrder productOrder = ProductOrderBuild();
+
+
+
+
+        productOrder.modifyAgv(agv);
+
+        assertEquals(productOrder.Agv(), agv);
+
+    }
+
+    @Test
+    public void ensureModifyStatus() {
+
+        Description description = new Description("task");
+        Task task = new Task(description);
+        AGVDock agvDock = new AGVDock();
+        AGV agv=new AGVBuilder("abc123", "description", 120d, 500d, "model", task, 100d, agvDock).build();
+
+
+        final ProductOrder productOrder = ProductOrderBuild();
+
+        Status status=new Status(new eapli.base.orderstatusmanagement.domain.Description( "description"));
+
+        productOrder.modifyStatus(status);
+
+
+
+
+        assertEquals(productOrder.Status(), status);
+    }
 }
