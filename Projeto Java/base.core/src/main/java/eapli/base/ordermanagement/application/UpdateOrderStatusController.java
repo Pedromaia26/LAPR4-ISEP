@@ -42,13 +42,4 @@ import java.util.List;
         List<ProductOrder> list = (List<ProductOrder>) listProductOrderController.productOrdersPrepared();
         return list.size() > 0;
     }
-
-    public ProductOrder updateOrderBeingPreparedByAnAGV(String orderId){
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.ADMIN, BaseRoles.POWER_USER, BaseRoles.WAREHOUSE_EMPLOYEE, BaseRoles.SALES_CLERK);
-        long statusid = 4;
-        Status status = statusRepository.findByStatusId(statusid);
-        final ProductOrder order = orderRepository.findByOrderId(Long.parseLong(orderId));
-        order.modifyStatus(status);
-        return orderRepository.save(order);
-    }
 }
