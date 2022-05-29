@@ -12,7 +12,7 @@ US4002
 
 ##Atribuição de tarefa aos AGVs
 
-Nesta funcionalidade, os AGVs serão, sempre quando possível, associados a uma order por ordem.
+Nesta funcionalidade, os AGVs serão, sempre que possível, associados a uma order por ordem de criação.
 
 ##Utilização do AGVManager
 
