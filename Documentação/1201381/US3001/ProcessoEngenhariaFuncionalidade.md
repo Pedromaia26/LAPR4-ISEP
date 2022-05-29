@@ -4,30 +4,39 @@ US3001
 
 # 1. Requisitos
 
-Como um Cliente:
-* Eu quero ver/pesquisar o catálogo de produtos e adicionar produtos ao meu carrinho
+> **Question**: When creating a questionnaire should the user give a file with the questionnaire or write each question and section trough the command line?
+>
+> **Answer**: First of all, and to be clear, notice that creating a surveys has two distinct set of data:
+>
+>* alphanumeric code, a description, the period (in days) it will be performed and a set of rules that allows the system to determine the survey target audience; and
+>* the intended questionnaire, i.e. the title, the welcome message, sections and questions.
 
-A interpretação feita deste requisito foi no sentido de o utilizador poder ver todos os produtos do catálogo, ou pesquisar algum produto por brand (Marca) e qualquer uma das três descrições (shortDescription, extendedDescription e technicalDescription), de modo a encontrar o produto que deseja comprar ao seu carrinho de compras, e logo adicioná-lo.
-O cliente também pode ver os produtos e a sua quantidade no carrinho. Esta funcionalidade tem dependência nas seguintes US's -> US1001, US1002, US1005, US2001.
+> **Question**: 
+> * The same section can be present in more than one questionnaire?
+> * The same question can be present in more than one section?
+>
+> **Answer**: Yes, that can happen.
+>However, there is no intend to reutilize questions and/or sections. If that happens, the user will type the question/section again.
+
+> **Question**: Can you specify / define what business rules are associated to Questionnaire, Section and Question? (Eg: Questionnaire ID only has 9 characters / follows an expression).
+>
+> **Answer**: Basic business rules related with Questionnaire, Section and Question are already available on the specifications document, namely on Table 1, 2 and 3.
+> Teams must adopt common-sense when applying other criteria such as min/max chars length and support/explain the rationale taken.
+
 
 # 2. Análise
 
-##Pesquisa
+##Inserção de questionário
 
-Nesta funcionalidade o Cliente pode listar todos os produtos de uma vez, ou pesquisar os produtos por dois campos, estes são a brand (Marca) e a descrição, que automaticamente pesquisa pelas três descrições que estão no produto (shortDescription, extendedDescription e technicalDescription).
+Nesta funcionalidade, o grupo decidiu que a importação de um questionário seria através de um ficheiro de texto com a informação do questionário.
 
-##Tipo de pesquisa
+##Apresentação do questionário
 
-Para pesquisar os produtos, com o objetivo de uma pesquisa mais eficiente, foi feita uma pesquisa por segmentos de palavra, assim ao fazer uma pesquisa de um produto com a brand "Herbalife", se o Sales Clerk apenas pesquisar "Herba", vão ser listados os produtos Herbalife.
+Após o parse, consultando a gramática, do questionário, a sua informação é mostrada na consola.
 
-##Adicionar ao carrinho
+##Persistência
 
-Após pesquisar produtos, o sistema vai perguntar se o cliente quer adicionar produtos ao seu carrinho, se o cliente quiser adicionar ele vai escolher o produto que deseja adicionar por referência, e também vai inserir a quantidade de produtos que deseja comprar.
-
-##Ver o carrinho
-
-Ao ver o carrinho, o cliente consegue ver os produtos que estão no carrinho e também a sua quantidade.
-
+Após recorrer ao professor das aulas Teóricas-Práticas, concluimos que, para este sprint, não é necessário persistir o questionário.
 # 3. Design
 
 ## 3.1. Realização da Funcionalidade
@@ -45,6 +54,3 @@ Ao ver o carrinho, o cliente consegue ver os produtos que estão no carrinho e t
 ## 3.3. Padrões Aplicados
 
 - Controller
-- Service
-- Repository
-- Factory

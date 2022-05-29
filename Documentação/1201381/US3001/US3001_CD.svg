@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1231px" preserveAspectRatio="none" style="width:543px;height:1231px;" version="1.1" viewBox="0 0 543 1231" width="543px" zoomAndPan="magnify"><defs><filter height="300%" id="frvrp7m5ovtka" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[d7ae1f9a22fdac821b66d4e46119eae8]
+class CreateSurveyUI--><rect codeLine="3" fill="#FEFECE" filter="url(#frvrp7m5ovtka)" height="48" id="CreateSurveyUI" style="stroke:#A80036;stroke-width:1.5;" width="117" x="218.5" y="7"/><ellipse cx="233.5" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M235.5,19.5 Q235.7031,19 235.9375,18.75 Q236.1719,18.5 236.4375,18.5 Q236.9063,18.5 237.2031,18.7813 Q237.5,19.0625 237.5,19.7188 L237.5,21.2813 Q237.5,21.9375 237.2188,22.2188 Q236.9375,22.5 236.5,22.5 Q236.1094,22.5 235.8594,22.3281 Q235.6094,22.1563 235.5,21.7031 Q235.4531,21.3906 235.2813,21.2188 Q234.9688,20.8906 234.4063,20.7031 Q233.8438,20.5 233.2813,20.5 Q232.5781,20.5 231.9844,20.7813 Q231.4063,21.0625 230.9531,21.6875 Q230.5,22.3125 230.5,23.1719 L230.5,24.0938 Q230.5,25.125 231.3438,25.8125 Q232.1875,26.5 233.6875,26.5 Q234.5781,26.5 235.2031,26.2969 Q235.5625,26.1875 235.9688,25.8281 Q236.2344,25.625 236.375,25.5625 Q236.5156,25.5 236.6875,25.5 Q237.0156,25.5 237.25,25.7656 Q237.5,26.0156 237.5,26.375 Q237.5,26.7188 237.1563,27.125 Q236.6563,27.7188 235.8594,28.0469 Q234.8125,28.5 233.5313,28.5 Q232.0313,28.5 230.8281,27.9063 Q229.8594,27.4375 229.1719,26.4219 Q228.5,25.4063 228.5,24.2031 L228.5,23.1094 Q228.5,21.8594 229.0938,20.7656 Q229.7031,19.6719 230.75,19.0938 Q231.8125,18.5 233,18.5 Q233.7188,18.5 234.3438,18.75 Q234.9688,19 235.5,19.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="85" x="247.5" y="27.9102">CreateSurveyUI</text><line style="stroke:#A80036;stroke-width:1.5;" x1="219.5" x2="334.5" y1="39" y2="39"/><line style="stroke:#A80036;stroke-width:1.5;" x1="219.5" x2="334.5" y1="47" y2="47"/><!--MD5=[f8dda83689a77e8fe8705027bf2f9a94]
+class CreateSurveyController--><rect codeLine="10" fill="#FEFECE" filter="url(#frvrp7m5ovtka)" height="61.8359" id="CreateSurveyController" style="stroke:#A80036;stroke-width:1.5;" width="159" x="197.5" y="115"/><ellipse cx="212.5" cy="131" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M214.5,127.5 Q214.7031,127 214.9375,126.75 Q215.1719,126.5 215.4375,126.5 Q215.9063,126.5 216.2031,126.7813 Q216.5,127.0625 216.5,127.7188 L216.5,129.2813 Q216.5,129.9375 216.2188,130.2188 Q215.9375,130.5 215.5,130.5 Q215.1094,130.5 214.8594,130.3281 Q214.6094,130.1563 214.5,129.7031 Q214.4531,129.3906 214.2813,129.2188 Q213.9688,128.8906 213.4063,128.7031 Q212.8438,128.5 212.2813,128.5 Q211.5781,128.5 210.9844,128.7813 Q210.4063,129.0625 209.9531,129.6875 Q209.5,130.3125 209.5,131.1719 L209.5,132.0938 Q209.5,133.125 210.3438,133.8125 Q211.1875,134.5 212.6875,134.5 Q213.5781,134.5 214.2031,134.2969 Q214.5625,134.1875 214.9688,133.8281 Q215.2344,133.625 215.375,133.5625 Q215.5156,133.5 215.6875,133.5 Q216.0156,133.5 216.25,133.7656 Q216.5,134.0156 216.5,134.375 Q216.5,134.7188 216.1563,135.125 Q215.6563,135.7188 214.8594,136.0469 Q213.8125,136.5 212.5313,136.5 Q211.0313,136.5 209.8281,135.9063 Q208.8594,135.4375 208.1719,134.4219 Q207.5,133.4063 207.5,132.2031 L207.5,131.1094 Q207.5,129.8594 208.0938,128.7656 Q208.7031,127.6719 209.75,127.0938 Q210.8125,126.5 212,126.5 Q212.7188,126.5 213.3438,126.75 Q213.9688,127 214.5,127.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="127" x="226.5" y="135.9102">CreateSurveyController</text><line style="stroke:#A80036;stroke-width:1.5;" x1="198.5" x2="355.5" y1="147" y2="147"/><line style="stroke:#A80036;stroke-width:1.5;" x1="198.5" x2="355.5" y1="155" y2="155"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="205.5" y="163"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="88" x="217.5" y="170.4189">createSurvey(file)</text><!--MD5=[3145b4be7c5005b24cda6f18a1d594b0]
+class Survey--><rect codeLine="14" fill="#FEFECE" filter="url(#frvrp7m5ovtka)" height="144.8516" id="Survey" style="stroke:#A80036;stroke-width:1.5;" width="259" x="56.5" y="608"/><ellipse cx="163.75" cy="624" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M165.75,620.5 Q165.9531,620 166.1875,619.75 Q166.4219,619.5 166.6875,619.5 Q167.1563,619.5 167.4531,619.7813 Q167.75,620.0625 167.75,620.7188 L167.75,622.2813 Q167.75,622.9375 167.4688,623.2188 Q167.1875,623.5 166.75,623.5 Q166.3594,623.5 166.1094,623.3281 Q165.8594,623.1563 165.75,622.7031 Q165.7031,622.3906 165.5313,622.2188 Q165.2188,621.8906 164.6563,621.7031 Q164.0938,621.5 163.5313,621.5 Q162.8281,621.5 162.2344,621.7813 Q161.6563,622.0625 161.2031,622.6875 Q160.75,623.3125 160.75,624.1719 L160.75,625.0938 Q160.75,626.125 161.5938,626.8125 Q162.4375,627.5 163.9375,627.5 Q164.8281,627.5 165.4531,627.2969 Q165.8125,627.1875 166.2188,626.8281 Q166.4844,626.625 166.625,626.5625 Q166.7656,626.5 166.9375,626.5 Q167.2656,626.5 167.5,626.7656 Q167.75,627.0156 167.75,627.375 Q167.75,627.7188 167.4063,628.125 Q166.9063,628.7188 166.1094,629.0469 Q165.0625,629.5 163.7813,629.5 Q162.2813,629.5 161.0781,628.9063 Q160.1094,628.4375 159.4219,627.4219 Q158.75,626.4063 158.75,625.2031 L158.75,624.1094 Q158.75,622.8594 159.3438,621.7656 Q159.9531,620.6719 161,620.0938 Q162.0625,619.5 163.25,619.5 Q163.9688,619.5 164.5938,619.75 Q165.2188,620 165.75,620.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="36" x="184.25" y="628.9102">Survey</text><line style="stroke:#A80036;stroke-width:1.5;" x1="57.5" x2="314.5" y1="640" y2="640"/><ellipse cx="67.5" cy="651" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="8" x="76.5" y="655.4189">id</text><ellipse cx="67.5" cy="664.8359" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="16" x="76.5" y="669.2549">title</text><ellipse cx="67.5" cy="678.6719" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="88" x="76.5" y="683.0908">welcomeMessage</text><ellipse cx="67.5" cy="692.5078" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="76.5" y="696.9268">sections</text><ellipse cx="67.5" cy="706.3438" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="64" x="76.5" y="710.7627">finalMessage</text><line style="stroke:#A80036;stroke-width:1.5;" x1="57.5" x2="314.5" y1="717.1797" y2="717.1797"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="64.5" y="725.1797"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="233" x="76.5" y="732.5986">create(id, title, welcomeMessage, finalMessage)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="64.5" y="739.0156"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="139" x="76.5" y="746.4346">create(id, title, finalMessage)</text><!--MD5=[09a53695e98d4f26e7a054522080af08]
+class Section--><rect codeLine="24" fill="#FEFECE" filter="url(#frvrp7m5ovtka)" height="186.3594" id="Section" style="stroke:#A80036;stroke-width:1.5;" width="380" x="7" y="813"/><ellipse cx="172.25" cy="829" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M174.25,825.5 Q174.4531,825 174.6875,824.75 Q174.9219,824.5 175.1875,824.5 Q175.6563,824.5 175.9531,824.7813 Q176.25,825.0625 176.25,825.7188 L176.25,827.2813 Q176.25,827.9375 175.9688,828.2188 Q175.6875,828.5 175.25,828.5 Q174.8594,828.5 174.6094,828.3281 Q174.3594,828.1563 174.25,827.7031 Q174.2031,827.3906 174.0313,827.2188 Q173.7188,826.8906 173.1563,826.7031 Q172.5938,826.5 172.0313,826.5 Q171.3281,826.5 170.7344,826.7813 Q170.1563,827.0625 169.7031,827.6875 Q169.25,828.3125 169.25,829.1719 L169.25,830.0938 Q169.25,831.125 170.0938,831.8125 Q170.9375,832.5 172.4375,832.5 Q173.3281,832.5 173.9531,832.2969 Q174.3125,832.1875 174.7188,831.8281 Q174.9844,831.625 175.125,831.5625 Q175.2656,831.5 175.4375,831.5 Q175.7656,831.5 176,831.7656 Q176.25,832.0156 176.25,832.375 Q176.25,832.7188 175.9063,833.125 Q175.4063,833.7188 174.6094,834.0469 Q173.5625,834.5 172.2813,834.5 Q170.7813,834.5 169.5781,833.9063 Q168.6094,833.4375 167.9219,832.4219 Q167.25,831.4063 167.25,830.2031 L167.25,829.1094 Q167.25,827.8594 167.8438,826.7656 Q168.4531,825.6719 169.5,825.0938 Q170.5625,824.5 171.75,824.5 Q172.4688,824.5 173.0938,824.75 Q173.7188,825 174.25,825.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="41" x="192.75" y="833.9102">Section</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="386" y1="845" y2="845"/><ellipse cx="18" cy="856" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="8" x="27" y="860.4189">id</text><ellipse cx="18" cy="869.8359" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="16" x="27" y="874.2549">title</text><ellipse cx="18" cy="883.6719" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="89" x="27" y="888.0908">sectionDescription</text><ellipse cx="18" cy="897.5078" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="67" x="27" y="901.9268">obligatoriness</text><ellipse cx="18" cy="911.3438" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="58" x="27" y="915.7627">repeatability</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="386" y1="922.1797" y2="922.1797"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="930.1797"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="354" x="27" y="937.5986">create(id, title, sectionDescription, obligatoriness, repeatability, questions)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="944.0156"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="301" x="27" y="951.4346">create(id, title, sectionDescription, obligatoriness, repeatability)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="957.8516"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="259" x="27" y="965.2705">create(id, title, obligatoriness, repeatability, questions)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="971.6875"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="290" x="27" y="979.1064">create(id, title, sectionDescription, obligatoriness, questions)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="985.5234"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="195" x="27" y="992.9424">create(id, title, obligatoriness, questions)</text><!--MD5=[fc7123defb831ecdd44b2d9bcef6cceb]
+class Question--><rect codeLine="37" fill="#FEFECE" filter="url(#frvrp7m5ovtka)" height="158.6875" id="Question" style="stroke:#A80036;stroke-width:1.5;" width="423" x="106.5" y="1059"/><ellipse cx="288.75" cy="1075" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M290.75,1071.5 Q290.9531,1071 291.1875,1070.75 Q291.4219,1070.5 291.6875,1070.5 Q292.1563,1070.5 292.4531,1070.7813 Q292.75,1071.0625 292.75,1071.7188 L292.75,1073.2813 Q292.75,1073.9375 292.4688,1074.2188 Q292.1875,1074.5 291.75,1074.5 Q291.3594,1074.5 291.1094,1074.3281 Q290.8594,1074.1563 290.75,1073.7031 Q290.7031,1073.3906 290.5313,1073.2188 Q290.2188,1072.8906 289.6563,1072.7031 Q289.0938,1072.5 288.5313,1072.5 Q287.8281,1072.5 287.2344,1072.7813 Q286.6563,1073.0625 286.2031,1073.6875 Q285.75,1074.3125 285.75,1075.1719 L285.75,1076.0938 Q285.75,1077.125 286.5938,1077.8125 Q287.4375,1078.5 288.9375,1078.5 Q289.8281,1078.5 290.4531,1078.2969 Q290.8125,1078.1875 291.2188,1077.8281 Q291.4844,1077.625 291.625,1077.5625 Q291.7656,1077.5 291.9375,1077.5 Q292.2656,1077.5 292.5,1077.7656 Q292.75,1078.0156 292.75,1078.375 Q292.75,1078.7188 292.4063,1079.125 Q291.9063,1079.7188 291.1094,1080.0469 Q290.0625,1080.5 288.7813,1080.5 Q287.2813,1080.5 286.0781,1079.9063 Q285.1094,1079.4375 284.4219,1078.4219 Q283.75,1077.4063 283.75,1076.2031 L283.75,1075.1094 Q283.75,1073.8594 284.3438,1072.7656 Q284.9531,1071.6719 286,1071.0938 Q287.0625,1070.5 288.25,1070.5 Q288.9688,1070.5 289.5938,1070.75 Q290.2188,1071 290.75,1071.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="50" x="309.25" y="1079.9102">Question</text><line style="stroke:#A80036;stroke-width:1.5;" x1="107.5" x2="528.5" y1="1091" y2="1091"/><ellipse cx="117.5" cy="1102" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="8" x="126.5" y="1106.4189">id</text><ellipse cx="117.5" cy="1115.8359" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="62" x="126.5" y="1120.2549">questionText</text><ellipse cx="117.5" cy="1129.6719" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="50" x="126.5" y="1134.0908">instruction</text><ellipse cx="117.5" cy="1143.5078" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="65" x="126.5" y="1147.9268">questionType</text><ellipse cx="117.5" cy="1157.3438" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="67" x="126.5" y="1161.7627">obligatoriness</text><ellipse cx="117.5" cy="1171.1797" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="43" x="126.5" y="1175.5986">extraInfo</text><line style="stroke:#A80036;stroke-width:1.5;" x1="107.5" x2="528.5" y1="1182.0156" y2="1182.0156"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="114.5" y="1190.0156"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="397" x="126.5" y="1197.4346">create(identifier, questionText, instruction, questionType, obligatoriness, extraInfo)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="114.5" y="1203.8516"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="341" x="126.5" y="1211.2705">create(identifier, questionText, questionType, obligatoriness, extraInfo)</text><!--MD5=[fb8ed023a49c117ff604ac0d408afd3b]
+class SurvVisitor--><rect codeLine="48" fill="#FEFECE" filter="url(#frvrp7m5ovtka)" height="310.8828" id="SurvVisitor" style="stroke:#A80036;stroke-width:1.5;" width="137" x="284.5" y="237"/><ellipse cx="320.65" cy="253" fill="#A777D1" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M320.65,256.2813 L322.1813,250.75 L322.1813,250.75 L321.6656,250.75 L321.15,250.125 L321.15,249.75 L321.15,249.375 L321.6656,248.75 L322.1813,248.75 L324.0563,248.75 L324.6344,248.75 L325.15,249.375 L325.15,249.75 L325.15,250.125 L324.6344,250.75 L324.6344,250.75 L324.1813,250.75 L321.8375,258.75 L319.4625,258.75 L316.9938,250.75 L316.6656,250.75 L316.6656,250.75 L316.15,250.125 L316.15,249.75 L316.15,249.375 L316.6656,248.75 L317.2438,248.75 L319.1188,248.75 L319.6344,248.75 L320.15,249.375 L320.15,249.75 L320.15,250.125 L319.6344,250.75 L319.1188,250.75 L319.1188,250.75 L320.65,256.2813 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="58" x="339.35" y="257.9102">SurvVisitor</text><line style="stroke:#A80036;stroke-width:1.5;" x1="285.5" x2="420.5" y1="269" y2="269"/><ellipse cx="295.5" cy="280" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="34" x="304.5" y="284.4189">survey</text><ellipse cx="295.5" cy="293.8359" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="35" x="304.5" y="298.2549">section</text><ellipse cx="295.5" cy="307.6719" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="304.5" y="312.0908">question</text><line style="stroke:#A80036;stroke-width:1.5;" x1="285.5" x2="420.5" y1="318.5078" y2="318.5078"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="292.5" y="326.5078"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="67" x="304.5" y="333.9268">visitProg(ctx);</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="292.5" y="340.3438"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="86" x="304.5" y="347.7627">visitSurveys(ctx);</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="292.5" y="354.1797"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="53" x="304.5" y="361.5986">visitId(ctx);</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="292.5" y="368.0156"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="111" x="304.5" y="375.4346">visitAlphanumeric(ctx);</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="292.5" y="381.8516"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="64" x="304.5" y="389.2705">visitTitle(ctx);</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="292.5" y="395.6875"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="63" x="304.5" y="403.1064">visitObli(ctx);</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="292.5" y="409.5234"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="99" x="304.5" y="416.9424">visitWMessage(ctx);</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="292.5" y="423.3594"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="81" x="304.5" y="430.7783">visitSection(ctx);</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="292.5" y="437.1953"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="80" x="304.5" y="444.6143">visitOtherId(ctx);</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="292.5" y="451.0313"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="64" x="304.5" y="458.4502">visitRep(ctx);</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="292.5" y="464.8672"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="82" x="304.5" y="472.2861">visitContent(ctx);</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="292.5" y="478.7031"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="88" x="304.5" y="486.1221">visitQuestion(ctx);</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="292.5" y="492.5391"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="79" x="304.5" y="499.958">visitPhrase(ctx);</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="292.5" y="506.375"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="74" x="304.5" y="513.7939">visitSignal(ctx);</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="292.5" y="520.2109"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="69" x="304.5" y="527.6299">visitType(ctx);</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="292.5" y="534.0469"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="60" x="304.5" y="541.4658">visitEnd(ctx)</text><!--MD5=[b2f564d4f0e6575ae3c0ee7ab4ae1d86]
+link CreateSurveyUI to CreateSurveyController--><path codeLine="70" d="M277,55.14 C277,70.71 277,91.53 277,109.22 " fill="none" id="CreateSurveyUI-to-CreateSurveyController" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="277,114.6,281,105.6,277,109.6,273,105.6,277,114.6" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[4751ef9185d4872623e73bf09de979aa]
+link CreateSurveyController to Survey--><path codeLine="71" d="M271.85,177.16 C257.99,258.24 219.61,482.85 199.18,602.36 " fill="none" id="CreateSurveyController-to-Survey" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="198.28,607.62,203.7399,599.4231,199.1228,602.6915,195.8543,598.0745,198.28,607.62" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[2371edf7c545a1dba732d1e4cb09c01e]
+link CreateSurveyController to SurvVisitor--><path codeLine="72" d="M286.47,177.47 C291.08,192.29 297,211.34 303.41,231.95 " fill="none" id="CreateSurveyController-to-SurvVisitor" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="304.96,236.94,306.1035,227.1577,303.4735,232.1661,298.4652,229.5361,304.96,236.94" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[08f5806e336f712cdf08037e9415a76d]
+link Survey to Section--><path codeLine="73" d="M189.53,753.14 C190.38,770.53 191.31,789.41 192.21,807.76 " fill="none" id="Survey-to-Section" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="192.47,812.93,196.0287,803.7465,192.2274,807.9359,188.0381,804.1347,192.47,812.93" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[87fa8ff7d398728728a611d860795352]
+link Section to Question--><path codeLine="74" d="M245.34,999.09 C254.93,1017.36 264.95,1036.43 274.37,1054.38 " fill="none" id="Section-to-Question" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="276.75,1058.91,276.1019,1049.0825,274.423,1054.4845,269.021,1052.8056,276.75,1058.91" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[ca76c9391a50abefd944f4c1777f344b]
+link SurvVisitor to Survey--><path codeLine="75" d="M284.35,511.07 C266.16,542.22 247,575.03 230.47,603.33 " fill="none" id="SurvVisitor-to-Survey" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="227.84,607.84,235.8193,602.0667,230.3514,603.5165,228.9016,598.0485,227.84,607.84" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[03284a52a5d776a13b2e344fb761ad8c]
+link SurvVisitor to Section--><path codeLine="76" d="M366.58,548.04 C366.78,613.48 359.44,689.19 333,753 C324.88,772.6 313.11,791.36 299.84,808.58 " fill="none" id="SurvVisitor-to-Section" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="296.44,812.93,305.1264,808.2881,299.5127,808.9855,298.8152,803.3719,296.44,812.93" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5de136a381fb16018cc2ccc92a72ff90]
+link SurvVisitor to Question--><path codeLine="77" d="M396.6,548.28 C424.41,672.43 447.93,849.96 405,999 C399.53,1017.99 390.6,1036.89 380.5,1054.35 " fill="none" id="SurvVisitor-to-Question" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="377.91,1058.76,385.9259,1053.0376,380.4488,1054.4525,379.0339,1048.9755,377.91,1058.76" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[9af627bbaf69ce55afe7312e5b3cc3b6]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class CreateSurveyUI
+class CreateSurveyController
+class Survey
+class Section
+class Question
+class SurvVisitor << (V,a777d1) >>
+
+class CreateSurveyController{
+    - createSurvey(file)
+}
+
+class Survey{
+    + id
+    + title
+    + welcomeMessage
+    + sections
+    + finalMessage
+    - create(id, title, welcomeMessage, finalMessage)
+    - create(id, title, finalMessage)
+}
+
+class Section{
+    + id
+    + title
+    + sectionDescription
+    + obligatoriness
+    + repeatability
+    - create(id, title, sectionDescription, obligatoriness, repeatability, questions)
+    - create(id, title, sectionDescription, obligatoriness, repeatability)
+    - create(id, title, obligatoriness, repeatability, questions)
+    - create(id, title, sectionDescription, obligatoriness, questions)
+    - create(id, title, obligatoriness, questions)
+}
+
+class Question{
+    + id
+    + questionText
+    + instruction
+    + questionType
+    + obligatoriness
+    + extraInfo
+    - create(identifier, questionText, instruction, questionType, obligatoriness, extraInfo)
+    - create(identifier, questionText, questionType, obligatoriness, extraInfo)
+}
+
+class SurvVisitor {
+    + survey
+    + section
+    + question
+    - visitProg(ctx);
+    - visitSurveys(ctx);
+    - visitId(ctx);
+    - visitAlphanumeric(ctx);
+    - visitTitle(ctx);
+    - visitObli(ctx);
+    - visitWMessage(ctx);
+    - visitSection(ctx);
+    - visitOtherId(ctx);
+    - visitRep(ctx);
+    - visitContent(ctx);
+    - visitQuestion(ctx);
+    - visitPhrase(ctx);
+    - visitSignal(ctx);
+    - visitType(ctx);
+    - visitEnd(ctx)
+}
+
+CreateSurveyUI - -> CreateSurveyController
+CreateSurveyController - -> Survey
+CreateSurveyController - -> SurvVisitor
+Survey - -> Section
+Section - -> Question
+SurvVisitor - -> Survey
+SurvVisitor - -> Section
+SurvVisitor - -> Question
+@enduml
+
+@startuml
+
+class CreateSurveyUI
+class CreateSurveyController
+class Survey
+class Section
+class Question
+class SurvVisitor << (V,a777d1) >>
+
+class CreateSurveyController{
+    - createSurvey(file)
+}
+
+class Survey{
+    + id
+    + title
+    + welcomeMessage
+    + sections
+    + finalMessage
+    - create(id, title, welcomeMessage, finalMessage)
+    - create(id, title, finalMessage)
+}
+
+class Section{
+    + id
+    + title
+    + sectionDescription
+    + obligatoriness
+    + repeatability
+    - create(id, title, sectionDescription, obligatoriness, repeatability, questions)
+    - create(id, title, sectionDescription, obligatoriness, repeatability)
+    - create(id, title, obligatoriness, repeatability, questions)
+    - create(id, title, sectionDescription, obligatoriness, questions)
+    - create(id, title, obligatoriness, questions)
+}
+
+class Question{
+    + id
+    + questionText
+    + instruction
+    + questionType
+    + obligatoriness
+    + extraInfo
+    - create(identifier, questionText, instruction, questionType, obligatoriness, extraInfo)
+    - create(identifier, questionText, questionType, obligatoriness, extraInfo)
+}
+
+class SurvVisitor {
+    + survey
+    + section
+    + question
+    - visitProg(ctx);
+    - visitSurveys(ctx);
+    - visitId(ctx);
+    - visitAlphanumeric(ctx);
+    - visitTitle(ctx);
+    - visitObli(ctx);
+    - visitWMessage(ctx);
+    - visitSection(ctx);
+    - visitOtherId(ctx);
+    - visitRep(ctx);
+    - visitContent(ctx);
+    - visitQuestion(ctx);
+    - visitPhrase(ctx);
+    - visitSignal(ctx);
+    - visitType(ctx);
+    - visitEnd(ctx)
+}
+
+CreateSurveyUI - -> CreateSurveyController
+CreateSurveyController - -> Survey
+CreateSurveyController - -> SurvVisitor
+Survey - -> Section
+Section - -> Question
+SurvVisitor - -> Survey
+SurvVisitor - -> Section
+SurvVisitor - -> Question
+@enduml
+
+PlantUML version 1.2021.5(Sun Apr 25 12:20:28 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>
