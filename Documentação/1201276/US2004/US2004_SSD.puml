@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Warehouse Employee" as WE
+participant "System" as UI
+
+
+activate WE
+
+WE -> UI: asks for the list of orders that have already been prepared
+activate UI
+UI --> WE: shows the list and asks for the id \nwhose status order the Warehouse Employee wants to update
+deactivate UI
+WE -> UI: types the requested data
+activate UI
+UI --> WE: informs operation success
+
+deactivate UI
+deactivate WE
+
+@enduml
