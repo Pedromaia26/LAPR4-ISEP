@@ -26,10 +26,7 @@ public class CreateSurveyController {
         SurveyParser parser = new SurveyParser(tokens);
         ParseTree tree = parser.prog(); // parse
         SurvVisitor surv = new SurvVisitor();
-        Survey survey = surv.visit(tree);
 
-        System.out.println(survey);
-
-        return null;
+        return surv.visit(tree);
     }
 }

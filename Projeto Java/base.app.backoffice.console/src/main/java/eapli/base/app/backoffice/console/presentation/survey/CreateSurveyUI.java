@@ -20,7 +20,7 @@ public class CreateSurveyUI extends AbstractUI {
             final String file = Console.readLine("Choose the file:");
 
             try {
-                this.theController.createSurvey(file);
+                System.out.println(this.theController.createSurvey(file));
             } catch (IllegalArgumentException | IOException e) {
                 System.out.println("\n" + e.getMessage());
                 if (Console.readLine("Do you want to try again? (Y/N)").equals("Y")) {
