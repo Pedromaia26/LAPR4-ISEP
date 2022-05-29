@@ -30,4 +30,8 @@ public class ListProductOrderController {
     public Iterable<ProductOrder> productOrders() {
         return svc.orderList();
     }
+
+    public ProductOrder findPreparedOrderById(String orderId){
+        return svc.findPreparedOrderById(orderId);
+    }
 }

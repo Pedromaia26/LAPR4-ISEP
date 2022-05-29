@@ -37,5 +37,8 @@ public class ListProductOrderService {
         return productOrderRepository.findAll();
     }
 
+    public ProductOrder findPreparedOrderById(String orderId){
+        return productOrderRepository.findPreparedOrderById(Long.parseLong(orderId));
+    }
 
 }

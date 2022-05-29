@@ -24,10 +24,10 @@ public class UpdateOrderDispatchedUI extends AbstractUI {
                 do {
                     try {
                         productOrderId = Console.readLine("Please select one of the product orders (Enter the id)");
-                        thePOController.findByCode(productOrderId);
+                        thePOController.findPreparedOrderById(productOrderId);
                         invalidProductOrder = false;
                     } catch (Exception e) {
-                        System.out.println("Invalid id. Product Order does not exist!");
+                        System.out.println("Invalid id. Product Order does not exist or it is not prepared yet!");
                         invalidProductOrder = true;
                     }
                 } while (invalidProductOrder);
