@@ -4,29 +4,15 @@ US1901
 
 # 1. Requisitos
 
-Como um Cliente:
-* Eu quero ver/pesquisar o catálogo de produtos e adicionar produtos ao meu carrinho
-
-A interpretação feita deste requisito foi no sentido de o utilizador poder ver todos os produtos do catálogo, ou pesquisar algum produto por brand (Marca) e qualquer uma das três descrições (shortDescription, extendedDescription e technicalDescription), de modo a encontrar o produto que deseja comprar ao seu carrinho de compras, e logo adicioná-lo.
-O cliente também pode ver os produtos e a sua quantidade no carrinho. Esta funcionalidade tem dependência nas seguintes US's -> US1001, US1002, US1005, US2001.
+> **Question**: Regarding the USs 1901,4001, 5001, and 5002, what would you consider its complete state, that is, what would be the criterion to define whether or not this US is functional?
+> 
+> **Answer**: For all of those US, the communication between the two involved components must be implemented in accordance with the SPOMS2022. The requests processing can be somehow mocked. For instance, if processing a request implies saving some data to the database, the component can instead write such data to a log (mocking). Latter, on next sprint, the teams implement the interaction to the database. <br>However, it is not advisable mocking everything, namely the components (internal) state. Notice that by mocking you are letting extra effort to the next sprint. <br>Finally, all US must be demonstrable.
 
 # 2. Análise
 
-##Pesquisa
+##Utilização do OrdersServer
 
-Nesta funcionalidade o Cliente pode listar todos os produtos de uma vez, ou pesquisar os produtos por dois campos, estes são a brand (Marca) e a descrição, que automaticamente pesquisa pelas três descrições que estão no produto (shortDescription, extendedDescription e technicalDescription).
-
-##Tipo de pesquisa
-
-Para pesquisar os produtos, com o objetivo de uma pesquisa mais eficiente, foi feita uma pesquisa por segmentos de palavra, assim ao fazer uma pesquisa de um produto com a brand "Herbalife", se o Sales Clerk apenas pesquisar "Herba", vão ser listados os produtos Herbalife.
-
-##Adicionar ao carrinho
-
-Após pesquisar produtos, o sistema vai perguntar se o cliente quer adicionar produtos ao seu carrinho, se o cliente quiser adicionar ele vai escolher o produto que deseja adicionar por referência, e também vai inserir a quantidade de produtos que deseja comprar.
-
-##Ver o carrinho
-
-Ao ver o carrinho, o cliente consegue ver os produtos que estão no carrinho e também a sua quantidade.
+Esta funcionalidade corresponde ao desenvolvimento do OrdersServer, de modo a que seja a CostumerApp possa ser integrada e a US1901 possa utilizar o server.
 
 # 3. Design
 
@@ -38,6 +24,3 @@ Ao ver o carrinho, o cliente consegue ver os produtos que estão no carrinho e t
 ## 3.2. Padrões Aplicados
 
 - Controller
-- Service
-- Repository
-- Factory
