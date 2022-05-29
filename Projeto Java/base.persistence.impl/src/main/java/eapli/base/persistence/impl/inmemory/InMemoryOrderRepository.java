@@ -36,4 +36,9 @@ public class InMemoryOrderRepository  extends InMemoryDomainRepository<ProductOr
     public ProductOrder findPreparedOrderById(Long id) {
         return null;
     }
+
+    @Override
+    public ProductOrder findRegisteredOrderById(Long id) {
+        return null;
+    }
 }

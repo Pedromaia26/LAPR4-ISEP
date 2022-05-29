@@ -15,4 +15,8 @@ public interface OrderRepository extends DomainRepository<Long, ProductOrder> {
 
     ProductOrder findPreparedOrderById(Long id);
 
+    ProductOrder findRegisteredOrderById(Long id);
+
+
+
 }

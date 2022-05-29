@@ -66,6 +66,16 @@ public class JpaOrderRepository extends JpaAutoTxRepository<ProductOrder, Long, 
         return query.getSingleResult();
     }
 
+    @Override
+    public ProductOrder findRegisteredOrderById(Long orderID) {
+        final TypedQuery<ProductOrder> query = super.createQuery(
+                "SELECT d FROM ProductOrder d WHERE id = '" + orderID + "' and status = 1",
+                ProductOrder.class);
+
+        return query.getSingleResult();
+    }
+
+
 
 
 }

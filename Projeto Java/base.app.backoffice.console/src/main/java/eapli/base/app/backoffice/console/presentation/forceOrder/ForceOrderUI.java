@@ -40,7 +40,7 @@ public class ForceOrderUI extends AbstractUI {
                         invalidOrderID = false;
                         try {
                             productOrderId = Console.readLine("Please select one of the product orders (Enter the id)");
-                            orderSelected = orderListController.findByCode(productOrderId);
+                            orderSelected = orderListController.findRegisteredOrderById(productOrderId);
                         } catch (Exception e) {
                             invalidOrderID = true;
                             throw new IllegalArgumentException("Invalid order");

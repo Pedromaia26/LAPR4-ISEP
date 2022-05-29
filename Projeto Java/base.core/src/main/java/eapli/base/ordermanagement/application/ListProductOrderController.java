@@ -34,4 +34,8 @@ public class ListProductOrderController {
     public ProductOrder findPreparedOrderById(String orderId){
         return svc.findPreparedOrderById(orderId);
     }
+
+    public ProductOrder findRegisteredOrderById(String orderId){
+        return svc.findRegisteredOrderById(orderId);
+    }
 }
