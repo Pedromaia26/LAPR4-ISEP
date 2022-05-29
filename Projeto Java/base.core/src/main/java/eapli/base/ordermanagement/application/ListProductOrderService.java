@@ -41,4 +41,8 @@ public class ListProductOrderService {
         return productOrderRepository.findPreparedOrderById(Long.parseLong(orderId));
     }
 
+    public ProductOrder findRegisteredOrderById(String orderId){
+        return productOrderRepository.findRegisteredOrderById(Long.parseLong(orderId));
+    }
+
 }
