@@ -20,7 +20,7 @@ public class ForceOrderUI extends AbstractUI {
     private ForceOrderController theController = new ForceOrderController();
     private ListProductOrderController orderListController = new ListProductOrderController();
     private AGVListController agvListController = new AGVListController();
-    private boolean invalidData = false, freeAGV = false;
+    private boolean invalidData = false, freeAGV = false, invalidOrderID;
     private AGV agvSelected;
     private ProductOrder orderSelected;
     private String productOrderId;
@@ -30,19 +30,22 @@ public class ForceOrderUI extends AbstractUI {
     protected boolean doShow() {
 
         do {
-
+            invalidData = false;
             ListOrderToForceUI listOrderToForceUI = new ListOrderToForceUI();
             listOrderToForceUI.show();
 
             if (orderListController.verifyIfExistsOrdersPrepared()) {
                 try {
-                    try {
-                        productOrderId = Console.readLine("Please select one of the product orders (Enter the id)");
-                        orderSelected = orderListController.findByCode(productOrderId);
-                    } catch (Exception e) {
-                        invalidData = true;
-                        throw new IllegalArgumentException("Invalid order");
-                    }
+                    do {
+                        invalidOrderID = false;
+                        try {
+                            productOrderId = Console.readLine("Please select one of the product orders (Enter the id)");
+                            orderSelected = orderListController.findRegisteredOrderById(productOrderId);
+                        } catch (Exception e) {
+                            invalidOrderID = true;
+                            throw new IllegalArgumentException("Invalid order");
+                        }
+                    }while (invalidOrderID);
 
                     ListAGVUI listAGVUI = new ListAGVUI();
                     listAGVUI.show();

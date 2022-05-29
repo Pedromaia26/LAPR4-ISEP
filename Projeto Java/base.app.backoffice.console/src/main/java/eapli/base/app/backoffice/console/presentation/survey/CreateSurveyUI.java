@@ -27,6 +27,12 @@ public class CreateSurveyUI extends AbstractUI {
                     System.out.println();
                     invalidData = true;
                 }
+            }catch (NullPointerException e){
+                System.out.println("Invalid Survey");
+                if (Console.readLine("Do you want to try again? (Y/N)").equals("Y")) {
+                    System.out.println();
+                    invalidData = true;
+                }
             }
         } while (invalidData);
 

@@ -49,7 +49,6 @@ public class UpdateStatusService {
             return true;
         } catch (Exception e) {
             System.out.println("Server down");
-            System.out.println(e.getMessage());
             return false;
         }
     }
