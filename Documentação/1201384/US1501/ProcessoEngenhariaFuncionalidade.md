@@ -7,8 +7,11 @@ US1501
 Como um Cliente:
 * Eu quero ver/pesquisar o catálogo de produtos e adicionar produtos ao meu carrinho
 
-A interpretação feita deste requisito foi no sentido de o utilizador poder ver todos os produtos do catálogo, ou pesquisar algum produto por brand (Marca) e qualquer uma das três descrições (shortDescription, extendedDescription e technicalDescription), de modo a encontrar o produto que deseja comprar ao seu carrinho de compras, e logo adicioná-lo.
-O cliente também pode ver os produtos e a sua quantidade no carrinho. Esta funcionalidade tem dependência nas seguintes US's -> US1001, US1002, US1005, US2001.
+> **Question**: We wanted to know which attributes are needed on the shopping cart to show to the user (customer)?
+>
+> **Answer**: 
+>In addition, you can always put yourself in the role of a customer (and not of a developer) and think a little about what information you, as a customer, would like to see. And that's it, that's the information you have to show.
+
 
 # 2. Análise
 
