@@ -4,11 +4,15 @@ US4001
 
 # 1. Requisitos
 
-Como um Cliente:
-* Eu quero ver/pesquisar o catálogo de produtos e adicionar produtos ao meu carrinho
+> **Question**: Regarding the USs 1901,4001, 5001, and 5002, what would you consider its complete state, that is, what would be the criterion to define whether or not this US is functional?
+>
+> **Answer**: 
+>For all of those US, the communication between the two involved components must be implemented in accordance with the SPOMS2022. The requests processing can be somehow mocked. For instance, if processing a request implies saving some data to the database, the component can instead write such data to a log (mocking). Latter, on next sprint, the teams implement the interaction to the database.
 
-A interpretação feita deste requisito foi no sentido de o utilizador poder ver todos os produtos do catálogo, ou pesquisar algum produto por brand (Marca) e qualquer uma das três descrições (shortDescription, extendedDescription e technicalDescription), de modo a encontrar o produto que deseja comprar ao seu carrinho de compras, e logo adicioná-lo.
-O cliente também pode ver os produtos e a sua quantidade no carrinho. Esta funcionalidade tem dependência nas seguintes US's -> US1001, US1002, US1005, US2001.
+>However, it is not advisable mocking everything, namely the components (internal) state. Notice that by mocking you are letting extra effort to the next sprint.   
+
+>Finally, all US must be demonstrable.
+
 
 # 2. Análise
 
