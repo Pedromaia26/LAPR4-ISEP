@@ -44,6 +44,6 @@ public class FreeAGVRequest extends AgvManagerProtocolRequest {
     }
 
     private String buildResponse() {
-        return String.format("AGV %s is now free", agvID);
+        return String.format("AGV %s was unlinked from the order.", agvID);
     }
 }
