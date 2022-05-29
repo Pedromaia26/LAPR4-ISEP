@@ -4,30 +4,23 @@ US2004
 
 # 1. Requisitos
 
-Como um Cliente:
-* Eu quero ver/pesquisar o catálogo de produtos e adicionar produtos ao meu carrinho
-
-A interpretação feita deste requisito foi no sentido de o utilizador poder ver todos os produtos do catálogo, ou pesquisar algum produto por brand (Marca) e qualquer uma das três descrições (shortDescription, extendedDescription e technicalDescription), de modo a encontrar o produto que deseja comprar ao seu carrinho de compras, e logo adicioná-lo.
-O cliente também pode ver os produtos e a sua quantidade no carrinho. Esta funcionalidade tem dependência nas seguintes US's -> US1001, US1002, US1005, US2001.
+> **Question**: Regarding this feature, what would you consider to be its complete state, that is, what would be the criterion to define whether or not this feature was functional?
+>
+> **Answer**: Being the US 2004 as follows
+>
+>"As Warehouse Employee, I want to access the list of orders that have already been prepared by the AGVs and be able to update any of those orders as having been dispatched for customer delivery. "
+> 
+>it seems the criteria you are looking for is somehow obvious: the status of the selected order(s) changed from "already been prepared by the AGV" to "dispatched for customer delivery".
 
 # 2. Análise
 
-##Pesquisa
+##Escolha das orders
 
-Nesta funcionalidade o Cliente pode listar todos os produtos de uma vez, ou pesquisar os produtos por dois campos, estes são a brand (Marca) e a descrição, que automaticamente pesquisa pelas três descrições que estão no produto (shortDescription, extendedDescription e technicalDescription).
+Para fazer a pesquisa de todas as orders que tenham sido preparadas por um AGV, verificamos o seu status. Caso tenha o status a 'Prepared on the warehouse' então é mostrado ao utilizador.
 
-##Tipo de pesquisa
+##Atualização do status
 
-Para pesquisar os produtos, com o objetivo de uma pesquisa mais eficiente, foi feita uma pesquisa por segmentos de palavra, assim ao fazer uma pesquisa de um produto com a brand "Herbalife", se o Sales Clerk apenas pesquisar "Herba", vão ser listados os produtos Herbalife.
-
-##Adicionar ao carrinho
-
-Após pesquisar produtos, o sistema vai perguntar se o cliente quer adicionar produtos ao seu carrinho, se o cliente quiser adicionar ele vai escolher o produto que deseja adicionar por referência, e também vai inserir a quantidade de produtos que deseja comprar.
-
-##Ver o carrinho
-
-Ao ver o carrinho, o cliente consegue ver os produtos que estão no carrinho e também a sua quantidade.
-
+Após a apresentação de todas as orders que já tenham sido preparadas por um AGV, segue-se a mudança de estado da order selecionada para 'Dispatched'.
 # 3. Design
 
 ## 3.1. Realização da Funcionalidade
