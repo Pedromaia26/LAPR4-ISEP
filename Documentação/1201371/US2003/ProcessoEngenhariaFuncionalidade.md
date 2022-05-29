@@ -7,17 +7,19 @@ US2003
 > **Question**: Regarding US2003, the development team was wondering if the warehouse employee chooses the intended AGV available to prepare the specific order or if it should be assigned to any AGV available without even asking the warehouse employee.
 > 
 > **Answer**: 
-In the scope of US 2003, the AGV is selected by the warehouse employee from the ones that are available and are able to perform the task.
+> In the scope of US 2003, the AGV is selected by the warehouse employee from the ones that are available and are able to perform the task.
+>
+> **Question**: In US4002 it is required that the AGV Manager should support automatic assignment of orders to AGVs. In US2003 the Warehouse Employee will be able to assign any order to an AGV available. If the orders are being automatically assigned to an AGV (US4002) how can the Warehouse Employee assign a specific order to an AGV?
+>
+> **Answer**: Usually, and by default, one intends that system automatically assigns orders to AGVs (US 4002).
+>However, if such option is not available (e.g.: turned off) or by some reason an order needs to be prepared faster than it would normally be, the warehouse employee has the ability to assign tasks manually (US 2003).
 
 
 # 2. Análise
 
-Como um Cliente:
-* Eu quero ver/pesquisar o catálogo de produtos e adicionar produtos ao meu carrinho
+## Utilização da US
 
-A interpretação feita deste requisito foi no sentido de o utilizador poder ver todos os produtos do catálogo, ou pesquisar algum produto por brand (Marca) e qualquer uma das três descrições (shortDescription, extendedDescription e technicalDescription), de modo a encontrar o produto que deseja comprar ao seu carrinho de compras, e logo adicioná-lo.
-O cliente também pode ver os produtos e a sua quantidade no carrinho. Esta funcionalidade tem dependência nas seguintes US's -> US1001, US1002, US1005, US2001.
-
+Quanto à US2003, interpretamos que esta seria usada apenas quando o AGVManager está desligado, uma vez que a US4002 fica responsável por atribuir, de forma automática, um AGV a uma order.
 
 # 3. Design
 
