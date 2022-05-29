@@ -8,29 +8,23 @@ US4001
 >
 > **Answer**: 
 >For all of those US, the communication between the two involved components must be implemented in accordance with the SPOMS2022. The requests processing can be somehow mocked. For instance, if processing a request implies saving some data to the database, the component can instead write such data to a log (mocking). Latter, on next sprint, the teams implement the interaction to the database.
-
->However, it is not advisable mocking everything, namely the components (internal) state. Notice that by mocking you are letting extra effort to the next sprint.   
-
+>However, it is not advisable mocking everything, namely the components (internal) state. Notice that by mocking you are letting extra effort to the next sprint.
 >Finally, all US must be demonstrable.
 
 
 # 2. Análise
 
-##Pesquisa
+##Serviço de cliente
 
-Nesta funcionalidade o Cliente pode listar todos os produtos de uma vez, ou pesquisar os produtos por dois campos, estes são a brand (Marca) e a descrição, que automaticamente pesquisa pelas três descrições que estão no produto (shortDescription, extendedDescription e technicalDescription).
+Desenvolvemos, nesta funcionalidade, um serviço , pois as operações que utilizamos não pertenciam a nenhum objeto de domínio.
 
-##Tipo de pesquisa
+##Comunicação entre o cliente (BackOfficeApp e AGVDigitalTwin) e o server (AGVManager)
 
-Para pesquisar os produtos, com o objetivo de uma pesquisa mais eficiente, foi feita uma pesquisa por segmentos de palavra, assim ao fazer uma pesquisa de um produto com a brand "Herbalife", se o Sales Clerk apenas pesquisar "Herba", vão ser listados os produtos Herbalife.
+Desenvolvemos a comunicação usando o protocolo TCP, em que o cliente envia os pedidos através um socket cujo server interpreta-os e fornece o serviço correspondente. 
 
-##Adicionar ao carrinho
+##Uso de threads
 
-Após pesquisar produtos, o sistema vai perguntar se o cliente quer adicionar produtos ao seu carrinho, se o cliente quiser adicionar ele vai escolher o produto que deseja adicionar por referência, e também vai inserir a quantidade de produtos que deseja comprar.
-
-##Ver o carrinho
-
-Ao ver o carrinho, o cliente consegue ver os produtos que estão no carrinho e também a sua quantidade.
+Para permitir vários clientes em simultâneo usar os serviços do AGVManager, implementamos threads, em que uma é responsável por aceitar conexões dos clientes, e todas as outras atender aos pedidos de cada um.
 
 # 3. Design
 
