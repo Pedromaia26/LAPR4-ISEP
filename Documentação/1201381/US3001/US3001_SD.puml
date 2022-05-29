@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Sales Manager" as SM
+participant ":CreateSurveyUI" as UI
+participant ":CreateSurveyController" as CONTROLLER
+participant "survey\n:Survey" as SURVEY
+participant "section\n:Section" as SECTION
+participant "question\n:Question" as QUESTION
+participant "file\n:String" as FILE
+participant "fis\n:FileInputStream" as FIS
+participant "lexer\n:SurveyLexer" as LEXER
+participant "tokens\n:CommonTokenStream" as TOKENS
+participant "parser\n:SurveyParser" as PARSER
+participant "tree\n:ParseTree" as TREE
+participant "surv\n:SurvVisitor" as VISITOR
+
+activate SM
+SM -> UI : initiates the process of creating a new survey
+activate UI
+UI --> SM : requests text file with the survey
+deactivate UI
+SM -> UI: types the requested data
+activate UI
+UI -> CONTROLLER: createSurvey(file)
+activate CONTROLLER
+CONTROLLER -> VISITOR: survey = visit(tree)
+activate VISITOR
+VISITOR --> CONTROLLER: survey
+deactivate VISITOR
+CONTROLLER --> UI:
+deactivate CONTROLLER
+UI --> SM: informs operation success
+deactivate SM
+
+@enduml

@@ -1,13 +1,13 @@
 @startuml
 autonumber
 actor "SalesManager" as SM
-participant "CreateSurveyUI" as UI
+participant "System" as UI
 
 activate SM
 SM -> UI : initiates the process of creating a new survey
 activate UI
 UI --> SM : requests text file with the survey
-SM -> UI : type the requested data
+SM -> UI : types the requested data
 UI --> SM : informs operation success
 deactivate UI
 
