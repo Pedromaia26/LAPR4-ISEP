@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Sales Clerk" as WE
+participant "System" as UI
+
+
+activate WE
+
+WE -> UI: access a list of orders that had been dispatched for customer delivery 
+activate UI
+UI --> WE: shows the list of orders and asks to update some of those orders to as being delivered. 
+deactivate UI
+WE -> UI: types the requested data
+activate UI
+UI --> WE: informs operation success
+
+deactivate UI
+deactivate WE
+
+@enduml
