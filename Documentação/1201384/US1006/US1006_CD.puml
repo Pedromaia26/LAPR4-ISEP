@@ -1,0 +1,35 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class UpdateOrderDeliveryUI
+class ListProductOrderController
+class UpdateOrderStatusController
+class OrderRepository<< (I,a777d1) >>
+
+class UpdateOrderDeliveryUI{
+    - Show()
+}
+
+class ListProductOrderController{
+    - verifyIfExistsOrdersDispatched()
+    - findDispacthedOrderById(productOrderId)
+}
+
+class UpdateOrderStatusController{
+    - updateOrderToDelivering(productOrderId)
+}
+
+class OrderRepository{
+    - instance()
+    - order()
+    - save(Order)
+    - productOrdersToBePrepared()
+    - findDispatchedOrderById(orderId)
+}
+
+
+UpdateOrderDeliveryUI--> ListProductOrderController
+UpdateOrderDeliveryUI--> UpdateOrderStatusController
+ListProductOrderController--> OrderRepository
+UpdateOrderStatusController-->OrderRepository
+@enduml

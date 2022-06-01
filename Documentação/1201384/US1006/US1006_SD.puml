@@ -1,0 +1,69 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Sales Clerk" as WE
+participant "UpdateOrderDeliveryUI" as UI
+participant ":ListProductOrderController" as CONTROLLER1
+participant ":UpdateOrderStatusController" as CONTROLLER2
+database "<<repo>>\n:OrderRepository" as REPO
+
+activate WE
+
+WE -> UI: access a list of orders that had been dispatched for customer delivery 
+activate UI
+UI --> UI: Show()
+UI --> CONTROLLER1: verifyIfExistsOrdersDispatched()
+
+
+activate CONTROLLER1
+
+
+CONTROLLER1-->REPO: productOrdersToBePrepared()
+
+activate REPO
+
+deactivate CONTROLLER1
+
+
+
+deactivate REPO
+
+UI --> WE: shows the list of orders and asks to update some of those orders to as being delivered. 
+deactivate UI
+WE -> UI: types the requested data
+activate UI
+
+UI-->CONTROLLER1: findDispacthedOrderById(productOrderId)
+
+activate CONTROLLER1
+
+CONTROLLER1-->REPO: findDispatchedOrderById(orderId)
+
+activate REPO
+
+deactivate REPO
+
+deactivate CONTROLLER1
+
+UI--> CONTROLLER2: updateOrderToDelivering(productOrderId)
+
+activate CONTROLLER2
+
+CONTROLLER2-->CONTROLLER2: changeDefinedStatus(orderId, statusid)
+
+CONTROLLER2-->REPO: save(order)
+
+activate REPO
+
+deactivate REPO
+
+deactivate CONTROLLER2
+
+UI --> WE: informs operation success
+
+deactivate UI
+deactivate WE
+
+@enduml
