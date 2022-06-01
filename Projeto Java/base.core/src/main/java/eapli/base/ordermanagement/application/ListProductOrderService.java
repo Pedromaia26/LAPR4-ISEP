@@ -22,6 +22,12 @@ public class ListProductOrderService {
         return productOrderRepository.findProductOrdersPrepared();
     }
 
+    public Iterable<ProductOrder> productOrdersDispatched() {
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+
+        return productOrderRepository.findProductOrdersDispatched();
+    }
+
     public Iterable<ProductOrder> productOrdersToBePrepared() {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.WAREHOUSE_EMPLOYEE);
 
@@ -39,6 +45,10 @@ public class ListProductOrderService {
 
     public ProductOrder findPreparedOrderById(String orderId){
         return productOrderRepository.findPreparedOrderById(Long.parseLong(orderId));
+    }
+
+    public ProductOrder findDispatchedOrderById(String orderId){
+        return productOrderRepository.findDispatchedOrderById(Long.parseLong(orderId));
     }
 
     public ProductOrder findRegisteredOrderById(String orderId){
