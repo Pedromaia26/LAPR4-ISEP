@@ -1,5 +1,7 @@
 package eapli.base.agvmanagement.application;
 
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -9,9 +11,22 @@ import java.util.Arrays;
 public class AssignAGVService {
 
     private InetAddress serverIP;
-    private Socket sock;
+    private SSLSocket sock;
+    private static final String TRUSTED_STORE = "certificates/server.jks";
+    private static final String KEYSTORE_PASS = "Password1";
 
     public boolean assignAGVService() {
+
+        //Trust this cert provided by server
+        System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE);
+        System.setProperty("javax.net.ssl.trustStorePassword", KEYSTORE_PASS);
+
+        // Use this certificate and private key for client certificate when requested by the server
+        //System.setProperty("javax.net.ssl.keyStore", TRUSTED_STORE);
+        //System.setProperty("javax.net.ssl.keyStorePassword",KEYSTORE_PASS);
+
+        SSLSocketFactory sf = (SSLSocketFactory) SSLSocketFactory.getDefault();
+
 
         try {
             try {
@@ -20,13 +35,16 @@ public class AssignAGVService {
                 System.out.println("Invalid server specified");
                 System.exit(1);
             }
+
             try {
-                sock = new Socket(serverIP, 8899);
+                sock = (SSLSocket) sf.createSocket(serverIP, 8899);
             } catch (IOException ex) {
                 System.out.println("Failed to establish TCP connection");
-                System.out.println(ex.getMessage());
+                System.out.println("Application aborted");
                 // System.exit(1);
             }
+
+            sock.startHandshake();
 
             BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
             DataOutputStream sOut = new DataOutputStream(sock.getOutputStream());
