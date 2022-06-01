@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="408px" preserveAspectRatio="none" style="width:708px;height:408px;background:#FFFFFF;" version="1.1" viewBox="0 0 708 408" width="708px" zoomAndPan="magnify"><defs/><g><!--MD5=[8c438a9e057419ed1aad379747b5b7d7]
+class UpdateOrderDeliveryUI--><g id="elem_UpdateOrderDeliveryUI"><rect codeLine="8" fill="#F1F1F1" height="64.2969" id="UpdateOrderDeliveryUI" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="197" x="255" y="7"/><ellipse cx="270" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M272.3438,18.6719 C271.4063,18.2344 270.8125,18.0938 269.9375,18.0938 C267.3125,18.0938 265.3125,20.1719 265.3125,22.8906 L265.3125,24.0156 C265.3125,26.5938 267.4219,28.4844 270.3125,28.4844 C271.5313,28.4844 272.6875,28.1875 273.4375,27.6406 C274.0156,27.2344 274.3438,26.7813 274.3438,26.3906 C274.3438,25.9375 273.9531,25.5469 273.4844,25.5469 C273.2656,25.5469 273.0625,25.625 272.875,25.8125 C272.4219,26.2969 272.4219,26.2969 272.2344,26.3906 C271.8125,26.6563 271.125,26.7813 270.3594,26.7813 C268.3125,26.7813 267.0156,25.6875 267.0156,23.9844 L267.0156,22.8906 C267.0156,21.1094 268.2656,19.7969 270,19.7969 C270.5781,19.7969 271.1875,19.9531 271.6563,20.2031 C272.1406,20.4844 272.3125,20.7031 272.4063,21.1094 C272.4688,21.5156 272.5,21.6406 272.6406,21.7656 C272.7813,21.9063 273.0156,22.0156 273.2344,22.0156 C273.5,22.0156 273.7656,21.875 273.9375,21.6563 C274.0469,21.5 274.0781,21.3125 274.0781,20.8906 L274.0781,19.4688 C274.0781,19.0313 274.0625,18.9063 273.9688,18.75 C273.8125,18.4844 273.5313,18.3438 273.2344,18.3438 C272.9375,18.3438 272.7344,18.4375 272.5156,18.75 L272.3438,18.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="165" x="284" y="27.8467">UpdateOrderDeliveryUI</text><line style="stroke:#181818;stroke-width:0.5;" x1="256" x2="451" y1="39" y2="39"/><line style="stroke:#181818;stroke-width:0.5;" x1="256" x2="451" y1="47" y2="47"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="263" y="55"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="48" x="275" y="63.9951">Show()</text></g><!--MD5=[4006de11eb7125048a517bf9a1b2e940]
+class ListProductOrderController--><g id="elem_ListProductOrderController"><rect codeLine="12" fill="#F1F1F1" height="80.5938" id="ListProductOrderController" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="329" x="7" y="131"/><ellipse cx="69.25" cy="147" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M71.5938,142.6719 C70.6563,142.2344 70.0625,142.0938 69.1875,142.0938 C66.5625,142.0938 64.5625,144.1719 64.5625,146.8906 L64.5625,148.0156 C64.5625,150.5938 66.6719,152.4844 69.5625,152.4844 C70.7813,152.4844 71.9375,152.1875 72.6875,151.6406 C73.2656,151.2344 73.5938,150.7813 73.5938,150.3906 C73.5938,149.9375 73.2031,149.5469 72.7344,149.5469 C72.5156,149.5469 72.3125,149.625 72.125,149.8125 C71.6719,150.2969 71.6719,150.2969 71.4844,150.3906 C71.0625,150.6563 70.375,150.7813 69.6094,150.7813 C67.5625,150.7813 66.2656,149.6875 66.2656,147.9844 L66.2656,146.8906 C66.2656,145.1094 67.5156,143.7969 69.25,143.7969 C69.8281,143.7969 70.4375,143.9531 70.9063,144.2031 C71.3906,144.4844 71.5625,144.7031 71.6563,145.1094 C71.7188,145.5156 71.75,145.6406 71.8906,145.7656 C72.0313,145.9063 72.2656,146.0156 72.4844,146.0156 C72.75,146.0156 73.0156,145.875 73.1875,145.6563 C73.2969,145.5 73.3281,145.3125 73.3281,144.8906 L73.3281,143.4688 C73.3281,143.0313 73.3125,142.9063 73.2188,142.75 C73.0625,142.4844 72.7813,142.3438 72.4844,142.3438 C72.1875,142.3438 71.9844,142.4375 71.7656,142.75 L71.5938,142.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="196" x="89.75" y="151.8467">ListProductOrderController</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="335" y1="163" y2="163"/><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="335" y1="171" y2="171"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="179"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="233" x="27" y="187.9951">verifyIfExistsOrdersDispatched()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="195.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="303" x="27" y="204.292">findDispacthedOrderById(productOrderId)</text></g><!--MD5=[3968aa6b8c80227a687030e2948d4533]
+class UpdateOrderStatusController--><g id="elem_UpdateOrderStatusController"><rect codeLine="17" fill="#F1F1F1" height="64.2969" id="UpdateOrderStatusController" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="330" x="371.5" y="139.5"/><ellipse cx="426.25" cy="155.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M428.5938,151.1719 C427.6563,150.7344 427.0625,150.5938 426.1875,150.5938 C423.5625,150.5938 421.5625,152.6719 421.5625,155.3906 L421.5625,156.5156 C421.5625,159.0938 423.6719,160.9844 426.5625,160.9844 C427.7813,160.9844 428.9375,160.6875 429.6875,160.1406 C430.2656,159.7344 430.5938,159.2813 430.5938,158.8906 C430.5938,158.4375 430.2031,158.0469 429.7344,158.0469 C429.5156,158.0469 429.3125,158.125 429.125,158.3125 C428.6719,158.7969 428.6719,158.7969 428.4844,158.8906 C428.0625,159.1563 427.375,159.2813 426.6094,159.2813 C424.5625,159.2813 423.2656,158.1875 423.2656,156.4844 L423.2656,155.3906 C423.2656,153.6094 424.5156,152.2969 426.25,152.2969 C426.8281,152.2969 427.4375,152.4531 427.9063,152.7031 C428.3906,152.9844 428.5625,153.2031 428.6563,153.6094 C428.7188,154.0156 428.75,154.1406 428.8906,154.2656 C429.0313,154.4063 429.2656,154.5156 429.4844,154.5156 C429.75,154.5156 430.0156,154.375 430.1875,154.1563 C430.2969,154 430.3281,153.8125 430.3281,153.3906 L430.3281,151.9688 C430.3281,151.5313 430.3125,151.4063 430.2188,151.25 C430.0625,150.9844 429.7813,150.8438 429.4844,150.8438 C429.1875,150.8438 428.9844,150.9375 428.7656,151.25 L428.5938,151.1719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="212" x="446.75" y="160.3467">UpdateOrderStatusController</text><line style="stroke:#181818;stroke-width:0.5;" x1="372.5" x2="700.5" y1="171.5" y2="171.5"/><line style="stroke:#181818;stroke-width:0.5;" x1="372.5" x2="700.5" y1="179.5" y2="179.5"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="379.5" y="187.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="304" x="391.5" y="196.4951">updateOrderToDelivering(productOrderId)</text></g><!--MD5=[708e328039b60d50c6285936843ac334]
+class OrderRepository--><g id="elem_OrderRepository"><rect codeLine="21" fill="#F1F1F1" height="129.4844" id="OrderRepository" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="270" x="218.5" y="272"/><ellipse cx="289.25" cy="288" fill="#A777D1" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M290.2031,284.7813 L291.9219,284.7813 C292.3125,284.7813 292.5,284.75 292.625,284.6719 C292.8906,284.5156 293.0313,284.2344 293.0313,283.9375 C293.0313,283.6719 292.9219,283.4063 292.6875,283.2344 C292.5156,283.125 292.375,283.0938 291.9219,283.0938 L286.7813,283.0938 C286.3438,283.0938 286.2188,283.1094 286.0625,283.2031 C285.8125,283.3594 285.6563,283.6563 285.6563,283.9375 C285.6563,284.2188 285.7969,284.4688 286.0156,284.6406 C286.1719,284.75 286.3594,284.7813 286.7813,284.7813 L288.5,284.7813 L288.5,291.2969 L286.7813,291.2969 C286.3438,291.2969 286.2188,291.3125 286.0625,291.4219 C285.8125,291.5781 285.6563,291.8594 285.6563,292.1563 C285.6563,292.4063 285.7969,292.6719 286.0156,292.8281 C286.1719,292.9531 286.375,293 286.7813,293 L291.9219,293 C292.6719,293 293.0313,292.7188 293.0313,292.1563 C293.0313,291.875 292.9219,291.625 292.6875,291.4531 C292.5156,291.3281 292.375,291.2969 291.9219,291.2969 L290.2031,291.2969 L290.2031,284.7813 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120" x="309.75" y="292.8467">OrderRepository</text><line style="stroke:#181818;stroke-width:0.5;" x1="219.5" x2="487.5" y1="304" y2="304"/><line style="stroke:#181818;stroke-width:0.5;" x1="219.5" x2="487.5" y1="312" y2="312"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="226.5" y="320"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71" x="238.5" y="328.9951">instance()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="226.5" y="336.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="238.5" y="345.292">order()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="226.5" y="352.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="238.5" y="361.5889">save(Order)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="226.5" y="368.8906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="218" x="238.5" y="377.8857">productOrdersToBePrepared()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="226.5" y="385.1875"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="244" x="238.5" y="394.1826">findDispatchedOrderById(orderId)</text></g><!--MD5=[c8b9c2e29bbfb750811ec593ef437845]
+link UpdateOrderDeliveryUI to ListProductOrderController--><g id="link_UpdateOrderDeliveryUI_ListProductOrderController"><path codeLine="30" d="M309.906,71.258 C286.249,88.221 256.66,109.437 230.92,127.894 " fill="none" id="UpdateOrderDeliveryUI-to-ListProductOrderController" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="226.823,130.832,236.4681,128.8388,230.8865,127.9187,231.8067,122.3371,226.823,130.832" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[e671099b9150e106d54577831c79eb4a]
+link UpdateOrderDeliveryUI to UpdateOrderStatusController--><g id="link_UpdateOrderDeliveryUI_UpdateOrderStatusController"><path codeLine="31" d="M397.333,71.258 C424.948,90.95 460.599,116.374 488.904,136.558 " fill="none" id="UpdateOrderDeliveryUI-to-UpdateOrderStatusController" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="493.025,139.497,488.019,131.0152,488.9538,136.5943,483.3747,137.5291,493.025,139.497" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[1238be74f5055a375e2dbfc8378f9bdd]
+link ListProductOrderController to OrderRepository--><g id="link_ListProductOrderController_OrderRepository"><path codeLine="32" d="M216.022,212.374 C234.845,229.232 257.295,249.339 278.541,268.366 " fill="none" id="ListProductOrderController-to-OrderRepository" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="282.493,271.906,278.4576,262.9218,278.7685,268.5701,273.1202,268.881,282.493,271.906" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[a218a9b10c19b12d31b6a62dbb008b7a]
+link UpdateOrderStatusController to OrderRepository--><g id="link_UpdateOrderStatusController_OrderRepository"><path codeLine="33" d="M501.648,203.543 C481.075,221.868 454.203,245.803 429.001,268.25 " fill="none" id="UpdateOrderStatusController-to-OrderRepository" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="424.972,271.839,434.3527,268.8387,428.7053,268.5129,429.031,262.8655,424.972,271.839" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[6dace03d4859cb92dafa1e9a907d4cbf]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class UpdateOrderDeliveryUI
+class ListProductOrderController
+class UpdateOrderStatusController
+class OrderRepository<< (I,a777d1) >>
+
+class UpdateOrderDeliveryUI{
+    - Show()
+}
+
+class ListProductOrderController{
+    - verifyIfExistsOrdersDispatched()
+    - findDispacthedOrderById(productOrderId)
+}
+
+class UpdateOrderStatusController{
+    - updateOrderToDelivering(productOrderId)
+}
+
+class OrderRepository{
+    - instance()
+    - order()
+    - save(Order)
+    - productOrdersToBePrepared()
+    - findDispatchedOrderById(orderId)
+}
+
+
+UpdateOrderDeliveryUI- -> ListProductOrderController
+UpdateOrderDeliveryUI- -> UpdateOrderStatusController
+ListProductOrderController- -> OrderRepository
+UpdateOrderStatusController- ->OrderRepository
+@enduml
+
+@startuml
+
+class UpdateOrderDeliveryUI
+class ListProductOrderController
+class UpdateOrderStatusController
+class OrderRepository<< (I,a777d1) >>
+
+class UpdateOrderDeliveryUI{
+    - Show()
+}
+
+class ListProductOrderController{
+    - verifyIfExistsOrdersDispatched()
+    - findDispacthedOrderById(productOrderId)
+}
+
+class UpdateOrderStatusController{
+    - updateOrderToDelivering(productOrderId)
+}
+
+class OrderRepository{
+    - instance()
+    - order()
+    - save(Order)
+    - productOrdersToBePrepared()
+    - findDispatchedOrderById(orderId)
+}
+
+
+UpdateOrderDeliveryUI- -> ListProductOrderController
+UpdateOrderDeliveryUI- -> UpdateOrderStatusController
+ListProductOrderController- -> OrderRepository
+UpdateOrderStatusController- ->OrderRepository
+@enduml
+
+PlantUML version 1.2022.6beta5(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
