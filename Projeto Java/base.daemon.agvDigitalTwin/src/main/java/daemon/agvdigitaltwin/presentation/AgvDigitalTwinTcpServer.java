@@ -5,6 +5,8 @@ import agvdigitaltwin.tcpprotocol.server.InputMessage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.net.ssl.SSLServerSocket;
+import javax.net.ssl.SSLServerSocketFactory;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -15,6 +17,8 @@ public class AgvDigitalTwinTcpServer {
 
 
     private static final Logger LOGGER = LogManager.getLogger(AgvDigitalTwinTcpServer.class);
+    private static final String TRUSTED_STORE = "certificates/server.jks";
+    private static final String KEYSTORE_PASS = "Password1";
 
     private static class AgvDigitalTwinHandler extends Thread {
 
@@ -92,7 +96,30 @@ public class AgvDigitalTwinTcpServer {
      */
     @SuppressWarnings("java:S2189")
     private void listen(final int port) {
-        try (var serverSocket = new ServerSocket(port)) {
+
+        SSLServerSocket serverSocket = null;
+
+        //Trust the cert provided by authorized clients
+        /*
+        System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE);
+        System.setProperty("javax.net.ssl.trustStorePassword",KEYSTORE_PASS);
+        */
+
+        //Use this certificate and private key as Server certificate
+        System.setProperty("javax.net.ssl.keyStore",TRUSTED_STORE);
+        System.setProperty("javax.net.ssl.keyStorePassword",KEYSTORE_PASS);
+
+        SSLServerSocketFactory sslF = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
+        try {
+            serverSocket = (SSLServerSocket) sslF.createServerSocket(port);
+            // serverSocket.setNeedClientAuth(true);
+        }
+        catch(IOException ex) {
+            System.out.println("Server failed to open local port " + port);
+            System.exit(1);
+        }
+
+        try {
             while (true) {
                 final var clientSocket = serverSocket.accept();
                 new AgvDigitalTwinHandler(clientSocket).start();
