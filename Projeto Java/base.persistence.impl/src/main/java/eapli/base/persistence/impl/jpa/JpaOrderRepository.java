@@ -25,7 +25,7 @@ public class JpaOrderRepository extends JpaAutoTxRepository<ProductOrder, Long, 
 
     @Override
     public ProductOrder findByOrderId(Long orderId) {
-                final TypedQuery<ProductOrder> query = super.createQuery(
+        final TypedQuery<ProductOrder> query = super.createQuery(
                 "SELECT d FROM ProductOrder d WHERE id = '" + orderId + "'",
                 ProductOrder.class);
 
@@ -40,6 +40,16 @@ public class JpaOrderRepository extends JpaAutoTxRepository<ProductOrder, Long, 
 
         return query.getResultList();
     }
+
+    @Override
+    public Iterable<ProductOrder> findProductOrdersDispatched() {
+        final TypedQuery<ProductOrder> query = super.createQuery(
+                "SELECT d FROM ProductOrder d WHERE status_id = 8",
+                ProductOrder.class);
+
+        return query.getResultList();
+    }
+
     @Override
     public Iterable<ProductOrder> findProductOrdersToBePrepared() {
         final TypedQuery<ProductOrder> query = super.createQuery(
@@ -61,6 +71,15 @@ public class JpaOrderRepository extends JpaAutoTxRepository<ProductOrder, Long, 
     public ProductOrder findPreparedOrderById(Long orderID) {
         final TypedQuery<ProductOrder> query = super.createQuery(
                 "SELECT d FROM ProductOrder d WHERE id = '" + orderID + "' and status = 5",
+                ProductOrder.class);
+
+        return query.getSingleResult();
+    }
+
+    @Override
+    public ProductOrder findDispatchedOrderById(Long orderID) {
+        final TypedQuery<ProductOrder> query = super.createQuery(
+                "SELECT d FROM ProductOrder d WHERE id = '" + orderID + "' and status = 8",
                 ProductOrder.class);
 
         return query.getSingleResult();

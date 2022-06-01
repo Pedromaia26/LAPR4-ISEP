@@ -28,12 +28,21 @@ public class InMemoryOrderRepository  extends InMemoryDomainRepository<ProductOr
     }
 
     @Override
+    public Iterable<ProductOrder> findProductOrdersDispatched() {
+        return null;
+    }
+
+    @Override
     public Iterable<ProductOrder> findProductOrdersToBePrepared() {
         return null;
     }
 
     @Override
     public ProductOrder findPreparedOrderById(Long id) {
+        return null;
+    }
+
+    public ProductOrder findDispatchedOrderById(Long id) {
         return null;
     }
 
