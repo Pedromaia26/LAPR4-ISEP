@@ -14,6 +14,10 @@ public class ListProductOrderController {
         return svc.productOrdersPrepared();
     }
 
+    public Iterable<ProductOrder> productOrdersDispatched() {
+        return svc.productOrdersDispatched();
+    }
+
     public Iterable<ProductOrder> productOrdersToBePrepared() {
         return svc.productOrdersToBePrepared();
     }
@@ -33,6 +37,10 @@ public class ListProductOrderController {
 
     public ProductOrder findPreparedOrderById(String orderId){
         return svc.findPreparedOrderById(orderId);
+    }
+
+    public ProductOrder findDispacthedOrderById(String orderId){
+        return svc.findDispatchedOrderById(orderId);
     }
 
     public ProductOrder findRegisteredOrderById(String orderId){

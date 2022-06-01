@@ -31,15 +31,31 @@ import java.util.List;
     public ProductOrder updateOrderToDispatched(String orderId){
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.ADMIN, BaseRoles.POWER_USER, BaseRoles.WAREHOUSE_EMPLOYEE);
         long statusid = 8;
-        Status status = statusRepository.findByStatusId(statusid);
-        final ProductOrder order = orderRepository.findByOrderId(Long.parseLong(orderId));
-        order.modifyStatus(status);
+        ProductOrder order = changeDefinedStatus(orderId, statusid);
         return orderRepository.save(order);
     }
-
 
     public boolean verifyIfExistsOrdersPrepared() {
         List<ProductOrder> list = (List<ProductOrder>) listProductOrderController.productOrdersPrepared();
         return list.size() > 0;
+    }
+
+    public boolean verifyIfExistsOrdersDispatched() {
+        List<ProductOrder> list = (List<ProductOrder>) listProductOrderController.productOrdersDispatched();
+        return list.size() > 0;
+    }
+
+    public ProductOrder updateOrderToDelivering(String orderId){
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.ADMIN, BaseRoles.POWER_USER, BaseRoles.SALES_CLERK);
+        long statusid = 9;
+        ProductOrder order = changeDefinedStatus(orderId, statusid);
+        return orderRepository.save(order);
+    }
+
+    private ProductOrder changeDefinedStatus(String orderId, long statusId){
+        Status status = statusRepository.findByStatusId(statusId);
+        ProductOrder order = orderRepository.findByOrderId(Long.parseLong(orderId));
+        order.modifyStatus(status);
+        return order;
     }
 }
