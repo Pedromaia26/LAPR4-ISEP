@@ -31,6 +31,7 @@ import eapli.base.app.backoffice.console.presentation.category.ListCategoryUI;
 import eapli.base.app.backoffice.console.presentation.dashboard.ShowDashboardUI;
 import eapli.base.app.backoffice.console.presentation.forceOrder.ForceOrderUI;
 import eapli.base.app.backoffice.console.presentation.order.AddOrderUI;
+import eapli.base.app.backoffice.console.presentation.order.UpdateOrderDeliveredUI;
 import eapli.base.app.backoffice.console.presentation.order.UpdateOrderDispatchedUI;
 import eapli.base.app.backoffice.console.presentation.product.*;
 import eapli.base.app.backoffice.console.presentation.survey.CreateSurveyUI;
@@ -94,7 +95,7 @@ public class MainMenu extends AbstractUI {
 
     // ORDER
     private static final int CREATE_NEW_ORDER = 1;
-
+    private static final int UPDATING_ORDER_DELIVERED = 2;
 
     // SETTINGS
     private static final int SET_KITCHEN_ALERT_LIMIT_OPTION = 1;
@@ -303,6 +304,7 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("Order >");
 
         menu.addItem(CREATE_NEW_ORDER, "Create products order", new AddOrderUI()::show);
+        menu.addItem(UPDATING_ORDER_DELIVERED, "Update dispatched orders to being delivered", new UpdateOrderDeliveredUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
