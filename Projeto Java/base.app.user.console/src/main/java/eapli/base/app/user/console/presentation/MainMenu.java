@@ -24,6 +24,7 @@
 package eapli.base.app.user.console.presentation;
 
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
+import eapli.base.app.user.console.presentation.order.ViewClientOrdersUI;
 import eapli.base.app.user.console.presentation.product.*;
 import eapli.framework.actions.Actions;
 import eapli.framework.actions.menu.Menu;
@@ -54,6 +55,7 @@ class MainMenu extends ClientUserBaseUI {
     private static final int MY_USER_OPTION = 1;
     private static final int PRODUCT_CATALOG = 2;
     private static final int SHOPPING_CART = 3;
+    private static final int ORDER = 4;
 
     //PRODUCT CATALOG
 
@@ -69,6 +71,8 @@ class MainMenu extends ClientUserBaseUI {
     private static final int ADD_PRODUCT_SHOPPING_CART = 1;
     private static final int MY_SHOPPING_CART = 2;
 
+    //ORDER
+    private static final int VIEW_MY_PRODUCT_ORDER = 1;
 
     private final AuthorizationService authz =
             AuthzRegistry.authorizationService();
@@ -101,6 +105,9 @@ class MainMenu extends ClientUserBaseUI {
 
         final Menu buildAddProductsShoppingCartMenu = buildAddProductsShoppingCartMenu();
         mainMenu.addSubMenu(SHOPPING_CART, buildAddProductsShoppingCartMenu);
+
+        final Menu buildViewOrderMenu = buildViewOrderMenu();
+        mainMenu.addSubMenu(ORDER, buildViewOrderMenu);
 
         mainMenu.addItem(EXIT_OPTION, "Exit", new ExitWithMessageAction("Bye, Bye"));
 
@@ -136,6 +143,16 @@ class MainMenu extends ClientUserBaseUI {
 
         menu.addItem(ADD_PRODUCT_SHOPPING_CART, "Add a product to shopping cart", new AddProductShoppingCartUI()::show);
         menu.addItem(MY_SHOPPING_CART, "View my shopping cart", new ViewShoppingCartUI()::show);
+
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
+    private Menu buildViewOrderMenu() {
+        final Menu menu = new Menu("Order >");
+
+        menu.addItem(VIEW_MY_PRODUCT_ORDER, "View my open orders", new ViewClientOrdersUI()::show);
 
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
