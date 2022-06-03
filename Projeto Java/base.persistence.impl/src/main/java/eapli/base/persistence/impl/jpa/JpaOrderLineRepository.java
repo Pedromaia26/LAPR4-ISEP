@@ -1,6 +1,7 @@
 package eapli.base.persistence.impl.jpa;
 
 import eapli.base.ordermanagement.domain.OrderLine;
+import eapli.base.ordermanagement.domain.ProductOrder;
 import eapli.base.ordermanagement.repositories.OrderLineRepository;
 import eapli.base.productmanagement.domain.InternalCode;
 import eapli.base.productmanagement.domain.Product;
@@ -22,5 +23,14 @@ public class JpaOrderLineRepository extends BasepaRepositoryBase<OrderLine, Long
                 Double.class);
 
         return query.getSingleResult();
+    }
+
+    @Override
+    public Iterable<OrderLine> findOrderLinesByOrderId(Long orderId){
+        final TypedQuery<OrderLine> query = super.createQuery(
+                "SELECT d FROM OrderLine d WHERE ProductOrder_Id = " + orderId,
+                OrderLine.class);
+
+        return query.getResultList();
     }
 }
