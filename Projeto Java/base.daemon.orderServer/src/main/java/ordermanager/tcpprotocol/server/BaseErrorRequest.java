@@ -5,12 +5,12 @@ public abstract class BaseErrorRequest extends OrderManagerProtocolRequest {
     private final String errorDescription;
 
     protected BaseErrorRequest(final String request, final String errorDescription) {
-        super(null, request);
+        super(null, request, null);
         this.errorDescription = errorDescription;
     }
 
     protected BaseErrorRequest(final String request) {
-        super(null, request);
+        super(null, request, null);
         this.errorDescription = null;
     }
 
