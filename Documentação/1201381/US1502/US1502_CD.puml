@@ -1,0 +1,61 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class ViewClientOrdersUI
+class CheckOrdersController
+class ViewClientOrderController
+class StatusListController
+class ListProductOrderController
+class ProductOrderRepository<< (I,a777d1) >>
+class StatusRepository<< (I,a777d1) >>
+class ProductOrderLineRepository<< (I,a777d1) >>
+
+class ViewClientOrdersUI{
+    - doShow()
+}
+
+class CheckOrdersController{
+    - getClientOrders()
+}
+
+class StatusListController{
+    - findStatusById(orderData)
+}
+
+class ViewClientOrderController{
+    - findOrderLinesByOrderId(order.identity())
+}
+
+class ListProductOrderController{
+    - findOrderLinesByOrderId(orderId)
+}
+
+class ProductOrderRepository{
+    - instance()
+    - productOrder()
+    - save(productOrder)
+}
+
+class StatusRepository{
+    - instance()
+    - status()
+    - save(status)
+}
+
+class ProductOrderLineRepository{
+    - instance()
+    - productOrderLine()
+    - save(productOrderLine)
+}
+
+
+
+ViewClientOrdersUI--> CheckOrdersController
+ViewClientOrdersUI--> StatusListController
+ViewClientOrdersUI--> ViewClientOrderController
+ViewClientOrdersUI--> ListProductOrderController
+ViewClientOrderController--> ListProductOrderController
+ListProductOrderController-->ProductOrderLineRepository
+CheckOrdersController--> ProductOrderRepository
+StatusListController--> StatusRepository
+@enduml
