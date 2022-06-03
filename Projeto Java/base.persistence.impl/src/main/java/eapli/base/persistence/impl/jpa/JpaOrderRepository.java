@@ -94,7 +94,14 @@ public class JpaOrderRepository extends JpaAutoTxRepository<ProductOrder, Long, 
         return query.getSingleResult();
     }
 
+    @Override
+    public Iterable<ProductOrder> findOrderByClientVat(String clientVat){
+        final TypedQuery<ProductOrder> query = super.createQuery(
+                "SELECT d FROM ProductOrder d WHERE ClientUser_VAT = '" + clientVat + "' and status_id <= 9",
+                ProductOrder.class);
 
+        return query.getResultList();
+    }
 
 
 }

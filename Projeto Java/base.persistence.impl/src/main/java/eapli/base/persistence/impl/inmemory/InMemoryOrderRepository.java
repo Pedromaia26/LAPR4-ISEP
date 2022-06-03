@@ -50,4 +50,7 @@ public class InMemoryOrderRepository  extends InMemoryDomainRepository<ProductOr
     public ProductOrder findRegisteredOrderById(Long id) {
         return null;
     }
+
+    @Override
+    public Iterable<ProductOrder> findOrderByClientVat(String clientVat){ return null; }
 }

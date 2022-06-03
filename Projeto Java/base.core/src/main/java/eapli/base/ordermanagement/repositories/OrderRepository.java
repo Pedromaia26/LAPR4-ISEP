@@ -21,4 +21,5 @@ public interface OrderRepository extends DomainRepository<Long, ProductOrder> {
 
     ProductOrder findDispatchedOrderById(Long id);
 
+    Iterable<ProductOrder> findOrderByClientVat(String clientVat);
 }
