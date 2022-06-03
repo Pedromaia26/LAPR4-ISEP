@@ -4,6 +4,9 @@ import agvmanager.tcpprotocol.server.AgvManagerProtocolRequest;
 import agvmanager.tcpprotocol.server.InputMessage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import javax.net.ssl.SSLServerSocket;
+import javax.net.ssl.SSLServerSocketFactory;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -13,11 +16,15 @@ public class AgvManagerTcpServer {
 
 
     private static final Logger LOGGER = LogManager.getLogger(AgvManagerTcpServer.class);
+    private static final String TRUSTED_STORE = "certificates/server.jks";
+    private static final String KEYSTORE_PASS = "Password1";
+
 
     private static class AGVManagerHandler extends Thread {
 
 
         private Socket clientSocket;
+
 
         public AGVManagerHandler(final Socket socket) {
             this.clientSocket = socket;
@@ -30,8 +37,10 @@ public class AgvManagerTcpServer {
 
             LOGGER.debug("Accepted connection from {}:{}", clientIP.getHostAddress(), clientSocket.getPort());
 
+
             try (var out = new DataOutputStream(clientSocket.getOutputStream());
                  var in = new DataInputStream(clientSocket.getInputStream()); BufferedOutputStream bufferedOut = new BufferedOutputStream(out)) {
+
                     byte [] array_comm_test = in.readNBytes(4);
                     LOGGER.debug("Initial request message received");
                     InputMessage.parseMessage(array_comm_test, in, out);
@@ -88,7 +97,30 @@ public class AgvManagerTcpServer {
      */
     @SuppressWarnings("java:S2189")
     private void listen(final int port) {
-        try (var serverSocket = new ServerSocket(port)) {
+
+        SSLServerSocket serverSocket = null;
+
+        //Trust the cert provided by authorized clients
+        /*
+        System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE);
+        System.setProperty("javax.net.ssl.trustStorePassword",KEYSTORE_PASS);
+        */
+
+        //Use this certificate and private key as Server certificate
+        System.setProperty("javax.net.ssl.keyStore",TRUSTED_STORE);
+        System.setProperty("javax.net.ssl.keyStorePassword",KEYSTORE_PASS);
+
+        SSLServerSocketFactory sslF = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
+        try {
+            serverSocket = (SSLServerSocket) sslF.createServerSocket(port);
+           // serverSocket.setNeedClientAuth(true);
+        }
+        catch(IOException ex) {
+            System.out.println("Server failed to open local port " + port);
+            System.exit(1);
+        }
+
+        try {
             while (true) {
                 final var clientSocket = serverSocket.accept();
                 new AGVManagerHandler(clientSocket).start();
@@ -107,6 +139,7 @@ public class AgvManagerTcpServer {
      *            thread.
      */
     public void start(final int port, final boolean blocking) {
+
         if (blocking) {
             listen(port);
         } else {

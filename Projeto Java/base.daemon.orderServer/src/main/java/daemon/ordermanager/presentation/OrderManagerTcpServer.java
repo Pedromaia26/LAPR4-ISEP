@@ -6,6 +6,8 @@ import ordermanager.tcpprotocol.server.OrderManagerProtocolRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.net.ssl.SSLServerSocket;
+import javax.net.ssl.SSLServerSocketFactory;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -15,6 +17,8 @@ public class OrderManagerTcpServer {
 
 
     private static final Logger LOGGER = LogManager.getLogger(OrderManagerTcpServer.class);
+    private static final String TRUSTED_STORE = "certificates/server.jks";
+    private static final String KEYSTORE_PASS = "Password1";
 
     private static class OrderManagerHandler extends Thread {
 
@@ -91,7 +95,30 @@ public class OrderManagerTcpServer {
      */
     @SuppressWarnings("java:S2189")
     private void listen(final int port) {
-        try (var serverSocket = new ServerSocket(port)) {
+
+        SSLServerSocket serverSocket = null;
+
+        //Trust the cert provided by authorized clients
+        /*
+        System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE);
+        System.setProperty("javax.net.ssl.trustStorePassword",KEYSTORE_PASS);
+        */
+
+        //Use this certificate and private key as Server certificate
+        System.setProperty("javax.net.ssl.keyStore",TRUSTED_STORE);
+        System.setProperty("javax.net.ssl.keyStorePassword",KEYSTORE_PASS);
+
+        SSLServerSocketFactory sslF = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
+        try {
+            serverSocket = (SSLServerSocket) sslF.createServerSocket(port);
+            // serverSocket.setNeedClientAuth(true);
+        }
+        catch(IOException ex) {
+            System.out.println("Server failed to open local port " + port);
+            System.exit(1);
+        }
+
+        try {
             while (true) {
                 final var clientSocket = serverSocket.accept();
                 new OrderManagerHandler(clientSocket).start();
