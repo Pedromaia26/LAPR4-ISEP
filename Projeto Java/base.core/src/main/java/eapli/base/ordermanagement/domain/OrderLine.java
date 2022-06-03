@@ -76,4 +76,8 @@ public class OrderLine implements AggregateRoot<Long>{
     public void modifyUnitPrice(Cost unitPrice) {
         this.unitPrice = unitPrice;
     }
+
+    public Product Product() {
+        return product;
+    }
 }
