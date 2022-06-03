@@ -13,7 +13,7 @@ public class AddProductShoppingCart extends OrderManagerProtocolRequest {
     private ShoppingCartController shoppingCartController = new ShoppingCartControllerImpl();
 
     protected AddProductShoppingCart(ShoppingCartController controller, String input) {
-        super(controller, input);
+        super(controller, input, null);
         this.input = input;
     }
 
