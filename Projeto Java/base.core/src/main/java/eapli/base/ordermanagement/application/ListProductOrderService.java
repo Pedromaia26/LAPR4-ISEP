@@ -1,7 +1,9 @@
 package eapli.base.ordermanagement.application;
 
 import eapli.base.infrastructure.persistence.PersistenceContext;
+import eapli.base.ordermanagement.domain.OrderLine;
 import eapli.base.ordermanagement.domain.ProductOrder;
+import eapli.base.ordermanagement.repositories.OrderLineRepository;
 import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.productmanagement.domain.Product;
 import eapli.base.productmanagement.repositories.ProductRepository;
@@ -15,6 +17,7 @@ public class ListProductOrderService {
 
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final OrderRepository productOrderRepository = PersistenceContext.repositories().orders();
+    private final OrderLineRepository productOrderLineRepository = PersistenceContext.repositories().orderlines();
 
     public Iterable<ProductOrder> productOrdersPrepared() {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.WAREHOUSE_EMPLOYEE);
@@ -55,4 +58,11 @@ public class ListProductOrderService {
         return productOrderRepository.findRegisteredOrderById(Long.parseLong(orderId));
     }
 
+    public Iterable<ProductOrder> findClientOrders(String clientVat){
+        return productOrderRepository.findOrderByClientVat(clientVat);
+    }
+
+    public Iterable<OrderLine> findOrderLinesByOrderId(Long orderId){
+        return productOrderLineRepository.findOrderLinesByOrderId(orderId);
+    }
 }
