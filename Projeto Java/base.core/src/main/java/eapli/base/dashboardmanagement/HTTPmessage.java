@@ -1,5 +1,8 @@
 package eapli.base.dashboardmanagement;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.*;
 
 public class HTTPmessage {
@@ -12,6 +15,8 @@ public class HTTPmessage {
     private static final String CONTENT_TYPE="Content-type:";
     private static final String CONTENT_LENGTH="Content-length:";
     private static final String CONNECTION="Connection:";
+
+    private static final Logger LOGGER = LogManager.getLogger(HTTPmessage.class);
     
     private static final String[][] knownFileExt = {
         { ".pdf" , "application/pdf" } ,
@@ -58,7 +63,10 @@ public class HTTPmessage {
      * @throws IOException
      */
     public HTTPmessage(DataInputStream in) throws IOException {
+
+
         String firstLine=readHeaderLine(in);
+
         isRequest= !firstLine.startsWith("HTTP/");
         method=null;
         uri=null;
@@ -92,9 +100,11 @@ public class HTTPmessage {
                 }    
             }
         while(!headerLine.isEmpty());
-        
+
         // READ CONTENT
         if(content!=null) in.readFully(content,0,content.length);
+
+
         }
     
     public HTTPmessage() {

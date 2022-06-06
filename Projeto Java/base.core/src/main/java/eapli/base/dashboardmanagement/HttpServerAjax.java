@@ -1,30 +1,107 @@
 package eapli.base.dashboardmanagement;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import javax.net.ssl.SSLServerSocket;
+import javax.net.ssl.SSLServerSocketFactory;
+import javax.net.ssl.SSLSocket;
+import java.awt.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HttpServerAjax {
     static private final String BASE_FOLDER="base.core/src/main/java/eapli/base/dashboardmanagement/www";
-    static private ServerSocket sock;
+    static private SSLServerSocket sock;
     static private int PORT = 80;
+    private static final String TRUSTED_STORE = "certificates/server.jks";
+    private static final String KEYSTORE_PASS = "Password1";
+    private static final Logger LOGGER = LogManager.getLogger(HttpServerAjax.class);
+
 
     public static void main(String args[]) throws Exception {
-        Socket cliSock;
+        SSLSocket cliSock;
 
-        try { sock = new ServerSocket(PORT); }
+
+        //Trust the cert provided by authorized clients
+
+        System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE);
+        System.setProperty("javax.net.ssl.trustStorePassword",KEYSTORE_PASS);
+
+
+        //Use this certificate and private key as Server certificate
+        System.setProperty("javax.net.ssl.keyStore",TRUSTED_STORE);
+        System.setProperty("javax.net.ssl.keyStorePassword",KEYSTORE_PASS);
+
+        SSLServerSocketFactory sslF = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
+
+
+
+        try {
+
+            sock = (SSLServerSocket) sslF.createServerSocket(PORT);
+            //sock=new ServerSocket(PORT);
+
+           // sock.setNeedClientAuth(true);
+            Desktop desktop = java.awt.Desktop.getDesktop();
+            URI url = new URI ("https://127.0.0.1:80/");
+            desktop.browse(url);
+        }
         catch(IOException ex) {
             System.out.println("Server failed to open local port " + PORT);
             System.exit(1);
         }
+
+        new ReceiveInfoHandler().start();
         while(true) {
-            cliSock=sock.accept();
+
+
+
+            cliSock= (SSLSocket) sock.accept();
+
+
             HttpAjaxRequest req=new HttpAjaxRequest(cliSock, BASE_FOLDER);
             req.start();
+
         }
     }
+
+    private static class ReceiveInfoHandler extends Thread {
+
+
+        private final DashboardAgvManagerService service= new DashboardAgvManagerService();
+
+        public ReceiveInfoHandler() {
+
+        }
+
+        @Override
+        public void run() {
+            while (true) {
+                try {
+                        service.assignAGVService();
+
+                    Thread.sleep(15 * 1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+        }
+    }
+
+
+
+
+
     private static int length;
     private static int width;
     private static int square;

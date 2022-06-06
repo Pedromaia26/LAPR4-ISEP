@@ -22,7 +22,7 @@ function loadWarehouse() {
     };
 
     request.open("GET", "/warehouse", true);
-    request.timeout = 15000;
+    request.timeout = 5000;
     request.send();
 }
 
