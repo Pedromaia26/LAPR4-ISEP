@@ -1,16 +1,21 @@
 package ordermanager.tcpprotocol.server;
 
+import eapli.base.ordermanagement.application.ViewClientOrdersController;
+import eapli.base.ordermanagement.application.ViewClientOrdersControllerImpl;
 import eapli.base.shoppingcartmanagement.application.AddProductShoppingCartController;
 import eapli.base.shoppingcartmanagement.application.ShoppingCartController;
+import eapli.base.shoppingcartmanagement.application.ShoppingCartControllerImpl;
 
 public abstract class OrderManagerProtocolRequest {
 
     protected final String request;
     protected final ShoppingCartController controller;
+    protected final ViewClientOrdersController vController;
 
-    protected OrderManagerProtocolRequest(final ShoppingCartController controller, final String inputRequest) {
+    protected OrderManagerProtocolRequest(final ShoppingCartController controller, final String inputRequest, final ViewClientOrdersController vController) {
         this.request = inputRequest;
         this.controller = controller;
+        this.vController = vController;
     }
 
     /** Executes the requested action and builds the response to the client.

@@ -1,6 +1,7 @@
 package eapli.base.ordermanagement.application;
 
 import eapli.base.categorymanagement.domain.Category;
+import eapli.base.ordermanagement.domain.OrderLine;
 import eapli.base.ordermanagement.domain.ProductOrder;
 import eapli.base.productmanagement.domain.Product;
 
@@ -46,4 +47,6 @@ public class ListProductOrderController {
     public ProductOrder findRegisteredOrderById(String orderId){
         return svc.findRegisteredOrderById(orderId);
     }
+
+    public Iterable<OrderLine> findOrderLinesByOrderId(Long orderId){return svc.findOrderLinesByOrderId(orderId);}
 }

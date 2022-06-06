@@ -18,4 +18,7 @@ public class InMemoryOrderLineRepository extends InMemoryDomainRepository<OrderL
     public Double getAllCost(Long orderId){
         return 0d;
     }
+
+    @Override
+    public Iterable<OrderLine> findOrderLinesByOrderId(Long orderId){return null;}
 }

@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Customer" as WE
+participant "System" as UI
+
+
+activate WE
+
+WE -> UI: wants to view/check the status of my open orders
+activate UI
+UI --> WE: shows the list of orders
+deactivate UI
+deactivate WE
+
+@enduml

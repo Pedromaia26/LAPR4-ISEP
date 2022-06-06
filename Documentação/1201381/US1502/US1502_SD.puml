@@ -1,0 +1,108 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Customer" as WE
+participant "//<<presentation>>//\nViewClientOrdersUI" as UI
+participant "//<<application>>//\nCheckOrdersController" as CC1
+participant "//<<application>>//\nViewClientOrdersService" as SVC1
+participant "OrderManagerDaemon" as omd
+participant "OrderManagerTcpServer" as omServer
+participant "//<<thread>>//\noOrderManagerHandler" as thread
+participant "ViewClientOrder" as request
+participant "//<<application>>//\nViewClientOrdersController" as CC3
+participant "//<<application>>//\nListProductOrderController" as CC4
+participant "//<<application>>//\nListProductOrderService" as SVC2
+database "//<<repository>>//\nProductOrderRepository" as REPO1
+database "//<<repository>>//\nProductOrderLineRepository" as REPO3
+participant "//<<application>>//\nStatusListController" as CC2
+database "//<<repository>>//\nStatusRepository" as REPO2
+
+
+activate WE
+
+omd->omServer: new
+omd->omServer: start
+activate omServer
+omServer->omServer: accept
+WE -> UI: wants to view/check the status of my open orders
+activate UI
+UI->UI: doShow()
+UI->CC1: getClientOrders()
+activate CC1
+CC1->SVC1: viewClientOrdersService(getUserSessionVat().vat())
+activate SVC1
+SVC1->SVC1: viewOrders(sOut,sIn, clientVat)
+SVC1->omServer: request
+
+omServer->thread:start
+deactivate omServer
+activate thread
+
+thread -> request: execute
+activate request
+
+request->CC3: response = viewClientOrders(input)
+activate CC3
+
+CC3 -> SVC2: findClientOrders(clientVat)
+
+activate SVC2
+
+SVC2 -> REPO1: findOrderByClientVat(clientVat)
+activate REPO1
+
+deactivate REPO1
+
+deactivate SVC2
+
+loop order
+
+CC3 -> CC3: string.append(data)
+
+CC3 -> CC4: findOrderLinesByOrderId(order.identity())
+
+activate CC4
+
+CC4 -> SVC2: findOrderLinesByOrderId(orderId)
+
+activate SVC2
+
+SVC2 -> REPO3: findOrderLinesByOrderId(orderId)
+activate REPO3
+
+deactivate REPO3
+
+deactivate SVC2
+
+deactivate CC4
+
+loop orderLine
+
+CC3 -> CC3: string.append(data)
+
+end loop
+
+end loop
+
+CC3 --> request: string
+
+deactivate CC3
+
+
+
+request-->thread: response
+deactivate request
+thread -->SVC1: response
+deactivate thread
+SVC1 --> CC1: response
+deactivate SVC1
+CC1 --> UI: data
+deactivate CC1
+
+UI --> WE: shows the list of orders
+deactivate UI
+deactivate WE
+
+@enduml

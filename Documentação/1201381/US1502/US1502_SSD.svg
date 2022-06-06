@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="240px" preserveAspectRatio="none" style="width:448px;height:240px;background:#FFFFFF;" version="1.1" viewBox="0 0 448 240" width="448px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="50.2656" style="stroke:#181818;stroke-width:1.0;" width="10" x="38" y="91.2969"/><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="403" y="112.4297"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="43" x2="43" y1="81.2969" y2="159.5625"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="408" x2="408" y1="81.2969" y2="159.5625"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="5" y="77.9951">Customer</text><ellipse cx="43" cy="13.5" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M43,21.5 L43,48.5 M30,29.5 L56,29.5 M43,48.5 L30,63.5 M43,48.5 L56,63.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="5" y="171.5576">Customer</text><ellipse cx="43" cy="183.3594" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M43,191.3594 L43,218.3594 M30,199.3594 L56,199.3594 M43,218.3594 L30,233.3594 M43,218.3594 L56,233.3594 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="68" x="374" y="50"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="54" x="381" y="69.9951">System</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="68" x="374" y="158.5625"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="54" x="381" y="178.5576">System</text><rect fill="#FFFFFF" height="50.2656" style="stroke:#181818;stroke-width:1.0;" width="10" x="38" y="91.2969"/><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="403" y="112.4297"/><polygon fill="#181818" points="391,108.4297,401,112.4297,391,116.4297,395,112.4297" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="48" x2="397" y1="112.4297" y2="112.4297"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="55" y="107.3638">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="323" x="68" y="107.3638">wants to view/check the status of my open orders</text><polygon fill="#181818" points="54,137.5625,44,141.5625,54,145.5625,50,141.5625" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="48" x2="407" y1="141.5625" y2="141.5625"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="60" y="136.4966">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="150" x="73" y="136.4966">shows the list of orders</text><!--MD5=[57963b871953a6c8a30dc166076572e7]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Customer" as WE
+participant "System" as UI
+
+
+activate WE
+
+WE -> UI: wants to view/check the status of my open orders
+activate UI
+UI - -> WE: shows the list of orders
+deactivate UI
+deactivate WE
+@enduml
+
+@startuml
+
+autonumber
+
+actor "Customer" as WE
+participant "System" as UI
+
+
+activate WE
+
+WE -> UI: wants to view/check the status of my open orders
+activate UI
+UI - -> WE: shows the list of orders
+deactivate UI
+deactivate WE
+@enduml
+
+PlantUML version 1.2022.6beta5(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

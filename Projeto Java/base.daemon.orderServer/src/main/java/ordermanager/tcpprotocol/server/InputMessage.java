@@ -1,6 +1,8 @@
 package ordermanager.tcpprotocol.server;
 
 import eapli.base.communicationprotocol.CommunicationProtocol;
+import eapli.base.ordermanagement.application.ViewClientOrdersController;
+import eapli.base.ordermanagement.application.ViewClientOrdersControllerImpl;
 import eapli.base.shoppingcartmanagement.application.ShoppingCartController;
 import eapli.base.shoppingcartmanagement.application.ShoppingCartControllerImpl;
 import org.apache.logging.log4j.LogManager;
@@ -17,6 +19,7 @@ public class InputMessage {
     private static final Object lock = new Object();
 
     private static ShoppingCartController controller = new ShoppingCartControllerImpl();
+    private static ViewClientOrdersController vController = new ViewClientOrdersControllerImpl();
 
     private InputMessage() {
         // avoid instantiation
@@ -50,7 +53,10 @@ public class InputMessage {
             agvManagerProtocolRequest = inputAddProduct(arr, in);
         }
 
+        if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.VIEW_CLIENT_ORDERS) {
 
+            agvManagerProtocolRequest = inputViewOrder(arr, in);
+        }
 
         return agvManagerProtocolRequest;
     }
@@ -71,6 +77,26 @@ public class InputMessage {
         }
 
         request = new AddProductShoppingCart(controller, parsedData);
+
+        return request;
+    }
+
+    private static OrderManagerProtocolRequest inputViewOrder(final byte[] array, DataInputStream in) {
+        OrderManagerProtocolRequest request;
+
+        String parsedData = null;
+
+
+        int dataLength = array[2] + 256*array[3];
+
+        try {
+            byte[] data = in.readNBytes(dataLength);
+            parsedData = new String(data);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        request = new ViewClientOrder(vController, parsedData);
 
         return request;
     }

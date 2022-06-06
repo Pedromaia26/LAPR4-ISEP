@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="687px" preserveAspectRatio="none" style="width:1880px;height:687px;" version="1.1" viewBox="0 0 1880 687" width="1880.4px" zoomAndPan="magnify"><defs><filter height="300%" id="f7cvfifc108p6" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="1.2"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="2.4" dy="2.4" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="564.2953" style="stroke:#A80036;stroke-width:0.6;" width="6" x="20.1" y="59.7656"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="488.4516" style="stroke:#A80036;stroke-width:0.6;" width="6" x="215.7" y="135.6094"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="426.0188" style="stroke:#A80036;stroke-width:0.6;" width="6" x="312.6" y="179.8312"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="389.5969" style="stroke:#A80036;stroke-width:0.6;" width="6" x="513" y="198.0422"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="169.0875" style="stroke:#A80036;stroke-width:0.6;" width="6" x="749.7" y="91.3875"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="308.9531" style="stroke:#A80036;stroke-width:0.6;" width="6" x="859.2" y="260.475"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="272.5313" style="stroke:#A80036;stroke-width:0.6;" width="6" x="951.6" y="278.6859"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="236.1094" style="stroke:#A80036;stroke-width:0.6;" width="6" x="1100.4" y="296.8969"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="54.4219" style="stroke:#A80036;stroke-width:0.6;" width="6" x="1267.8" y="410.7516"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="36.2109" style="stroke:#A80036;stroke-width:0.6;" width="6" x="1408.8" y="315.1078"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="36.2109" style="stroke:#A80036;stroke-width:0.6;" width="6" x="1408.8" y="428.9625"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="18" style="stroke:#A80036;stroke-width:0.6;" width="6" x="1545" y="333.3187"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="18" style="stroke:#A80036;stroke-width:0.6;" width="6" x="1655.1" y="447.1734"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="155.0766" style="stroke:#000000;stroke-width:1.2;" width="685.5" x="1034.7" y="360.3187"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="37.0219" style="stroke:#000000;stroke-width:1.2;" width="154.5" x="1040.7" y="474.1734"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="22.8" x2="22.8" y1="53.7656" y2="634.8609"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="218.4" x2="218.4" y1="53.7656" y2="634.8609"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="315.6" x2="315.6" y1="53.7656" y2="634.8609"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="516" x2="516" y1="53.7656" y2="634.8609"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="644.4" x2="644.4" y1="53.7656" y2="634.8609"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="752.4" x2="752.4" y1="53.7656" y2="634.8609"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="862.2" x2="862.2" y1="53.7656" y2="634.8609"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="954.6" x2="954.6" y1="53.7656" y2="634.8609"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="1103.1" x2="1103.1" y1="53.7656" y2="634.8609"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="1270.8" x2="1270.8" y1="53.7656" y2="634.8609"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="1411.5" x2="1411.5" y1="53.7656" y2="634.8609"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="1548" x2="1548" y1="53.7656" y2="634.8609"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="1657.8" x2="1657.8" y1="53.7656" y2="634.8609"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="1762.8" x2="1762.8" y1="53.7656" y2="634.8609"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="1845.6" x2="1845.6" y1="53.7656" y2="634.8609"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="36.6" x="3" y="51.9199">Customer</text><ellipse cx="23.1" cy="9" fill="#FEFECE" filter="url(#f7cvfifc108p6)" rx="4.8" ry="4.8" style="stroke:#A80036;stroke-width:1.2;"/><path d="M23.1,13.8 L23.1,30 M15.3,18.6 L30.9,18.6 M23.1,30 L15.3,39 M23.1,30 L30.9,39 " fill="none" filter="url(#f7cvfifc108p6)" style="stroke:#A80036;stroke-width:1.2;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="36.6" x="3" y="642.9809">Customer</text><ellipse cx="23.1" cy="650.8266" fill="#FEFECE" filter="url(#f7cvfifc108p6)" rx="4.8" ry="4.8" style="stroke:#A80036;stroke-width:1.2;"/><path d="M23.1,655.6266 L23.1,671.8266 M15.3,660.4266 L30.9,660.4266 M23.1,671.8266 L15.3,680.8266 M23.1,671.8266 L30.9,680.8266 " fill="none" filter="url(#f7cvfifc108p6)" style="stroke:#A80036;stroke-width:1.2;"/><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="29.5313" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="81" x="177" y="21.2344"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="66.6" x="184.2" y="34.1543">&lt;&lt;presentation&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="72.6" x="181.2" y="44.7199">ViewClientOrdersUI</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="29.5313" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="81" x="177" y="634.2609"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="66.6" x="184.2" y="647.1809">&lt;&lt;presentation&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="72.6" x="181.2" y="657.7465">ViewClientOrdersUI</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="29.5313" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="96" x="266.4" y="21.2344"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="60" x="284.4" y="34.1543">&lt;&lt;application&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="87.6" x="270.6" y="44.7199">CheckOrdersController</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="29.5313" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="96" x="266.4" y="634.2609"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="60" x="284.4" y="647.1809">&lt;&lt;application&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="87.6" x="270.6" y="657.7465">CheckOrdersController</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="29.5313" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="102" x="463.8" y="21.2344"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="60" x="484.8" y="34.1543">&lt;&lt;application&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="93.6" x="468" y="44.7199">ViewClientOrdersService</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="29.5313" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="102" x="463.8" y="634.2609"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="60" x="484.8" y="647.1809">&lt;&lt;application&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="93.6" x="468" y="657.7465">ViewClientOrdersService</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="18.9656" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="96" x="595.2" y="31.8"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="87.6" x="599.4" y="44.7199">OrderManagerDaemon</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="18.9656" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="96" x="595.2" y="634.2609"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="87.6" x="599.4" y="647.1809">OrderManagerDaemon</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="18.9656" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="103.8" x="699.6" y="31.8"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="95.4" x="703.8" y="44.7199">OrderManagerTcpServer</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="18.9656" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="103.8" x="699.6" y="634.2609"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="95.4" x="703.8" y="647.1809">OrderManagerTcpServer</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="29.5313" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="98.4" x="811.8" y="21.2344"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="43.8" x="839.1" y="34.1543">&lt;&lt;thread&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="90" x="816" y="44.7199">oOrderManagerHandler</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="29.5313" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="98.4" x="811.8" y="634.2609"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="43.8" x="839.1" y="647.1809">&lt;&lt;thread&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="90" x="816" y="657.7465">oOrderManagerHandler</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="18.9656" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="69.6" x="918.6" y="31.8"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="61.2" x="922.8" y="44.7199">ViewClientOrder</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="18.9656" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="69.6" x="918.6" y="634.2609"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="61.2" x="922.8" y="647.1809">ViewClientOrder</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="29.5313" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="111" x="1046.7" y="21.2344"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="60" x="1072.2" y="34.1543">&lt;&lt;application&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="102.6" x="1050.9" y="44.7199">ViewClientOrdersController</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="29.5313" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="111" x="1046.7" y="634.2609"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="60" x="1072.2" y="647.1809">&lt;&lt;application&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="102.6" x="1050.9" y="657.7465">ViewClientOrdersController</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="29.5313" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="110.4" x="1214.4" y="21.2344"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="60" x="1239.6" y="34.1543">&lt;&lt;application&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="102" x="1218.6" y="44.7199">ListProductOrderController</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="29.5313" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="110.4" x="1214.4" y="634.2609"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="60" x="1239.6" y="647.1809">&lt;&lt;application&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="102" x="1218.6" y="657.7465">ListProductOrderController</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="29.5313" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="101.4" x="1359.9" y="21.2344"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="60" x="1380.6" y="34.1543">&lt;&lt;application&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="93" x="1364.1" y="44.7199">ListProductOrderService</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="29.5313" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="101.4" x="1359.9" y="634.2609"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="60" x="1380.6" y="647.1809">&lt;&lt;application&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="93" x="1364.1" y="657.7465">ListProductOrderService</text><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="57" x="1517.7" y="41.3543">&lt;&lt;repository&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="92.4" x="1500" y="51.9199">ProductOrderRepository</text><path d="M1537.2,11.0344 C1537.2,5.0344 1548,5.0344 1548,5.0344 C1548,5.0344 1558.8,5.0344 1558.8,11.0344 L1558.8,26.6344 C1558.8,32.6344 1548,32.6344 1548,32.6344 C1548,32.6344 1537.2,32.6344 1537.2,26.6344 L1537.2,11.0344 " fill="#FEFECE" filter="url(#f7cvfifc108p6)" style="stroke:#000000;stroke-width:0.8999999999999999;"/><path d="M1537.2,11.0344 C1537.2,17.0344 1548,17.0344 1548,17.0344 C1548,17.0344 1558.8,17.0344 1558.8,11.0344 " fill="none" style="stroke:#000000;stroke-width:0.8999999999999999;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="57" x="1517.7" y="642.9809">&lt;&lt;repository&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="92.4" x="1500" y="653.5465">ProductOrderRepository</text><path d="M1537.2,661.3922 C1537.2,655.3922 1548,655.3922 1548,655.3922 C1548,655.3922 1558.8,655.3922 1558.8,661.3922 L1558.8,676.9922 C1558.8,682.9922 1548,682.9922 1548,682.9922 C1548,682.9922 1537.2,682.9922 1537.2,676.9922 L1537.2,661.3922 " fill="#FEFECE" filter="url(#f7cvfifc108p6)" style="stroke:#000000;stroke-width:0.8999999999999999;"/><path d="M1537.2,661.3922 C1537.2,667.3922 1548,667.3922 1548,667.3922 C1548,667.3922 1558.8,667.3922 1558.8,661.3922 " fill="none" style="stroke:#000000;stroke-width:0.8999999999999999;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="57" x="1627.8" y="41.3543">&lt;&lt;repository&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="108.6" x="1602" y="51.9199">ProductOrderLineRepository</text><path d="M1647.3,11.0344 C1647.3,5.0344 1658.1,5.0344 1658.1,5.0344 C1658.1,5.0344 1668.9,5.0344 1668.9,11.0344 L1668.9,26.6344 C1668.9,32.6344 1658.1,32.6344 1658.1,32.6344 C1658.1,32.6344 1647.3,32.6344 1647.3,26.6344 L1647.3,11.0344 " fill="#FEFECE" filter="url(#f7cvfifc108p6)" style="stroke:#000000;stroke-width:0.8999999999999999;"/><path d="M1647.3,11.0344 C1647.3,17.0344 1658.1,17.0344 1658.1,17.0344 C1658.1,17.0344 1668.9,17.0344 1668.9,11.0344 " fill="none" style="stroke:#000000;stroke-width:0.8999999999999999;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="57" x="1627.8" y="642.9809">&lt;&lt;repository&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="108.6" x="1602" y="653.5465">ProductOrderLineRepository</text><path d="M1647.3,661.3922 C1647.3,655.3922 1658.1,655.3922 1658.1,655.3922 C1658.1,655.3922 1668.9,655.3922 1668.9,661.3922 L1668.9,676.9922 C1668.9,682.9922 1658.1,682.9922 1658.1,682.9922 C1658.1,682.9922 1647.3,682.9922 1647.3,676.9922 L1647.3,661.3922 " fill="#FEFECE" filter="url(#f7cvfifc108p6)" style="stroke:#000000;stroke-width:0.8999999999999999;"/><path d="M1647.3,661.3922 C1647.3,667.3922 1658.1,667.3922 1658.1,667.3922 C1658.1,667.3922 1668.9,667.3922 1668.9,661.3922 " fill="none" style="stroke:#000000;stroke-width:0.8999999999999999;"/><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="29.5313" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="82.8" x="1720.2" y="21.2344"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="60" x="1731.6" y="34.1543">&lt;&lt;application&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="74.4" x="1724.4" y="44.7199">StatusListController</text><rect fill="#FEFECE" filter="url(#f7cvfifc108p6)" height="29.5313" style="stroke:#A80036;stroke-width:0.8999999999999999;" width="82.8" x="1720.2" y="634.2609"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="60" x="1731.6" y="647.1809">&lt;&lt;application&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="74.4" x="1724.4" y="657.7465">StatusListController</text><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="57" x="1815.3" y="41.3543">&lt;&lt;repository&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="64.8" x="1811.4" y="51.9199">StatusRepository</text><path d="M1834.8,11.0344 C1834.8,5.0344 1845.6,5.0344 1845.6,5.0344 C1845.6,5.0344 1856.4,5.0344 1856.4,11.0344 L1856.4,26.6344 C1856.4,32.6344 1845.6,32.6344 1845.6,32.6344 C1845.6,32.6344 1834.8,32.6344 1834.8,26.6344 L1834.8,11.0344 " fill="#FEFECE" filter="url(#f7cvfifc108p6)" style="stroke:#000000;stroke-width:0.8999999999999999;"/><path d="M1834.8,11.0344 C1834.8,17.0344 1845.6,17.0344 1845.6,17.0344 C1845.6,17.0344 1856.4,17.0344 1856.4,11.0344 " fill="none" style="stroke:#000000;stroke-width:0.8999999999999999;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-style="italic" lengthAdjust="spacing" textLength="57" x="1815.3" y="642.9809">&lt;&lt;repository&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="64.8" x="1811.4" y="653.5465">StatusRepository</text><path d="M1834.8,661.3922 C1834.8,655.3922 1845.6,655.3922 1845.6,655.3922 C1845.6,655.3922 1856.4,655.3922 1856.4,661.3922 L1856.4,676.9922 C1856.4,682.9922 1845.6,682.9922 1845.6,682.9922 C1845.6,682.9922 1834.8,682.9922 1834.8,676.9922 L1834.8,661.3922 " fill="#FEFECE" filter="url(#f7cvfifc108p6)" style="stroke:#000000;stroke-width:0.8999999999999999;"/><path d="M1834.8,661.3922 C1834.8,667.3922 1845.6,667.3922 1845.6,667.3922 C1845.6,667.3922 1856.4,667.3922 1856.4,661.3922 " fill="none" style="stroke:#000000;stroke-width:0.8999999999999999;"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="564.2953" style="stroke:#A80036;stroke-width:0.6;" width="6" x="20.1" y="59.7656"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="488.4516" style="stroke:#A80036;stroke-width:0.6;" width="6" x="215.7" y="135.6094"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="426.0188" style="stroke:#A80036;stroke-width:0.6;" width="6" x="312.6" y="179.8312"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="389.5969" style="stroke:#A80036;stroke-width:0.6;" width="6" x="513" y="198.0422"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="169.0875" style="stroke:#A80036;stroke-width:0.6;" width="6" x="749.7" y="91.3875"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="308.9531" style="stroke:#A80036;stroke-width:0.6;" width="6" x="859.2" y="260.475"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="272.5313" style="stroke:#A80036;stroke-width:0.6;" width="6" x="951.6" y="278.6859"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="236.1094" style="stroke:#A80036;stroke-width:0.6;" width="6" x="1100.4" y="296.8969"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="54.4219" style="stroke:#A80036;stroke-width:0.6;" width="6" x="1267.8" y="410.7516"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="36.2109" style="stroke:#A80036;stroke-width:0.6;" width="6" x="1408.8" y="315.1078"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="36.2109" style="stroke:#A80036;stroke-width:0.6;" width="6" x="1408.8" y="428.9625"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="18" style="stroke:#A80036;stroke-width:0.6;" width="6" x="1545" y="333.3187"/><rect fill="#FFFFFF" filter="url(#f7cvfifc108p6)" height="18" style="stroke:#A80036;stroke-width:0.6;" width="6" x="1655.1" y="447.1734"/><polygon fill="#A80036" points="745.5,70.7766,751.5,73.1766,745.5,75.5766,747.9,73.1766" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;" x1="644.4" x2="749.1" y1="73.1766" y2="73.1766"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="4.2" x="648.6" y="70.2627">1</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="13.8" x="655.2" y="70.2627">new</text><polygon fill="#A80036" points="742.5,88.9875,748.5,91.3875,742.5,93.7875,744.9,91.3875" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;" x1="644.4" x2="746.1" y1="91.3875" y2="91.3875"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="4.2" x="648.6" y="88.4736">2</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="15.6" x="655.2" y="88.4736">start</text><line style="stroke:#A80036;stroke-width:0.6;" x1="755.7" x2="780.9" y1="109.5984" y2="109.5984"/><line style="stroke:#A80036;stroke-width:0.6;" x1="780.9" x2="780.9" y1="109.5984" y2="117.3984"/><line style="stroke:#A80036;stroke-width:0.6;" x1="756.3" x2="780.9" y1="117.3984" y2="117.3984"/><polygon fill="#A80036" points="762.3,114.9984,756.3,117.3984,762.3,119.7984,759.9,117.3984" style="stroke:#A80036;stroke-width:0.6;"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="4.2" x="759.9" y="106.6846">3</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="23.4" x="766.5" y="106.6846">accept</text><polygon fill="#A80036" points="208.5,133.2094,214.5,135.6094,208.5,138.0094,210.9,135.6094" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;" x1="26.1" x2="212.1" y1="135.6094" y2="135.6094"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="4.2" x="30.3" y="132.6955">4</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="171.6" x="36.9" y="132.6955">wants to view/check the status of my open orders</text><line style="stroke:#A80036;stroke-width:0.6;" x1="221.7" x2="246.9" y1="153.8203" y2="153.8203"/><line style="stroke:#A80036;stroke-width:0.6;" x1="246.9" x2="246.9" y1="153.8203" y2="161.6203"/><line style="stroke:#A80036;stroke-width:0.6;" x1="222.3" x2="246.9" y1="161.6203" y2="161.6203"/><polygon fill="#A80036" points="228.3,159.2203,222.3,161.6203,228.3,164.0203,225.9,161.6203" style="stroke:#A80036;stroke-width:0.6;"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="4.2" x="225.9" y="150.9064">5</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="32.4" x="232.5" y="150.9064">doShow()</text><polygon fill="#A80036" points="305.4,177.4313,311.4,179.8312,305.4,182.2313,307.8,179.8312" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;" x1="221.7" x2="309" y1="179.8312" y2="179.8312"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="4.2" x="225.9" y="176.9174">6</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="58.8" x="232.5" y="176.9174">getClientOrders()</text><polygon fill="#A80036" points="505.8,195.6422,511.8,198.0422,505.8,200.4422,508.2,198.0422" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;" x1="318.6" x2="509.4" y1="198.0422" y2="198.0422"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="4.2" x="322.8" y="195.1283">7</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="176.4" x="329.4" y="195.1283">viewClientOrdersService(getUserSessionVat().vat())</text><line style="stroke:#A80036;stroke-width:0.6;" x1="519" x2="544.2" y1="216.2531" y2="216.2531"/><line style="stroke:#A80036;stroke-width:0.6;" x1="544.2" x2="544.2" y1="216.2531" y2="224.0531"/><line style="stroke:#A80036;stroke-width:0.6;" x1="519.6" x2="544.2" y1="224.0531" y2="224.0531"/><polygon fill="#A80036" points="525.6,221.6531,519.6,224.0531,525.6,226.4531,523.2,224.0531" style="stroke:#A80036;stroke-width:0.6;"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="4.2" x="523.2" y="213.3393">8</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="107.4" x="529.8" y="213.3393">viewOrders(sOut,sIn, clientVat)</text><polygon fill="#A80036" points="742.5,239.8641,748.5,242.2641,742.5,244.6641,744.9,242.2641" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;" x1="519" x2="746.1" y1="242.2641" y2="242.2641"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="4.2" x="523.2" y="239.3502">9</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="25.8" x="529.8" y="239.3502">request</text><polygon fill="#A80036" points="852,258.075,858,260.475,852,262.875,854.4,260.475" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;" x1="752.7" x2="855.6" y1="260.475" y2="260.475"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="756.9" y="257.5611">10</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="15.6" x="767.7" y="257.5611">start</text><polygon fill="#A80036" points="944.4,276.2859,950.4,278.6859,944.4,281.0859,946.8,278.6859" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;" x1="865.2" x2="948" y1="278.6859" y2="278.6859"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="869.4" y="275.7721">11</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="27.6" x="880.2" y="275.7721">execute</text><polygon fill="#A80036" points="1093.2,294.4969,1099.2,296.8969,1093.2,299.2969,1095.6,296.8969" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;" x1="957.6" x2="1096.8" y1="296.8969" y2="296.8969"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="961.8" y="293.983">12</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="120.6" x="972.6" y="293.983">response = viewClientOrders(input)</text><polygon fill="#A80036" points="1401.6,312.7078,1407.6,315.1078,1401.6,317.5078,1404,315.1078" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;" x1="1106.4" x2="1405.2" y1="315.1078" y2="315.1078"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="1110.6" y="312.1939">13</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="90.6" x="1121.4" y="312.1939">findClientOrders(clientVat)</text><polygon fill="#A80036" points="1537.8,330.9188,1543.8,333.3187,1537.8,335.7188,1540.2,333.3187" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;" x1="1414.8" x2="1541.4" y1="333.3187" y2="333.3187"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="1419" y="330.4049">14</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="108" x="1429.8" y="330.4049">findOrderByClientVat(clientVat)</text><path d="M1034.7,360.3187 L1078.5,360.3187 L1078.5,365.1188 L1072.5,371.1188 L1034.7,371.1188 L1034.7,360.3187 " fill="#EEEEEE" style="stroke:#000000;stroke-width:0.6;"/><rect fill="none" height="155.0766" style="stroke:#000000;stroke-width:1.2;" width="685.5" x="1034.7" y="360.3187"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="16.8" x="1043.7" y="369.0158">loop</text><text fill="#000000" font-family="sans-serif" font-size="6.6" font-weight="bold" lengthAdjust="spacing" textLength="23.4" x="1087.5" y="368.3701">[order]</text><line style="stroke:#A80036;stroke-width:0.6;" x1="1106.4" x2="1131.6" y1="384.7406" y2="384.7406"/><line style="stroke:#A80036;stroke-width:0.6;" x1="1131.6" x2="1131.6" y1="384.7406" y2="392.5406"/><line style="stroke:#A80036;stroke-width:0.6;" x1="1107" x2="1131.6" y1="392.5406" y2="392.5406"/><polygon fill="#A80036" points="1113,390.1406,1107,392.5406,1113,394.9406,1110.6,392.5406" style="stroke:#A80036;stroke-width:0.6;"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="1110.6" y="381.8268">15</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="66.6" x="1121.4" y="381.8268">string.append(data)</text><polygon fill="#A80036" points="1260.6,408.3516,1266.6,410.7516,1260.6,413.1516,1263,410.7516" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;" x1="1106.4" x2="1264.2" y1="410.7516" y2="410.7516"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="1110.6" y="407.8377">16</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="139.2" x="1121.4" y="407.8377">findOrderLinesByOrderId(order.identity())</text><polygon fill="#A80036" points="1401.6,426.5625,1407.6,428.9625,1401.6,431.3625,1404,428.9625" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;" x1="1273.8" x2="1405.2" y1="428.9625" y2="428.9625"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="1278" y="426.0486">17</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="112.8" x="1288.8" y="426.0486">findOrderLinesByOrderId(orderId)</text><polygon fill="#A80036" points="1647.9,444.7734,1653.9,447.1734,1647.9,449.5734,1650.3,447.1734" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;" x1="1414.8" x2="1651.5" y1="447.1734" y2="447.1734"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="1419" y="444.2596">18</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="112.8" x="1429.8" y="444.2596">findOrderLinesByOrderId(orderId)</text><path d="M1040.7,474.1734 L1084.5,474.1734 L1084.5,478.9734 L1078.5,484.9734 L1040.7,484.9734 L1040.7,474.1734 " fill="#EEEEEE" style="stroke:#000000;stroke-width:0.6;"/><rect fill="none" height="37.0219" style="stroke:#000000;stroke-width:1.2;" width="154.5" x="1040.7" y="474.1734"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="16.8" x="1049.7" y="482.8705">loop</text><text fill="#000000" font-family="sans-serif" font-size="6.6" font-weight="bold" lengthAdjust="spacing" textLength="37.8" x="1093.5" y="482.2248">[orderLine]</text><line style="stroke:#A80036;stroke-width:0.6;" x1="1106.4" x2="1131.6" y1="498.5953" y2="498.5953"/><line style="stroke:#A80036;stroke-width:0.6;" x1="1131.6" x2="1131.6" y1="498.5953" y2="506.3953"/><line style="stroke:#A80036;stroke-width:0.6;" x1="1107" x2="1131.6" y1="506.3953" y2="506.3953"/><polygon fill="#A80036" points="1113,503.9953,1107,506.3953,1113,508.7953,1110.6,506.3953" style="stroke:#A80036;stroke-width:0.6;"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="1110.6" y="495.6814">19</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="66.6" x="1121.4" y="495.6814">string.append(data)</text><polygon fill="#A80036" points="964.2,530.6062,958.2,533.0063,964.2,535.4063,961.8,533.0063" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:2.0,2.0;" x1="960.6" x2="1102.8" y1="533.0063" y2="533.0063"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="967.8" y="530.0924">20</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="19.2" x="978.6" y="530.0924">string</text><polygon fill="#A80036" points="871.8,548.8172,865.8,551.2172,871.8,553.6172,869.4,551.2172" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:2.0,2.0;" x1="868.2" x2="954" y1="551.2172" y2="551.2172"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="875.4" y="548.3033">21</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="31.8" x="886.2" y="548.3033">response</text><polygon fill="#A80036" points="525.6,567.0281,519.6,569.4281,525.6,571.8281,523.2,569.4281" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:2.0,2.0;" x1="522" x2="861.6" y1="569.4281" y2="569.4281"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="529.2" y="566.5143">22</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="31.8" x="540" y="566.5143">response</text><polygon fill="#A80036" points="325.2,585.2391,319.2,587.6391,325.2,590.0391,322.8,587.6391" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:2.0,2.0;" x1="321.6" x2="515.4" y1="587.6391" y2="587.6391"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="328.8" y="584.7252">23</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="31.8" x="339.6" y="584.7252">response</text><polygon fill="#A80036" points="228.3,603.45,222.3,605.85,228.3,608.25,225.9,605.85" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:2.0,2.0;" x1="224.7" x2="315" y1="605.85" y2="605.85"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="231.9" y="602.9361">24</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="15" x="242.7" y="602.9361">data</text><polygon fill="#A80036" points="29.7,621.6609,23.7,624.0609,29.7,626.4609,27.3,624.0609" style="stroke:#A80036;stroke-width:0.6;"/><line style="stroke:#A80036;stroke-width:0.6;stroke-dasharray:2.0,2.0;" x1="26.1" x2="218.1" y1="624.0609" y2="624.0609"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="33.3" y="621.1471">25</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="80.4" x="44.1" y="621.1471">shows the list of orders</text><!--MD5=[7b30bc22a826785ea5451c9dc34c7082]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Customer" as WE
+participant "//<<presentation>>//\nViewClientOrdersUI" as UI
+participant "//<<application>>//\nCheckOrdersController" as CC1
+participant "//<<application>>//\nViewClientOrdersService" as SVC1
+participant "OrderManagerDaemon" as omd
+participant "OrderManagerTcpServer" as omServer
+participant "//<<thread>>//\noOrderManagerHandler" as thread
+participant "ViewClientOrder" as request
+participant "//<<application>>//\nViewClientOrdersController" as CC3
+participant "//<<application>>//\nListProductOrderController" as CC4
+participant "//<<application>>//\nListProductOrderService" as SVC2
+database "//<<repository>>//\nProductOrderRepository" as REPO1
+database "//<<repository>>//\nProductOrderLineRepository" as REPO3
+participant "//<<application>>//\nStatusListController" as CC2
+database "//<<repository>>//\nStatusRepository" as REPO2
+
+
+activate WE
+
+omd->omServer: new
+omd->omServer: start
+activate omServer
+omServer->omServer: accept
+WE -> UI: wants to view/check the status of my open orders
+activate UI
+UI->UI: doShow()
+UI->CC1: getClientOrders()
+activate CC1
+CC1->SVC1: viewClientOrdersService(getUserSessionVat().vat())
+activate SVC1
+SVC1->SVC1: viewOrders(sOut,sIn, clientVat)
+SVC1->omServer: request
+
+omServer->thread:start
+deactivate omServer
+activate thread
+
+thread -> request: execute
+activate request
+
+request->CC3: response = viewClientOrders(input)
+activate CC3
+
+CC3 -> SVC2: findClientOrders(clientVat)
+
+activate SVC2
+
+SVC2 -> REPO1: findOrderByClientVat(clientVat)
+activate REPO1
+
+deactivate REPO1
+
+deactivate SVC2
+
+loop order
+
+CC3 -> CC3: string.append(data)
+
+CC3 -> CC4: findOrderLinesByOrderId(order.identity())
+
+activate CC4
+
+CC4 -> SVC2: findOrderLinesByOrderId(orderId)
+
+activate SVC2
+
+SVC2 -> REPO3: findOrderLinesByOrderId(orderId)
+activate REPO3
+
+deactivate REPO3
+
+deactivate SVC2
+
+deactivate CC4
+
+loop orderLine
+
+CC3 -> CC3: string.append(data)
+
+end loop
+
+end loop
+
+CC3 - -> request: string
+
+deactivate CC3
+
+
+
+request- ->thread: response
+deactivate request
+thread - ->SVC1: response
+deactivate thread
+SVC1 - -> CC1: response
+deactivate SVC1
+CC1 - -> UI: data
+deactivate CC1
+
+UI - -> WE: shows the list of orders
+deactivate UI
+deactivate WE
+
+@enduml
+
+@startuml
+
+autonumber
+
+actor "Customer" as WE
+participant "//<<presentation>>//\nViewClientOrdersUI" as UI
+participant "//<<application>>//\nCheckOrdersController" as CC1
+participant "//<<application>>//\nViewClientOrdersService" as SVC1
+participant "OrderManagerDaemon" as omd
+participant "OrderManagerTcpServer" as omServer
+participant "//<<thread>>//\noOrderManagerHandler" as thread
+participant "ViewClientOrder" as request
+participant "//<<application>>//\nViewClientOrdersController" as CC3
+participant "//<<application>>//\nListProductOrderController" as CC4
+participant "//<<application>>//\nListProductOrderService" as SVC2
+database "//<<repository>>//\nProductOrderRepository" as REPO1
+database "//<<repository>>//\nProductOrderLineRepository" as REPO3
+participant "//<<application>>//\nStatusListController" as CC2
+database "//<<repository>>//\nStatusRepository" as REPO2
+
+
+activate WE
+
+omd->omServer: new
+omd->omServer: start
+activate omServer
+omServer->omServer: accept
+WE -> UI: wants to view/check the status of my open orders
+activate UI
+UI->UI: doShow()
+UI->CC1: getClientOrders()
+activate CC1
+CC1->SVC1: viewClientOrdersService(getUserSessionVat().vat())
+activate SVC1
+SVC1->SVC1: viewOrders(sOut,sIn, clientVat)
+SVC1->omServer: request
+
+omServer->thread:start
+deactivate omServer
+activate thread
+
+thread -> request: execute
+activate request
+
+request->CC3: response = viewClientOrders(input)
+activate CC3
+
+CC3 -> SVC2: findClientOrders(clientVat)
+
+activate SVC2
+
+SVC2 -> REPO1: findOrderByClientVat(clientVat)
+activate REPO1
+
+deactivate REPO1
+
+deactivate SVC2
+
+loop order
+
+CC3 -> CC3: string.append(data)
+
+CC3 -> CC4: findOrderLinesByOrderId(order.identity())
+
+activate CC4
+
+CC4 -> SVC2: findOrderLinesByOrderId(orderId)
+
+activate SVC2
+
+SVC2 -> REPO3: findOrderLinesByOrderId(orderId)
+activate REPO3
+
+deactivate REPO3
+
+deactivate SVC2
+
+deactivate CC4
+
+loop orderLine
+
+CC3 -> CC3: string.append(data)
+
+end loop
+
+end loop
+
+CC3 - -> request: string
+
+deactivate CC3
+
+
+
+request- ->thread: response
+deactivate request
+thread - ->SVC1: response
+deactivate thread
+SVC1 - -> CC1: response
+deactivate SVC1
+CC1 - -> UI: data
+deactivate CC1
+
+UI - -> WE: shows the list of orders
+deactivate UI
+deactivate WE
+
+@enduml
+
+PlantUML version 1.2021.5(Sun Apr 25 12:20:28 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

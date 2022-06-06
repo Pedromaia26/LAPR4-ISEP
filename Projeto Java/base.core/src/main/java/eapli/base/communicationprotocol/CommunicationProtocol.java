@@ -26,6 +26,9 @@ public class CommunicationProtocol {
     public static final int DASHBOARD_TO_AGVMANAGER_RESPONSE_CODE = 111;
     public static final int DASHBOARD_CODE = 112;
     public static final int DASHBOARD_RESPONSE_CODE = 113;
+    public static final int VIEW_CLIENT_ORDERS = 114;
+    public static final int VIEW_CLIENT_ORDERS_RESPONSE = 115;
+
     public static byte[] dataLengthCalculator(String data){
         int dataLength = data.length();
 
