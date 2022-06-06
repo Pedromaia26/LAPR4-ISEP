@@ -13,6 +13,7 @@ import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 
+import java.awt.*;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -23,9 +24,14 @@ import java.net.URI;
 import java.net.UnknownHostException;
 
 public class DashboardController {
-    private final DashboardService svc = new DashboardService();
 
     public void openDashboard() throws IOException {
-        svc.openDashboard();
+       try {
+           Desktop desktop = java.awt.Desktop.getDesktop();
+           URI url = new URI("https://127.0.0.1:80/");
+           desktop.browse(url);
+       }catch (Exception e){
+           throw new IllegalArgumentException("Error");
+       }
     }
 }
