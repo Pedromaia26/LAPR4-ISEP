@@ -39,7 +39,7 @@ public class FreeAGVRequest extends AgvManagerProtocolRequest {
 
         byte[] dataLength = CommunicationProtocol.dataLengthCalculator(buildResponse());
         byte[] array = new byte[]{CommunicationProtocol.PROTOCOL_V1,
-                CommunicationProtocol.ASSIGN_AGV_TO_ORDER_REPONSE_CODE, dataLength[0], dataLength[1]};
+                CommunicationProtocol.FREE_AGV_RESPONSE_CODE, dataLength[0], dataLength[1]};
         return array;
     }
 

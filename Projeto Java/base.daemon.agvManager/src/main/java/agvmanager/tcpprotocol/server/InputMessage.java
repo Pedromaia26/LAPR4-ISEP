@@ -4,6 +4,8 @@ import eapli.base.agvmanagement.application.AGVManagerController;
 import eapli.base.agvmanagement.application.AGVManagerControllerImpl;
 import eapli.base.communicationprotocol.CommunicationProtocol;
 
+import eapli.base.dashboardmanagement.DashBoardManagementController;
+import eapli.base.dashboardmanagement.DashBoardManagementControllerImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,6 +25,7 @@ public class InputMessage {
     private static final Object lock = new Object();
 
     private static AGVManagerController controller = new AGVManagerControllerImpl();
+
 
     private InputMessage() {
         // avoid instantiation
@@ -59,6 +62,11 @@ public class InputMessage {
 
             agvManagerProtocolRequest = inputUpdateStatus(arr, in);
         }
+        if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.DASHBOARD_TO_AGVMANAGER_CODE) {
+
+            agvManagerProtocolRequest = inputDashboardCommunication(arr, in);
+        }
+
 
 
         return agvManagerProtocolRequest;
@@ -72,6 +80,15 @@ public class InputMessage {
 
 
         request = new AssignTaskRequest(controller);
+
+        return request;
+    }
+
+    public static AgvManagerProtocolRequest inputDashboardCommunication(final byte[] array, DataInputStream in) throws IOException {
+
+        AgvManagerProtocolRequest request;
+
+        request = new DashboardRequest(controller);
 
         return request;
     }

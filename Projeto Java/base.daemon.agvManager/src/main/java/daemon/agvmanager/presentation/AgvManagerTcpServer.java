@@ -101,10 +101,10 @@ public class AgvManagerTcpServer {
         SSLServerSocket serverSocket = null;
 
         //Trust the cert provided by authorized clients
-        /*
+
         System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE);
         System.setProperty("javax.net.ssl.trustStorePassword",KEYSTORE_PASS);
-        */
+
 
         //Use this certificate and private key as Server certificate
         System.setProperty("javax.net.ssl.keyStore",TRUSTED_STORE);
@@ -113,7 +113,7 @@ public class AgvManagerTcpServer {
         SSLServerSocketFactory sslF = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
         try {
             serverSocket = (SSLServerSocket) sslF.createServerSocket(port);
-           // serverSocket.setNeedClientAuth(true);
+            serverSocket.setNeedClientAuth(true);
         }
         catch(IOException ex) {
             System.out.println("Server failed to open local port " + port);
