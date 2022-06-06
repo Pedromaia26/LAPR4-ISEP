@@ -100,10 +100,10 @@ public class AgvDigitalTwinTcpServer {
         SSLServerSocket serverSocket = null;
 
         //Trust the cert provided by authorized clients
-        /*
+
         System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE);
         System.setProperty("javax.net.ssl.trustStorePassword",KEYSTORE_PASS);
-        */
+
 
         //Use this certificate and private key as Server certificate
         System.setProperty("javax.net.ssl.keyStore",TRUSTED_STORE);
