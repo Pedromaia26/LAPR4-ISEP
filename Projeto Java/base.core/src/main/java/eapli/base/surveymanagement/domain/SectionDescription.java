@@ -1,7 +1,9 @@
 package eapli.base.surveymanagement.domain;
 
+import javax.persistence.Embeddable;
 import java.util.Objects;
 
+@Embeddable
 public class SectionDescription {
 
     private String sectionDescription;

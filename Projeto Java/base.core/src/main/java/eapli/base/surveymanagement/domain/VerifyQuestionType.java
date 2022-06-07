@@ -1,7 +1,12 @@
 package eapli.base.surveymanagement.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class VerifyQuestionType {
 
+    @Column(insertable = false, updatable = false)
     public String questionType;
 
     public VerifyQuestionType(String questionType) {

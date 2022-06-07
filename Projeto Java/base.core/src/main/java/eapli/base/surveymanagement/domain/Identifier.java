@@ -2,9 +2,12 @@ package eapli.base.surveymanagement.domain;
 
 import eapli.base.clientusermanagement.domain.VAT;
 
+import javax.persistence.Embeddable;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Identifier {
+@Embeddable
+public class Identifier implements Serializable, Comparable<Identifier> {
 
     private String identifier;
 
@@ -30,5 +33,10 @@ public class Identifier {
     @Override
     public String toString() {
         return identifier;
+    }
+
+    @Override
+    public int compareTo(Identifier o) {
+        return 0;
     }
 }

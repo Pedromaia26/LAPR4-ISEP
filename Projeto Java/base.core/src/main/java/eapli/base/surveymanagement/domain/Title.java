@@ -2,8 +2,10 @@ package eapli.base.surveymanagement.domain;
 
 import eapli.base.productmanagement.domain.ShortDescription;
 
+import javax.persistence.Embeddable;
 import java.util.Objects;
 
+@Embeddable
 public class Title {
 
     private String title;

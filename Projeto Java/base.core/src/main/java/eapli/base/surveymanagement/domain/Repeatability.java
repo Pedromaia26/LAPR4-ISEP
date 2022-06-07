@@ -1,5 +1,8 @@
 package eapli.base.surveymanagement.domain;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Repeatability {
 
     private String repeatability;

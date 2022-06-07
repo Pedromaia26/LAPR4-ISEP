@@ -1,6 +1,10 @@
 package eapli.base.surveymanagement.domain;
 
-public class SurveyIdentifier {
+import javax.persistence.Embeddable;
+import java.io.Serializable;
+
+@Embeddable
+public class SurveyIdentifier implements Serializable, Comparable<SurveyIdentifier> {
 
     private String surveyIdentifier;
 
@@ -27,5 +31,10 @@ public class SurveyIdentifier {
     @Override
     public String toString() {
         return surveyIdentifier;
+    }
+
+    @Override
+    public int compareTo(SurveyIdentifier o) {
+        return 0;
     }
 }

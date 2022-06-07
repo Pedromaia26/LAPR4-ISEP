@@ -1,10 +1,17 @@
 package eapli.base.surveymanagement.domain;
 
 import eapli.base.productmanagement.domain.ShortDescription;
+import eapli.framework.domain.model.ValueObject;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Message {
+@Embeddable
+public class Message implements ValueObject, Serializable {
+
+    @Column(insertable = false, updatable = false)
     private String message;
 
     public Message(final String message){

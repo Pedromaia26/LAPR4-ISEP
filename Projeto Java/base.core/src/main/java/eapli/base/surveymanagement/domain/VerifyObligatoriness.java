@@ -2,6 +2,9 @@ package eapli.base.surveymanagement.domain;
 
 import eapli.base.clientusermanagement.domain.Gender;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class VerifyObligatoriness {
 
     public String obligatoriness;
