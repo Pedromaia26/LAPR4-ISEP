@@ -1,0 +1,44 @@
+ID1;
+Title 1
+2
+Section 2
+Section 2 description.
+mandatory
+1
+4
+Question 4?
+Yes or no.
+optional
+Multiple-Choice with input value
+A) Sim
+B) Nao
+very similar to the multiple choice, but the last option, if selected, implies that the person must type a numeric value or a free text.
+1
+Section 1
+Section 1 description.
+condition dependent 4 A
+1
+1
+Question 1?
+Yes or no.
+optional
+Multiple-Choice with input value
+A) Sim
+B) Nao
+very similar to the multiple choice, but the last option, if selected, implies that the person must type a numeric value or a free text.
+2
+Question 2?
+condition dependent 1 A
+Numeric
+it means the person answers the question by typing a numeric value.
+3
+Question 3?
+scaling.
+mandatory
+Scaling Options
+A) Agree
+B) Disagree
+Quantos anos tens?
+O ed, pf e rodrigo sao lindos?
+it means the person answers the question by selecting a value of a given scale (e.g.: unimportant, neutral, important) to each of the specified options.
+FIM.;
