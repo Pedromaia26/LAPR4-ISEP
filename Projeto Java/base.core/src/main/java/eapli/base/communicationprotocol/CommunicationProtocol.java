@@ -22,8 +22,12 @@ public class CommunicationProtocol {
     public static final int FREE_AGV_RESPONSE_CODE = 107;
     public static final int UPDATE_AGV_STATUS_FREE_CODE = 108;
     public static final int UPDATE_AGV_STATUS_FREE_RESPONSE_CODE = 109;
-    public static final int VIEW_CLIENT_ORDERS = 110;
-    public static final int VIEW_CLIENT_ORDERS_RESPONSE = 111;
+    public static final int DASHBOARD_TO_AGVMANAGER_CODE = 110;
+    public static final int DASHBOARD_TO_AGVMANAGER_RESPONSE_CODE = 111;
+    public static final int DASHBOARD_CODE = 112;
+    public static final int DASHBOARD_RESPONSE_CODE = 113;
+    public static final int VIEW_CLIENT_ORDERS = 114;
+    public static final int VIEW_CLIENT_ORDERS_RESPONSE = 115;
 
     public static byte[] dataLengthCalculator(String data){
         int dataLength = data.length();

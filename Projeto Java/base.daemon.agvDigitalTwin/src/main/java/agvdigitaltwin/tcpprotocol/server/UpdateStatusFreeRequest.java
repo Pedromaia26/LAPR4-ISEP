@@ -34,7 +34,7 @@ public class UpdateStatusFreeRequest extends AgvDigitalTwinProtocolRequest {
     public byte[] outputProtocol() {
         byte[] dataLength = CommunicationProtocol.dataLengthCalculator(buildResponse());
         byte[] array = new byte[]{CommunicationProtocol.PROTOCOL_V1,
-                CommunicationProtocol.UPDATE_AGV_STATUS_RESPONSE_CODE, dataLength[0], dataLength[1]};
+                CommunicationProtocol.UPDATE_AGV_STATUS_FREE_RESPONSE_CODE, dataLength[0], dataLength[1]};
         return array;
     }
 

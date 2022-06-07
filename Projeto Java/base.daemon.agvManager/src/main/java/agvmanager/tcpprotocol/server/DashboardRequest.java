@@ -3,16 +3,16 @@ package agvmanager.tcpprotocol.server;
 import eapli.base.agvmanagement.application.AGVManagerController;
 import eapli.base.agvmanagement.application.AGVManagerControllerImpl;
 import eapli.base.communicationprotocol.CommunicationProtocol;
+import eapli.base.dashboardmanagement.DashBoardManagementController;
+import eapli.base.dashboardmanagement.DashBoardManagementControllerImpl;
 
-public class FreeAGVRequest extends AgvManagerProtocolRequest {
+public class DashboardRequest extends AgvManagerProtocolRequest{
+    private DashBoardManagementController dashBoardManagementController = new DashBoardManagementControllerImpl();
 
 
-    private AGVManagerController agvManagerController = new AGVManagerControllerImpl();
-    private String agvID;
+    protected DashboardRequest(AGVManagerController controller) {
+        super(controller, null);
 
-    protected FreeAGVRequest(AGVManagerController controller, String inputData) {
-        super(controller, inputData);
-        agvID=inputData;
     }
 
 
@@ -23,7 +23,7 @@ public class FreeAGVRequest extends AgvManagerProtocolRequest {
 
         // execution
         try{
-            agvManagerController.freeAgv(agvID);
+            dashBoardManagementController.openDashboard();
             response = buildResponse();
         }catch (Exception e){
             response = e.getMessage();
@@ -39,11 +39,11 @@ public class FreeAGVRequest extends AgvManagerProtocolRequest {
 
         byte[] dataLength = CommunicationProtocol.dataLengthCalculator(buildResponse());
         byte[] array = new byte[]{CommunicationProtocol.PROTOCOL_V1,
-                CommunicationProtocol.FREE_AGV_RESPONSE_CODE, dataLength[0], dataLength[1]};
+                CommunicationProtocol.DASHBOARD_TO_AGVMANAGER_RESPONSE_CODE, dataLength[0], dataLength[1]};
         return array;
     }
 
     private String buildResponse() {
-        return String.format("AGV %s was unlinked from the order.", agvID);
+        return String.format("Dashboard communication open successfully");
     }
 }

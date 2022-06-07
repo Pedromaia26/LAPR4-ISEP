@@ -22,8 +22,8 @@ public class AssignAGVService {
         System.setProperty("javax.net.ssl.trustStorePassword", KEYSTORE_PASS);
 
         // Use this certificate and private key for client certificate when requested by the server
-        //System.setProperty("javax.net.ssl.keyStore", TRUSTED_STORE);
-        //System.setProperty("javax.net.ssl.keyStorePassword",KEYSTORE_PASS);
+        System.setProperty("javax.net.ssl.keyStore", TRUSTED_STORE);
+        System.setProperty("javax.net.ssl.keyStorePassword",KEYSTORE_PASS);
 
         SSLSocketFactory sf = (SSLSocketFactory) SSLSocketFactory.getDefault();
 
