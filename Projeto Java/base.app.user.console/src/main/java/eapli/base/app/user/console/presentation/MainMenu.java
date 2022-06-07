@@ -26,6 +26,9 @@ package eapli.base.app.user.console.presentation;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.app.user.console.presentation.order.ViewClientOrdersUI;
 import eapli.base.app.user.console.presentation.product.*;
+import eapli.base.app.user.console.presentation.survey.ClientSurveys;
+import eapli.base.app.user.console.presentation.survey.VerifyClientSurveysUI;
+import eapli.base.app.user.console.presentation.survey.ViewClientSurveysUI;
 import eapli.framework.actions.Actions;
 import eapli.framework.actions.menu.Menu;
 import eapli.framework.actions.menu.MenuItem;
@@ -56,6 +59,7 @@ class MainMenu extends ClientUserBaseUI {
     private static final int PRODUCT_CATALOG = 2;
     private static final int SHOPPING_CART = 3;
     private static final int ORDER = 4;
+    private static final int QUESTIONNAIRES = 5;
 
     //PRODUCT CATALOG
 
@@ -73,6 +77,9 @@ class MainMenu extends ClientUserBaseUI {
 
     //ORDER
     private static final int VIEW_MY_PRODUCT_ORDER = 1;
+
+    //QUESTIONNAIRES
+    private static final int VIEW_MY_QUESTIONNAIRES = 1;
 
     private final AuthorizationService authz =
             AuthzRegistry.authorizationService();
@@ -109,7 +116,13 @@ class MainMenu extends ClientUserBaseUI {
         final Menu buildViewOrderMenu = buildViewOrderMenu();
         mainMenu.addSubMenu(ORDER, buildViewOrderMenu);
 
+        final Menu buildViewQuestionnaireMenu = buildViewQuestionnaireMenu();
+        mainMenu.addSubMenu(QUESTIONNAIRES, buildViewQuestionnaireMenu);
+
         mainMenu.addItem(EXIT_OPTION, "Exit", new ExitWithMessageAction("Bye, Bye"));
+
+        VerifyClientSurveysUI verifyClientSurveysUI = new VerifyClientSurveysUI();
+        verifyClientSurveysUI.doShow();
 
         return mainMenu;
     }
@@ -153,6 +166,16 @@ class MainMenu extends ClientUserBaseUI {
         final Menu menu = new Menu("Order >");
 
         menu.addItem(VIEW_MY_PRODUCT_ORDER, "View my open orders", new ViewClientOrdersUI()::show);
+
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
+    private Menu buildViewQuestionnaireMenu() {
+        final Menu menu = new Menu("Questionnaires >");
+
+        menu.addItem(VIEW_MY_QUESTIONNAIRES, "View my questionnaires", new ClientSurveys()::show);
 
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
