@@ -33,6 +33,7 @@ import eapli.base.orderstatusmanagement.repositories.StatusRepository;
 import eapli.base.productmanagement.repositories.ProductRepository;
 import eapli.base.shoppingcartmanagement.repositories.ShoppingCartLineRepository;
 import eapli.base.shoppingcartmanagement.repositories.ShoppingCartRepository;
+import eapli.base.surveymanagement.repositories.*;
 import eapli.base.taskmanagement.repositories.TaskRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
@@ -125,8 +126,18 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
     }
 
     @Override
+    public AnswerRepository answers() {
+        return new InMemoryAnswerRepository();
+    }
+
+    @Override
     public OrderLineRepository orderlines() {
         return new InMemoryOrderLineRepository();
+    }
+
+    @Override
+    public ContextRepository contexts() {
+        return new InMemoryContextRepository();
     }
 
     @Override
@@ -157,6 +168,21 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
     @Override
     public ShoppingCartLineRepository shoppingCartLines(TransactionalContext autoTx) {
         return new InMemoryShoppingCartLineRepository();
+    }
+
+    @Override
+    public SurveyRepository surveys(TransactionalContext autoTx) {
+        return new InMemorySurveyRepository(autoTx);
+    }
+
+    @Override
+    public SectionRepository sections(TransactionalContext autoTx) {
+        return new InMemorySectionRepository(autoTx);
+    }
+
+    @Override
+    public QuestionRepository questions(TransactionalContext autoTx) {
+        return new InMemoryQuestionRepository(autoTx);
     }
 
     @Override

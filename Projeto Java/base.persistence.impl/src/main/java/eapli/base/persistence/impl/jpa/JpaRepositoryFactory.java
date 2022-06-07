@@ -32,9 +32,11 @@ import eapli.base.orderstatusmanagement.repositories.StatusRepository;
 import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.persistence.impl.inmemory.InMemoryOrderLineRepository;
 import eapli.base.persistence.impl.inmemory.InMemoryOrderRepository;
+import eapli.base.persistence.impl.inmemory.InMemoryShoppingCartLineRepository;
 import eapli.base.productmanagement.repositories.ProductRepository;
 import eapli.base.shoppingcartmanagement.repositories.ShoppingCartLineRepository;
 import eapli.base.shoppingcartmanagement.repositories.ShoppingCartRepository;
+import eapli.base.surveymanagement.repositories.*;
 import eapli.base.taskmanagement.repositories.TaskRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
@@ -109,6 +111,16 @@ public class JpaRepositoryFactory implements RepositoryFactory {
     }
 
     @Override
+    public AnswerRepository answers() {
+        return new JpaAnswerRepository();
+    }
+
+    @Override
+    public ContextRepository contexts() {
+        return new JpaContextRepository();
+    }
+
+    @Override
     public OrderLineRepository orderlines() {
         return new JpaOrderLineRepository();
     }
@@ -141,6 +153,21 @@ public class JpaRepositoryFactory implements RepositoryFactory {
     @Override
     public ShoppingCartLineRepository shoppingCartLines(TransactionalContext autoTx) {
         return new JpaShoppingCartLineRepository(autoTx);
+    }
+
+    @Override
+    public SurveyRepository surveys(TransactionalContext autoTx) {
+        return new JpaSurveyRepository(autoTx);
+    }
+
+    @Override
+    public SectionRepository sections(TransactionalContext autoTx) {
+        return new JpaSectionRepository(autoTx);
+    }
+
+    @Override
+    public QuestionRepository questions(TransactionalContext autoTx) {
+        return new JpaQuestionRepository(autoTx);
     }
 
     @Override

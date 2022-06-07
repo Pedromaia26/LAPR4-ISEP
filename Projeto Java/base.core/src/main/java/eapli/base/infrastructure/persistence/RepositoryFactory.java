@@ -32,9 +32,11 @@ import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.productmanagement.repositories.ProductRepository;
 import eapli.base.shoppingcartmanagement.repositories.ShoppingCartLineRepository;
 import eapli.base.shoppingcartmanagement.repositories.ShoppingCartRepository;
+import eapli.base.surveymanagement.repositories.*;
 import eapli.base.taskmanagement.repositories.TaskRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
+import org.springframework.objenesis.instantiator.android.AndroidSerializationInstantiator;
 
 /**
  * @author Paulo Gandra Sousa
@@ -154,6 +156,20 @@ public interface RepositoryFactory {
      *
      * @return
      */
+    ContextRepository contexts();
+
+    /**
+     * repository will be created in auto transaction mode
+     *
+     * @return
+     */
+    AnswerRepository answers();
+
+    /**
+     * repository will be created in auto transaction mode
+     *
+     * @return
+     */
     StatusRepository status();
 
     /**
@@ -183,6 +199,27 @@ public interface RepositoryFactory {
      * @return
      */
     ShoppingCartLineRepository shoppingCartLines(TransactionalContext autoTx);
+
+    /**
+     * repository will be created in auto transaction mode
+     *
+     * @return
+     */
+    SurveyRepository surveys(TransactionalContext autoTx);
+
+    /**
+     * repository will be created in auto transaction mode
+     *
+     * @return
+     */
+    SectionRepository sections(TransactionalContext autoTx);
+
+    /**
+     * repository will be created in auto transaction mode
+     *
+     * @return
+     */
+    QuestionRepository questions(TransactionalContext autoTx);
 
     /**
      *
