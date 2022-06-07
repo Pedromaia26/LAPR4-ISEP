@@ -71,5 +71,8 @@ public class SurvSectionDTO {
         this.title = title;
         this.sectionDescription = sectionDescription;
         this.obligatoriness = obligatoriness;
+        this.repeatability = repeatability;
+        this.dependent = dependent;
+        this.dependentChoice = dependentChoice;
     }
 }
