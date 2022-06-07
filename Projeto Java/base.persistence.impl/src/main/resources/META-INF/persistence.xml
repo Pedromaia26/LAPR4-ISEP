@@ -26,6 +26,13 @@
     <class>eapli.base.taskmanagement.domain.Task</class>
     <class>eapli.base.shoppingcartmanagement.domain.ShoppingCart</class>
     <class>eapli.base.shoppingcartmanagement.domain.ShoppingCartLine</class>
+    <class>eapli.base.surveymanagement.domain.Survey</class>
+    <class>eapli.base.surveymanagement.domain.SurvSection</class>
+    <class>eapli.base.surveymanagement.domain.Question</class>
+    <class>eapli.base.surveymanagement.domain.ChoiceQuestion</class>
+    <class>eapli.base.surveymanagement.domain.ScalingOptionsQuestion</class>
+    <class>eapli.base.surveymanagement.domain.Context</class>
+    <class>eapli.base.surveymanagement.domain.Answer</class>
 
     <properties>
       <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/base"/>-->
