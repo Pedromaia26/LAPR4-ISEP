@@ -131,5 +131,7 @@ public class ClientUser implements AggregateRoot<VAT> {
         return this.vat;
     }
 
-
+    public Birthday birthday() {
+        return birthday;
+    }
 }
