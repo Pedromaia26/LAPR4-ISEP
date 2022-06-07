@@ -1,20 +1,19 @@
 package eapli.base.surveymanagement.application.eapli.base.surveymanagement.application;
 
 import eapli.base.surveymanagement.domain.*;
-import org.apache.commons.lang3.ObjectUtils;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class SurvVisitor extends SurveyBaseVisitor<Survey> {
     /*** "memory" for our calculator; variable/value pairs go here */
     Survey survey = new Survey();
-    Section section = new Section();
+    SurvSection section = new SurvSection();
     Question question = new Question();
+    ChoiceQuestion cquestion = new ChoiceQuestion();
+    ScalingOptionsQuestion soquestion = new ScalingOptionsQuestion();
     String aux;
     int op;
+    int tq = 0;
     /**
      * ID '=' expr NEWLINE
      */
@@ -40,20 +39,29 @@ public class SurvVisitor extends SurveyBaseVisitor<Survey> {
             visit(ctx.wMessage(0));
         }
         for (int i = 0; i < ctx.section().size(); i++){
-            section = new Section();
+            section = new SurvSection();
             visit(ctx.section(i));
-            Section s;
+            SurvSection s;
             if (section.SectionDescription() != null && section.Repeatability() != null){
-                s = new Section(section.identifier(), section.Title(), section.SectionDescription(), section.Obligatoriness(), section.Repeatability(), section.questions());
+                s = new SurvSection(section.identifier(), section.Title(), section.SectionDescription(), section.Obligatoriness(), section.Repeatability(), section.questions());
+                s.modifyDependent(section.dependent());
+                s.modifyDependentChoice(section.dependentChoice());
             }
             else if (section.SectionDescription() == null && section.Repeatability() != null){
-                s = new Section(section.identifier(), section.Title(), section.Obligatoriness(), section.Repeatability(), section.questions());
+                List<SurveySection> list = new ArrayList<>();
+                s = new SurvSection(section.identifier(), section.Title(), section.Obligatoriness(), section.Repeatability(), section.questions());
+                s.modifyDependent(section.dependent());
+                s.modifyDependentChoice(section.dependentChoice());
             }
             else if (section.SectionDescription() != null && section.Repeatability() == null){
-                s = new Section(section.identifier(), section.Title(), section.SectionDescription(), section.Obligatoriness(), section.questions());
+                s = new SurvSection(section.identifier(), section.Title(), section.SectionDescription(), section.Obligatoriness(), section.questions());
+                s.modifyDependent(section.dependent());
+                s.modifyDependentChoice(section.dependentChoice());
             }
             else{
-                s = new Section(section.identifier(), section.Title(), section.Obligatoriness(), section.questions());
+                s = new SurvSection(section.identifier(), section.Title(), section.Obligatoriness(), section.questions());
+                s.modifyDependent(section.dependent());
+                s.modifyDependentChoice(section.dependentChoice());
             }
             survey.addSection(s);
         }
@@ -106,10 +114,31 @@ public class SurvVisitor extends SurveyBaseVisitor<Survey> {
     @Override
     public Survey visitObli(SurveyParser.ObliContext ctx) {
         if (op == 0){
-            section.modifyVerifyObligatoriness(new VerifyObligatoriness(ctx.getText()));
+            if (ctx.OPTIONAL() != null || ctx.MANDATORY() != null) section.modifyVerifyObligatoriness(new VerifyObligatoriness(ctx.getText()));
+            else {
+                section.modifyVerifyObligatoriness(new VerifyObligatoriness(ctx.CONDITION_DEPENDENT().getText()));
+                op = 3;
+                visit(ctx.otherId());
+                visit(ctx.alphanumeric());
+                section.modifyDependentChoice(aux);
+            }
         }
         else if (op == 1){
-            question.modifyVerifyObligatoriness(new VerifyObligatoriness(ctx.getText()));
+            if (tq == 0 && (ctx.OPTIONAL() != null || ctx.MANDATORY() != null)) question.modifyVerifyObligatoriness(new VerifyObligatoriness(ctx.getText()));
+            else if (tq == 0) question.modifyVerifyObligatoriness(new VerifyObligatoriness(ctx.CONDITION_DEPENDENT().getText()));
+            else if (tq == 1 && (ctx.OPTIONAL() != null || ctx.MANDATORY() != null)) soquestion.modifyVerifyObligatoriness(new VerifyObligatoriness(ctx.getText()));
+            else if (tq == 1) soquestion.modifyVerifyObligatoriness(new VerifyObligatoriness(ctx.CONDITION_DEPENDENT().getText()));
+            else if (tq == 2 && (ctx.OPTIONAL() != null || ctx.MANDATORY() != null)) cquestion.modifyVerifyObligatoriness(new VerifyObligatoriness(ctx.getText()));
+            else cquestion.modifyVerifyObligatoriness(new VerifyObligatoriness(ctx.CONDITION_DEPENDENT().getText()));
+
+            if (ctx.CONDITION_DEPENDENT() != null){
+                op = 2;
+                visit(ctx.otherId());
+                visit(ctx.alphanumeric());
+                if (tq == 0) question.modifyDependentChoice(aux);
+                else if (tq == 1) soquestion.modifyDependentChoice(aux);
+                else cquestion.modifyDependentChoice(aux);
+            }
         }
         return survey;
     }
@@ -135,7 +164,9 @@ public class SurvVisitor extends SurveyBaseVisitor<Survey> {
             section.modifySectionDescription(new SectionDescription(wMessage.toString()));
         }
         else if (op == 3){
-            question.modifyInstruction(new Message(wMessage.toString()));
+            if (tq == 0) question.modifyInstruction(new Message(wMessage.toString()));
+            else if (tq == 1) soquestion.modifyInstruction(new Message(wMessage.toString()));
+            else cquestion.modifyInstruction(new Message(wMessage.toString()));
         }
         return survey; // return child expr's value
     }
@@ -161,15 +192,60 @@ public class SurvVisitor extends SurveyBaseVisitor<Survey> {
         }
         for (int i = 0; i < ctx.content().size(); i++){
             question = new Question();
+            soquestion = new ScalingOptionsQuestion();
+            cquestion = new ChoiceQuestion();
             visit(ctx.content(i));
-            Question q;
-            if (question.Instruction() == null){
-                q = new Question(question.identifier(), question.QuestionText(), question.QuestionType(), question.Obligatoriness(), question.ExtraInfo());
+            if (tq == 0){
+                Question q;
+                if (question.Instruction() == null){
+                    q = new Question(question.identifier(), question.QuestionText(), question.QuestionType(), question.Obligatoriness(), question.ExtraInfo());
+                    q.modifyDependent(question.dependent());
+                    q.modifyDependentChoice(question.dependentChoice());
+                }
+                else {
+                    q = new Question(question.identifier(), question.QuestionText(), question.Instruction(), question.QuestionType(), question.Obligatoriness(), question.ExtraInfo());
+                    q.modifyDependent(question.dependent());
+                    q.modifyDependentChoice(question.dependentChoice());
+                }
+                section.addQuestion(q);
             }
-            else {
-                q = new Question(question.identifier(), question.QuestionText(), question.Instruction(), question.QuestionType(), question.Obligatoriness(), question.ExtraInfo());
+            else if (tq == 1){
+                ScalingOptionsQuestion q;
+                if (soquestion.Instruction() == null){
+                    q = new ScalingOptionsQuestion(soquestion.identifier(), soquestion.QuestionText(), soquestion.QuestionType(), soquestion.Obligatoriness(), soquestion.ExtraInfo());
+                    q.modifyDependent(question.dependent());
+                    q.modifyDependentChoice(question.dependentChoice());
+                }
+                else {
+                    q = new ScalingOptionsQuestion(soquestion.identifier(), soquestion.QuestionText(), soquestion.Instruction(), soquestion.QuestionType(), soquestion.Obligatoriness(), soquestion.ExtraInfo());
+                    q.modifyDependent(question.dependent());
+                    q.modifyDependentChoice(question.dependentChoice());
+                }
+                for (String quest : soquestion.questions()){
+                    q.addQuestion(quest);
+                }
+                for (String op : soquestion.options()){
+                    q.addOption(op);
+                }
+                section.addQuestion(q);
             }
-            section.addQuestion(q);
+            else{
+                ChoiceQuestion q;
+                if (cquestion.Instruction() == null){
+                    q = new ChoiceQuestion(cquestion.identifier(), cquestion.QuestionText(), cquestion.QuestionType(), cquestion.Obligatoriness(), cquestion.ExtraInfo());
+                    q.modifyDependent(question.dependent());
+                    q.modifyDependentChoice(question.dependentChoice());
+                }
+                else {
+                    q = new ChoiceQuestion(cquestion.identifier(), cquestion.QuestionText(), cquestion.Instruction(), cquestion.QuestionType(), cquestion.Obligatoriness(), cquestion.ExtraInfo());
+                    q.modifyDependent(question.dependent());
+                    q.modifyDependentChoice(question.dependentChoice());
+                }
+                for (String op : cquestion.options()){
+                    q.addOption(op);
+                }
+                section.addQuestion(q);
+            }
         }
         return null;
     }
@@ -180,7 +256,38 @@ public class SurvVisitor extends SurveyBaseVisitor<Survey> {
             section.modifyId(new Identifier(ctx.getText()));
         }
         else if (op == 1){
-            question.modifyId(new Identifier(ctx.getText()));
+            if (tq == 0) question.modifyId(new Identifier(ctx.getText()));
+            else if (tq == 1) soquestion.modifyId(new Identifier(ctx.getText()));
+            else cquestion.modifyId(new Identifier(ctx.getText()));
+        }
+        else{
+            for (SurveySection survey : survey.sections()){
+                SurvSection s = survey.section();
+                for (SectionQuestion q : s.questions()){
+                    if (ctx.getText().equals(q.question().identity().toString())){
+                        if (op == 2){
+                            if (tq == 0) question.modifyDependent(q.question());
+                            else if (tq == 1) soquestion.modifyDependent(q.question());
+                            else cquestion.modifyDependent(q.question());
+                        }
+                        else if (op == 3){
+                            section.modifyDependent(q.question());
+                        }
+                    }
+                }
+            }
+            for (SectionQuestion q : section.questions()){
+                if (ctx.getText().equals(q.question().identity().toString())){
+                    if (op == 2) {
+                        if (tq == 0) question.modifyDependent(q.question());
+                        else if (tq == 1) soquestion.modifyDependent(q.question());
+                        else cquestion.modifyDependent(q.question());
+                    }
+                    else if (op == 3){
+                        section.modifyDependent(q.question());
+                    }
+                }
+            }
         }
         return survey; // return child expr's value
     }
@@ -188,6 +295,7 @@ public class SurvVisitor extends SurveyBaseVisitor<Survey> {
 
     @Override
     public Survey visitContent(SurveyParser.ContentContext ctx) {
+        visit(ctx.type());
         op = 1;
         visit(ctx.otherId());
         visit(ctx.question());
@@ -197,8 +305,8 @@ public class SurvVisitor extends SurveyBaseVisitor<Survey> {
         } catch (NullPointerException e){
             System.out.println("Question " + question.identifier() + " with no instruction.");
         }
-
-        visit(ctx.type());
+        op = 1;
+        visit(ctx.obli());
         return survey; // return child expr's value
     }
 
@@ -208,8 +316,10 @@ public class SurvVisitor extends SurveyBaseVisitor<Survey> {
         visit(ctx.phrase());
         quest.append(aux);
         quest.append(ctx.INTE());
-        question.modifyQuestionText(new QuestionText(quest.toString()));
-        return survey; // return child expr's value
+        if (tq == 0) question.modifyQuestionText(new QuestionText(quest.toString()));
+        else if (tq == 1) soquestion.modifyQuestionText(new QuestionText(quest.toString()));
+        else cquestion.modifyQuestionText(new QuestionText(quest.toString()));
+        return survey;
     }
 
     @Override
@@ -231,11 +341,52 @@ public class SurvVisitor extends SurveyBaseVisitor<Survey> {
     }
 
     @Override
+    public Survey visitOption(SurveyParser.OptionContext ctx) {
+        StringBuilder option = new StringBuilder();
+        visit(ctx.alphanumeric());
+        option.append(aux);
+        try{
+            option.append(ctx.RIGHT_PARENTHESES().getText());
+        } catch (NullPointerException e){
+            System.out.println("Option " + aux + " with invalid format.");
+        }
+        if (ctx.SPACE() != null) {
+            option.append(ctx.SPACE().getText());
+        }
+        visit(ctx.phrase());
+        option.append(aux);
+        aux = option.toString();
+        return survey;
+    }
+
+    @Override
     public Survey visitType(SurveyParser.TypeContext ctx) {
-        question.modifyVerifyQuestionType(new VerifyQuestionType(ctx.getChild(0).getText()));
-        op = 1;
-        visit(ctx.obli());
-        question.modifyExtraInfo(new Message(ctx.getChild(4).getText()));
+        if (ctx.getChild(0).getText().equals("Free-text") || ctx.getChild(0).getText().equals("Numeric")){
+            tq = 0;
+            question.modifyVerifyQuestionType(new VerifyQuestionType(ctx.getChild(0).getText()));
+            question.modifyExtraInfo(new Message(ctx.getChild(ctx.children.size()-1).getText()));
+        }
+        else if (ctx.getChild(0).getText().equals("Scaling Options")){
+            tq = 1;
+            soquestion.modifyVerifyQuestionType(new VerifyQuestionType(ctx.getChild(0).getText()));
+            soquestion.modifyExtraInfo(new Message(ctx.getChild(ctx.children.size()-1).getText()));
+        }
+        else{
+            tq = 2;
+            cquestion.modifyVerifyQuestionType(new VerifyQuestionType(ctx.getChild(0).getText()));
+            cquestion.modifyExtraInfo(new Message(ctx.getChild(ctx.children.size()-1).getText()));
+        }
+
+        for (int i = 0; i < ctx.phrase().size(); i++){
+            visit(ctx.phrase(i));
+            aux += ctx.INTE(i).getText();
+            soquestion.addQuestion(aux);
+        }
+        for (int i = 0; i < ctx.option().size(); i++){
+            visit(ctx.option(i));
+            if (tq == 1) soquestion.addOption(aux);
+            else if (tq == 2) cquestion.addOption(aux);
+        }
         return null;
     }
 
