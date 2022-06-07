@@ -18,7 +18,7 @@ title: phrase
 
 obli:MANDATORY
 |OPTIONAL
-|CONDITION_DEPENDENT
+|CONDITION_DEPENDENT SPACE otherId SPACE alphanumeric
 ;
 
 wMessage: (phrase signal)+
@@ -33,7 +33,7 @@ otherId: INT;
 
 rep: INT;
 
-content: otherId end question end wMessage? end? type end;
+content: otherId end question end wMessage? end? obli end type end;
 
 question: phrase INTE;
 
@@ -46,14 +46,16 @@ signal: COMMA
 | INTE
 | EXCL;
 
-type:FREE_TEXT end obli end FT_TEXT
-| NUMERIC end obli end NUM_TEXT
-|SINGLE_CHOICE end obli end SC_TEXT
-|SINGLE_CHOICE_INPUT end obli end SCI_TEXT
-|MULTIPLE_CHOICE end obli end MC_TEXT
-|MULTIPLE_CHOICE_INPUT end obli end MCI_TEXT
-|SORTING_OPTIONS end obli end SO_TEXT
-|SCALING_OPTIONS end obli end SCO_TEXT
+option: alphanumeric RIGHT_PARENTHESES SPACE? phrase NEWLINE;
+
+type:FREE_TEXT end FT_TEXT
+| NUMERIC end NUM_TEXT
+|SINGLE_CHOICE end (option)+ SC_TEXT
+|SINGLE_CHOICE_INPUT end (option)+ SCI_TEXT
+|MULTIPLE_CHOICE end (option)+ MC_TEXT
+|MULTIPLE_CHOICE_INPUT end (option)+ MCI_TEXT
+|SORTING_OPTIONS end (option)+ SO_TEXT
+|SCALING_OPTIONS end (option)+ (phrase INTE NEWLINE)+ SCO_TEXT
 ;
 
 end: FIM
@@ -93,3 +95,4 @@ INTE:'?';
 ELLIP:'...';
 HIFFEN: '-';
 FIM : ';';
+RIGHT_PARENTHESES: ')';
