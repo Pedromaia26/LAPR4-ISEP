@@ -24,6 +24,7 @@
 package eapli.base.app.user.console.presentation;
 
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
+import eapli.base.app.user.console.presentation.order.CreateOrderUI;
 import eapli.base.app.user.console.presentation.order.ViewClientOrdersUI;
 import eapli.base.app.user.console.presentation.product.*;
 import eapli.base.app.user.console.presentation.survey.ClientSurveys;
@@ -74,6 +75,7 @@ class MainMenu extends ClientUserBaseUI {
     //SHOPPING CART
     private static final int ADD_PRODUCT_SHOPPING_CART = 1;
     private static final int MY_SHOPPING_CART = 2;
+    private static final int CHECKOUT = 3;
 
     //ORDER
     private static final int VIEW_MY_PRODUCT_ORDER = 1;
@@ -156,6 +158,7 @@ class MainMenu extends ClientUserBaseUI {
 
         menu.addItem(ADD_PRODUCT_SHOPPING_CART, "Add a product to shopping cart", new AddProductShoppingCartUI()::show);
         menu.addItem(MY_SHOPPING_CART, "View my shopping cart", new ViewShoppingCartUI()::show);
+        menu.addItem(CHECKOUT, "Checkout", new CreateOrderUI()::show);
 
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
