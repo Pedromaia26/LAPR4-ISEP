@@ -19,7 +19,7 @@ public class ViewClientOrdersUI extends AbstractUI
     protected boolean doShow() {
         String data = theController.getClientOrders();
         String[] order = data.split("#");
-        if (order.length <= 1){
+        if (data.length() < 1){
             System.out.println("No orders.");
         }
         else {
@@ -51,6 +51,7 @@ public class ViewClientOrdersUI extends AbstractUI
                 }
             }
         }
+
 
         return false;
     }

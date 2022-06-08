@@ -10,6 +10,7 @@ public class ContextBootstrapper  extends ContextBootstrapperBase implements Act
     public boolean execute() {
         addContext("When a client place an order.");
         addContext("When a client belongs to an age range.");
+        addContext("When a client order a product.");
         return true;
     }
 }

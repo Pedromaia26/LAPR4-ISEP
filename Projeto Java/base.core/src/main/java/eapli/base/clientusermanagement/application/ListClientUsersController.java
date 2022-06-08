@@ -25,12 +25,15 @@ package eapli.base.clientusermanagement.application;
 
 import eapli.base.clientusermanagement.domain.BillingPostalAddresses;
 import eapli.base.clientusermanagement.domain.ClientUser;
+import eapli.base.clientusermanagement.domain.VAT;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
+import eapli.framework.infrastructure.authz.domain.model.Username;
 
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -39,7 +42,6 @@ import java.util.Set;
  */
 public class ListClientUsersController {
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
-
     private final ClientUserRepository repo = PersistenceContext.repositories().clientUsers();
 
     public Iterable<ClientUser> activeClientUsers() {
@@ -54,5 +56,24 @@ public class ListClientUsersController {
 
     public Set<String> deliveringAddressOfAClient(String clientVat){
         return repo.findByVAT(clientVat).getDeleveringPostalAddresses().deliveringAddress();
+    }
+
+    public Set<String> deliveringAddressOfAClient(){
+
+        return repo.findByVAT(getUserSessionVat().vat()).getDeleveringPostalAddresses().deliveringAddress();
+    }
+
+    public Set<String> billingAddressOfAClient(){
+        return repo.findByVAT(getUserSessionVat().vat()).getBillingPostalAddresses().billingAddress();
+    }
+
+    private VAT getUserSessionVat(){
+        return getUser().identity();
+    }
+
+    private ClientUser getUser(){
+        Username username = authz.session().get().authenticatedUser().username();
+        Optional<ClientUser> client = repo.findByUsername(username);
+        return client.get();
     }
 }
