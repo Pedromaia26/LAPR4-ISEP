@@ -1,6 +1,7 @@
 package eapli.base.surveymanagement.domain;
 
 import eapli.base.clientusermanagement.domain.ClientUser;
+import eapli.base.productmanagement.domain.Product;
 import eapli.base.surveymanagement.domain.dto.SurveyDTO;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
@@ -56,6 +57,9 @@ public class Survey implements AggregateRoot<SurveyIdentifier> {
                     column = @Column(name = "MaximumAge")),
     })
     private Age maxAge;
+
+    @ManyToOne
+    private Product product;
 
     public Message getWelcomeMessage() {
         return welcomeMessage;
@@ -184,6 +188,14 @@ public class Survey implements AggregateRoot<SurveyIdentifier> {
 
     public void modifyMaxAge(Age maxAge) {
         this.maxAge = maxAge;
+    }
+
+    public Product product() {
+        return product;
+    }
+
+    public void modifyProduct(Product product) {
+        this.product = product;
     }
 
     public SurveyDTO toDTO(){
