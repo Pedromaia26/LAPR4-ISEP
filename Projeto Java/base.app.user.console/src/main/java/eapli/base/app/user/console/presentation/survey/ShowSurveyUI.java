@@ -161,9 +161,11 @@ public class ShowSurveyUI  extends AbstractUI {
         }
         else if (type.equals("Sorting Options")){
             String a;
+            int num;
             for (int i = 0; i < question.options.size(); i++){
                 do{
-                    a = Console.readLine("Choose one of the options for position " + i+1 + ": ");
+                    num = i + 1;
+                    a = Console.readLine("Choose one of the options for position " + num + ": ");
                     invalidAnswer = verifyAnswer(a, question.options, qobli, sobli);
                     if (!invalidAnswer) System.out.println("The answer is not valid! Please try again!");
                 } while (!invalidAnswer);

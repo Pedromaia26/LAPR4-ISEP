@@ -361,6 +361,7 @@ public class SurvVisitor extends SurveyBaseVisitor<Survey> {
 
     @Override
     public Survey visitType(SurveyParser.TypeContext ctx) {
+        System.out.println(ctx.getChild(0).getText());
         if (ctx.getChild(0).getText().equals("Free-text") || ctx.getChild(0).getText().equals("Numeric")){
             tq = 0;
             question.modifyVerifyQuestionType(new VerifyQuestionType(ctx.getChild(0).getText()));
