@@ -28,6 +28,10 @@ public class CreateSurveyUI extends AbstractUI {
                     final String maxAge = Console.readLine("Maximum age: ");
                     theController.createSurvey(file, Long.parseLong(context), Integer.parseInt(minAge), Integer.parseInt(maxAge));
                 }
+                else if (Long.parseLong(context) == 3){
+                    final String productInternalCode = Console.readLine("Product internal code: ");
+                    theController.createSurvey(file, Long.parseLong(context), productInternalCode);
+                }
                 else{
                     theController.createSurvey(file, Long.parseLong(context));
                 }
