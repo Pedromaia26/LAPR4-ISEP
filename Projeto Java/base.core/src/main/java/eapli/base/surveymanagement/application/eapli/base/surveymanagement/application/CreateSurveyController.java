@@ -5,6 +5,7 @@ import java.io.*;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.ordermanagement.domain.Quantity;
 import eapli.base.productmanagement.domain.Product;
+import eapli.base.productmanagement.repositories.ProductRepository;
 import eapli.base.shoppingcartmanagement.domain.ShoppingCart;
 import eapli.base.shoppingcartmanagement.domain.ShoppingCartLine;
 import eapli.base.surveymanagement.domain.*;
@@ -34,6 +35,7 @@ public class CreateSurveyController implements ANTLRErrorListener{
     private final SectionRepository sectionRepository = PersistenceContext.repositories().sections(txCtx);
     private final QuestionRepository questionRepository = PersistenceContext.repositories().questions(txCtx);
     private final ContextRepository contextRepository = PersistenceContext.repositories().contexts();
+    private final ProductRepository productRepository = PersistenceContext.repositories().products();
 
     public Survey createSurvey(final String file, final Long context) throws IOException {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_MANAGER, BaseRoles.POWER_USER, BaseRoles.ADMIN);
@@ -66,6 +68,31 @@ public class CreateSurveyController implements ANTLRErrorListener{
         Survey survey = parseSurvey(file);
         survey.modifyMinAge(new Age(minAge));
         survey.modifyMaxAge(new Age(maxAge));
+        survey.modifyContext(contextRepository.findContextById(context));
+        try{
+            txCtx.beginTransaction();
+            for (SurveySection s : survey.sections()){
+                for (SectionQuestion q : s.section().questions()){
+                    questionRepository.save(q.question());
+                }
+                sectionRepository.save(s.section());
+            }
+            surveyRepository.save(survey);
+            txCtx.commit();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            txCtx.rollback();
+            throw new IllegalArgumentException();
+        }
+
+        return survey;
+    }
+
+    public Survey createSurvey(final String file, final Long context, final String productCode) throws IOException {
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_MANAGER, BaseRoles.POWER_USER, BaseRoles.ADMIN);
+
+        Survey survey = parseSurvey(file);
+        survey.modifyProduct(productRepository.findByCode(productCode));
         survey.modifyContext(contextRepository.findContextById(context));
         try{
             txCtx.beginTransaction();
