@@ -74,8 +74,11 @@ public class ViewClientOrdersService {
             sOut.write(clientVat.getBytes());
 
             byte[] array_response = sIn.readNBytes(4);
+            int first= array_response[2] & 0xFF;
+            int second= array_response[3] & 0xFF;
 
-            int dataLength2 = array_response[2] + 256 * array_response[3];
+
+            int dataLength2 = first + 256 * second;
             byte[] data = sIn.readNBytes(dataLength2);
 
             String parsedData = new String(data);
