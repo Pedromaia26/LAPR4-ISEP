@@ -25,6 +25,7 @@ optional
 Multiple-Choice with input value
 A) Sim
 B) Nao
+C) Indiferente
 very similar to the multiple choice, but the last option, if selected, implies that the person must type a numeric value or a free text.
 2
 Question 2?
@@ -41,4 +42,13 @@ B) Disagree
 Quantos anos tens?
 O ed, pf e rodrigo sao lindos?
 it means the person answers the question by selecting a value of a given scale (e.g.: unimportant, neutral, important) to each of the specified options.
+5
+Question 5?
+Yes or no.
+mandatory
+Sorting Options
+A) Porto
+B) Benfica
+C) Sporting
+given two or more option the person answers the question by sorting the options as desired and in accordance with the instructions provided.
 FIM.;
