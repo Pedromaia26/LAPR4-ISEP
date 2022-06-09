@@ -45,7 +45,7 @@ public class ShowSurveyUI  extends AbstractUI {
                         validDependecy = theAController.isDependencyValid(question.dependent, question.dependentChoice);
                     }
                     if (validDependecy) {
-                        if (question.obligatoriness.equals("optional") || section.obligatoriness.equals("optional")) {
+                        if (question.obligatoriness.equals("optional") && section.obligatoriness.equals("optional")) {
                             System.out.println(question.questionText + " " + "(optional)");
                         } else {
                             System.out.println(question.questionText);
