@@ -2,5 +2,5 @@ package eapli.base.dashboardmanagement;
 
 public interface DashBoardManagementController {
 
-    public void openDashboard();
+    public StringBuilder openDashboard();
 }
