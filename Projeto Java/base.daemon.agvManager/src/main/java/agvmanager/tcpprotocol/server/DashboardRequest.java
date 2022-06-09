@@ -8,7 +8,7 @@ import eapli.base.dashboardmanagement.DashBoardManagementControllerImpl;
 
 public class DashboardRequest extends AgvManagerProtocolRequest{
     private DashBoardManagementController dashBoardManagementController = new DashBoardManagementControllerImpl();
-
+    String response;
 
     protected DashboardRequest(AGVManagerController controller) {
         super(controller, null);
@@ -19,12 +19,14 @@ public class DashboardRequest extends AgvManagerProtocolRequest{
     @Override
     public String execute() {
 
-        String response;
+
 
         // execution
         try{
-            dashBoardManagementController.openDashboard();
-            response = buildResponse();
+
+            response= String.valueOf(dashBoardManagementController.openDashboard());
+
+            //response = buildResponse();
         }catch (Exception e){
             response = e.getMessage();
 
@@ -37,7 +39,7 @@ public class DashboardRequest extends AgvManagerProtocolRequest{
     @Override
     public byte[] outputProtocol() {
 
-        byte[] dataLength = CommunicationProtocol.dataLengthCalculator(buildResponse());
+        byte[] dataLength = CommunicationProtocol.dataLengthCalculator(response);
         byte[] array = new byte[]{CommunicationProtocol.PROTOCOL_V1,
                 CommunicationProtocol.DASHBOARD_TO_AGVMANAGER_RESPONSE_CODE, dataLength[0], dataLength[1]};
         return array;
