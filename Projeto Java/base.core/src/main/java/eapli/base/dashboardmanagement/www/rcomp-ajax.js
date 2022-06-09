@@ -20,19 +20,10 @@ function loadWarehouse() {
         vWarehouse.style.color="red";
         setTimeout(loadWarehouse, 15000);
     };
-
     request.open("GET", "/warehouse", true);
-    request.timeout = 5000;
+    request.timeout = 15000;
     request.send();
-}
-
-function voteFor(option) {
-	var request = new XMLHttpRequest();
-  	request.open("PUT", "/votes/" + option , true);
-  	request.send();
-    var vWarehouse=document.getElementById("warehouse");
-    vBoard.innerHTML = vBoard.innerHTML + "<p>Casting your vote ... Please wait.";
 
 }
+
 	
-
