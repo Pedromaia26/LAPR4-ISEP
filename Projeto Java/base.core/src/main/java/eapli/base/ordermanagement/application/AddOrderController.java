@@ -22,6 +22,7 @@ import eapli.base.shoppingcartmanagement.domain.Line;
 import eapli.base.shoppingcartmanagement.domain.ShoppingCart;
 import eapli.base.shoppingcartmanagement.domain.ShoppingCartLine;
 import eapli.base.shoppingcartmanagement.repositories.ShoppingCartRepository;
+import eapli.base.surveymanagement.application.VerifyClientSurveysController;
 import eapli.base.taskmanagement.application.TasksListService;
 import eapli.base.taskmanagement.domain.Task;
 import eapli.base.usermanagement.domain.BaseRoles;
@@ -47,6 +48,7 @@ public class AddOrderController {
     private TasksListService svcTask = new TasksListService();
     private AGVListService svcAGV = new AGVListService();
     private final AssignAGVService assignAGVService = new AssignAGVService();
+    private final VerifyClientSurveysController verifyClientSurveysController = new VerifyClientSurveysController();
     private AGV agv;
 
     public ProductOrder addOrder(final String clientvat) {
@@ -92,6 +94,11 @@ public class AddOrderController {
 
         addOrder(getUserSessionVat().vat(), order, deliveringPostalAddress, billingPostalAddress,
                 shipmentMethod, shipmentCost, paymentMethod);
+
+        verifyClientSurveysController.clientToAnswerSurveyOrder();
+        for (OrderLine orderLine : orderLineRepository.findOrderLinesByOrderId(order.identity())){
+            verifyClientSurveysController.clientToAnswerSurveyProduct(orderLine.Product().Reference().toString());
+        }
 
         return true;
     }
