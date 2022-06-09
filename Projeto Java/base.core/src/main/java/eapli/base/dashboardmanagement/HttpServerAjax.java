@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +21,8 @@ import java.util.List;
 public class HttpServerAjax {
     static private final String BASE_FOLDER="base.core/src/main/java/eapli/base/dashboardmanagement/www";
     static private SSLServerSocket sock;
-    static private int PORT = 80;
-    private static final String TRUSTED_STORE = "certificates/server.jks";
+    static private int PORT = 8000;
+    private static final String TRUSTED_STORE = "certificates/httpserver.jks";
     private static final String KEYSTORE_PASS = "Password1";
     private static final Logger LOGGER = LogManager.getLogger(HttpServerAjax.class);
 
@@ -30,7 +31,7 @@ public class HttpServerAjax {
         SSLSocket cliSock;
 
 
-        //Trust the cert provided by authorized clients
+       //Trust the cert provided by authorized clients
 
         System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE);
         System.setProperty("javax.net.ssl.trustStorePassword",KEYSTORE_PASS);
@@ -40,66 +41,38 @@ public class HttpServerAjax {
         System.setProperty("javax.net.ssl.keyStore",TRUSTED_STORE);
         System.setProperty("javax.net.ssl.keyStorePassword",KEYSTORE_PASS);
 
-        SSLServerSocketFactory sslF = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
+
 
 
 
         try {
-
+            SSLServerSocketFactory sslF = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
             sock = (SSLServerSocket) sslF.createServerSocket(PORT);
-            //sock=new ServerSocket(PORT);
 
-           // sock.setNeedClientAuth(true);
-            Desktop desktop = java.awt.Desktop.getDesktop();
-            URI url = new URI ("https://127.0.0.1:80/");
-            desktop.browse(url);
         }
         catch(IOException ex) {
             System.out.println("Server failed to open local port " + PORT);
             System.exit(1);
         }
+      /*      Desktop desktop = java.awt.Desktop.getDesktop();
+        try {
+            URI url = new URI ("https://127.0.0.1:8000/");
+            desktop.browse(url);
+        }catch ( URISyntaxException e){
+            System.out.println("Error openimg the browser");
+        }*/
 
-        new ReceiveInfoHandler().start();
+
         while(true) {
 
 
 
             cliSock= (SSLSocket) sock.accept();
-
-
             HttpAjaxRequest req=new HttpAjaxRequest(cliSock, BASE_FOLDER);
             req.start();
 
         }
     }
-
-    private static class ReceiveInfoHandler extends Thread {
-
-
-        private final DashboardAgvManagerService service= new DashboardAgvManagerService();
-
-        public ReceiveInfoHandler() {
-
-        }
-
-        @Override
-        public void run() {
-            while (true) {
-                try {
-                        service.assignAGVService();
-
-                    Thread.sleep(15 * 1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-
-
-        }
-    }
-
-
-
 
 
     private static int length;
@@ -109,7 +82,10 @@ public class HttpServerAjax {
     private static List<Long> aisles = new ArrayList<>();
     private static List<String> agvs = new ArrayList<>();
 
-    public static synchronized String getWarehousePlantInHTML() {
+    public static synchronized String getWarehousePlantInHTML(String html) {
+
+        changeDimensions(html.substring(12));
+
         boolean agvD = false;
         boolean isAisle = false;
         boolean isAislelimit = false;
