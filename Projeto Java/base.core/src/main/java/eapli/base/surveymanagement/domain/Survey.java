@@ -199,11 +199,17 @@ public class Survey implements AggregateRoot<SurveyIdentifier> {
     }
 
     public SurveyDTO toDTO(){
-        if (welcomeMessage == null){
+        if (welcomeMessage == null && minAge != null){
             return new SurveyDTO(id.toString(), title.toString(), finalMessage.toString(), minAge.age(), maxAge.age());
         }
-        else{
+        else if (welcomeMessage != null && minAge != null){
             return new SurveyDTO(id.toString(), title.toString(), welcomeMessage.toString(), finalMessage.toString(), minAge.age(), maxAge.age());
+        }
+        else if (welcomeMessage != null && minAge == null){
+            return new SurveyDTO(id.toString(), title.toString(), welcomeMessage.toString(), finalMessage.toString());
+        }
+        else{
+            return new SurveyDTO(id.toString(), title.toString(), finalMessage.toString());
         }
     }
 }

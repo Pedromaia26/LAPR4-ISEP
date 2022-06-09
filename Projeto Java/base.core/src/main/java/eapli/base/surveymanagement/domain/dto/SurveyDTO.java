@@ -39,4 +39,16 @@ public class SurveyDTO {
         this.maxAge = maxAge;
     }
 
+    public SurveyDTO(String identifier, String title, String welcomeMessage, String finalMessage){
+        this.id = identifier;
+        this.title = title;
+        this.welcomeMessage = welcomeMessage;
+        this.finalMessage = finalMessage;
+    }
+
+    public SurveyDTO(String identifier, String title, String finalMessage){
+        this.id = identifier;
+        this.title = title;
+        this.finalMessage = finalMessage;
+    }
 }
