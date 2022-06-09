@@ -17,6 +17,7 @@ public class AgvManagerTcpServer {
 
     private static final Logger LOGGER = LogManager.getLogger(AgvManagerTcpServer.class);
     private static final String TRUSTED_STORE_SERVER = "certificates/server.jks";
+    private static final String TRUSTED_STORE_HTTPSERVER = "certificates/httpserver.jks";
     private static final String TRUSTED_STORE_CLIENT = "certificates/client.jks";
     private static final String KEYSTORE_PASS = "Password1";
 
@@ -105,6 +106,11 @@ public class AgvManagerTcpServer {
 
         System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE_CLIENT);
         System.setProperty("javax.net.ssl.trustStorePassword",KEYSTORE_PASS);
+
+
+        System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE_HTTPSERVER);
+        System.setProperty("javax.net.ssl.trustStorePassword",KEYSTORE_PASS);
+
 
 
         //Use this certificate and private key as Server certificate
