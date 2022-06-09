@@ -35,6 +35,7 @@ import eapli.base.app.backoffice.console.presentation.order.UpdateOrderDelivered
 import eapli.base.app.backoffice.console.presentation.order.UpdateOrderDispatchedUI;
 import eapli.base.app.backoffice.console.presentation.product.*;
 import eapli.base.app.backoffice.console.presentation.survey.CreateSurveyUI;
+import eapli.base.app.backoffice.console.presentation.survey.SeeReportStatisticUI;
 import eapli.base.app.backoffice.console.presentation.warehouse.JsonImporterUI;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
@@ -129,6 +130,7 @@ public class MainMenu extends AbstractUI {
 
     //Survey
     private static final int CREATE_SURVEY = 1;
+    private static final int STATISTIC_SURVEY = 2;
 
     //Dashboard
     private static final int DASHBOARD = 6;
@@ -341,6 +343,7 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("Survey >");
 
         menu.addItem(CREATE_SURVEY, "Create Survey", new CreateSurveyUI()::show);
+        menu.addItem(STATISTIC_SURVEY, "Statistical report of a survey", new SeeReportStatisticUI()::show);
 
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
