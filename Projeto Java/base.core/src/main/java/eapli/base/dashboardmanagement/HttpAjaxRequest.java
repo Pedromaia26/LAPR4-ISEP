@@ -11,98 +11,79 @@ import java.util.Arrays;
 
 public class HttpAjaxRequest extends Thread {
 	String baseFolder;
-	Socket sock;
+	SSLSocket sock;
 	DataInputStream inS;
 	DataOutputStream outS;
 	private static final Logger LOGGER = LogManager.getLogger(HttpAjaxRequest.class);
+	private static final DashboardAgvManagerService service = new DashboardAgvManagerService();
 
-	public HttpAjaxRequest(Socket s, String f) throws IOException {
-		baseFolder=f; sock=s;
+	public HttpAjaxRequest(SSLSocket s, String f) throws IOException {
+		baseFolder = f;
+		sock = s;
 	}
-    
+
 	public void run() {
 		try {
-		/*	InetAddress clientIP;
-
-
-			clientIP = sock.getInetAddress();
-			LOGGER.trace("New client connection from " + clientIP.getHostAddress() +
-					", port number " + sock.getPort());
-*/
 			outS = new DataOutputStream(sock.getOutputStream());
 			inS = new DataInputStream(sock.getInputStream());
 
 
-
-		} catch(IOException ex) { System.out.println("Thread error on data streams creation"); }
+		} catch (IOException ex) {
+			System.out.println("Thread error on data streams creation");
+		}
 		try {
 
-			/*byte [] array_comm_test = inS.readNBytes(4);
-			System.out.println("AAAA");
-			System.out.println(new String(array_comm_test));
-			InputMessage.parseMessage(array_comm_test, inS, outS);
-			LOGGER.debug("Response from initial request sent\n");*/
+				HTTPmessage request =  new HTTPmessage(inS);
+				HTTPmessage response = new HTTPmessage();
 
-			HTTPmessage request = null;
-			try {
-				request = new HTTPmessage(inS);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			HTTPmessage response = new HTTPmessage();
 
-			if(request.getMethod().equals("GET")) {
-				if(request.getURI().equals("/warehouse")) {
-					response.setContentFromString(
-							HttpServerAjax.getWarehousePlantInHTML(), "text/html");
-					response.setResponseStatus("200 Ok");
-				}
-				else {
-					String fullname=baseFolder + "/";
-					if(request.getURI().equals("/")) fullname=fullname+"index.html";
-					else{
-						fullname=baseFolder;
-						fullname=fullname+request.getURI();
-					}
-					if(response.setContentFromFile(fullname)) {
-						response.setResponseStatus("200 Ok");
-					}
-					else {
+				if (request.getMethod().equals("GET")) {
+					if (request.getURI().equals("/warehouse")) {
+
+						String html = service.assignAGVService();
 						response.setContentFromString(
-								"<html><body><h1>404 File not found</h1></body></html>",
-								"text/html");
-						response.setResponseStatus("404 Not Found");
+								HttpServerAjax.getWarehousePlantInHTML(html), "text/html");
+
+						response.setResponseStatus("200 Ok");
+					} else {
+
+						String fullname = baseFolder + "/";
+						if (request.getURI().equals("/")) fullname = fullname + "index.html";
+						else {
+							fullname = fullname + request.getURI();
+						}
+						if (response.setContentFromFile(fullname)) {
+							response.setResponseStatus("200 Ok");
+						} else {
+							response.setContentFromString(
+									"<html><body><h1>404 File not found</h1></body></html>",
+									"text/html");
+							response.setResponseStatus("404 Not Found");
+						}
 					}
-				}
-			}
-			else { // NOT GET
-				if(request.getMethod().equals("PUT")
-						&& request.getURI().startsWith("/dimensions/")) {
-					HttpServerAjax.changeDimensions(request.getURI().substring(12));
-					response.setResponseStatus("200 Ok");
-				}
-				else {
+					response.send(outS);
+				} else { // NOT GET
+
 					response.setContentFromString(
 							"<html><body><h1>ERROR: 405 Method Not Allowed</h1></body></html>",
 							"text/html");
 					response.setResponseStatus("405 Method Not Allowed");
+
+					response.send(outS);
 				}
-			}
-			response.send(outS);
 
-
-		/*	byte [] array_end_of_session = inS.readNBytes(4);
-		//	System.out.println(Arrays.toString(array_end_of_session));
-			LOGGER.debug("End of session request");
-			InputMessage.parseMessage(array_end_of_session, inS, outS);
-			LOGGER.debug("End of session request received\n");*/
 
 			} catch (IOException e) {
-				e.printStackTrace();
+			System.out.println(e.getMessage());
 			}
-		try { sock.close();}
-		catch(IOException ex) { System.out.println("CLOSE IOException"); }
+			try {
+				sock.close();
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
+			}
 
-		}
+
 	}
+}
+
 
