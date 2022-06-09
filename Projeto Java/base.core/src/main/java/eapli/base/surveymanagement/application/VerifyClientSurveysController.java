@@ -152,4 +152,32 @@ public class VerifyClientSurveysController {
         }
         return false;
     }
+
+    public boolean clientToAnswerSurveyOrder(){
+        txCtx.beginTransaction();
+        ClientUser user = getUser();
+        for (Survey survey : surveyRepository.findAll()){
+            if (survey.context().identity().equals(1L)){
+                survey.addClientUserToAnswer(user);
+                surveyRepository.save(survey);
+            }
+        }
+        txCtx.commit();
+        return true;
+    }
+
+    public boolean clientToAnswerSurveyProduct(String productReference){
+        txCtx.beginTransaction();
+        ClientUser user = getUser();
+        for (Survey survey : surveyRepository.findAll()){
+            if (survey.context().identity().equals(3L)){
+                if (survey.product().Reference().toString().equals(productReference)){
+                    survey.addClientUserToAnswer(user);
+                    surveyRepository.save(survey);
+                }
+            }
+        }
+        txCtx.commit();
+        return true;
+    }
 }
