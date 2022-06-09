@@ -10,17 +10,20 @@ import java.util.Arrays;
 public class DashboardAgvManagerService {
     private InetAddress serverIP;
     private SSLSocket sock;
-    private static final String TRUSTED_STORE = "certificates/server.jks";
+    private static final String TRUSTED_STORE_SERVER = "certificates/server.jks";
+    private static final String TRUSTED_STORE_CLIENT = "certificates/httpserver.jks";
     private static final String KEYSTORE_PASS = "Password1";
 
-    public boolean assignAGVService() {
+    private String response;
 
-        //Trust this cert provided by server
-        System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE);
+    public String assignAGVService() {
+
+      //Trust this cert provided by server
+        System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE_SERVER);
         System.setProperty("javax.net.ssl.trustStorePassword", KEYSTORE_PASS);
 
         // Use this certificate and private key for client certificate when requested by the server
-        System.setProperty("javax.net.ssl.keyStore", TRUSTED_STORE);
+         System.setProperty("javax.net.ssl.keyStore", TRUSTED_STORE_CLIENT);
         System.setProperty("javax.net.ssl.keyStorePassword",KEYSTORE_PASS);
 
         SSLSocketFactory sf = (SSLSocketFactory) SSLSocketFactory.getDefault();
@@ -28,7 +31,7 @@ public class DashboardAgvManagerService {
 
         try {
             try {
-                serverIP = InetAddress.getByName("127.0.0.1");
+                serverIP = InetAddress.getByName("localhost");
             } catch (UnknownHostException ex) {
                 System.out.println("Invalid server specified");
                 System.exit(1);
@@ -62,11 +65,11 @@ public class DashboardAgvManagerService {
 
 
             sock.close();
-            return true;
+            return response;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Server down");
-            return false;
+            return "error in DashboardAgvManagerService";
         }
     }
 
@@ -86,12 +89,18 @@ public class DashboardAgvManagerService {
             byte[] array = new byte[]{1, 110, 0, 0};
             sOut.write(array);
             byte[] array_response = sIn.readNBytes(4);
-            int dataLength = array_response[2] + 256 * array_response[3];
+            int first= array_response[2] & 0xFF;
+            int second= array_response[3] & 0xFF;
+
+
+            int dataLength = first + 256 * second;
             byte[] data = sIn.readNBytes(dataLength);
-            String parsedData = new String(data);
-            System.out.println("respdams: "+parsedData);
+            response = new String(data);
+            System.out.println("respdams: "+response);
             return true;
         }catch(Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
             return false;
         }
     }
