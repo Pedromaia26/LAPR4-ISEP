@@ -74,8 +74,9 @@ class MainMenu extends ClientUserBaseUI {
 
     //SHOPPING CART
     private static final int ADD_PRODUCT_SHOPPING_CART = 1;
-    private static final int MY_SHOPPING_CART = 2;
-    private static final int CHECKOUT = 3;
+    private static final int REMOVE_PRODUCT_SHOPPING_CART = 2;
+    private static final int MY_SHOPPING_CART = 3;
+    private static final int CHECKOUT = 4;
 
     //ORDER
     private static final int VIEW_MY_PRODUCT_ORDER = 1;
@@ -157,6 +158,7 @@ class MainMenu extends ClientUserBaseUI {
        final Menu menu = new Menu("Shopping cart >");
 
         menu.addItem(ADD_PRODUCT_SHOPPING_CART, "Add a product to shopping cart", new AddProductShoppingCartUI()::show);
+        menu.addItem(REMOVE_PRODUCT_SHOPPING_CART, "Remove a product from the shopping cart", new RemoveProductShoppingCartUI()::show);
         menu.addItem(MY_SHOPPING_CART, "View my shopping cart", new ViewShoppingCartUI()::show);
         menu.addItem(CHECKOUT, "Checkout", new CreateOrderUI()::show);
 

@@ -9,6 +9,7 @@ import eapli.base.ordermanagement.application.AddOrderLineController;
 import eapli.base.ordermanagement.application.UpdateOrderStatusController;
 import eapli.base.ordermanagement.domain.ProductOrder;
 import eapli.base.productmanagement.application.ListProductController;
+import eapli.base.shoppingcartmanagement.application.RemoveProductShoppingCartController;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
 import org.apache.commons.lang3.ObjectUtils;
@@ -28,6 +29,7 @@ public class CreateOrderUI  extends AbstractUI {
     private final AddOrderLineController theOrderLineController = new AddOrderLineController();
     private final ListProductController theLController = new ListProductController();
     private final ListClientUsersController theUserController = new ListClientUsersController();
+    private final RemoveProductShoppingCartController removeController = new RemoveProductShoppingCartController();
     private boolean invalidData, invalidProduct, invalidShipMethod = true, invalidPaymentMethod = true;
     UpdateOrderStatusController updateOrderStatusController = new UpdateOrderStatusController();
     private static InetAddress serverIP;
@@ -139,6 +141,7 @@ public class CreateOrderUI  extends AbstractUI {
 
                 try {
                     theOrderController.addOrder(deliveringPostalAddress, billingPostalAddress, shipmentMethod, shipmentCost, paymentMethod);
+                    removeController.removeAllProductShoppingCart();
                 } catch (IllegalArgumentException e) {
                     System.out.println("\n"+ e.getMessage());
                     if (Console.readLine("Do you want to try again? (Y/N)").equals("Y")){

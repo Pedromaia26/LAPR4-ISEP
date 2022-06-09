@@ -53,6 +53,10 @@ public class ShoppingCart implements AggregateRoot<Long> {
         return shoppingCartLines.add(new Line(shoppingCartLine));
     }
 
+    public boolean removeShoppingCartLine(final Line line) {
+        return shoppingCartLines.remove(line);
+    }
+
     public Set<Line> shoppingCartLines() {
         return Collections.unmodifiableSet(shoppingCartLines);
     }
