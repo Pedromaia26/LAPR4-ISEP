@@ -17,7 +17,8 @@ public class AgvDigitalTwinTcpServer {
 
 
     private static final Logger LOGGER = LogManager.getLogger(AgvDigitalTwinTcpServer.class);
-    private static final String TRUSTED_STORE = "certificates/server.jks";
+    private static final String TRUSTED_STORE_SERVER = "certificates/server.jks";
+    private static final String TRUSTED_STORE_CLIENT = "certificates/client.jks";
     private static final String KEYSTORE_PASS = "Password1";
 
     private static class AgvDigitalTwinHandler extends Thread {
@@ -101,12 +102,12 @@ public class AgvDigitalTwinTcpServer {
 
         //Trust the cert provided by authorized clients
 
-        System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE);
+        System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE_CLIENT);
         System.setProperty("javax.net.ssl.trustStorePassword",KEYSTORE_PASS);
 
 
         //Use this certificate and private key as Server certificate
-        System.setProperty("javax.net.ssl.keyStore",TRUSTED_STORE);
+        System.setProperty("javax.net.ssl.keyStore",TRUSTED_STORE_SERVER);
         System.setProperty("javax.net.ssl.keyStorePassword",KEYSTORE_PASS);
 
         SSLServerSocketFactory sslF = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
