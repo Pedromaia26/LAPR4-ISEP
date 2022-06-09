@@ -14,17 +14,18 @@ public class FreeAGVService {
 
     private InetAddress serverIP;
     private SSLSocket sock;
-    private static final String TRUSTED_STORE = "certificates/server.jks";
+    private static final String TRUSTED_STORE_SERVER = "certificates/server.jks";
+    private static final String TRUSTED_STORE_CLIENT = "certificates/client.jks";
     private static final String KEYSTORE_PASS = "Password1";
 
     public boolean freeAgvService(String id) {
 
         //Trust this cert provided by server
-        System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE);
+        System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE_SERVER);
         System.setProperty("javax.net.ssl.trustStorePassword", KEYSTORE_PASS);
 
         // Use this certificate and private key for client certificate when requested by the server
-        System.setProperty("javax.net.ssl.keyStore", TRUSTED_STORE);
+        System.setProperty("javax.net.ssl.keyStore", TRUSTED_STORE_CLIENT);
         System.setProperty("javax.net.ssl.keyStorePassword",KEYSTORE_PASS);
 
         SSLSocketFactory sf = (SSLSocketFactory) SSLSocketFactory.getDefault();
