@@ -39,13 +39,9 @@ public class RemoveProductShoppingCartController {
     }
 
     public boolean removeAllProductShoppingCart(){
-        txCtx.beginTransaction();
         ShoppingCart Cart = repo.findByVat(getUserSessionVat().vat());
-        for (Line line: Cart.shoppingCartLines()){
-            Cart.removeShoppingCartLine(line);
-            repo.save(Cart);
-            repo2.delete(line.shoppingCartLine());
-        }
+        txCtx.beginTransaction();
+        repo.delete(Cart);
         txCtx.commit();
         return false;
     }

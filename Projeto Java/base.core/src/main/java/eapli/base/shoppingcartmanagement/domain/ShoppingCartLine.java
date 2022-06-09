@@ -8,6 +8,7 @@ import eapli.base.productmanagement.domain.Product;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
 import eapli.framework.domain.model.ValueObject;
+import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
 
@@ -18,7 +19,7 @@ public class ShoppingCartLine implements AggregateRoot<Long> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Product product;
 
     @Embedded
