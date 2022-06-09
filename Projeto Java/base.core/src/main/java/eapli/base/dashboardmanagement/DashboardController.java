@@ -27,8 +27,8 @@ public class DashboardController {
 
     public void openDashboard() throws IOException {
        try {
-           Desktop desktop = java.awt.Desktop.getDesktop();
-           URI url = new URI("https://127.0.0.1:80/");
+           Desktop desktop = Desktop.getDesktop();
+           URI url = new URI("https://127.0.0.1:8000/");
            desktop.browse(url);
        }catch (Exception e){
            throw new IllegalArgumentException("Error");
