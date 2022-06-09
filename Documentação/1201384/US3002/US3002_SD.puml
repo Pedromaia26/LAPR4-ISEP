@@ -1,0 +1,166 @@
+@startuml
+autonumber
+actor "Sales Manager" as SC
+participant "//<<presentation>>//\nSeeReportStatisticUI" as UI
+participant "//<<application>>//\nSeeReportStatisticController" as CTRL
+participant "//<<presentation>>//\nviewSurveysUI" as UI2
+participant "//<<application>>//\nSurvey" as SURVEY
+database "//<<repository>>//\nSurveyRepository" as db
+database "//<<repository>>//\nQuestionRepository" as db2
+database "//<<repository>>//\nAnswerRepository" as db3
+
+activate SC
+SC -> UI : wants to get the statistical report of the questionnaire
+activate UI
+
+UI -> UI: doShow()
+
+UI -> UI2: show()
+
+activate UI2
+
+deactivate UI2
+
+UI -> CTRL: getNumberClientsRequested(surveyId)
+
+activate CTRL
+
+CTRL -> SURVEY: clientUsersAnswered()
+
+activate SURVEY
+
+deactivate SURVEY
+
+CTRL -> db: findSurveyById(id)
+
+activate db
+
+deactivate db
+
+deactivate CTRL
+
+UI->CTRL: getQuestions(String id)
+
+activate CTRL
+
+CTRL -> SURVEY: sections()
+
+activate SURVEY
+
+deactivate SURVEY
+
+CTRL -> db: findSurveyById(id)
+
+activate db
+
+deactivate db
+
+deactivate CTRL
+
+UI-> CTRL: getQuestionType(question)
+
+activate CTRL
+
+CTRL->db2 : findQuestionById(id)
+
+activate db2
+
+deactivate db2
+
+deactivate CTRL
+
+UI-> CTRL: getPerChoiceOption(question, op)
+
+activate CTRL
+
+CTRL -> db3: findAll()
+
+activate db3
+
+deactivate db3
+
+deactivate CTRL
+
+UI-> CTRL: getQuestionType(question)
+
+activate CTRL
+
+CTRL->db2 : findQuestionById(id)
+
+activate db2
+
+deactivate db2
+
+deactivate CTRL
+
+UI-> CTRL: getOtherOption(String questionId)
+
+activate CTRL
+
+CTRL -> db3: findAll()
+
+activate db3
+
+deactivate db3
+
+deactivate CTRL
+
+
+
+UI-> CTRL: combinations(ops, data, 0, ops.size()-1, 0, i+1, map, question)
+
+activate CTRL
+
+deactivate CTRL
+
+
+
+UI-> CTRL: getPerPlacedOptions(lugar, question, op)
+
+activate CTRL
+
+CTRL -> db3: findAll()
+
+activate db3
+
+deactivate db3
+
+deactivate CTRL
+
+
+
+UI-> CTRL: getQuestionSOOptions(question)
+
+activate CTRL
+
+CTRL -> db2: findQuestionById(id)
+
+activate db2
+
+deactivate db2
+
+deactivate CTRL
+
+
+
+
+UI-> CTRL: getNumberScaleOption(question, scale, index)
+
+activate CTRL
+
+CTRL -> db3: findAll()
+
+activate db3
+
+deactivate db3
+
+deactivate CTRL
+
+
+
+
+UI --> SC : shows requested data
+deactivate UI
+
+deactivate SC
+@enduml
