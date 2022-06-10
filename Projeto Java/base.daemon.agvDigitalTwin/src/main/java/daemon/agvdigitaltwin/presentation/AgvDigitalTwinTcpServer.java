@@ -2,12 +2,14 @@ package daemon.agvdigitaltwin.presentation;
 
 import agvdigitaltwin.tcpprotocol.server.AgvDigitalTwinProtocolRequest;
 import agvdigitaltwin.tcpprotocol.server.InputMessage;
+import eapli.base.agvmanagement.application.AGVMovement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import java.io.*;
+import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -21,13 +23,16 @@ public class AgvDigitalTwinTcpServer {
     private static final String TRUSTED_STORE_CLIENT = "certificates/client.jks";
     private static final String KEYSTORE_PASS = "Password1";
 
+
+
     private static class AgvDigitalTwinHandler extends Thread {
 
-
+        private final AGVMovement.Methods methods;
         private Socket clientSocket;
 
-        public AgvDigitalTwinHandler(final Socket socket) {
+        public AgvDigitalTwinHandler(final Socket socket, final AGVMovement.Methods methods) {
             this.clientSocket = socket;
+            this.methods = methods;
         }
 
         @Override
@@ -42,12 +47,12 @@ public class AgvDigitalTwinTcpServer {
 
                 byte [] array_comm_test = in.readNBytes(4);
                 LOGGER.debug("Initial request message received");
-                InputMessage.parseMessage(array_comm_test, in, out);
+                InputMessage.parseMessage(array_comm_test, in, out, methods);
                 LOGGER.debug("Response from initial request sent\n");
 
                 byte[] array = in.readNBytes(4);
                 LOGGER.debug("Received message: {}", array);
-                final AgvDigitalTwinProtocolRequest request = InputMessage.parseMessage(array, in, out);
+                final AgvDigitalTwinProtocolRequest request = InputMessage.parseMessage(array, in, out, methods);
                 final String response = request.execute();
                 final byte[] responseByte = request.outputProtocol();
                 out.write(responseByte);
@@ -56,7 +61,7 @@ public class AgvDigitalTwinTcpServer {
 
                 byte [] array_end_of_session = in.readNBytes(4);
                 LOGGER.debug("End of session request");
-                InputMessage.parseMessage(array_end_of_session, in, out);
+                InputMessage.parseMessage(array_end_of_session, in, out, methods);
                 LOGGER.debug("End of session request received\n");
 
             } catch (final IOException e) {
@@ -96,7 +101,7 @@ public class AgvDigitalTwinTcpServer {
      * @param port
      */
     @SuppressWarnings("java:S2189")
-    private void listen(final int port) {
+    private void listen(final int port, final AGVMovement.Methods methods) {
 
         SSLServerSocket serverSocket = null;
 
@@ -123,7 +128,7 @@ public class AgvDigitalTwinTcpServer {
         try {
             while (true) {
                 final var clientSocket = serverSocket.accept();
-                new AgvDigitalTwinHandler(clientSocket).start();
+                new AgvDigitalTwinHandler(clientSocket, methods).start();
             }
         } catch (final IOException e) {
             LOGGER.error(e);
@@ -138,11 +143,11 @@ public class AgvDigitalTwinTcpServer {
      *            if {@code false} the socket runs in its own thread and does not block calling
      *            thread.
      */
-    public void start(final int port, final boolean blocking) {
+    public void start(final int port, final boolean blocking, final AGVMovement.Methods methods) {
         if (blocking) {
-            listen(port);
+            listen(port, methods);
         } else {
-            new Thread(() -> listen(port)).start();
+            new Thread(() -> listen(port, methods)).start();
         }
     }
 }

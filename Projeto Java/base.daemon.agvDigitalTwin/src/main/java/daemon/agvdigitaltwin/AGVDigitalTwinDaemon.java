@@ -2,6 +2,7 @@ package daemon.agvdigitaltwin;
 
 import com.fasterxml.jackson.core.Base64Variant;
 import daemon.agvdigitaltwin.presentation.AgvDigitalTwinTcpServer;
+import eapli.base.agvmanagement.application.AGVMovement;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.usermanagement.domain.BasePasswordPolicy;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
@@ -28,7 +29,7 @@ public class AGVDigitalTwinDaemon {
 
     public static void main(final String[] args) throws UnknownHostException {
 
-
+        AGVMovement.Methods methods = new AGVMovement.Methods();
         LOGGER.info("Configuring the daemon");
         System.out.println(InetAddress.getLocalHost().getHostAddress());
         AuthzRegistry.configure(PersistenceContext.repositories().users(),
@@ -37,7 +38,7 @@ public class AGVDigitalTwinDaemon {
 
         LOGGER.info("Starting the server socket");
         final var server = new AgvDigitalTwinTcpServer();
-        server.start(BOOKING_PORT, true);
+        server.start(BOOKING_PORT, true, methods);
 
         LOGGER.info("Exiting the daemon");
         System.exit(0);
