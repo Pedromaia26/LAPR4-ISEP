@@ -1,10 +1,9 @@
 package agvdigitaltwin.tcpprotocol.server;
 
-import eapli.base.agvmanagement.application.AGVManagerController;
-import eapli.base.agvmanagement.application.AGVManagerControllerImpl;
-import eapli.base.agvmanagement.application.AGVStatusController;
-import eapli.base.agvmanagement.application.AGVStatusControllerImpl;
+import eapli.base.agvmanagement.application.*;
 import eapli.base.communicationprotocol.CommunicationProtocol;
+
+import java.io.IOException;
 
 public class UpdateStatusRequest  extends AgvDigitalTwinProtocolRequest {
 
@@ -12,10 +11,12 @@ public class UpdateStatusRequest  extends AgvDigitalTwinProtocolRequest {
     private Long id;
 
     private AGVStatusController agvStatusController = new AGVStatusControllerImpl();
+    private AGVMovement.Methods methods;
 
-    protected UpdateStatusRequest(AGVManagerController controller, String inputRequest) {
+    protected UpdateStatusRequest(AGVManagerController controller, String inputRequest, AGVMovement.Methods methods) {
         super(controller, inputRequest);
         this.agvID = inputRequest;
+        this.methods = methods;
     }
 
 
@@ -26,6 +27,20 @@ public class UpdateStatusRequest  extends AgvDigitalTwinProtocolRequest {
 
         // execution
         agvStatusController.updateStatus(agvID);
+
+         Runnable r = new Runnable() {
+            public void run() {
+                AGVMovement agvMovement = new AGVMovement();
+                try {
+                    System.out.println(agvID);
+                    Thread.sleep(500);
+                    agvMovement.main(agvID, methods);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        new Thread(r).start();
         // response
         return buildResponse();
 
