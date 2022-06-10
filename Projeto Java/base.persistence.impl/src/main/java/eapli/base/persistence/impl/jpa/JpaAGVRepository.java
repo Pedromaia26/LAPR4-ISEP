@@ -37,7 +37,7 @@ public class JpaAGVRepository extends JpaAutoTxRepository<AGV, AGVIdentifier, AG
     }
 
     @Override
-    public AGV findByOrderId(String id) {
+    public AGV findById(String id) {
         final TypedQuery<AGV> query = super.createQuery(
                 "SELECT d FROM AGV d WHERE id = '" + id + "'",
                 AGV.class);
@@ -52,6 +52,7 @@ public class JpaAGVRepository extends JpaAutoTxRepository<AGV, AGVIdentifier, AG
 
         return query.getResultList();
     }
+
 
 }
 

@@ -18,7 +18,7 @@ public class InMemoryAGVRepository extends InMemoryDomainRepository<AGV, AGVIden
     }
 
     @Override
-    public AGV findByOrderId(String id) {
+    public AGV findById(String id) {
         return null;
     }
 
