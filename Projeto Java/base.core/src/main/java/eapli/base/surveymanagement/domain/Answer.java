@@ -35,6 +35,13 @@ public class Answer implements AggregateRoot<Long> {
         this.question = question;
     }
 
+    public Answer(List<String> answers){
+        if (answers == null){
+            throw new IllegalArgumentException();
+        }
+        this.answers = answers;
+    }
+
     public Answer() {
     }
 
@@ -52,6 +59,10 @@ public class Answer implements AggregateRoot<Long> {
 
     public void addAnswers(String answer) {
         answers.add(answer);
+    }
+
+    public void resetAnswers() {
+        answers = new ArrayList<>();
     }
 
     @Override

@@ -19,6 +19,7 @@ public class ShowSurveyUI  extends AbstractUI {
 
     @Override
     protected boolean doShow() {
+        StringBuilder s = new StringBuilder();
         boolean invalidAnswer;
         boolean validDependecy;
         List<String> answers;
@@ -45,6 +46,10 @@ public class ShowSurveyUI  extends AbstractUI {
                         validDependecy = theAController.isDependencyValid(question.dependent, question.dependentChoice);
                     }
                     if (validDependecy) {
+                        s.append(question.id);
+                        s.append("\n");
+                        s.append(theController.getQuestionById(question.id).type());
+                        s.append("\n");
                         if (question.obligatoriness.equals("optional") && section.obligatoriness.equals("optional")) {
                             System.out.println(question.questionText + " " + "(optional)");
                         } else {
@@ -67,10 +72,16 @@ public class ShowSurveyUI  extends AbstractUI {
                                         System.out.println("The answer is not valid! Please try again!");
                                 } while (!invalidAnswer);
                                 answers.add(a);
+                                s.append(a);
+                                s.append("\n");
                             }
                         } else {
                             String type = theController.getQuestionById(question.id).type();
                             answers = readAnswer(question, type, question.obligatoriness, section.obligatoriness);
+                            for(String a : answers){
+                                s.append(a);
+                                s.append("\n");
+                            }
                         }
                         System.out.println("-----------");
                         theAController.addAnswer(answers, question);
@@ -79,6 +90,7 @@ public class ShowSurveyUI  extends AbstractUI {
             }
         }
         System.out.println(survey.finalMessage);
+        theAController.writeFile(s.toString(), survey.id);
         theController.answeredSurvey(survey.id);
         return false;
     }
