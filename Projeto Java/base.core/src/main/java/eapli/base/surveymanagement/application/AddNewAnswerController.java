@@ -18,6 +18,9 @@ import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 import eapli.framework.infrastructure.authz.domain.model.Username;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +38,27 @@ public class AddNewAnswerController {
 
 
         return answerRepository.save(newAnswer);
+    }
+
+    public void writeFile(String answers, String surveyId){
+        try {
+            FileWriter myWriter = new FileWriter(getFileName(surveyId));
+            myWriter.write(answers);
+            myWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getFileName(String surveyId){
+        String fileName = "Answers/" + getUserSessionVat().vat() + "_" + surveyId + ".txt";
+        try {
+            File myObj = new File(fileName);
+            myObj.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return fileName;
     }
 
     public boolean isDependencyValid(String questionId, String choice){
