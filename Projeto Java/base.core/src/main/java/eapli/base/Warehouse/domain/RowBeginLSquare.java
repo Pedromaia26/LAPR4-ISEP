@@ -8,6 +8,8 @@ import javax.persistence.Embeddable;
 public class RowBeginLSquare implements ValueObject {
     private long beginLSquare;
 
+
+
     public RowBeginLSquare(long beginLSquare) {
         if(beginLSquare<0)throw new IllegalArgumentException("Row beginLSquare < 0!");
 
@@ -16,5 +18,9 @@ public class RowBeginLSquare implements ValueObject {
 
     public RowBeginLSquare() {
 
+    }
+
+    public long BeginLSquare() {
+        return beginLSquare;
     }
 }
