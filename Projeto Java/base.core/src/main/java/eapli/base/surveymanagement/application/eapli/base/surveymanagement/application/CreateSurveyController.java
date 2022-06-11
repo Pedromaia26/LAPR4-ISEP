@@ -37,11 +37,11 @@ public class CreateSurveyController implements ANTLRErrorListener{
     private final ContextRepository contextRepository = PersistenceContext.repositories().contexts();
     private final ProductRepository productRepository = PersistenceContext.repositories().products();
 
-    public Survey createSurvey(final String file, final Long context) throws IOException {
+    public String createSurvey(final String file, final Long context) throws IOException {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_MANAGER, BaseRoles.POWER_USER, BaseRoles.ADMIN);
 
         Survey survey = parseSurvey(file);
-        survey.modifyContext(contextRepository.findContextById(context));
+        survey.addContext(contextRepository.findContextById(context));
         try{
             txCtx.beginTransaction();
             for (SurveySection s : survey.sections()){
@@ -58,17 +58,17 @@ public class CreateSurveyController implements ANTLRErrorListener{
             throw new IllegalArgumentException();
         }
 
-        return survey;
+        return survey.identity().toString();
     }
 
-    public Survey createSurvey(final String file, final Long context, int minAge, int maxAge) throws IOException {
+    public String createSurvey(final String file, final Long context, int minAge, int maxAge) throws IOException {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_MANAGER, BaseRoles.POWER_USER, BaseRoles.ADMIN);
 
 
         Survey survey = parseSurvey(file);
         survey.modifyMinAge(new Age(minAge));
         survey.modifyMaxAge(new Age(maxAge));
-        survey.modifyContext(contextRepository.findContextById(context));
+        survey.addContext(contextRepository.findContextById(context));
         try{
             txCtx.beginTransaction();
             for (SurveySection s : survey.sections()){
@@ -85,15 +85,15 @@ public class CreateSurveyController implements ANTLRErrorListener{
             throw new IllegalArgumentException();
         }
 
-        return survey;
+        return survey.identity().toString();
     }
 
-    public Survey createSurvey(final String file, final Long context, final String productCode) throws IOException {
+    public String createSurvey(final String file, final Long context, final String productCode) throws IOException {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_MANAGER, BaseRoles.POWER_USER, BaseRoles.ADMIN);
 
         Survey survey = parseSurvey(file);
         survey.modifyProduct(productRepository.findByCode(productCode));
-        survey.modifyContext(contextRepository.findContextById(context));
+        survey.addContext(contextRepository.findContextById(context));
         try{
             txCtx.beginTransaction();
             for (SurveySection s : survey.sections()){
@@ -110,7 +110,43 @@ public class CreateSurveyController implements ANTLRErrorListener{
             throw new IllegalArgumentException();
         }
 
-        return survey;
+        return survey.identity().toString();
+    }
+
+    public String addContext(String surveyId, Long context, int minAge, int maxAge) throws IOException {
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_MANAGER, BaseRoles.POWER_USER, BaseRoles.ADMIN);
+
+        txCtx.beginTransaction();
+        Survey survey = surveyRepository.findSurveyById(surveyId);
+        survey.modifyMinAge(new Age(minAge));
+        survey.modifyMaxAge(new Age(maxAge));
+        survey.addContext(contextRepository.findContextById(context));
+        txCtx.commit();
+
+        return survey.identity().toString();
+    }
+
+    public String addContext(String surveyId, Long context, String productCode) throws IOException {
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_MANAGER, BaseRoles.POWER_USER, BaseRoles.ADMIN);
+
+        txCtx.beginTransaction();
+        Survey survey = surveyRepository.findSurveyById(surveyId);
+        survey.modifyProduct(productRepository.findByCode(productCode));
+        survey.addContext(contextRepository.findContextById(context));
+        txCtx.commit();
+
+        return survey.identity().toString();
+    }
+
+    public String addContext(String surveyId, Long context) throws IOException {
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_MANAGER, BaseRoles.POWER_USER, BaseRoles.ADMIN);
+
+        txCtx.beginTransaction();
+        Survey survey = surveyRepository.findSurveyById(surveyId);
+        survey.addContext(contextRepository.findContextById(context));
+        txCtx.commit();
+
+        return survey.identity().toString();
     }
 
     public Survey parseSurvey(final String file) throws IOException {
