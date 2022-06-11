@@ -23,6 +23,7 @@ import eapli.framework.infrastructure.authz.domain.model.Username;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +37,7 @@ public class VerifyClientSurveysController {
 
     public int verifyClientSurveys() {
         int numSurveys = 0;
-        boolean answered;
+        boolean answered, dis = false;
         ClientUser user = getUser();
         if(user.birthday() != null){
             for (Survey survey : surveyRepository.findAll()){
@@ -44,30 +45,43 @@ public class VerifyClientSurveysController {
                 for (ClientUserSurvey c : survey.clientUsersAnswered()){
                     if (c.clientUser().equals(getUser())) answered = true;
                 }
-                if (survey.context().identity() == 2 && !answered){
-                    int clientAge = calculateAge(user.birthday().birthDate());
-                    if (clientAge >= survey.minAge().age() && clientAge <= survey.maxAge().age()){
-                        if (verifyUserSurveyAgePeriod(user, survey)){
-                            survey.addClientUserToAnswer(user);
+                dis = false;
+                for (int i = 0; i < survey.contexts().size(); i++){
+                    if (survey.contexts().get(i).context().identity() == 2 && !answered){
+                        int clientAge = calculateAge(user.birthday().birthDate());
+                        if (clientAge >= survey.minAge().age() && clientAge <= survey.maxAge().age() && !dis){
+                            if (verifyUserSurveyAgePeriod(user, survey)){
+                                survey.addClientUserToAnswer(user);
+                            }
+                            numSurveys++;
+                            dis = true;
                         }
-                        numSurveys++;
+                        txCtx.beginTransaction();
+                        surveyRepository.save(survey);
+                        txCtx.commit();
                     }
-                    txCtx.beginTransaction();
-                    surveyRepository.save(survey);
-                    txCtx.commit();
-                }
-                else if (survey.context().identity() != 2){
-                    for (ClientUserSurvey c : survey.clientUsersToAnswer()) {
-                        if (c.clientUser().equals(user)) numSurveys++;
+                    else if (survey.contexts().get(i).context().identity() != 2){
+                        for (ClientUserSurvey c : survey.clientUsersToAnswer()) {
+                            if (c.clientUser().equals(user) && !dis){
+                                numSurveys++;
+                                dis = true;
+                            }
+                        }
                     }
                 }
             }
         }
         else{
             for (Survey survey : surveyRepository.findAll()){
-                if (survey.context().identity() != 2){
-                    for (ClientUserSurvey c : survey.clientUsersToAnswer()) {
-                        if (c.clientUser().equals(user)) numSurveys++;
+                dis = false;
+                for (int i = 0; i < survey.contexts().size(); i++){
+                    if (survey.contexts().get(i).context().identity() != 2) {
+                        for (ClientUserSurvey c : survey.clientUsersToAnswer()) {
+                            if (c.clientUser().equals(user) && !dis) {
+                                numSurveys++;
+                                dis = true;
+                            }
+                        }
                     }
                 }
             }
@@ -154,12 +168,17 @@ public class VerifyClientSurveysController {
     }
 
     public boolean clientToAnswerSurveyOrder(){
+        boolean dis;
         txCtx.beginTransaction();
         ClientUser user = getUser();
         for (Survey survey : surveyRepository.findAll()){
-            if (survey.context().identity().equals(1L)){
-                survey.addClientUserToAnswer(user);
-                surveyRepository.save(survey);
+            dis = false;
+            for (ContextSurvey contextSurvey : survey.contexts()) {
+                if (contextSurvey.context().identity().equals(1L) && !dis) {
+                    survey.addClientUserToAnswer(user);
+                    surveyRepository.save(survey);
+                    dis = true;
+                }
             }
         }
         txCtx.commit();
@@ -167,13 +186,18 @@ public class VerifyClientSurveysController {
     }
 
     public boolean clientToAnswerSurveyProduct(String productReference){
+        boolean dis;
         txCtx.beginTransaction();
         ClientUser user = getUser();
         for (Survey survey : surveyRepository.findAll()){
-            if (survey.context().identity().equals(3L)){
-                if (survey.product().Reference().toString().equals(productReference)){
-                    survey.addClientUserToAnswer(user);
-                    surveyRepository.save(survey);
+            dis = false;
+            for (ContextSurvey contextSurvey : survey.contexts()) {
+                if (contextSurvey.context().identity().equals(3L)) {
+                    if (survey.product().Reference().toString().equals(productReference) && !dis) {
+                        survey.addClientUserToAnswer(user);
+                        surveyRepository.save(survey);
+                        dis = true;
+                    }
                 }
             }
         }
