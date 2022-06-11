@@ -2,6 +2,7 @@ package agvdigitaltwin.tcpprotocol.server;
 
 import eapli.base.agvmanagement.application.AGVManagerController;
 import eapli.base.agvmanagement.application.AGVManagerControllerImpl;
+import eapli.base.agvmanagement.application.AGVMovement;
 import eapli.base.communicationprotocol.CommunicationProtocol;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,7 +31,7 @@ public class InputMessage {
         return new AGVManagerControllerImpl();
     }*/
 
-    public static AgvDigitalTwinProtocolRequest parseMessage(byte[] arr, DataInputStream in, DataOutputStream dataOutputStream) throws IOException {
+    public static AgvDigitalTwinProtocolRequest parseMessage(byte[] arr, DataInputStream in, DataOutputStream dataOutputStream, AGVMovement.Methods methods) throws IOException {
 
         AgvDigitalTwinProtocolRequest agvDigitalTwinProtocolRequest = null;
 
@@ -46,7 +47,7 @@ public class InputMessage {
 
         if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.UPDATE_AGV_STATUS_CODE) {
 
-            agvDigitalTwinProtocolRequest = inputUpdateStatus(arr, in);
+            agvDigitalTwinProtocolRequest = inputUpdateStatus(arr, in, methods);
         }
         if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.UPDATE_AGV_STATUS_FREE_CODE) {
 
@@ -58,7 +59,7 @@ public class InputMessage {
     }
 
 
-    private static AgvDigitalTwinProtocolRequest inputUpdateStatus(final byte[] array, DataInputStream in) {
+    private static AgvDigitalTwinProtocolRequest inputUpdateStatus(final byte[] array, DataInputStream in, final AGVMovement.Methods methods) {
         AgvDigitalTwinProtocolRequest request;
 
         String parsedData = null;
@@ -73,7 +74,7 @@ public class InputMessage {
             System.out.println(e.getMessage());
         }
 
-        request = new UpdateStatusRequest(controller, parsedData);
+        request = new UpdateStatusRequest(controller, parsedData, methods);
 
         return request;
     }

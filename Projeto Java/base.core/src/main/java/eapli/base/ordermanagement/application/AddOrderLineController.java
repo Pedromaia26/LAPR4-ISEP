@@ -19,7 +19,7 @@ public class AddOrderLineController {
     private final ProductRepository productRepository = PersistenceContext.repositories().products();
 
     public OrderLine addOrderLine(final String productId, final Long orderId, final int quantity) {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK, BaseRoles.POWER_USER, BaseRoles.ADMIN);
 
         Product product = productRepository.findByCode(productId);
         ProductOrder productOrder = orderRepository.findByOrderId(orderId);

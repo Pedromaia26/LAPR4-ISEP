@@ -17,4 +17,8 @@ public class RowBeginWSquare implements ValueObject {
     public RowBeginWSquare() {
 
     }
+
+    public long BeginWSquare() {
+        return beginWSquare;
+    }
 }

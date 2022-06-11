@@ -25,7 +25,12 @@ public class Aisle implements AggregateRoot<AisleIdentifier> {
         private AisleEndWSquare aisleEndWSquare;
 
         private String accessibility;
-   // @OneToMany
+
+    public String Accessibility() {
+        return accessibility;
+    }
+
+    // @OneToMany
    //     private Set<Row> rows;
     @ManyToOne(optional = false, cascade = CascadeType.MERGE)
     private Warehouse warehouse;

@@ -17,6 +17,23 @@ public class Section implements AggregateRoot<RowIdentifier> {
     private RowBeginWSquare rowBeginWSquare;
     @Embedded
     private RowEndLSquare rowEndLSquare;
+
+    public RowBeginLSquare RowBeginLSquare() {
+        return rowBeginLSquare;
+    }
+
+    public RowBeginWSquare RowBeginWSquare() {
+        return rowBeginWSquare;
+    }
+
+    public RowEndLSquare RowEndLSquare() {
+        return rowEndLSquare;
+    }
+
+    public RowEndWSquare RowEndWSquare() {
+        return rowEndWSquare;
+    }
+
     @Embedded
     private RowEndWSquare rowEndWSquare;
    // @OneToMany

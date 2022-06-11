@@ -15,7 +15,11 @@ public class RowIdentifier implements ValueObject, Comparable<RowIdentifier> {
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     private Aisle aisle;
 
-    public RowIdentifier(long id,Aisle aisle) {
+    public Aisle Aisle() {
+        return aisle;
+    }
+
+    public RowIdentifier(long id, Aisle aisle) {
         if(id<0)throw new IllegalArgumentException("Row id < 0!");
 
         this.rowId = id;
