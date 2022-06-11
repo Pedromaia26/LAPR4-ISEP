@@ -41,8 +41,8 @@ public class Survey implements AggregateRoot<SurveyIdentifier> {
     @ElementCollection
     private List<ClientUserSurvey> clientUsersAnswered = new ArrayList<>();
 
-    @ManyToOne
-    private Context context;
+    @ElementCollection
+    private List<ContextSurvey> contexts = new ArrayList<>();
 
     @Embedded
     @AttributeOverrides({
@@ -166,12 +166,12 @@ public class Survey implements AggregateRoot<SurveyIdentifier> {
         return id;
     }
 
-    public Context context() {
-        return context;
+    public List<ContextSurvey> contexts() {
+        return contexts;
     }
 
-    public void modifyContext(Context context) {
-        this.context = context;
+    public boolean addContext(final Context context) {
+        return contexts.add(new ContextSurvey(context));
     }
 
     public Age minAge() {
