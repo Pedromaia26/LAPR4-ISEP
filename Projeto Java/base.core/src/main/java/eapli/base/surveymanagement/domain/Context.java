@@ -3,6 +3,7 @@ package eapli.base.surveymanagement.domain;
 import eapli.base.productmanagement.domain.ExtendedDescription;
 import eapli.base.productmanagement.domain.ShortDescription;
 import eapli.framework.domain.model.AggregateRoot;
+import eapli.framework.domain.model.DomainEntities;
 
 import javax.persistence.*;
 
@@ -34,7 +35,7 @@ public class Context implements AggregateRoot<Long> {
 
     @Override
     public boolean sameAs(Object other) {
-        return false;
+        return DomainEntities.areEqual(this, other);
     }
 
     @Override

@@ -2,6 +2,7 @@ package eapli.base.surveymanagement.domain;
 
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.framework.domain.model.AggregateRoot;
+import eapli.framework.domain.model.DomainEntities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -67,7 +68,7 @@ public class Answer implements AggregateRoot<Long> {
 
     @Override
     public boolean sameAs(Object other) {
-        return false;
+        return DomainEntities.areEqual(this, other);
     }
 
     @Override

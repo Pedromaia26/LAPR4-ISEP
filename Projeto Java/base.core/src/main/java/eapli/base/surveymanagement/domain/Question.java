@@ -7,6 +7,7 @@ import eapli.base.ordermanagement.domain.*;
 import eapli.base.orderstatusmanagement.domain.Status;
 import eapli.base.surveymanagement.domain.dto.QuestionDTO;
 import eapli.framework.domain.model.AggregateRoot;
+import eapli.framework.domain.model.DomainEntities;
 
 import javax.persistence.*;
 import java.util.Calendar;
@@ -140,7 +141,7 @@ public class Question implements AggregateRoot<Identifier> {
 
     @Override
     public boolean sameAs(Object other) {
-        return false;
+        return DomainEntities.areEqual(this, other);
     }
 
     @Override

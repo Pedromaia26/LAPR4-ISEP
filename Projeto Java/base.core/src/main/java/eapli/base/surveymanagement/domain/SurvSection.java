@@ -2,6 +2,7 @@ package eapli.base.surveymanagement.domain;
 
 import eapli.base.surveymanagement.domain.dto.SurvSectionDTO;
 import eapli.framework.domain.model.AggregateRoot;
+import eapli.framework.domain.model.DomainEntities;
 
 import javax.persistence.*;
 import java.util.*;
@@ -159,12 +160,12 @@ public class SurvSection implements AggregateRoot<Identifier> {
 
     @Override
     public boolean sameAs(Object other) {
-        return false;
+        return DomainEntities.areEqual(this, other);
     }
 
     @Override
     public Identifier identity() {
-        return null;
+        return id;
     }
 
     public SurvSectionDTO toDTO(){
