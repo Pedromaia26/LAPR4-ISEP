@@ -28,7 +28,7 @@ public class ValidateAnswersUI extends AbstractUI {
                     System.out.println();
                     invalidData = true;
                 }
-            }catch (NullPointerException e){
+            }catch (Exception e){
                 System.out.println("Invalid Answers");
                 if (Console.readLine("Do you want to try again? (Y/N)").equals("Y")) {
                     System.out.println();
