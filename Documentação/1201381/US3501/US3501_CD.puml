@@ -1,0 +1,64 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class SurveyRepository<< (I,a777d1) >>
+class AnswerRepository<< (I,a777d1) >>
+class SectionRepository<< (I,a777d1) >>
+class QuestionRepository<< (I,a777d1) >>
+
+class ShowSurveyUI{
+    - doShow()
+}
+
+class VerifyClientSurveysController{
+    - getSurveyById(surveyId)
+    - SurveySections(surveyId)
+    - getSectionQuestions(section.id)
+    - getQuestionById(question.id)
+    - answeredSurvey(survey.id)
+}
+
+class AddNewAnswerController{
+    - isDependencyValid(section.dependent, section.dependentChoice)
+}
+
+
+class SurveyRepository{
+    - instance()
+    - survey()
+    - save(survey)
+    - findSurveyById(id)
+}
+
+class AnswerRepository{
+    - instance()
+    - answer()
+    - save(answer)
+    - findAll()
+}
+
+class SectionRepository{
+    - instance()
+    - section()
+    - save(section)
+    - SectionById(id)
+}
+
+class QuestionRepository{
+    - instance()
+    - question()
+    - save(question)
+    - QuestionById(id)
+}
+
+
+
+
+ShowSurveyUI--> VerifyClientSurveysController
+ShowSurveyUI--> AddNewAnswerController
+VerifyClientSurveysController -->SurveyRepository
+VerifyClientSurveysController -->SectionRepository
+VerifyClientSurveysController -->QuestionRepository
+AddNewAnswerController --> AnswerRepository
+
+@enduml
