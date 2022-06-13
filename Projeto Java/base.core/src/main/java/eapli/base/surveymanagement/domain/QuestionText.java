@@ -10,8 +10,8 @@ public class QuestionText {
 
     public QuestionText(final String questionText){
 
-        if (questionText.length() > 50)
-            throw new IllegalArgumentException("Exceeded question maximum chars (50)!");
+        if (questionText.length() > 100)
+            throw new IllegalArgumentException("Exceeded question maximum chars (100)!");
 
         this.questionText = questionText;
 

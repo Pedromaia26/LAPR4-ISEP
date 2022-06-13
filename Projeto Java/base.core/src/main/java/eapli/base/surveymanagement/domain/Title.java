@@ -14,8 +14,8 @@ public class Title {
 
         if (title == null || title.isBlank())
             throw new IllegalArgumentException("Title cannot be empty!");
-        if (title.length() > 30)
-            throw new IllegalArgumentException("Exceeded title maximum chars (30)");
+        if (title.length() > 50)
+            throw new IllegalArgumentException("Exceeded title maximum chars (50)");
 
         this.title = title;
 

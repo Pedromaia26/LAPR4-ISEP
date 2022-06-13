@@ -9,8 +9,8 @@ public class TitleTest {
     private static final String TITLE = "Product Satisfaction Survey";
 
     @Test(expected = IllegalArgumentException.class)
-    public void ensureTitleMustBeLessThan30() {
-        new Title("Product and Product Delivery Satisfaction Survey");
+    public void ensureTitleMustBeLessThan50() {
+        new Title("Product and Product Delivery Satisfaction Survey Test length");
     }
 
     @Test(expected = IllegalArgumentException.class)

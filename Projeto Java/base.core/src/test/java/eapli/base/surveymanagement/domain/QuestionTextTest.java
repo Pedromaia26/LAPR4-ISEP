@@ -10,8 +10,8 @@ public class QuestionTextTest {
     private static final String QUESTION_TEXT = "Question 1";
 
     @Test(expected = IllegalArgumentException.class)
-    public void ensureQuestionTextMustBeLessThan50() {
-        new QuestionText("Question 1 - How do you rate the professionalism of our service personnel?");
+    public void ensureQuestionTextMustBeLessThan100() {
+        new QuestionText("Question 1 - How do you rate the professionalism of our service personnel? This is a test length aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
 
     @Test
