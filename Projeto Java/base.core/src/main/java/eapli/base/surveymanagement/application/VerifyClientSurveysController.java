@@ -36,35 +36,46 @@ public class VerifyClientSurveysController {
     private final QuestionRepository questionRepository = PersistenceContext.repositories().questions(txCtx);
 
     public int verifyClientSurveys() {
+        LocalDate today = LocalDate.now();
         int numSurveys = 0;
-        boolean answered, dis = false;
+        boolean answered, dis = false, valid;
         ClientUser user = getUser();
         if(user.birthday() != null){
             for (Survey survey : surveyRepository.findAll()){
-                answered = false;
-                for (ClientUserSurvey c : survey.clientUsersAnswered()){
-                    if (c.clientUser().equals(getUser())) answered = true;
+                valid = false;
+                if (survey.period() != null){
+                    if (today.isBefore(survey.period()))
+                        valid = true;
                 }
-                dis = false;
-                for (int i = 0; i < survey.contexts().size(); i++){
-                    if (survey.contexts().get(i).context().identity() == 2 && !answered){
-                        int clientAge = calculateAge(user.birthday().birthDate());
-                        if (clientAge >= survey.minAge().age() && clientAge <= survey.maxAge().age() && !dis){
-                            if (verifyUserSurveyAgePeriod(user, survey)){
-                                survey.addClientUserToAnswer(user);
-                            }
-                            numSurveys++;
-                            dis = true;
-                        }
-                        txCtx.beginTransaction();
-                        surveyRepository.save(survey);
-                        txCtx.commit();
+                else{
+                    valid = true;
+                }
+                if (valid){
+                    answered = false;
+                    for (ClientUserSurvey c : survey.clientUsersAnswered()){
+                        if (c.clientUser().equals(getUser())) answered = true;
                     }
-                    else if (survey.contexts().get(i).context().identity() != 2){
-                        for (ClientUserSurvey c : survey.clientUsersToAnswer()) {
-                            if (c.clientUser().equals(user) && !dis){
+                    dis = false;
+                    for (int i = 0; i < survey.contexts().size(); i++){
+                        if (survey.contexts().get(i).context().identity() == 2 && !answered){
+                            int clientAge = calculateAge(user.birthday().birthDate());
+                            if (clientAge >= survey.minAge().age() && clientAge <= survey.maxAge().age() && !dis){
+                                if (verifyUserSurveyAgePeriod(user, survey)){
+                                    survey.addClientUserToAnswer(user);
+                                }
                                 numSurveys++;
                                 dis = true;
+                            }
+                            txCtx.beginTransaction();
+                            surveyRepository.save(survey);
+                            txCtx.commit();
+                        }
+                        else if (survey.contexts().get(i).context().identity() != 2){
+                            for (ClientUserSurvey c : survey.clientUsersToAnswer()) {
+                                if (c.clientUser().equals(user) && !dis){
+                                    numSurveys++;
+                                    dis = true;
+                                }
                             }
                         }
                     }
@@ -73,13 +84,23 @@ public class VerifyClientSurveysController {
         }
         else{
             for (Survey survey : surveyRepository.findAll()){
-                dis = false;
-                for (int i = 0; i < survey.contexts().size(); i++){
-                    if (survey.contexts().get(i).context().identity() != 2) {
-                        for (ClientUserSurvey c : survey.clientUsersToAnswer()) {
-                            if (c.clientUser().equals(user) && !dis) {
-                                numSurveys++;
-                                dis = true;
+                valid = false;
+                if (survey.period() != null){
+                    if (today.isBefore(survey.period()))
+                        valid = true;
+                }
+                else{
+                    valid = true;
+                }
+                if (valid) {
+                    dis = false;
+                    for (int i = 0; i < survey.contexts().size(); i++) {
+                        if (survey.contexts().get(i).context().identity() != 2) {
+                            for (ClientUserSurvey c : survey.clientUsersToAnswer()) {
+                                if (c.clientUser().equals(user) && !dis) {
+                                    numSurveys++;
+                                    dis = true;
+                                }
                             }
                         }
                     }
@@ -115,11 +136,23 @@ public class VerifyClientSurveysController {
     }
 
     public Iterable<SurveyDTO> allClientSurveys(){
+        boolean valid;
+        LocalDate today = LocalDate.now();
         List<SurveyDTO> list = new ArrayList<>();
         ClientUser user = getUser();
         for (Survey survey : surveyRepository.findAll()){
-            for (ClientUserSurvey c : survey.clientUsersToAnswer()) {
-                if (c.clientUser().equals(user)) list.add(survey.toDTO());
+            valid = false;
+            if (survey.period() != null){
+                if (today.isBefore(survey.period()))
+                    valid = true;
+            }
+            else{
+                valid = true;
+            }
+            if (valid) {
+                for (ClientUserSurvey c : survey.clientUsersToAnswer()) {
+                    if (c.clientUser().equals(user)) list.add(survey.toDTO());
+                }
             }
         }
         return list;
