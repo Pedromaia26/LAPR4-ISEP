@@ -135,9 +135,15 @@ public class SurvVisitor extends SurveyBaseVisitor<Survey> {
                 op = 2;
                 visit(ctx.otherId());
                 visit(ctx.alphanumeric());
-                if (tq == 0) question.modifyDependentChoice(aux);
-                else if (tq == 1) soquestion.modifyDependentChoice(aux);
-                else cquestion.modifyDependentChoice(aux);
+                if (tq == 0){
+                    question.modifyDependentChoice(aux);
+                }
+                else if (tq == 1){
+                    soquestion.modifyDependentChoice(aux);
+                }
+                else{
+                    cquestion.modifyDependentChoice(aux);
+                }
             }
         }
         return survey;
@@ -213,13 +219,13 @@ public class SurvVisitor extends SurveyBaseVisitor<Survey> {
                 ScalingOptionsQuestion q;
                 if (soquestion.Instruction() == null){
                     q = new ScalingOptionsQuestion(soquestion.identifier(), soquestion.QuestionText(), soquestion.QuestionType(), soquestion.Obligatoriness(), soquestion.ExtraInfo());
-                    q.modifyDependent(question.dependent());
-                    q.modifyDependentChoice(question.dependentChoice());
+                    q.modifyDependent(soquestion.dependent());
+                    q.modifyDependentChoice(soquestion.dependentChoice());
                 }
                 else {
                     q = new ScalingOptionsQuestion(soquestion.identifier(), soquestion.QuestionText(), soquestion.Instruction(), soquestion.QuestionType(), soquestion.Obligatoriness(), soquestion.ExtraInfo());
-                    q.modifyDependent(question.dependent());
-                    q.modifyDependentChoice(question.dependentChoice());
+                    q.modifyDependent(soquestion.dependent());
+                    q.modifyDependentChoice(soquestion.dependentChoice());
                 }
                 for (String quest : soquestion.questions()){
                     q.addQuestion(quest);
@@ -233,13 +239,13 @@ public class SurvVisitor extends SurveyBaseVisitor<Survey> {
                 ChoiceQuestion q;
                 if (cquestion.Instruction() == null){
                     q = new ChoiceQuestion(cquestion.identifier(), cquestion.QuestionText(), cquestion.QuestionType(), cquestion.Obligatoriness(), cquestion.ExtraInfo());
-                    q.modifyDependent(question.dependent());
-                    q.modifyDependentChoice(question.dependentChoice());
+                    q.modifyDependent(cquestion.dependent());
+                    q.modifyDependentChoice(cquestion.dependentChoice());
                 }
                 else {
                     q = new ChoiceQuestion(cquestion.identifier(), cquestion.QuestionText(), cquestion.Instruction(), cquestion.QuestionType(), cquestion.Obligatoriness(), cquestion.ExtraInfo());
-                    q.modifyDependent(question.dependent());
-                    q.modifyDependentChoice(question.dependentChoice());
+                    q.modifyDependent(cquestion.dependent());
+                    q.modifyDependentChoice(cquestion.dependentChoice());
                 }
                 for (String op : cquestion.options()){
                     q.addOption(op);
@@ -303,7 +309,10 @@ public class SurvVisitor extends SurveyBaseVisitor<Survey> {
         try{
             visit(ctx.wMessage());
         } catch (NullPointerException e){
-            System.out.println("Question " + question.identifier() + " with no instruction.");
+            if (tq == 0) System.out.println("Question " + question.identifier() + " with no instruction.");
+            else if (tq == 1) System.out.println("Question " + soquestion.identifier() + " with no instruction.");
+            else System.out.println("Question " + cquestion.identifier() + " with no instruction.");
+
         }
         op = 1;
         visit(ctx.obli());
@@ -361,7 +370,6 @@ public class SurvVisitor extends SurveyBaseVisitor<Survey> {
 
     @Override
     public Survey visitType(SurveyParser.TypeContext ctx) {
-        System.out.println(ctx.getChild(0).getText());
         if (ctx.getChild(0).getText().equals("Free-text") || ctx.getChild(0).getText().equals("Numeric")){
             tq = 0;
             question.modifyVerifyQuestionType(new VerifyQuestionType(ctx.getChild(0).getText()));
@@ -380,7 +388,6 @@ public class SurvVisitor extends SurveyBaseVisitor<Survey> {
 
         for (int i = 0; i < ctx.phrase().size(); i++){
             visit(ctx.phrase(i));
-            aux += ctx.INTE(i).getText();
             soquestion.addQuestion(aux);
         }
         for (int i = 0; i < ctx.option().size(); i++){
