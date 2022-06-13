@@ -55,7 +55,7 @@ type:FREE_TEXT end FT_TEXT
 |MULTIPLE_CHOICE end (option)+ MC_TEXT
 |MULTIPLE_CHOICE_INPUT end (option)+ MCI_TEXT
 |SORTING_OPTIONS end (option)+ SO_TEXT
-|SCALING_OPTIONS end (option)+ (phrase INTE NEWLINE)+ SCO_TEXT
+|SCALING_OPTIONS end (option)+ (phrase NEWLINE)+ SCO_TEXT
 ;
 
 end: FIM
