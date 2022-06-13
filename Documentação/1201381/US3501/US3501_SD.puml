@@ -1,0 +1,70 @@
+@startuml
+autonumber
+actor "Client" as SC
+participant "ShowSurveyUI" as UI
+participant "VerifyClientSurveysController" as CTRL1
+participant "AddNewAnswerController" as CTRL2
+database "//<<repository>>//\nSurveyRepository" as db1
+database "//<<repository>>//\nAnswerRepository" as db2
+database "//<<repository>>//\nSectionRepository" as db3
+database "//<<repository>>//\nQuestionRepository" as db4
+
+activate SC
+SC -> UI : wants to get the list of questionnaires
+activate UI
+UI->UI: doShow()
+UI->CTRL1: getSurveyById(surveyId)
+activate CTRL1
+CTRL1->db1: findSurveyById(id)
+activate db1
+deactivate CTRL1
+deactivate db1
+
+
+UI->CTRL1: SurveySections(surveyId)
+activate CTRL1
+CTRL1->db1: findSurveyById(id)
+activate db1
+deactivate CTRL1
+deactivate db1
+
+
+UI --> SC : shows requested data
+loop
+SC -> UI : selects the questionnaire
+UI->CTRL2: isDependencyValid(section.dependent, section.dependentChoice)
+activate CTRL2
+CTRL2->db2: findAll()
+activate db2
+deactivate CTRL2
+deactivate db2
+
+
+UI->CTRL1: getSectionQuestions(section.id)
+activate CTRL1
+CTRL1->db3: SectionById(id)
+activate db3
+deactivate CTRL1
+deactivate db3
+
+
+UI->CTRL1: getQuestionById(question.id)
+activate CTRL1
+CTRL1->db4: QuestionById(id)
+activate db4
+deactivate CTRL1
+deactivate db4
+
+
+UI->CTRL1: answeredSurvey(survey.id)
+activate CTRL1
+CTRL1->db1: findSurveyById(id)
+activate db1
+deactivate CTRL1
+deactivate db1
+UI --> SC : shows the questionnaire
+end
+deactivate UI
+
+deactivate SC
+@enduml
