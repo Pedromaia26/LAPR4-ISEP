@@ -25,6 +25,7 @@ import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.BitSet;
 import java.util.List;
 
@@ -180,5 +181,21 @@ public class CreateSurveyController implements ANTLRErrorListener{
     @Override
     public void reportContextSensitivity(Parser parser, DFA dfa, int i, int i1, int i2, ATNConfigSet atnConfigSet) {
         System.out.println("Report context sensitivity");
+    }
+
+    public boolean addPeriodLimit(String surveyId, String days){
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_MANAGER, BaseRoles.POWER_USER, BaseRoles.ADMIN);
+
+        LocalDate today = LocalDate.now();
+
+        LocalDate limit = today.plusDays(Integer.parseInt(days));
+
+        txCtx.beginTransaction();
+        Survey survey = surveyRepository.findSurveyById(surveyId);
+        survey.modifyPeriod(limit);
+        surveyRepository.save(survey);
+        txCtx.commit();
+
+        return false;
     }
 }
