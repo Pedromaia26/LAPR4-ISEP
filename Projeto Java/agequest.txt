@@ -1,0 +1,35 @@
+ID2;
+Age directed questionnaire
+3
+About you
+This section is about you and your tastes.
+mandatory
+1
+5
+Rate from 1 to 10 the application capacity of respond your necessities?
+Type a numeric value.
+optional
+Numeric
+it means the person answers the question by typing a numeric value.
+6
+What type of products you usually order?
+mandatory
+Multiple-Choice with input value
+A) Clothes
+B) Technologies
+C) Furniture
+very similar to the multiple choice, but the last option, if selected, implies that the person must type a numeric value or a free text.
+7
+With the 5 following options, can you please select an option that describes the sentences below?
+mandatory
+Scaling Options
+A) Strongly disagree
+B) Disagree
+C) Neutral
+D) Agree
+E) Strongly agree
+I found a wide variety of products on the shop
+I always found the perfect size for my clothes
+I found all the shipping methods in a simple and reliable way
+it means the person answers the question by selecting a value of a given scale (e.g.: unimportant, neutral, important) to each of the specified options.
+Thank you for your time.;

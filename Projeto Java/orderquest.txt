@@ -1,0 +1,41 @@
+ID1;
+Order checkout satisfaction questionnaire
+1
+Client support
+This section is about how client support was provided.
+mandatory
+1
+1
+Did you request client support?
+Choose one of the options.
+mandatory
+Single-Choice
+A) Yes
+B) No
+it means the person answers the question by selection one (and just one) of the provided options.
+2
+Are you satisfied with the service provided?
+condition dependent 1 A
+Single-Choice with input value
+A) Yes
+B) No
+very similar to the single choice but the last option, if selected, implies that the person must type a numeric value or a free text.
+3
+What do you think we can improve?
+condition dependent 1 B
+Free-text
+it means the person answers the question by typing some text.
+2
+Client opinion about the service provided
+This section is about the service provided to the client.
+mandatory
+1
+4
+Can you please order by importance the following words that describe the application?
+mandatory
+Sorting Options
+A) Simplicity
+B) Quality
+C) Speed
+given two or more option the person answers the question by sorting the options as desired and in accordance with the instructions provided.
+Thank you for your time.;
