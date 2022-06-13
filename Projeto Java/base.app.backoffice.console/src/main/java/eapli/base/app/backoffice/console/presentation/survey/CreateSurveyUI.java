@@ -60,6 +60,10 @@ public class CreateSurveyUI extends AbstractUI {
                     }
                     r = Console.readLine("Do you want to add one more context? (Y/N)");
                 }while(r.equals("Y"));
+                if (Console.readLine("Do you want to add a limited period of days? (Y/N)").equals("Y")){
+                    String ans = Console.readLine("Period (in days): ");
+                    theController.addPeriodLimit(surveyId, ans);
+                }
                 System.out.println("Survey created with success!");
             } catch (IllegalArgumentException | IOException e) {
                 System.out.println(e.getMessage());
