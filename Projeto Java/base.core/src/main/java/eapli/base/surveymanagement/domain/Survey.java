@@ -7,6 +7,7 @@ import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.*;
 
 @Entity
@@ -60,6 +61,8 @@ public class Survey implements AggregateRoot<SurveyIdentifier> {
 
     @ManyToOne
     private Product product;
+
+    private LocalDate period;
 
     public Message getWelcomeMessage() {
         return welcomeMessage;
@@ -196,6 +199,14 @@ public class Survey implements AggregateRoot<SurveyIdentifier> {
 
     public void modifyProduct(Product product) {
         this.product = product;
+    }
+
+    public LocalDate period() {
+        return period;
+    }
+
+    public void modifyPeriod(LocalDate period) {
+        this.period = period;
     }
 
     public SurveyDTO toDTO(){
