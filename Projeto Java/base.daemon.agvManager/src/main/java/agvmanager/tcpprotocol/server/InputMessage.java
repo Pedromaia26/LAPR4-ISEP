@@ -67,7 +67,19 @@ public class InputMessage {
             agvManagerProtocolRequest = inputDashboardCommunication(arr, in);
         }
 
+        if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.RECHARGING_AGV_CODE) {
 
+            agvManagerProtocolRequest = inputRecharging(arr, in);
+        }
+        if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.AGV_RECHARGE_FINISHED_ORDER_CODE) {
+
+            agvManagerProtocolRequest = inputRechargingFinishedOrder(arr, in);
+        }
+
+        if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.UPDATE_AGV_STATUS_MAINTENANCE_CODE) {
+
+            agvManagerProtocolRequest = inputMaintenance(arr, in);
+        }
 
         return agvManagerProtocolRequest;
     }
@@ -105,7 +117,7 @@ public class InputMessage {
             byte[] data = in.readNBytes(dataLength);
             parsedData = new String(data);
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            LOGGER.debug(e.getMessage() + "\n");
         }
 
         request = new FreeAGVRequest(controller, parsedData);
@@ -113,6 +125,63 @@ public class InputMessage {
         return request;
     }
 
+    private static AgvManagerProtocolRequest inputRecharging(final byte[] array, DataInputStream in){
+        AgvManagerProtocolRequest request;
+
+        String parsedData = null;
 
 
+        int dataLength = array[2] + 256*array[3];
+
+        try {
+            byte[] data = in.readNBytes(dataLength);
+            parsedData = new String(data);
+        }catch (Exception e){
+            LOGGER.debug(e.getMessage() + "\n");
+        }
+
+        request = new RechargeAGVRequest(controller, parsedData);
+
+        return request;
+    }
+
+    private static AgvManagerProtocolRequest inputRechargingFinishedOrder(final byte[] array, DataInputStream in){
+        AgvManagerProtocolRequest request;
+
+        String parsedData = null;
+
+
+        int dataLength = array[2] + 256*array[3];
+
+        try {
+            byte[] data = in.readNBytes(dataLength);
+            parsedData = new String(data);
+        }catch (Exception e){
+            LOGGER.debug(e.getMessage() + "\n");
+        }
+
+        request = new RechargeAGVFinishedOrderRequest(controller, parsedData);
+
+        return request;
+    }
+
+    private static AgvManagerProtocolRequest inputMaintenance(final byte[] array, DataInputStream in){
+        AgvManagerProtocolRequest request;
+
+        String parsedData = null;
+
+
+        int dataLength = array[2] + 256*array[3];
+
+        try {
+            byte[] data = in.readNBytes(dataLength);
+            parsedData = new String(data);
+        }catch (Exception e){
+            LOGGER.debug(e.getMessage() + "\n");
+        }
+
+        request = new MaintenanceAGVRequest(controller, parsedData);
+
+        return request;
+    }
 }
