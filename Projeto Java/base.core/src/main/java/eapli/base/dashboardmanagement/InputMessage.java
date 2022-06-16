@@ -28,7 +28,6 @@ public class InputMessage {
 
         if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.COMM_TEST_CODE) {
             dataOutputStream.write(CommunicationProtocol.ACK_MESSAGE_V1);
-            System.out.println("HEYYYYY");
             dataOutputStream.flush();
         }
 

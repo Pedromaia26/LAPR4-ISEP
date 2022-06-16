@@ -198,14 +198,14 @@ public class HTTPmessage {
             try {
                 fr.readFully(content,0,cLen); fr.close();
             } catch(IOException ex) {
-                System.out.println("Error reading file");
+                LOGGER.debug("Error reading file\n");
                 content=null;
                 contentType=null;
                 return false;
             }
         }
         catch(FileNotFoundException ex)  {
-            System.out.println("File Not Found");
+            LOGGER.debug("File Not Found\n");
             content=null;
             contentType=null;
             return false;
