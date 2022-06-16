@@ -1,0 +1,34 @@
+@startuml
+participant "//<<client>>//\nBackOffice" as ui
+participant "OrderManagerDaemon" as omd
+participant "OrderManagerTcpServer" as omServer
+participant "//<<thread>>//\noOrderManagerHandler" as thread
+participant "//<<abstract>>//\nOrderManagerProtocolRequest" as request
+
+
+autonumber
+
+omd->omServer: new
+
+omd->omServer: start
+activate omServer
+
+omServer->omServer: accept
+
+ui-->omServer: request
+
+omServer->thread:start
+deactivate omServer
+activate thread
+
+thread -> request: execute
+activate request
+
+request->request: buildResponse
+
+request-->thread: response
+deactivate request
+thread -->ui: response
+deactivate thread
+
+@enduml
