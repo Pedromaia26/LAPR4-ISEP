@@ -1,5 +1,6 @@
 package eapli.base.ordermanagement.application;
 
+import eapli.base.agvmanagement.application.UpdateStatusFreeService;
 import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.domain.VAT;
@@ -14,6 +15,8 @@ import eapli.framework.application.UseCaseController;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 import eapli.framework.infrastructure.authz.domain.model.Username;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Optional;
 
@@ -21,6 +24,8 @@ import java.util.Optional;
 public class ViewClientOrdersControllerImpl  implements ViewClientOrdersController {
     private final ListProductOrderService svc = new ListProductOrderService();
     private final ListProductOrderController thePOController = new ListProductOrderController();
+    private static final Logger LOGGER = LogManager.getLogger(ViewClientOrdersControllerImpl.class);
+
 
     public String viewClientOrders(String clientVat){
         StringBuilder string = new StringBuilder();
@@ -54,7 +59,7 @@ public class ViewClientOrdersControllerImpl  implements ViewClientOrdersControll
                 string.append("#");
             }
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            LOGGER.debug(e.getMessage() + "\n");
             return null;
         }
         return string.toString();
