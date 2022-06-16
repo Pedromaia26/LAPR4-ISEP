@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="440px" preserveAspectRatio="none" style="width:961px;height:440px;background:#FFFFFF;" version="1.1" viewBox="0 0 961 440" width="961px" zoomAndPan="magnify"><defs/><g><!--MD5=[ca0abe252586467d5b989c6b12cf24dd]
+class SurveyRepository--><g id="elem_SurveyRepository"><rect codeLine="25" fill="#F1F1F1" height="113.1875" id="SurveyRepository" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="159" x="7" y="320"/><ellipse cx="22" cy="336" fill="#A777D1" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M22.9531,332.7813 L24.6719,332.7813 C25.0625,332.7813 25.25,332.75 25.375,332.6719 C25.6406,332.5156 25.7813,332.2344 25.7813,331.9375 C25.7813,331.6719 25.6719,331.4063 25.4375,331.2344 C25.2656,331.125 25.125,331.0938 24.6719,331.0938 L19.5313,331.0938 C19.0938,331.0938 18.9688,331.1094 18.8125,331.2031 C18.5625,331.3594 18.4063,331.6563 18.4063,331.9375 C18.4063,332.2188 18.5469,332.4688 18.7656,332.6406 C18.9219,332.75 19.1094,332.7813 19.5313,332.7813 L21.25,332.7813 L21.25,339.2969 L19.5313,339.2969 C19.0938,339.2969 18.9688,339.3125 18.8125,339.4219 C18.5625,339.5781 18.4063,339.8594 18.4063,340.1563 C18.4063,340.4063 18.5469,340.6719 18.7656,340.8281 C18.9219,340.9531 19.125,341 19.5313,341 L24.6719,341 C25.4219,341 25.7813,340.7188 25.7813,340.1563 C25.7813,339.875 25.6719,339.625 25.4375,339.4531 C25.2656,339.3281 25.125,339.2969 24.6719,339.2969 L22.9531,339.2969 L22.9531,332.7813 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="127" x="36" y="340.8467">SurveyRepository</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="165" y1="352" y2="352"/><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="165" y1="360" y2="360"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="368"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71" x="27" y="376.9951">instance()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="384.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56" x="27" y="393.292">survey()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="400.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="88" x="27" y="409.5889">save(survey)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="416.8906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="130" x="27" y="425.8857">findSurveyById(id)</text></g><!--MD5=[5c8703cadfa11f206abaf6e976fe0d7b]
+class AnswerRepository--><g id="elem_AnswerRepository"><rect codeLine="32" fill="#F1F1F1" height="113.1875" id="AnswerRepository" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="163" x="620" y="320"/><ellipse cx="635" cy="336" fill="#A777D1" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M635.9531,332.7813 L637.6719,332.7813 C638.0625,332.7813 638.25,332.75 638.375,332.6719 C638.6406,332.5156 638.7813,332.2344 638.7813,331.9375 C638.7813,331.6719 638.6719,331.4063 638.4375,331.2344 C638.2656,331.125 638.125,331.0938 637.6719,331.0938 L632.5313,331.0938 C632.0938,331.0938 631.9688,331.1094 631.8125,331.2031 C631.5625,331.3594 631.4063,331.6563 631.4063,331.9375 C631.4063,332.2188 631.5469,332.4688 631.7656,332.6406 C631.9219,332.75 632.1094,332.7813 632.5313,332.7813 L634.25,332.7813 L634.25,339.2969 L632.5313,339.2969 C632.0938,339.2969 631.9688,339.3125 631.8125,339.4219 C631.5625,339.5781 631.4063,339.8594 631.4063,340.1563 C631.4063,340.4063 631.5469,340.6719 631.7656,340.8281 C631.9219,340.9531 632.125,341 632.5313,341 L637.6719,341 C638.4219,341 638.7813,340.7188 638.7813,340.1563 C638.7813,339.875 638.6719,339.625 638.4375,339.4531 C638.2656,339.3281 638.125,339.2969 637.6719,339.2969 L635.9531,339.2969 L635.9531,332.7813 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="131" x="649" y="340.8467">AnswerRepository</text><line style="stroke:#181818;stroke-width:0.5;" x1="621" x2="782" y1="352" y2="352"/><line style="stroke:#181818;stroke-width:0.5;" x1="621" x2="782" y1="360" y2="360"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="628" y="368"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71" x="640" y="376.9951">instance()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="628" y="384.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="640" y="393.292">answer()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="628" y="400.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92" x="640" y="409.5889">save(answer)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="628" y="416.8906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56" x="640" y="425.8857">findAll()</text></g><!--MD5=[16ee71ff04e94a994a204637f7477dd0]
+class SectionRepository--><g id="elem_SectionRepository"><rect codeLine="39" fill="#F1F1F1" height="113.1875" id="SectionRepository" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="166" x="201.5" y="320"/><ellipse cx="216.5" cy="336" fill="#A777D1" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M217.4531,332.7813 L219.1719,332.7813 C219.5625,332.7813 219.75,332.75 219.875,332.6719 C220.1406,332.5156 220.2813,332.2344 220.2813,331.9375 C220.2813,331.6719 220.1719,331.4063 219.9375,331.2344 C219.7656,331.125 219.625,331.0938 219.1719,331.0938 L214.0313,331.0938 C213.5938,331.0938 213.4688,331.1094 213.3125,331.2031 C213.0625,331.3594 212.9063,331.6563 212.9063,331.9375 C212.9063,332.2188 213.0469,332.4688 213.2656,332.6406 C213.4219,332.75 213.6094,332.7813 214.0313,332.7813 L215.75,332.7813 L215.75,339.2969 L214.0313,339.2969 C213.5938,339.2969 213.4688,339.3125 213.3125,339.4219 C213.0625,339.5781 212.9063,339.8594 212.9063,340.1563 C212.9063,340.4063 213.0469,340.6719 213.2656,340.8281 C213.4219,340.9531 213.625,341 214.0313,341 L219.1719,341 C219.9219,341 220.2813,340.7188 220.2813,340.1563 C220.2813,339.875 220.1719,339.625 219.9375,339.4531 C219.7656,339.3281 219.625,339.2969 219.1719,339.2969 L217.4531,339.2969 L217.4531,332.7813 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="134" x="230.5" y="340.8467">SectionRepository</text><line style="stroke:#181818;stroke-width:0.5;" x1="202.5" x2="366.5" y1="352" y2="352"/><line style="stroke:#181818;stroke-width:0.5;" x1="202.5" x2="366.5" y1="360" y2="360"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="209.5" y="368"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71" x="221.5" y="376.9951">instance()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="209.5" y="384.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="63" x="221.5" y="393.292">section()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="209.5" y="400.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="95" x="221.5" y="409.5889">save(section)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="209.5" y="416.8906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="221.5" y="425.8857">SectionById(id)</text></g><!--MD5=[aee4fa37704a98e21e2a456711c58f16]
+class QuestionRepository--><g id="elem_QuestionRepository"><rect codeLine="46" fill="#F1F1F1" height="113.1875" id="QuestionRepository" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="175" x="403" y="320"/><ellipse cx="418" cy="336" fill="#A777D1" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M418.9531,332.7813 L420.6719,332.7813 C421.0625,332.7813 421.25,332.75 421.375,332.6719 C421.6406,332.5156 421.7813,332.2344 421.7813,331.9375 C421.7813,331.6719 421.6719,331.4063 421.4375,331.2344 C421.2656,331.125 421.125,331.0938 420.6719,331.0938 L415.5313,331.0938 C415.0938,331.0938 414.9688,331.1094 414.8125,331.2031 C414.5625,331.3594 414.4063,331.6563 414.4063,331.9375 C414.4063,332.2188 414.5469,332.4688 414.7656,332.6406 C414.9219,332.75 415.1094,332.7813 415.5313,332.7813 L417.25,332.7813 L417.25,339.2969 L415.5313,339.2969 C415.0938,339.2969 414.9688,339.3125 414.8125,339.4219 C414.5625,339.5781 414.4063,339.8594 414.4063,340.1563 C414.4063,340.4063 414.5469,340.6719 414.7656,340.8281 C414.9219,340.9531 415.125,341 415.5313,341 L420.6719,341 C421.4219,341 421.7813,340.7188 421.7813,340.1563 C421.7813,339.875 421.6719,339.625 421.4375,339.4531 C421.2656,339.3281 421.125,339.2969 420.6719,339.2969 L418.9531,339.2969 L418.9531,332.7813 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="143" x="432" y="340.8467">QuestionRepository</text><line style="stroke:#181818;stroke-width:0.5;" x1="404" x2="577" y1="352" y2="352"/><line style="stroke:#181818;stroke-width:0.5;" x1="404" x2="577" y1="360" y2="360"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="411" y="368"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71" x="423" y="376.9951">instance()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="411" y="384.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="72" x="423" y="393.292">question()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="411" y="400.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="104" x="423" y="409.5889">save(question)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="411" y="416.8906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="118" x="423" y="425.8857">QuestionById(id)</text></g><!--MD5=[60a19af8055ba269ad5fdc8b46936b82]
+class ShowSurveyUI--><g id="elem_ShowSurveyUI"><rect codeLine="8" fill="#F1F1F1" height="64.2969" id="ShowSurveyUI" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="131" x="427" y="7"/><ellipse cx="442" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M444.3438,18.6719 C443.4063,18.2344 442.8125,18.0938 441.9375,18.0938 C439.3125,18.0938 437.3125,20.1719 437.3125,22.8906 L437.3125,24.0156 C437.3125,26.5938 439.4219,28.4844 442.3125,28.4844 C443.5313,28.4844 444.6875,28.1875 445.4375,27.6406 C446.0156,27.2344 446.3438,26.7813 446.3438,26.3906 C446.3438,25.9375 445.9531,25.5469 445.4844,25.5469 C445.2656,25.5469 445.0625,25.625 444.875,25.8125 C444.4219,26.2969 444.4219,26.2969 444.2344,26.3906 C443.8125,26.6563 443.125,26.7813 442.3594,26.7813 C440.3125,26.7813 439.0156,25.6875 439.0156,23.9844 L439.0156,22.8906 C439.0156,21.1094 440.2656,19.7969 442,19.7969 C442.5781,19.7969 443.1875,19.9531 443.6563,20.2031 C444.1406,20.4844 444.3125,20.7031 444.4063,21.1094 C444.4688,21.5156 444.5,21.6406 444.6406,21.7656 C444.7813,21.9063 445.0156,22.0156 445.2344,22.0156 C445.5,22.0156 445.7656,21.875 445.9375,21.6563 C446.0469,21.5 446.0781,21.3125 446.0781,20.8906 L446.0781,19.4688 C446.0781,19.0313 446.0625,18.9063 445.9688,18.75 C445.8125,18.4844 445.5313,18.3438 445.2344,18.3438 C444.9375,18.3438 444.7344,18.4375 444.5156,18.75 L444.3438,18.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="99" x="456" y="27.8467">ShowSurveyUI</text><line style="stroke:#181818;stroke-width:0.5;" x1="428" x2="557" y1="39" y2="39"/><line style="stroke:#181818;stroke-width:0.5;" x1="428" x2="557" y1="47" y2="47"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="435" y="55"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66" x="447" y="63.9951">doShow()</text></g><!--MD5=[baa4f6557482d01d8dd9cca38e0a0483]
+class VerifyClientSurveysController--><g id="elem_VerifyClientSurveysController"><rect codeLine="12" fill="#F1F1F1" height="129.4844" id="VerifyClientSurveysController" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="258" x="155.5" y="131"/><ellipse cx="175.9" cy="147" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M178.2438,142.6719 C177.3063,142.2344 176.7125,142.0938 175.8375,142.0938 C173.2125,142.0938 171.2125,144.1719 171.2125,146.8906 L171.2125,148.0156 C171.2125,150.5938 173.3219,152.4844 176.2125,152.4844 C177.4313,152.4844 178.5875,152.1875 179.3375,151.6406 C179.9156,151.2344 180.2438,150.7813 180.2438,150.3906 C180.2438,149.9375 179.8531,149.5469 179.3844,149.5469 C179.1656,149.5469 178.9625,149.625 178.775,149.8125 C178.3219,150.2969 178.3219,150.2969 178.1344,150.3906 C177.7125,150.6563 177.025,150.7813 176.2594,150.7813 C174.2125,150.7813 172.9156,149.6875 172.9156,147.9844 L172.9156,146.8906 C172.9156,145.1094 174.1656,143.7969 175.9,143.7969 C176.4781,143.7969 177.0875,143.9531 177.5563,144.2031 C178.0406,144.4844 178.2125,144.7031 178.3063,145.1094 C178.3688,145.5156 178.4,145.6406 178.5406,145.7656 C178.6813,145.9063 178.9156,146.0156 179.1344,146.0156 C179.4,146.0156 179.6656,145.875 179.8375,145.6563 C179.9469,145.5 179.9781,145.3125 179.9781,144.8906 L179.9781,143.4688 C179.9781,143.0313 179.9625,142.9063 179.8688,142.75 C179.7125,142.4844 179.4313,142.3438 179.1344,142.3438 C178.8375,142.3438 178.6344,142.4375 178.4156,142.75 L178.2438,142.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="214" x="191.1" y="151.8467">VerifyClientSurveysController</text><line style="stroke:#181818;stroke-width:0.5;" x1="156.5" x2="412.5" y1="163" y2="163"/><line style="stroke:#181818;stroke-width:0.5;" x1="156.5" x2="412.5" y1="171" y2="171"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="163.5" y="179"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="173" x="175.5" y="187.9951">getSurveyById(surveyId)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="163.5" y="195.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="179" x="175.5" y="204.292">SurveySections(surveyId)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="163.5" y="211.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="232" x="175.5" y="220.5889">getSectionQuestions(section.id)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="163.5" y="227.8906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="210" x="175.5" y="236.8857">getQuestionById(question.id)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="163.5" y="244.1875"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="190" x="175.5" y="253.1826">answeredSurvey(survey.id)</text></g><!--MD5=[75ee08ba7d367b23285d265e78720bd9]
+class AddNewAnswerController--><g id="elem_AddNewAnswerController"><rect codeLine="20" fill="#F1F1F1" height="64.2969" id="AddNewAnswerController" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="506" x="448.5" y="163.5"/><ellipse cx="605.75" cy="179.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M608.0938,175.1719 C607.1563,174.7344 606.5625,174.5938 605.6875,174.5938 C603.0625,174.5938 601.0625,176.6719 601.0625,179.3906 L601.0625,180.5156 C601.0625,183.0938 603.1719,184.9844 606.0625,184.9844 C607.2813,184.9844 608.4375,184.6875 609.1875,184.1406 C609.7656,183.7344 610.0938,183.2813 610.0938,182.8906 C610.0938,182.4375 609.7031,182.0469 609.2344,182.0469 C609.0156,182.0469 608.8125,182.125 608.625,182.3125 C608.1719,182.7969 608.1719,182.7969 607.9844,182.8906 C607.5625,183.1563 606.875,183.2813 606.1094,183.2813 C604.0625,183.2813 602.7656,182.1875 602.7656,180.4844 L602.7656,179.3906 C602.7656,177.6094 604.0156,176.2969 605.75,176.2969 C606.3281,176.2969 606.9375,176.4531 607.4063,176.7031 C607.8906,176.9844 608.0625,177.2031 608.1563,177.6094 C608.2188,178.0156 608.25,178.1406 608.3906,178.2656 C608.5313,178.4063 608.7656,178.5156 608.9844,178.5156 C609.25,178.5156 609.5156,178.375 609.6875,178.1563 C609.7969,178 609.8281,177.8125 609.8281,177.3906 L609.8281,175.9688 C609.8281,175.5313 609.8125,175.4063 609.7188,175.25 C609.5625,174.9844 609.2813,174.8438 608.9844,174.8438 C608.6875,174.8438 608.4844,174.9375 608.2656,175.25 L608.0938,175.1719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="183" x="626.25" y="184.3467">AddNewAnswerController</text><line style="stroke:#181818;stroke-width:0.5;" x1="449.5" x2="953.5" y1="195.5" y2="195.5"/><line style="stroke:#181818;stroke-width:0.5;" x1="449.5" x2="953.5" y1="203.5" y2="203.5"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="456.5" y="211.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="480" x="468.5" y="220.4951">isDependencyValid(section.dependent, section.dependentChoice)</text></g><!--MD5=[3005c25ad9a55f851162beee3079adf5]
+link ShowSurveyUI to VerifyClientSurveysController--><g id="link_ShowSurveyUI_VerifyClientSurveysController"><path codeLine="56" d="M450.408,71.265 C428.548,87.503 400.951,108.001 374.572,127.596 " fill="none" id="ShowSurveyUI-to-VerifyClientSurveysController" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="370.349,130.732,379.9588,128.5754,374.3625,127.7501,375.1878,122.1538,370.349,130.732" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[377e022748bae5f8d612a5bfad99fd42]
+link ShowSurveyUI to AddNewAnswerController--><g id="link_ShowSurveyUI_AddNewAnswerController"><path codeLine="57" d="M534.543,71.08 C569.479,96.906 619.127,133.607 655.195,160.27 " fill="none" id="ShowSurveyUI-to-AddNewAnswerController" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="659.524,163.47,654.6661,154.9026,655.5039,160.497,649.9094,161.3348,659.524,163.47" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[584f36a328090a2d2b02f4d7200eaec6]
+link VerifyClientSurveysController to SurveyRepository--><g id="link_VerifyClientSurveysController_SurveyRepository"><path codeLine="58" d="M214.135,260.113 C193.919,278.389 171.96,298.241 152.047,316.243 " fill="none" id="VerifyClientSurveysController-to-SurveyRepository" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="148.093,319.818,157.4522,316.7512,151.8026,316.4655,152.0883,310.8159,148.093,319.818" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[f9efb4a0b3483b45b24e4a163d29979e]
+link VerifyClientSurveysController to SectionRepository--><g id="link_VerifyClientSurveysController_SectionRepository"><path codeLine="59" d="M284.5,260.113 C284.5,277.78 284.5,296.919 284.5,314.437 " fill="none" id="VerifyClientSurveysController-to-SectionRepository" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="284.5,319.818,288.5,310.818,284.5,314.818,280.5,310.818,284.5,319.818" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[1090b71171149b9069f75272dc2d8985]
+link VerifyClientSurveysController to QuestionRepository--><g id="link_VerifyClientSurveysController_QuestionRepository"><path codeLine="60" d="M357.708,260.113 C378.829,278.465 401.778,298.406 422.564,316.468 " fill="none" id="VerifyClientSurveysController-to-QuestionRepository" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="426.419,319.818,422.2477,310.8961,422.6443,316.5391,417.0013,316.9357,426.419,319.818" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[d8a3c2554b7e3a91e5259f04576f8b6b]
+link AddNewAnswerController to AnswerRepository--><g id="link_AddNewAnswerController_AnswerRepository"><path codeLine="61" d="M701.5,227.679 C701.5,251.635 701.5,285.465 701.5,314.717 " fill="none" id="AddNewAnswerController-to-AnswerRepository" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="701.5,319.745,705.5,310.745,701.5,314.745,697.5,310.745,701.5,319.745" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[92539a1f0fa478cee8ce3f4fd8db3bc4]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class SurveyRepository<< (I,a777d1) >>
+class AnswerRepository<< (I,a777d1) >>
+class SectionRepository<< (I,a777d1) >>
+class QuestionRepository<< (I,a777d1) >>
+
+class ShowSurveyUI{
+    - doShow()
+}
+
+class VerifyClientSurveysController{
+    - getSurveyById(surveyId)
+    - SurveySections(surveyId)
+    - getSectionQuestions(section.id)
+    - getQuestionById(question.id)
+    - answeredSurvey(survey.id)
+}
+
+class AddNewAnswerController{
+    - isDependencyValid(section.dependent, section.dependentChoice)
+}
+
+
+class SurveyRepository{
+    - instance()
+    - survey()
+    - save(survey)
+    - findSurveyById(id)
+}
+
+class AnswerRepository{
+    - instance()
+    - answer()
+    - save(answer)
+    - findAll()
+}
+
+class SectionRepository{
+    - instance()
+    - section()
+    - save(section)
+    - SectionById(id)
+}
+
+class QuestionRepository{
+    - instance()
+    - question()
+    - save(question)
+    - QuestionById(id)
+}
+
+
+
+
+ShowSurveyUI- -> VerifyClientSurveysController
+ShowSurveyUI- -> AddNewAnswerController
+VerifyClientSurveysController - ->SurveyRepository
+VerifyClientSurveysController - ->SectionRepository
+VerifyClientSurveysController - ->QuestionRepository
+AddNewAnswerController - -> AnswerRepository
+@enduml
+
+@startuml
+
+class SurveyRepository<< (I,a777d1) >>
+class AnswerRepository<< (I,a777d1) >>
+class SectionRepository<< (I,a777d1) >>
+class QuestionRepository<< (I,a777d1) >>
+
+class ShowSurveyUI{
+    - doShow()
+}
+
+class VerifyClientSurveysController{
+    - getSurveyById(surveyId)
+    - SurveySections(surveyId)
+    - getSectionQuestions(section.id)
+    - getQuestionById(question.id)
+    - answeredSurvey(survey.id)
+}
+
+class AddNewAnswerController{
+    - isDependencyValid(section.dependent, section.dependentChoice)
+}
+
+
+class SurveyRepository{
+    - instance()
+    - survey()
+    - save(survey)
+    - findSurveyById(id)
+}
+
+class AnswerRepository{
+    - instance()
+    - answer()
+    - save(answer)
+    - findAll()
+}
+
+class SectionRepository{
+    - instance()
+    - section()
+    - save(section)
+    - SectionById(id)
+}
+
+class QuestionRepository{
+    - instance()
+    - question()
+    - save(question)
+    - QuestionById(id)
+}
+
+
+
+
+ShowSurveyUI- -> VerifyClientSurveysController
+ShowSurveyUI- -> AddNewAnswerController
+VerifyClientSurveysController - ->SurveyRepository
+VerifyClientSurveysController - ->SectionRepository
+VerifyClientSurveysController - ->QuestionRepository
+AddNewAnswerController - -> AnswerRepository
+@enduml
+
+PlantUML version 1.2022.6beta5(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

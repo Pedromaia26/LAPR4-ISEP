@@ -1,0 +1,13 @@
+@startuml
+autonumber
+actor "Sales Manager" as SC
+participant "System" as UI
+
+activate SC
+SC -> UI : wants to get the statistical report of the questionnaire
+activate UI
+UI --> SC : shows requested data
+deactivate UI
+
+deactivate SC
+@enduml

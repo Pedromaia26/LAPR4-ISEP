@@ -1,0 +1,62 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class SeeReportStatisticUI
+class SurveyRepository << (I,a777d1) >>
+class AnswerRepository << (I,a777d1) >>
+class QuestionRepository  << (I,a777d1) >>
+
+class SeeReportStatisticUI{
+    - doShow()
+}
+
+class ViewSurveysUI{
+    - show()
+}
+
+class SeeReportStatisticController{
+    - getNumberClientsRequested(surveyId)
+    - getQuestions(String id)
+    - getQuestionType(question)
+    - getPerChoiceOption(question, op)
+    - getQuestionType(question)
+    - getOtherOption(String questionId)
+    - combinations(ops, data, 0, ops.size()-1, 0, i+1, map, question)
+    - getPerPlacedOptions(lugar, question, op)
+    - getQuestionSOOptions(question)
+    - getNumberScaleOption(question, scale, index)
+}
+
+class Survey{
+    - clientUsersAnswered()
+}
+
+class SurveyRepository {
+    - instance()
+    - survey()
+    - save(survey)
+    - findSurveyById(id)
+}
+
+class AnswerRepository {
+    - instance()
+    - answer()
+    - save(answer)
+    - findAll()
+}
+
+class QuestionRepository {
+    - instance()
+    - question()
+    - save(question)
+    - findQuestionById(id)
+}
+
+
+SeeReportStatisticUI--> ViewSurveysUI
+SeeReportStatisticUI--> SeeReportStatisticController
+SeeReportStatisticController--> Survey
+SeeReportStatisticController--> SurveyRepository 
+SeeReportStatisticController--> AnswerRepository 
+SeeReportStatisticController--> QuestionRepository 
+@enduml
