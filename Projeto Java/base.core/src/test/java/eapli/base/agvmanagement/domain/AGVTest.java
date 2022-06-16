@@ -30,7 +30,7 @@ public class AGVTest {
         Description description = new Description(TASK);
         new AGV(new AGVIdentifier(AGV_IDENTIFIER), new AGVShortDescription(SHORT_DESCRIPTION)
                 , new Autonomy(AUTONOMY), new MaximumWeight(MAXIMUM_WEIGHT), new Model(MODEL)
-                , new Task(description), new Volume(VOLUME), new AGVDock());
+                , new Task(description), new Volume(VOLUME), new AGVDock(), new Battery());
         assertTrue(true);
     }
 
@@ -39,7 +39,7 @@ public class AGVTest {
         Description description = new Description(TASK);
         new AGV(null, new AGVShortDescription(SHORT_DESCRIPTION)
                 , new Autonomy(AUTONOMY), new MaximumWeight(MAXIMUM_WEIGHT), new Model(MODEL)
-                , new Task(description), new Volume(VOLUME), new AGVDock());
+                , new Task(description), new Volume(VOLUME), new AGVDock(), new Battery());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -47,7 +47,7 @@ public class AGVTest {
         Description description = new Description(TASK);
         new AGV(new AGVIdentifier(AGV_IDENTIFIER), null
                 , new Autonomy(AUTONOMY), new MaximumWeight(MAXIMUM_WEIGHT), new Model(MODEL)
-                , new Task(description), new Volume(VOLUME), new AGVDock());
+                , new Task(description), new Volume(VOLUME), new AGVDock(), new Battery());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -55,7 +55,7 @@ public class AGVTest {
         Description description = new Description(TASK);
         new AGV(new AGVIdentifier(AGV_IDENTIFIER), new AGVShortDescription(SHORT_DESCRIPTION)
                 , null, new MaximumWeight(MAXIMUM_WEIGHT), new Model(MODEL)
-                , new Task(description), new Volume(VOLUME), new AGVDock());
+                , new Task(description), new Volume(VOLUME), new AGVDock(), new Battery());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -63,7 +63,7 @@ public class AGVTest {
         Description description = new Description(TASK);
         new AGV(new AGVIdentifier(AGV_IDENTIFIER), new AGVShortDescription(SHORT_DESCRIPTION)
                 , new Autonomy(AUTONOMY), null, new Model(MODEL)
-                , new Task(description), new Volume(VOLUME), new AGVDock());
+                , new Task(description), new Volume(VOLUME), new AGVDock(), new Battery());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -71,14 +71,14 @@ public class AGVTest {
         Description description = new Description(TASK);
         new AGV(new AGVIdentifier(AGV_IDENTIFIER), new AGVShortDescription(SHORT_DESCRIPTION)
                 , new Autonomy(AUTONOMY), new MaximumWeight(MAXIMUM_WEIGHT), null
-                , new Task(description), new Volume(VOLUME), new AGVDock());
+                , new Task(description), new Volume(VOLUME), new AGVDock(), new Battery());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void ensureMustHaveTask() {
         new AGV(new AGVIdentifier(AGV_IDENTIFIER), new AGVShortDescription(SHORT_DESCRIPTION)
                 , new Autonomy(AUTONOMY), new MaximumWeight(MAXIMUM_WEIGHT), new Model(MODEL)
-                , null, new Volume(VOLUME), new AGVDock());
+                , null, new Volume(VOLUME), new AGVDock(), new Battery());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -86,7 +86,7 @@ public class AGVTest {
         Description description = new Description(TASK);
         new AGV(new AGVIdentifier(AGV_IDENTIFIER), new AGVShortDescription(SHORT_DESCRIPTION)
                 , new Autonomy(AUTONOMY), new MaximumWeight(MAXIMUM_WEIGHT), new Model(MODEL)
-                , new Task(description), null, new AGVDock());
+                , new Task(description), null, new AGVDock(), new Battery());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -94,8 +94,9 @@ public class AGVTest {
         Description description = new Description(TASK);
         new AGV(new AGVIdentifier(AGV_IDENTIFIER), new AGVShortDescription(SHORT_DESCRIPTION)
                 , new Autonomy(AUTONOMY), new MaximumWeight(MAXIMUM_WEIGHT), new Model(MODEL)
-                , new Task(description), new Volume(VOLUME), null);
+                , new Task(description), new Volume(VOLUME), null, new Battery());
     }
+
 
     @Test
     public void ensureCanChangeShortDescription() {
