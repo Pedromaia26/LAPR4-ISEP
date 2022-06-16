@@ -17,7 +17,18 @@ public class ProductOrderBootstrapper extends ProductOrderBootstrapperBase imple
     @Override
     public boolean execute() {
         addProductOrder("123123124", "Green", 10L, "Apple Pay", 1, "nike.10100");
-        addProductOrder("123123124", "Blue", 5L, "Paypal", 3, "bomb.10100");
+        addProductOrder("123123124", "Blue", 5L, "Paypal", 3, "nike.10100");
+        addProductOrder("123123123", "Standard", 2L, "Apple Pay", 10, "nike.10100");
+        addProductOrder("123451234", "Green", 10L, "Paypal", 15, "nike.10100");
+        addProductOrder("123451234", "Green", 10L, "Paypal", 15, "nike.10100");
+        addProductOrder("123451234", "Green", 10L, "Paypal", 15, "nike.10100");
+        addProductOrder("123451234", "Green", 10L, "Paypal", 15, "nike.10100");
+        addProductOrder("123451234", "Green", 10L, "Paypal", 15, "nike.10100");
+        addProductOrder("123123123", "Green", 10L, "Paypal", 15, "nike.10100");
+        addProductOrder("123451234", "Green", 10L, "Paypal", 15, "nike.10100");
+        addProductOrder("123451234", "Green", 10L, "Paypal", 15, "nike.10100");
+        addProductOrder("123451234", "Green", 10L, "Paypal", 15, "nike.10100");
+        addProductOrder("123451234", "Green", 10L, "Paypal", 15, "nike.10100");
 
         return true;
     }
