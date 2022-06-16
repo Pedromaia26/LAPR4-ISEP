@@ -6,7 +6,7 @@ function loadWarehouse() {
         vWarehouse.innerHTML = this.responseText;
         vWarehouse.style.color="black";
 
-        setTimeout(loadWarehouse, 15000);
+        setTimeout(movement, 1000);
     };
 
     request.ontimeout = function() {
@@ -24,6 +24,21 @@ function loadWarehouse() {
     request.timeout = 15000;
     request.send();
 
+}
+
+function movement(){
+    var request = new XMLHttpRequest();
+    var vWarehouse=document.getElementById("warehouse");
+
+    request.onload = function() {
+        vWarehouse.innerHTML = this.responseText;
+        vWarehouse.style.color="black";
+
+        setTimeout(movement, 1000);
+    };
+
+    request.open("PUT", "/movement", true);
+    request.send();
 }
 
 	

@@ -1,5 +1,6 @@
 package eapli.base.dashboardmanagement;
 
+import eapli.base.agvmanagement.application.RequestSharedMemoryService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,6 +17,8 @@ public class HttpAjaxRequest extends Thread {
 	DataOutputStream outS;
 	private static final Logger LOGGER = LogManager.getLogger(HttpAjaxRequest.class);
 	private static final DashboardAgvManagerService service = new DashboardAgvManagerService();
+	private static final RequestSharedMemoryService requestSharedMemoryService = new RequestSharedMemoryService();
+
 
 	public HttpAjaxRequest(SSLSocket s, String f) throws IOException {
 		baseFolder = f;
@@ -29,7 +32,7 @@ public class HttpAjaxRequest extends Thread {
 
 
 		} catch (IOException ex) {
-			System.out.println("Thread error on data streams creation");
+			LOGGER.debug("Thread error on data streams creation\n");
 		}
 		try {
 
@@ -64,25 +67,44 @@ public class HttpAjaxRequest extends Thread {
 					response.send(outS);
 				} else { // NOT GET
 
-					response.setContentFromString(
-							"<html><body><h1>ERROR: 405 Method Not Allowed</h1></body></html>",
-							"text/html");
-					response.setResponseStatus("405 Method Not Allowed");
+					if (request.getMethod().equals("PUT")) {
+						if (request.getURI().equals("/movement")) {
+							String html = requestSharedMemoryService.requestSharedMemoryService();
+							response.setContentFromString(HttpServerAjax.getWarehouseSharedMemory(html), "text/html");
+							response.setResponseStatus("200 Ok");
+						} else {
 
-					response.send(outS);
+							String fullname = baseFolder + "/";
+							if (request.getURI().equals("/")) fullname = fullname + "index.html";
+							else {
+								fullname = fullname + request.getURI();
+							}
+							if (response.setContentFromFile(fullname)) {
+								response.setResponseStatus("200 Ok");
+							} else {
+								response.setContentFromString(
+										"<html><body><h1>404 File not found</h1></body></html>",
+										"text/html");
+								response.setResponseStatus("404 Not Found");
+							}
+						}
+						response.send(outS);
+
+						}else{
+							response.setContentFromString(
+									"<html><body><h1>ERROR: 405 Method Not Allowed</h1></body></html>",
+									"text/html");
+							response.setResponseStatus("405 Method Not Allowed");
+
+							response.send(outS);
+						}
 				}
-
-
-			} catch (IOException e) {
-			System.out.println(e.getMessage());
-			}
+		}catch(IOException e){}
 			try {
 				sock.close();
 			} catch (IOException e) {
-				System.out.println(e.getMessage());
+				LOGGER.debug(e.getMessage() + "\n");
 			}
-
-
 	}
 }
 
