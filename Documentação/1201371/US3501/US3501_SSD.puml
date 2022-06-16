@@ -1,0 +1,17 @@
+@startuml
+autonumber
+actor "Client" as SC
+participant "System" as UI
+
+activate SC
+SC -> UI : wants to get the list of questionnaires
+activate UI
+UI --> SC : shows requested data
+loop
+SC -> UI : selects the questionnaire
+UI --> SC : shows the questionnaire
+end
+deactivate UI
+
+deactivate SC
+@enduml
