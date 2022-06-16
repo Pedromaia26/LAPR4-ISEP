@@ -17,4 +17,8 @@ public class RowEndWSquare implements ValueObject {
     public RowEndWSquare() {
 
     }
+
+    public long EndWSquare() {
+        return endWSquare;
+    }
 }

@@ -25,4 +25,8 @@ public class Description implements ValueObject {
 
         return description;
     }
+
+    public String Description() {
+        return description;
+    }
 }
