@@ -22,7 +22,7 @@ public class AssignTaskRequest extends AgvManagerProtocolRequest {
 
         // execution
         try{
-            agvManagerController.addOrderWithAGV();
+            agvManagerController.addOrderWithAGV(false);
             response = buildResponse();
         }catch (Exception e){
             response = e.getMessage();

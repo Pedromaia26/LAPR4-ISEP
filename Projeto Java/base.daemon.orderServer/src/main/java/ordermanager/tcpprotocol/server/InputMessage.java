@@ -73,7 +73,7 @@ public class InputMessage {
             byte[] data = in.readNBytes(dataLength);
             parsedData = new String(data);
         }catch (Exception e){
-            System.out.println(e.getMessage());
+           LOGGER.debug(e.getMessage() + "\n");
         }
 
         request = new AddProductShoppingCart(controller, parsedData);
@@ -93,7 +93,7 @@ public class InputMessage {
             byte[] data = in.readNBytes(dataLength);
             parsedData = new String(data);
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            LOGGER.debug(e.getMessage() + "\n");
         }
 
         request = new ViewClientOrder(vController, parsedData);

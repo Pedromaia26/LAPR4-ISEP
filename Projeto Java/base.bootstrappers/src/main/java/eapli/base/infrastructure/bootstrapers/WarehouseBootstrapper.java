@@ -5,7 +5,7 @@ import eapli.framework.actions.Action;
 public class WarehouseBootstrapper extends WarehouseBootstrapperBase implements Action {
     @Override
     public boolean execute() {
-        importWarehouseBootStrap("warehouse1");
+        importWarehouseBootStrap("warehouse3");
         return true;
     }
     private void importWarehouseBootStrap(final String fileName) {

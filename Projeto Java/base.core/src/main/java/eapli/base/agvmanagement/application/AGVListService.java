@@ -29,6 +29,14 @@ public class AGVListService {
         return agvRepository.findAGVServingOrder();
     }
 
+    public Iterable<AGV> agvsInMaintenance(){
+        return agvRepository.findAGVInMaintenance();
+    }
+
+    public AGV findAgvInMaintenance(String id){
+        return agvRepository.findAGVInMaintenanceById(id);
+    }
+
 }
 
 

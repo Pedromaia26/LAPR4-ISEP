@@ -1,0 +1,50 @@
+@startuml
+participant "//<<client>>//\nBackOffice" as UI
+participant "AGVDigitalTwinDaemon" as DAEMON
+participant "AGVDigitalTwinTcpServer" as SERVER
+participant "//<<thread>>//\nAGVDigitalTwinHandler" as thread
+participant "UpdateStatusRequest" as USREQUEST
+participant "agvMovement\n:AGVMovement" as AGVMOVEMENT
+participant "agvID\n:String"
+participant "methods\n:Methods"
+database "//<<repository>>//\nAGVRepository" as agvRepository
+
+
+autonumber
+DAEMON->DAEMON: new Methods()
+DAEMON->SERVER: new
+
+DAEMON->SERVER: start
+activate SERVER
+
+SERVER->SERVER: accept
+
+
+SERVER->thread:start
+deactivate SERVER
+activate thread
+
+thread -> USREQUEST: execute
+activate USREQUEST
+
+
+USREQUEST->AGVMOVEMENT : main(agvID, methods)
+activate AGVMOVEMENT
+AGVMOVEMENT -> AGVMOVEMENT: start
+activate AGVMOVEMENT
+note right
+    finds the products position in the warehouse
+    for the order assigned to the agv
+    and moves to that position avoiding obstacles
+    that come in its way, such as, others AGVs,
+    aisles, walls, etc.
+end note
+deactivate AGVMOVEMENT
+AGVMOVEMENT -> USREQUEST: response
+deactivate AGVMOVEMENT
+USREQUEST-->thread: response
+deactivate USREQUEST
+thread -->UI: response
+deactivate thread
+
+@enduml

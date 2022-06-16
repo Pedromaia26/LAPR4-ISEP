@@ -25,6 +25,9 @@ public class OrderLine implements AggregateRoot<Long>{
     @Embedded
     private Cost unitPrice;
 
+
+    private int productStatus;
+
     public OrderLine(Product product, Quantity quantity, ProductOrder productOrder, Cost unitPrice){
 
         if (product == null || quantity == null || productOrder == null || unitPrice == null)
@@ -34,6 +37,7 @@ public class OrderLine implements AggregateRoot<Long>{
         this.quantity = quantity;
         this.productOrder = productOrder;
         this.unitPrice = unitPrice;
+        this.productStatus=1;
     }
 
     public OrderLine() {
@@ -79,5 +83,13 @@ public class OrderLine implements AggregateRoot<Long>{
 
     public Product Product() {
         return product;
+    }
+
+    public void modifyProductStatus(int productStatus) {
+        this.productStatus = productStatus;
+    }
+
+    public int ProductStatus() {
+        return productStatus;
     }
 }

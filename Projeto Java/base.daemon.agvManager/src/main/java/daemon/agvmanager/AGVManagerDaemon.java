@@ -30,7 +30,6 @@ public class AGVManagerDaemon {
 
 
         LOGGER.info("Configuring the daemon");
-        System.out.println(InetAddress.getLocalHost().getHostAddress());
         AuthzRegistry.configure(PersistenceContext.repositories().users(),
                 new BasePasswordPolicy(),
                 new PlainTextEncoder());

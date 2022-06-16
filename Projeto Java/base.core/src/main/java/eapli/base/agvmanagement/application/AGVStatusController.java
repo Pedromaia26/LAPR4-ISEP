@@ -8,4 +8,6 @@ public interface AGVStatusController {
     boolean updateStatus(String id);
 
     boolean updateStatusFree(String id);
+
+    boolean updateStatusRecharge(String id);
 }

@@ -1,6 +1,8 @@
 package eapli.base.ordermanagement.application;
 
 import eapli.base.communicationprotocol.CommunicationProtocol;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
@@ -16,6 +18,8 @@ public class ViewClientOrdersService {
     private static final String TRUSTED_STORE_SERVER = "certificates/server.jks";
     private static final String TRUSTED_STORE_CLIENT = "certificates/client.jks";
     private static final String KEYSTORE_PASS = "Password1";
+    private static final Logger LOGGER = LogManager.getLogger(ViewClientOrdersService.class);
+
 
     public String viewClientOrdersService(String clientVat) {
 
@@ -33,14 +37,14 @@ public class ViewClientOrdersService {
             try {
                 serverIP = InetAddress.getByName("localhost");
             } catch (UnknownHostException ex) {
-                System.out.println("Invalid server specified");
+                LOGGER.debug("Invalid server specified\n");
                 System.exit(1);
             }
             try {
                 sock = (SSLSocket) sf.createSocket(serverIP, 8898);
             } catch (IOException ex) {
-                System.out.println("Failed to establish TCP connection");
-                System.out.println(ex.getMessage());
+                LOGGER.debug("Failed to establish TCP connection\n");
+                LOGGER.debug(ex.getMessage() + "\n");
                 // System.exit(1);
             }
 
@@ -60,8 +64,8 @@ public class ViewClientOrdersService {
             sock.close();
             return responseData;
         } catch (Exception e) {
-            System.out.println("Server down");
-            System.out.println(e.getMessage());
+            LOGGER.debug("Server down\n");
+            LOGGER.debug(e.getMessage() + "\n");
             return null;
         }
     }
@@ -93,7 +97,7 @@ public class ViewClientOrdersService {
         byte[] array_comm_test = new byte[]{1, 0, 0, 0};
         sOut.write(array_comm_test);
 
-        System.out.println(Arrays.toString(sIn.readNBytes(4)));
+        LOGGER.debug(Arrays.toString(sIn.readNBytes(4)) + "\n");
 
 
 
@@ -102,7 +106,7 @@ public class ViewClientOrdersService {
     public boolean endOfSession(DataInputStream sIn, DataOutputStream sOut) throws IOException {
         byte[] array_end_session = new byte[]{1, 1, 0, 0};
         sOut.write(array_end_session);
-        System.out.println(Arrays.toString(sIn.readNBytes(4)));
+        LOGGER.debug(Arrays.toString(sIn.readNBytes(4)) + "\n");
         return false;
     }
 }

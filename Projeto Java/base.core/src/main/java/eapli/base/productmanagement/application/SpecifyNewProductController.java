@@ -59,8 +59,7 @@ public class SpecifyNewProductController {
                               final String internalCode, final double price, String barcode,
                               final double height, final double length, final double width, final double weight, final long aisleID, final long sectionID, final long shelfID) throws IOException {
         Shelf shelf = shelfRepository.findStorageAreaByID(aisleID, sectionID, shelfID);
-        final var newProduct = new ProductBuilder(category, setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference,
-                productionCode, internalCode, price, barcode, height, length, width, weight, shelf);
+        final var newProduct = new ProductBuilder(category, setOfPhotos, shortDescription, extendedDescription, technicalDescription, brand, reference, productionCode, internalCode, price, barcode, height, length, width, weight, shelf);
 
 
         return productRepository.save(newProduct.build());

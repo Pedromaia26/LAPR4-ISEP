@@ -1,5 +1,8 @@
 package eapli.base.agvmanagement.application;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
@@ -15,6 +18,8 @@ public class AssignAGVService {
     private static final String TRUSTED_STORE_SERVER = "certificates/server.jks";
     private static final String TRUSTED_STORE_CLIENT = "certificates/client.jks";
     private static final String KEYSTORE_PASS = "Password1";
+    private static final Logger LOGGER = LogManager.getLogger(AssignAGVService.class);
+
 
     public boolean assignAGVService() {
 
@@ -33,15 +38,15 @@ public class AssignAGVService {
             try {
                 serverIP = InetAddress.getByName("localhost");
             } catch (UnknownHostException ex) {
-                System.out.println("Invalid server specified");
+                LOGGER.debug("Invalid server specified\n");
                 System.exit(1);
             }
 
             try {
                 sock = (SSLSocket) sf.createSocket(serverIP, 8899);
             } catch (IOException ex) {
-                System.out.println("Failed to establish TCP connection");
-                System.out.println("Application aborted");
+                LOGGER.debug("Failed to establish TCP connection\n");
+                LOGGER.debug("Application aborted\n");
                 // System.exit(1);
             }
 
@@ -64,7 +69,7 @@ public class AssignAGVService {
             sock.close();
             return true;
         } catch (Exception e) {
-            System.out.println("Server down");
+            LOGGER.debug("Server down\n");
             return false;
         }
     }
@@ -73,7 +78,7 @@ public class AssignAGVService {
         try {
             byte[] array_comm_test = new byte[]{1, 0, 0, 0};
             sOut.write(array_comm_test);
-            System.out.println(Arrays.toString(sIn.readNBytes(4)));
+            LOGGER.debug(Arrays.toString(sIn.readNBytes(4)) + "\n");
             return true;
         }catch (Exception e){
             return false;
@@ -88,7 +93,7 @@ public class AssignAGVService {
             int dataLength = array_response[2] + 256 * array_response[3];
             byte[] data = sIn.readNBytes(dataLength);
             String parsedData = new String(data);
-            System.out.println(parsedData);
+            LOGGER.debug(parsedData + "\n");
             return true;
         }catch(Exception e) {
             return false;
@@ -99,7 +104,7 @@ public class AssignAGVService {
         try {
             byte[] array_end_session = new byte[]{1, 1, 0, 0};
             sOut.write(array_end_session);
-            System.out.println(Arrays.toString(sIn.readNBytes(4)));
+            LOGGER.debug(Arrays.toString(sIn.readNBytes(4)) + "\n");
             return true;
         }catch (Exception e) {
             return false;

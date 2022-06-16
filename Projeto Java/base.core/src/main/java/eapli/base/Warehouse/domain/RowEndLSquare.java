@@ -8,6 +8,10 @@ import javax.persistence.Embeddable;
 public class RowEndLSquare implements ValueObject {
     private long endLSquare;
 
+    public long EndLSquare() {
+        return endLSquare;
+    }
+
     public RowEndLSquare(long endLSquare) {
         if(endLSquare<0)throw new IllegalArgumentException("Row endLSquare < 0!");
 

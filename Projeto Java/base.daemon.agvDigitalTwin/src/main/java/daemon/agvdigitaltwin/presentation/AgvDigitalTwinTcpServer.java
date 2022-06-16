@@ -25,6 +25,7 @@ public class AgvDigitalTwinTcpServer {
 
 
 
+
     private static class AgvDigitalTwinHandler extends Thread {
 
         private final AGVMovement.Methods methods;
@@ -121,7 +122,7 @@ public class AgvDigitalTwinTcpServer {
             // serverSocket.setNeedClientAuth(true);
         }
         catch(IOException ex) {
-            System.out.println("Server failed to open local port " + port);
+            LOGGER.debug("Server failed to open local port " + port + "\n");
             System.exit(1);
         }
 

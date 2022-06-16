@@ -53,6 +53,24 @@ public class JpaAGVRepository extends JpaAutoTxRepository<AGV, AGVIdentifier, AG
         return query.getResultList();
     }
 
+    @Override
+    public Iterable<AGV> findAGVInMaintenance() {
+        final TypedQuery<AGV> query = super.createQuery(
+                "SELECT d FROM AGV d WHERE task_id = 4",
+                AGV.class);
+
+        return query.getResultList();
+    }
+
+    @Override
+    public AGV findAGVInMaintenanceById(String id) {
+        final TypedQuery<AGV> query = super.createQuery(
+                "SELECT d FROM AGV d WHERE id = '" + id + "' and task_id = 4",
+                AGV.class);
+
+        return query.getSingleResult();
+    }
+
 
 }
 

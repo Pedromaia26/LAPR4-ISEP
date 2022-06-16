@@ -51,7 +51,7 @@ public class HttpServerAjax {
 
         }
         catch(IOException ex) {
-            System.out.println("Server failed to open local port " + PORT);
+            LOGGER.debug("Server failed to open local port " + PORT + "\n");
             System.exit(1);
         }
       /*      Desktop desktop = java.awt.Desktop.getDesktop();
@@ -64,8 +64,6 @@ public class HttpServerAjax {
 
 
         while(true) {
-
-
 
             cliSock= (SSLSocket) sock.accept();
             HttpAjaxRequest req=new HttpAjaxRequest(cliSock, BASE_FOLDER);
@@ -168,5 +166,92 @@ public class HttpServerAjax {
             String[] agvDock = res4[i+1].split("[,]", 0);
             agvs.add(agvDock[0]);
         }
+    }
+
+    public static synchronized String getWarehouseSharedMemory(String html) {
+
+        List<Integer> list = new ArrayList<>();
+        list = parse(html);
+
+
+
+        boolean agvD = false;
+        boolean isAisle = false;
+        boolean isAislelimit = false;
+        String agvId = null;
+        StringBuilder textHtml = new StringBuilder("<table style=\"border: 1px solid black; margin: auto; border-collapse: collapse;\">");
+        if (square != 0) {
+            for (int j = 0; j < (length / square); j++) {
+                textHtml.append("<tr>");
+                for (int i = 0; i < (width / square); i++) {
+                    agvD = false;
+                    isAisle = false;
+                    isAislelimit = false;
+                    for (int k = 0; k < agvDocks.size(); k+=3){
+                        if (Long.parseLong(agvDocks.get(k))-1 == i && Long.parseLong(agvDocks.get(k+1))-1 == j){
+                            agvId = agvDocks.get(k+2);
+                            agvD = true;
+                        }
+                    }
+                    for (int l = 0; l < aisles.size(); l+=6){
+                        if (aisles.get(l)-1 <= i && aisles.get(l+4)-1 >= i && ((aisles.get(l+2)-1 <= j  && aisles.get(l+5)-1 >= j) || (aisles.get(l+2)-1 >= j  && aisles.get(l+5)-1 <= j))){
+                            if (aisles.get(l)-1 <= i && aisles.get(l+4)-1 >= i && ((aisles.get(l+2)-1 <= j  && aisles.get(l+5)-1 == j))){
+                                isAislelimit = true;
+                            }
+                            isAisle = true;
+                        }
+                    }
+                    if (agvD){
+                        textHtml.append("<td id=\"");
+                        textHtml.append(agvId);
+                        if (traverse(list, j, i)){
+                            textHtml.append("\" style=\"border: 1px solid black; width: 40px; height: 40px; background-color: yellow; text-align: center;\">&#9899;</td>");
+                        }
+                        else{
+                            textHtml.append("\" style=\"border: 1px solid black; width: 40px; height: 40px; background-color: yellow; text-align: center;\">&nbsp;</td>");
+                        }
+                    } else if (isAisle) {
+                        if (isAislelimit) {
+                            textHtml.append("<td style=\"border-bottom: 1px solid black; width: 40px; height: 40px; background-color: red; text-align: center;\">&nbsp;</td>");
+                        } else {
+                            textHtml.append("<td style=\"border: 0px solid black; width: 40px; height: 40px; background-color: red; text-align: center;\">&nbsp;</td>");
+                        }
+                    }else if (traverse(list, j, i)){
+                        textHtml.append("<td id=\"");
+                        textHtml.append(agvId);
+                        textHtml.append("\" style=\"border: 1px solid black; width: 40px; height: 40px; text-align: center;\">&#9899;</td>");
+                    } else {
+                        textHtml.append("<td style=\"border: 1px solid black; width: 40px; height: 40px; text-align: center;\">&nbsp;</td>");
+                    }
+
+                }
+                textHtml.append("</tr>");
+            }
+        }
+        textHtml.append("</table>");
+        return textHtml.toString();
+    }
+
+    public static synchronized List<Integer> parse(String matrix){
+        String[] res1 = matrix.split(";");
+        List<Integer> list = new ArrayList<>();
+
+        for (int i = 0; i < res1.length; i++){
+            String[] res2 = res1[i].split(",");
+            list.add(Integer.parseInt(res2[0]));
+            list.add(Integer.parseInt(res2[1]));
+        }
+
+        return list;
+    }
+
+    public static synchronized boolean traverse(List<Integer> list, int j, int i){
+
+        for (int k = 0; k < list.size(); k+=2){
+            if (list.get(k) == j && list.get(k+1) == i){
+                return true;
+            }
+        }
+        return false;
     }
 }

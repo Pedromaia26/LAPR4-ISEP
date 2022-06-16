@@ -9,6 +9,8 @@ import eapli.base.Warehouse.repositories.WarehouseRepository;
 import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.net.ssl.SSLSocket;
 import java.io.DataInputStream;
@@ -21,6 +23,8 @@ public class DashBoardManagementControllerImpl implements DashBoardManagementCon
     private final AisleRepository aisleRepository = PersistenceContext.repositories().aisle();
     private final AGVRepository agvRepository = PersistenceContext.repositories().agv();
     private StringBuilder string = new StringBuilder("/dimensions/");
+    private static final Logger LOGGER = LogManager.getLogger(DashBoardManagementControllerImpl.class);
+
 
 
 
@@ -31,7 +35,7 @@ public class DashBoardManagementControllerImpl implements DashBoardManagementCon
 
 
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            LOGGER.debug(e.getMessage() + "\n");
         }
         return new StringBuilder("error");
     }
@@ -44,14 +48,6 @@ public class DashBoardManagementControllerImpl implements DashBoardManagementCon
         sendAgvDock();
         sendAisle();
         sendAGV();
-
-        /*request.setRequestMethod("PUT");
-        request.setURI(string.toString());
-        try{
-            request.send(sOut);
-        } catch(Exception e){
-            System.out.println(e.getMessage());
-        }*/
         return string;
     }
 

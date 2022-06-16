@@ -1,15 +1,11 @@
 package eapli.base.productmanagement.domain;
 
-import eapli.base.Warehouse.domain.Aisle;
-import eapli.base.Warehouse.domain.AisleIdentifier;
-import eapli.base.Warehouse.domain.Section;
 import eapli.base.Warehouse.domain.Shelf;
 import eapli.base.categorymanagement.domain.Category;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
 
 import javax.persistence.*;
-import java.util.Set;
 
 
 @Entity
@@ -51,9 +47,10 @@ public class Product implements AggregateRoot<InternalCode> {
     @ManyToOne(optional = false)
     private Category category;
 
+
     public Product(Category category, Photo photo, ShortDescription shortDescription, ExtendedDescription extendedDescription, TechnicalDescription technicalDescription, Brand brand, Reference reference, InternalCode internalCode, Price price, Barcode barcode, Height height, Length length, Width width, Weight weight, Shelf shelf) {
 
-        if (photo == null || shortDescription == null || extendedDescription == null || technicalDescription == null || brand == null || reference == null || internalCode == null || price == null || barcode == null || height == null || length == null || width == null || weight == null || category == null || shelf == null)
+        if (photo == null || shortDescription == null || extendedDescription == null || technicalDescription == null || brand == null || reference == null || internalCode == null || price == null || barcode == null || height == null || length == null || width == null || weight == null || category == null || shelf == null )
             throw new IllegalArgumentException();
 
         this.photo = photo;
@@ -75,7 +72,7 @@ public class Product implements AggregateRoot<InternalCode> {
 
     public Product(Category category, Photo photo, ShortDescription shortDescription, ExtendedDescription extendedDescription, TechnicalDescription technicalDescription, Brand brand, Reference reference, InternalCode internalCode, ProductionCode productionCode, Price price, Barcode barcode, Height height, Length length, Width width, Weight weight, Shelf shelf){
 
-        if (photo == null || shortDescription == null || extendedDescription == null || technicalDescription == null || brand == null || reference == null || internalCode == null || productionCode == null || price == null || barcode == null || height == null || length == null || width == null || weight== null || category == null || shelf == null)
+        if (photo == null || shortDescription == null || extendedDescription == null || technicalDescription == null || brand == null || reference == null || internalCode == null || productionCode == null || price == null || barcode == null || height == null || length == null || width == null || weight== null || category == null || shelf == null )
             throw new IllegalArgumentException();
 
         this.photo = photo;
@@ -248,4 +245,5 @@ public class Product implements AggregateRoot<InternalCode> {
     public void modifyShelf(Shelf shelf) {
         this.shelf = shelf;
     }
+
 }

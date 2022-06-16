@@ -7,4 +7,6 @@ public interface OrderLineRepository extends DomainRepository<Long, OrderLine> {
     Double getAllCost(Long orderId);
 
     Iterable<OrderLine> findOrderLinesByOrderId(Long orderId);
+
+    Iterable<OrderLine> findOrderLinesByOrderIdNotPickedUp(Long orderId);
 }

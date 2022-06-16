@@ -28,6 +28,18 @@ public class CommunicationProtocol {
     public static final int DASHBOARD_RESPONSE_CODE = 113;
     public static final int VIEW_CLIENT_ORDERS = 114;
     public static final int VIEW_CLIENT_ORDERS_RESPONSE = 115;
+    public static final int SHARED_MEMORY = 116;
+    public static final int SHARED_MEMORY_RESPONSE = 117;
+    public static final int RECHARGING_AGV_CODE = 118;
+    public static final int RECHARGING_AGV_RESPONSE_CODE = 119;
+    public static final int UPDATE_AGV_STATUS_RECHARGE_CODE = 120;
+    public static final int UPDATE_AGV_STATUS_RECHARGE_RESPONSE_CODE = 121;
+    public static final int UPDATE_AGV_STATUS_RECHARGE_FINISHED_ORDER_CODE = 122;
+    public static final int UPDATE_AGV_STATUS_RECHARGE_FINISHED_ORDER_RESPONSE_CODE = 123;
+    public static final int AGV_RECHARGE_FINISHED_ORDER_CODE = 124;
+    public static final int AGV_RECHARGE_FINISHED_ORDER_RESPONSE_CODE = 125;
+    public static final int UPDATE_AGV_STATUS_MAINTENANCE_CODE = 126;
+    public static final int UPDATE_AGV_STATUS_MAINTENANCE_RESPONSE_CODE = 127;
 
     public static byte[] dataLengthCalculator(String data){
         int dataLength = data.length();

@@ -24,6 +24,15 @@ public class AGVListController {
         return svc.agvsServingOrder();
     }
 
+    public Iterable<AGV> agvsInMaintenance(){
+        return svc.agvsInMaintenance();
+    }
+
+    public boolean verifyIfAGVsInMaintenaceExist(){
+        List<AGV> list = (List<AGV>) agvsInMaintenance();
+        return list.size() > 0;
+    }
+
     public boolean verifyIfFreeAgvsExist(){
         List<AGV> list = (List<AGV>) freeAgvs();
         return list.size() > 0;
@@ -37,5 +46,9 @@ public class AGVListController {
     public AGV findAgvById(String id){
         return svc.findAgvById(id);
     }
+    public AGV findAgvInMaintenance(String id){
+        return svc.findAgvInMaintenance(id);
+    }
+
 
 }

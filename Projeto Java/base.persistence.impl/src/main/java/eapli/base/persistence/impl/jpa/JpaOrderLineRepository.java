@@ -33,4 +33,13 @@ public class JpaOrderLineRepository extends BasepaRepositoryBase<OrderLine, Long
 
         return query.getResultList();
     }
+
+    @Override
+    public Iterable<OrderLine> findOrderLinesByOrderIdNotPickedUp(Long orderId){
+        final TypedQuery<OrderLine> query = super.createQuery(
+                "SELECT d FROM OrderLine d WHERE ProductOrder_Id = " + orderId + "and ProductStatus = 1",
+                OrderLine.class);
+
+        return query.getResultList();
+    }
 }

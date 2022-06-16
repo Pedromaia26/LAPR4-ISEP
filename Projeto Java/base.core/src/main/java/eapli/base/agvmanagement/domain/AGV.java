@@ -27,9 +27,11 @@ public class AGV implements AggregateRoot<AGVIdentifier> {
     private Volume volume;
     @OneToOne
     private AGVDock agvDock;
+    @Embedded
+    private Battery battery;
 
 
-    public AGV(AGVIdentifier agvIdentifier, AGVShortDescription agvShortDescription, Autonomy autonomy, MaximumWeight maximumWeight, Model model, Task task, Volume volume, AGVDock agvDock) {
+    public AGV(AGVIdentifier agvIdentifier, AGVShortDescription agvShortDescription, Autonomy autonomy, MaximumWeight maximumWeight, Model model, Task task, Volume volume, AGVDock agvDock, Battery battery) {
 
         if (agvIdentifier == null || agvShortDescription == null || autonomy == null || maximumWeight == null || model == null || task == null || volume == null || agvDock == null)
             throw new IllegalArgumentException();
@@ -42,6 +44,7 @@ public class AGV implements AggregateRoot<AGVIdentifier> {
         this.task = task;
         this.volume = volume;
         this.agvDock = agvDock;
+        this.battery = battery;
     }
 
     public AGV() {
@@ -106,6 +109,14 @@ public class AGV implements AggregateRoot<AGVIdentifier> {
 
     public void modifyAgvDock(AGVDock agvDock) {
         this.agvDock = agvDock;
+    }
+
+    public Battery Battery() {
+        return battery;
+    }
+
+    public void modifyBattery(Battery battery) {
+        this.battery = battery;
     }
 
     @Override

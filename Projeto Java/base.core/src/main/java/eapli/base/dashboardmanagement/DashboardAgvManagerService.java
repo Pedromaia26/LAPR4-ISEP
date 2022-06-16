@@ -1,5 +1,10 @@
 package eapli.base.dashboardmanagement;
 
+import eapli.base.agvmanagement.application.UpdateStatusFreeService;
+import org.apache.commons.logging.Log;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
@@ -13,6 +18,8 @@ public class DashboardAgvManagerService {
     private static final String TRUSTED_STORE_SERVER = "certificates/server.jks";
     private static final String TRUSTED_STORE_CLIENT = "certificates/httpserver.jks";
     private static final String KEYSTORE_PASS = "Password1";
+    private static final Logger LOGGER = LogManager.getLogger(DashboardAgvManagerService.class);
+
 
     private String response;
 
@@ -33,15 +40,15 @@ public class DashboardAgvManagerService {
             try {
                 serverIP = InetAddress.getByName("localhost");
             } catch (UnknownHostException ex) {
-                System.out.println("Invalid server specified");
+                LOGGER.debug("Invalid server specified\n");
                 System.exit(1);
             }
 
             try {
                 sock = (SSLSocket) sf.createSocket(serverIP, 8899);
             } catch (IOException ex) {
-                System.out.println("Failed to establish TCP connection");
-                System.out.println("Application aborted");
+                LOGGER.debug("Failed to establish TCP connection\n");
+                LOGGER.debug("Application aborted\n");
                 // System.exit(1);
             }
 
@@ -67,8 +74,8 @@ public class DashboardAgvManagerService {
             sock.close();
             return response;
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Server down");
+            LOGGER.debug(e.getMessage() + "\n");
+            LOGGER.debug("Server down\n");
             return "error in DashboardAgvManagerService";
         }
     }
@@ -77,7 +84,7 @@ public class DashboardAgvManagerService {
         try {
             byte[] array_comm_test = new byte[]{1, 0, 0, 0};
             sOut.write(array_comm_test);
-            System.out.println("Commdams"+Arrays.toString(sIn.readNBytes(4)));
+            LOGGER.debug(Arrays.toString(sIn.readNBytes(4)) + "\n");
             return true;
         }catch (Exception e){
             return false;
@@ -96,11 +103,11 @@ public class DashboardAgvManagerService {
             int dataLength = first + 256 * second;
             byte[] data = sIn.readNBytes(dataLength);
             response = new String(data);
-            System.out.println("respdams: "+response);
+            LOGGER.debug(response + "\n");
             return true;
         }catch(Exception e) {
             e.printStackTrace();
-            System.out.println(e.getMessage());
+            LOGGER.debug(e.getMessage() + "\n");
             return false;
         }
     }
@@ -109,7 +116,7 @@ public class DashboardAgvManagerService {
         try {
             byte[] array_end_session = new byte[]{1, 1, 0, 0};
             sOut.write(array_end_session);
-            System.out.println("recdams"+Arrays.toString(sIn.readNBytes(4)));
+            LOGGER.debug(Arrays.toString(sIn.readNBytes(4)) + "\n");
             return true;
         }catch (Exception e) {
             return false;

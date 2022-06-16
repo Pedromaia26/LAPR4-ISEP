@@ -1,6 +1,7 @@
 package agvdigitaltwin.tcpprotocol.server;
 
 import eapli.base.agvmanagement.application.AGVManagerController;
+import eapli.base.agvmanagement.application.AGVMovement;
 import eapli.base.agvmanagement.application.AGVStatusController;
 import eapli.base.agvmanagement.application.AGVStatusControllerImpl;
 import eapli.base.communicationprotocol.CommunicationProtocol;
@@ -11,10 +12,13 @@ public class UpdateStatusFreeRequest extends AgvDigitalTwinProtocolRequest {
     private Long id;
 
     private AGVStatusController agvStatusController = new AGVStatusControllerImpl();
+    private AGVMovement.Methods methods;
 
-    protected UpdateStatusFreeRequest(AGVManagerController controller, String inputRequest) {
+    protected UpdateStatusFreeRequest(AGVManagerController controller, String inputRequest, AGVMovement.Methods methods) {
         super(controller, inputRequest);
         this.agvID = inputRequest;
+        this.methods = methods;
+
     }
 
 

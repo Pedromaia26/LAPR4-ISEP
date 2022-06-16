@@ -4,13 +4,11 @@ import eapli.base.Warehouse.domain.Aisle;
 import eapli.base.Warehouse.domain.Section;
 import eapli.base.Warehouse.domain.Shelf;
 import eapli.base.categorymanagement.domain.Category;
+
 import eapli.framework.domain.model.DomainFactory;
 
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
 import java.io.IOException;
 import java.util.List;
-import java.util.Set;
 
 public class ProductBuilder implements DomainFactory<Product> {
 
@@ -162,13 +160,14 @@ public class ProductBuilder implements DomainFactory<Product> {
         return this;
     }
 
+
     private Product buildOrThrow() {
         if (product != null) {
             return product;
         } else if (barcode != null && brand != null && internalCode != null && shortDescription != null && extendedDescription != null && technicalDescription != null && photo != null && price != null && reference != null && productionCode == null && height != null && length != null && width != null && weight != null && category != null && shelf != null) {
             product = new Product(category, photo, shortDescription, extendedDescription, technicalDescription, brand, reference, internalCode, price, barcode, height, length, width, weight, shelf);
             return product;
-        } else if (barcode != null && brand != null && internalCode != null && shortDescription != null && extendedDescription != null && technicalDescription != null && photo != null && price != null && reference != null && productionCode != null && height != null && length != null && width != null && weight != null && category != null && shelf != null) {
+        } else if (barcode != null && brand != null && internalCode != null && shortDescription != null && extendedDescription != null && technicalDescription != null && photo != null && price != null && reference != null && productionCode != null && height != null && length != null && width != null && weight != null && category != null && shelf != null ) {
             product = new Product(category, photo, shortDescription, extendedDescription, technicalDescription, brand, reference, internalCode, productionCode, price, barcode, height, length, width, weight, shelf);
             return product;
         } else {
