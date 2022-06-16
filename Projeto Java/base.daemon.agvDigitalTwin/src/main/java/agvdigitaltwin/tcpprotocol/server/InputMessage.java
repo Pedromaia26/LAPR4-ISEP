@@ -51,11 +51,23 @@ public class InputMessage {
         }
         if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.UPDATE_AGV_STATUS_FREE_CODE) {
 
-            agvDigitalTwinProtocolRequest = inputUpdateStatusFree(arr, in);
+            agvDigitalTwinProtocolRequest = inputUpdateStatusFree(arr, in, methods);
         }
 
+        if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.SHARED_MEMORY) {
 
-        return agvDigitalTwinProtocolRequest;
+            agvDigitalTwinProtocolRequest = inputSharedMemory(arr, in, methods);
+        }
+
+        if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.UPDATE_AGV_STATUS_RECHARGE_CODE) {
+            agvDigitalTwinProtocolRequest = inputUpdateStatusRecharge(arr, in, methods);
+        }
+
+        if (arr[0] == CommunicationProtocol.PROTOCOL_V1 && arr[1] == CommunicationProtocol.UPDATE_AGV_STATUS_RECHARGE_FINISHED_ORDER_CODE) {
+            agvDigitalTwinProtocolRequest = inputUpdateStatusRechargeFinishedOrder(arr, in, methods);
+        }
+
+            return agvDigitalTwinProtocolRequest;
     }
 
 
@@ -71,7 +83,7 @@ public class InputMessage {
             byte[] data = in.readNBytes(dataLength);
             parsedData = new String(data);
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            LOGGER.debug(e.getMessage() + "\n");
         }
 
         request = new UpdateStatusRequest(controller, parsedData, methods);
@@ -79,7 +91,7 @@ public class InputMessage {
         return request;
     }
 
-    private static AgvDigitalTwinProtocolRequest inputUpdateStatusFree(final byte[] array, DataInputStream in) {
+    private static AgvDigitalTwinProtocolRequest inputUpdateStatusFree(final byte[] array, DataInputStream in, final AGVMovement.Methods methods) {
         AgvDigitalTwinProtocolRequest request;
 
         String parsedData = null;
@@ -91,10 +103,62 @@ public class InputMessage {
             byte[] data = in.readNBytes(dataLength);
             parsedData = new String(data);
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            LOGGER.debug(e.getMessage() + "\n");
         }
 
-        request = new UpdateStatusFreeRequest(controller, parsedData);
+        request = new UpdateStatusFreeRequest(controller, parsedData, methods);
+
+        return request;
+    }
+
+    private static AgvDigitalTwinProtocolRequest inputSharedMemory(final byte[] array, DataInputStream in, final AGVMovement.Methods methods) {
+
+        AgvDigitalTwinProtocolRequest request;
+
+        String parsedData = null;
+
+
+        request = new SharedMemoryRequest(controller, methods);
+
+        return request;
+    }
+
+    private static AgvDigitalTwinProtocolRequest inputUpdateStatusRecharge(final byte[] array, DataInputStream in, final AGVMovement.Methods methods){
+        AgvDigitalTwinProtocolRequest request;
+
+        String parsedData = null;
+
+
+        int dataLength = array[2] + 256*array[3];
+
+        try {
+            byte[] data = in.readNBytes(dataLength);
+            parsedData = new String(data);
+        }catch (Exception e){
+            LOGGER.debug(e.getMessage() + "\n");
+        }
+
+        request = new UpdateStatusRechargeRequest(controller, parsedData, methods);
+
+        return request;
+    }
+
+    private static AgvDigitalTwinProtocolRequest inputUpdateStatusRechargeFinishedOrder(final byte[] array, DataInputStream in, final AGVMovement.Methods methods){
+        AgvDigitalTwinProtocolRequest request;
+
+        String parsedData = null;
+
+
+        int dataLength = array[2] + 256*array[3];
+
+        try {
+            byte[] data = in.readNBytes(dataLength);
+            parsedData = new String(data);
+        }catch (Exception e){
+            LOGGER.debug(e.getMessage() + "\n");
+        }
+
+        request = new UpdateStatusRechargeRequest(controller, parsedData, methods);
 
         return request;
     }
