@@ -72,3 +72,4 @@ Cada ficheiro é gravado na pasta 'Answers', localizada na pasta base do projeto
 - Service
 - Repository
 - Factory
+- DTO
