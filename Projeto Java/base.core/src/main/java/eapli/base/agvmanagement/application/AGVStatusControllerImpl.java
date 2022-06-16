@@ -6,6 +6,8 @@ import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.taskmanagement.application.TasksListService;
 import eapli.base.taskmanagement.domain.Task;
 import eapli.framework.domain.repositories.TransactionalContext;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class AGVStatusControllerImpl implements AGVStatusController{
 
@@ -13,7 +15,7 @@ public class AGVStatusControllerImpl implements AGVStatusController{
     private TasksListService svcTask = new TasksListService();
     private AGV agv;
     private final AGVRepository agvRepository = PersistenceContext.repositories().agv();
-
+    private static final Logger LOGGER = LogManager.getLogger(AGVStatusControllerImpl.class);
 
     @Override
     public boolean updateStatus(String id) {
@@ -29,7 +31,7 @@ public class AGVStatusControllerImpl implements AGVStatusController{
                 }
             }
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            LOGGER.debug(e.getMessage());
             return false;
         }
         return false;
@@ -48,7 +50,26 @@ public class AGVStatusControllerImpl implements AGVStatusController{
                 }
             }
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            LOGGER.debug(e.getMessage());
+            return false;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateStatusRecharge(String id) {
+        try {
+            Task task = svcTask.findTaskById(2L);
+            for (AGV agv: svcAGV.agv()){
+                if (agv.identity().AgvIdentifier().equals(id)){
+                    agv.modifyTask(task);
+                    this.agv = agv;
+                    agvRepository.save(agv);
+                    return true;
+                }
+            }
+        }catch (Exception e){
+            LOGGER.debug(e.getMessage());
             return false;
         }
         return false;
