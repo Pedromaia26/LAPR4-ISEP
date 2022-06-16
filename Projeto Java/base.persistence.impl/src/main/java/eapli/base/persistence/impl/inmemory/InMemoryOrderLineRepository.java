@@ -21,4 +21,9 @@ public class InMemoryOrderLineRepository extends InMemoryDomainRepository<OrderL
 
     @Override
     public Iterable<OrderLine> findOrderLinesByOrderId(Long orderId){return null;}
+
+    @Override
+    public Iterable<OrderLine> findOrderLinesByOrderIdNotPickedUp(Long orderId) {
+        return null;
+    }
 }
