@@ -1,0 +1,101 @@
+@startuml
+participant "//<<client>>//\n:BackOffice" as UI
+participant ":AgvManagerDaemon" as AGVMANAGERDAEMON
+participant ":AgvDigitalTwinDaemon" as AGVTWINDAEMON
+participant ":AgvManagerServer" as AGVMANSERVER
+participant ":AgvDigitalTwinTcpServer" as AGVTWINSERVER
+participant "//<<thread>>//\n:AgvManagerHandler" as AGVMANAGERTHREAD
+participant "//<<thread>>//\n:AgvDigitalTwinHandler" as AGVTWINTHREAD
+participant "//<<abstract>>//\n:AgvManagerProtocolRequest" as AGVMANREQUEST
+participant ":AssignTaskRequest" as TASKREQUEST
+participant ":AGVManagerControllerImpl" as AGVCONTROLLER
+participant ":UpdateStatusService" as SERVICE
+participant "//<<abstract>>//\n:AgvDigitalTwinProtocolRequest" as AGVTWINREQUEST
+participant ":UpdateStatusRequest" as UPDATESTATUSREQUEST
+participant ":AGVStatusControllerImpl" as STATUSCONTROLLER
+participant "agv\n:AGV" as AGV
+database "<<repository>>\n:AGVRepository" as REPO
+participant "agvID\n:String"
+
+
+autonumber
+
+AGVMANAGERDAEMON->AGVMANSERVER: new
+
+AGVMANAGERDAEMON->AGVMANSERVER: start
+
+AGVTWINDAEMON->AGVTWINSERVER: new
+
+AGVTWINDAEMON->AGVTWINSERVER: start
+
+activate AGVMANSERVER
+
+AGVMANSERVER->AGVMANSERVER: accept
+
+UI-->AGVMANSERVER: request
+
+AGVMANSERVER->AGVMANAGERTHREAD:start
+deactivate AGVMANSERVER
+activate AGVMANAGERTHREAD
+
+AGVMANAGERTHREAD -> AGVMANREQUEST: execute
+activate AGVMANREQUEST
+
+AGVMANREQUEST -> TASKREQUEST: execute
+activate TASKREQUEST
+
+TASKREQUEST -> AGVCONTROLLER: addOrderWithAGV()
+deactivate TASKREQUEST
+activate AGVCONTROLLER
+
+AGVCONTROLLER -> SERVICE: updateStatusService(agvID)
+deactivate AGVCONTROLLER
+activate SERVICE
+
+SERVICE -> AGVTWINTHREAD: write(agvID)
+deactivate SERVICE
+
+AGVMANREQUEST->AGVMANREQUEST: buildResponse
+
+AGVMANREQUEST-->AGVMANAGERTHREAD: response
+deactivate AGVMANREQUEST
+AGVMANAGERTHREAD -->UI: response
+deactivate AGVMANAGERTHREAD
+
+
+activate AGVTWINSERVER
+
+AGVTWINSERVER->AGVTWINSERVER: accept
+
+
+AGVTWINSERVER->AGVTWINTHREAD:start
+deactivate AGVTWINSERVER
+activate AGVTWINTHREAD
+
+AGVTWINTHREAD -> AGVTWINREQUEST: execute
+activate AGVTWINREQUEST
+
+AGVTWINREQUEST -> UPDATESTATUSREQUEST: execute()
+activate UPDATESTATUSREQUEST
+
+UPDATESTATUSREQUEST -> STATUSCONTROLLER: updateStatus(agvID)
+activate STATUSCONTROLLER
+
+
+STATUSCONTROLLER -> AGV: modifyStatus()
+activate AGV
+
+deactivate AGV
+STATUSCONTROLLER -> REPO: save(agv)
+activate REPO
+
+AGVTWINREQUEST->AGVTWINREQUEST: buildResponse
+deactivate REPO
+deactivate STATUSCONTROLLER
+deactivate UPDATESTATUSREQUEST
+AGVTWINREQUEST-->AGVTWINTHREAD: response
+deactivate AGVTWINREQUEST
+AGVTWINTHREAD --> UI: response
+deactivate AGVTWINTHREAD
+
+@enduml
