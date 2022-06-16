@@ -5,7 +5,7 @@ import eapli.base.communicationprotocol.CommunicationProtocol;
 
 import java.io.IOException;
 
-public class UpdateStatusRequest  extends AgvDigitalTwinProtocolRequest {
+public class UpdateStatusRequest extends AgvDigitalTwinProtocolRequest {
 
     private String agvID;
     private Long id;
@@ -32,7 +32,6 @@ public class UpdateStatusRequest  extends AgvDigitalTwinProtocolRequest {
             public void run() {
                 AGVMovement agvMovement = new AGVMovement();
                 try {
-                    System.out.println(agvID);
                     Thread.sleep(500);
                     agvMovement.main(agvID, methods);
                 } catch (Exception e) {
