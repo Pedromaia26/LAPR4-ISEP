@@ -14,4 +14,8 @@ public interface AGVRepository extends DomainRepository<AGVIdentifier, AGV> {
     AGV findById(String id);
 
     Iterable<AGV> findAGVServingOrder();
+
+    Iterable<AGV> findAGVInMaintenance();
+
+    AGV findAGVInMaintenanceById(String id);
 }

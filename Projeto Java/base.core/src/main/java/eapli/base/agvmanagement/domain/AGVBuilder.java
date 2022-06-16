@@ -17,6 +17,7 @@ public class AGVBuilder {
     private Task task;
     private Volume volume;
     private AGVDock agvDock;
+    private Battery battery;
 
     public AGVBuilder(final String agvIdentifier, final String agvShortDescription, final double autonomy, final double maximumWeight, final String model, final Task task, final double volume, final AGVDock agvDock) {
 
@@ -28,6 +29,7 @@ public class AGVBuilder {
         withTask(task);
         withVolume(volume);
         withAGVDock(agvDock);
+        withBattery(autonomy);
     }
 
 
@@ -71,12 +73,17 @@ public class AGVBuilder {
         return this;
     }
 
+    public AGVBuilder withBattery (double autonomy){
+        this.battery = new Battery(autonomy);
+        return this;
+    }
+
 
     private AGV buildOrThrow() {
         if (agv != null) {
             return agv;
         } else if (agvIdentifier != null && agvShortDescription != null && autonomy != null && maximumWeight != null && model != null && task != null && volume != null && agvDock != null) {
-            agv = new AGV(agvIdentifier, agvShortDescription, autonomy, maximumWeight, model, task, volume, agvDock);
+            agv = new AGV(agvIdentifier, agvShortDescription, autonomy, maximumWeight, model, task, volume, agvDock, battery);
             return agv;
         } else {
             throw new IllegalStateException();
