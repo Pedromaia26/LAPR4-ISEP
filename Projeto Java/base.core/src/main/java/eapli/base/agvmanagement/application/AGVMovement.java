@@ -213,7 +213,6 @@ public class AGVMovement{
         }
 
         public int[] shortestPath(int[][] matrix, int[] start, int[] end, boolean ver) throws InterruptedException {
-            System.out.println("SHORTEST PATH");
             int beginL = start[0], beginC = start[1];
             int endL = end[0], endC = end[1];
             //if start or end value is 0, return
@@ -240,7 +239,6 @@ public class AGVMovement{
                                 try {
                                     flag = false;
                                     notifyAll();
-                                    System.out.println("saygduihj");
                                     wait();
                                 } catch (Exception e) {
                                     LOGGER.debug(e.getMessage() + "\n");
@@ -262,7 +260,6 @@ public class AGVMovement{
                                 try {
                                     flag = false;
                                     notifyAll();
-                                    System.out.println("saygduihj");
                                     wait();
                                 } catch (Exception e) {
                                     LOGGER.debug(e.getMessage() + "\n");
@@ -284,7 +281,6 @@ public class AGVMovement{
                                 try {
                                     flag = false;
                                     notifyAll();
-                                    System.out.println("saygduihj");
                                     wait();
                                 } catch (Exception e) {
                                     LOGGER.debug(e.getMessage() + "\n");
@@ -306,7 +302,6 @@ public class AGVMovement{
                                 try {
                                     flag = false;
                                     notifyAll();
-                                    System.out.println("saygduihj");
                                     wait();
                                 } catch (Exception e) {
                                     LOGGER.debug(e.getMessage() + "\n");
@@ -371,11 +366,9 @@ public class AGVMovement{
             synchronized (this){
                 int[] array = new int[2];
                 if (dest == null) {
-                    System.out.println("there is no path.");
                     LOGGER.debug("there is no path");
                     while (flag) {
                         try {
-                            System.out.println("saygduihj");
                             wait();
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -384,13 +377,11 @@ public class AGVMovement{
                     flag = true;
                     array=shortestPath(matrix, start, end,ver);
                 } else {
-                    System.out.println("FFFFFF");
                     LinkedList<Position> path = new LinkedList<>();
                     p = dest;
                     do {
                         path.addFirst(p);
                     } while ((p = p.prev) != null);
-                    System.out.println(path);
                     array[0] = path.get(1).l;
                     array[1] = path.get(1).c;
                 }
@@ -425,20 +416,16 @@ public class AGVMovement{
                     }
                     oldStartW = start[0];
                     oldStartL = start[1];
-                    System.out.println("START 1 BEFORE: " + start[0]);
-                    System.out.println("START 2 BEFORE: " + start[1]);
                     flag = false;
                     notifyAll();
                 }
                     start = shortestPath(matrix, start, end, ver);
 
                 synchronized (this){
-                    System.out.println("START 1 AFTER: " + start[0]);
-                    System.out.println("START 2 AFTER: " + start[1]);
                     matrix[oldStartW][oldStartL] = 1;
                     matrix[start[0]][start[1]] = 9;
 
-                   for (int i = 0; i < matrix.length; i++) {
+                   /*for (int i = 0; i < matrix.length; i++) {
                         for (int j = 0; j < matrix[0].length; j++) {
                             if (matrix[i][j] == 9){
                                 System.out.print("\033[0;33m" + matrix[i][j] + " \033[0m");
@@ -450,7 +437,7 @@ public class AGVMovement{
 
                         }
                         System.out.println();
-                    }
+                    }*/
 
                    LOGGER.debug("\n");
                 if (batteryAtTheMoment < SAVING_MODE){
