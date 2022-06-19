@@ -23,7 +23,7 @@ A distribuição de requisitos/funcionalidades ao longo do período de desenvolv
 | [**1201276**](/Documentação/1201276) | [US2002](/docs/USDemo1) | [US5001](/docs/USDemo1) | [US1902](/Documentação/1201276/US1902/) |
 | [**1201371**](/Documentação/1201371) | [US1003](/docs/USDemo1) | [US4001](/docs/USDemo1) | [US5003](/Documentação/1201371/US5003/) |
 | [**1201371**](/Documentação/1201371) | [US2001](/docs/USDemo1) | [US5002](/docs/USDemo1) | [US5100](/Documentação/1201371/US5100/) |
-| [**1201371**](/Documentação/1201371) | ------------ | [US3000](/docs/USDemo1) | [US2006](/Documentação/1201371/US2006/) |
+| [**1201371**](/Documentação/1201371) | ------------ | [US3000](/docs/USDemo1) | US2006 |
 | [**1201381**](/Documentação/1201381) | [US1004](/docs/USDemo1) | [US1901](/docs/USDemo1) | [US1502](/Documentação/1201381/US1502/) |
 | [**1201381**](/Documentação/1201381) | [US2002](/docs/USDemo1) | [US3001](/docs/USDemo1) | [US3501](/Documentação/1201381/US3501/) |
 | [**1201381**](/Documentação/1201381) | ------------ | [US2004](/docs/USDemo1) | [US9002](/Documentação/) |
