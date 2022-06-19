@@ -54,13 +54,6 @@ public class HttpServerAjax {
             LOGGER.debug("Server failed to open local port " + PORT + "\n");
             System.exit(1);
         }
-      /*      Desktop desktop = java.awt.Desktop.getDesktop();
-        try {
-            URI url = new URI ("https://127.0.0.1:8000/");
-            desktop.browse(url);
-        }catch ( URISyntaxException e){
-            System.out.println("Error openimg the browser");
-        }*/
 
 
         while(true) {

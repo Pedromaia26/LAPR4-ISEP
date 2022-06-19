@@ -4,17 +4,51 @@ US5100
 
 # 1. Requisitos
 
-> **Question**: What type of communication do you want, i.e., what are the communications that you want to have between these two. Like AGV Manager says "Take a product" and AGV Digital Twin says "Taken"? Is it something like that? Or am i confused?
+> **Question**: Referring to the documentation, it is mentioned that the Route Planner module of the AGV Digital twin is responsible for "... (re)computing routes based on a source and target location on thewarehouse considering the warehouse plant only. It is worth notifying that AGV can only movehorizontally or vertically".
+>
+> What do you mean by source and target location of agv ? We can set agvdock as a starting point but what would be the end point?
+>
+> **Answer**: When assigning a task to an AGV, the AGV knows which products to collect, right?
+>
+> So, the source location (starting point) is the position where the AGV is at that moment (as you said, it might be the AGV dock)
+>
+> The target location (end point) might be the location of a product.
+>
+> However,  there are other possibilities.
+> For instance, consider the scenario where the AGV has to collect 2 products (say A and B).
+>
+>At least three routes have to be computed:
+>
+>> **1.** From AGV Dock location to the location of product A.
+>
+>> **2.** From location of product A to the location of product B.
+>
+>> **3.** From location of product B to the AGV dock location.
+
+> **Question**: 
+>
+>>**1.** Could you specify how the speed of an AGV is determined, seeing that we do not know the maximum speed of the AGV? 
+>
+>>**2.** At what charge do you suppose the AGV should move to the AGV docker to charge?
+>
+>>**3.** How should we measure the charging of an AGV should it have a certain percentage per minute or per hour?
+>
+>>**4.** Could you specify at what percentage the discharging of the AGV happens and if it is affected by other factors other than being turned on?
+>
+>>**5.** It is mentioned that when the AGV detects an obstacle 2 squares away it should reduce its velocity, could you please quantify the reduction.
 >
 > **Answer**: 
->The communication must follow the SPOMS2022 protocol. 
+>You have to notice that the overall idea is to simulate a real AGV. As so, you might start by applying basic algorithms for every AGV functions (e.g.: moving, charging/discharging battery). Probably, you might need some input information to apply such algorithms (e.g.: min, max and average speed). Such information might vary from one AGV to another, for instance, based on the AGV model.  
 >
-> **Question**: Regarding the USs 1901,4001, 5001, and 5002, what would you consider its complete state, that is, what would be the criterion to define whether or not this US is functional?
+>>**1.** If you need such information, you should collect such information previously (e.g.: US 2002).
 >
-> **Answer**: 
->For all of those US, the communication between the two involved components must be implemented in accordance with the SPOMS2022. The requests processing can be somehow mocked. For instance, if processing a request implies saving some data to the database, the component can instead write such data to a log (mocking). Latter, on next sprint, the teams implement the interaction to the database.
->However, it is not advisable mocking everything, namely the components (internal) state. Notice that by mocking you are letting extra effort to the next sprint.   
->Finally, all US must be demonstrable.
+>>**2.** Again, such value might be configurable by AGV (model).
+>
+>>**3.** You should adopt "seconds" as time unit.
+>
+>>**4.** As stated on the specifications' document: "when the AGV is moving battery consumption might be computed based on the travelled distance, but when the AGV is waiting/stopped on its dock battery consumption might be computed based on time.". Other factors might be considered, but at this stage, I recommend you to not apply a complex algorithm.
+>
+>>**5.** It is up to you decide that. However, notice that the idea is to avoid collision.
 
 # 2. Análise
 
