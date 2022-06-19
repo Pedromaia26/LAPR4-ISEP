@@ -7,10 +7,11 @@ US1502
 Como um Costumer (Cliente):
 * Eu quero ver o estado das minhas encomendas (orders) em aberto.
 
-Question:
->
-Answer:
->
+> **Question**:
+> In the US 1502, it is asked to "view/check the status of my open orders", can you clarify if the open orders are all the orders that have been created or if it is orders with a specific status.
+> 
+> **Answer**:
+> It is all orders that have not been delivered to the customer yet.
 
 
 # 2. Análise

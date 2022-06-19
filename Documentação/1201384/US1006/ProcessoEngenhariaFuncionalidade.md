@@ -8,9 +8,10 @@ Como um Sales Clerk:
 * Eu quero ter acesso à lista de orders que foram despachadas para entrega ao cliente e ser capaz de atualizar as orders como entregues.
 
 > **Question**:
->
+> For this US, the information to present to the Sales Clerk should be different than the information shown to the Warehouse Employee in a similar US or should it have the same information fields?
+> 
 > **Answer**: 
->
+> I would say that some fields might be the same (e.g. order id, date, customer) and differ on others.
 
 
 # 2. Análise

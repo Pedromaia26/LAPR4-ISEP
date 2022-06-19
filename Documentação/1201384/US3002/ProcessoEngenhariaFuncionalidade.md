@@ -7,10 +7,10 @@ US3002
 Como um Sales Clerk:
 * Eu quero ter acesso à lista de orders que foram despachadas para entrega ao cliente e ser capaz de atualizar as orders como entregues.
 
-Question: For this US, does the statistical report need to be shown to the SalesClerk or needs to be saved in some file too (p.e. text file)?
-
-Answer: The important is to show the statistical report. Saving the report is not seen as relevant since, at any time, the user might request to see the report again. Notice that the information on which the report is computed is already persisted on the system.
+> **Question**: For this US, does the statistical report need to be shown to the SalesClerk or needs to be saved in some file too (p.e. text file)?
 >
+> **Answer**: The important is to show the statistical report. Saving the report is not seen as relevant since, at any time, the user might request to see the report again. Notice that the information on which the report is computed is already persisted on the system.
+
 
 
 # 2. Análise
@@ -41,14 +41,14 @@ Por fim, achámos, por bem, para o tipo de questões que faltam (Texto livre e n
 ## 3.1. Realização da Funcionalidade
 
 ###Diagrama SSD
-![USUS3002_SSD](USUS3002_SSD.svg)
+![USUS3002_SSD](US3002_SSD.svg)
 
 ###Diagrama SD
-![USUS3002_SD](USUS3002_SD.svg)
+![USUS3002_SD](US3002_SD.svg)
 
 ## 3.2. Diagrama de Classes
 
-![USUS3002_CD](USUS3002_CD.svg)
+![USUS3002_CD](US3002_CD.svg)
 
 ## 3.3. Padrões Aplicados
 
