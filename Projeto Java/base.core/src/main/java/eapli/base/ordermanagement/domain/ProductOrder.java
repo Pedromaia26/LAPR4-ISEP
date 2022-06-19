@@ -30,7 +30,7 @@ public class ProductOrder implements AggregateRoot<Long> {
     @ManyToOne(optional = false)
     private ClientUser clientUser;
 
-    @ManyToOne(optional = false, cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Status status;
 
     @Temporal(TemporalType.DATE)
@@ -77,12 +77,11 @@ public class ProductOrder implements AggregateRoot<Long> {
         this.paymentMethod = paymentMethod;
     }
 
-    public ProductOrder(ClientUser clientUser_id, Status status, Calendar createdOn){
+    public ProductOrder(ClientUser clientUser_id, Calendar createdOn){
 
         if (clientUser_id == null || createdOn == null)
             throw new IllegalArgumentException();
         this.clientUser = clientUser_id;
-        this.status = status;
         this.createdOn = createdOn;
     }
 

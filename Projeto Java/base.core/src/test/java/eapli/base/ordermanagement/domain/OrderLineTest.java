@@ -67,7 +67,7 @@ public class OrderLineTest {
         b.withBillAddress(set);
         ClientUser client = b.build();
         Status status = new Status();
-        ProductOrderBuilder builder = new ProductOrderBuilder(client, CREATEDON, status);
+        ProductOrderBuilder builder = new ProductOrderBuilder(client, CREATEDON);
         return builder.build();
     }
 

@@ -25,9 +25,8 @@ public class ProductOrderBuilder implements DomainFactory<ProductOrder> {
     private PaymentMethod paymentMethod;
     private AGV agv;
 
-    public ProductOrderBuilder(final ClientUser clientvat, final Calendar createdOn, final Status status) {
+    public ProductOrderBuilder(final ClientUser clientvat, final Calendar createdOn) {
         withClientVat(clientvat);
-        withStatus(status);
         withCreatedOn(createdOn);
         withShipmentCost(0d);
         withTotalAmountWithoutTaxes(0d);
@@ -128,8 +127,8 @@ public class ProductOrderBuilder implements DomainFactory<ProductOrder> {
         } else if (clientUser != null && status != null && createdOn != null && deliveringPostalAddress != null && billingPostalAddress != null && totalAmountWithTaxes != null && totalAmountWithoutTaxes != null && shipmentMethod != null && shipmentCost != null && paymentMethod != null) {
             productOrder = new ProductOrder(clientUser, status, createdOn, deliveringPostalAddress, billingPostalAddress, totalAmountWithTaxes, totalAmountWithoutTaxes, shipmentMethod, shipmentCost, paymentMethod);
             return productOrder;
-        } else if (clientUser != null && status != null && createdOn != null && shipmentCost != null && totalAmountWithoutTaxes != null && totalAmountWithTaxes != null) {
-            productOrder = new ProductOrder(clientUser, status, createdOn);
+        } else if (clientUser != null && createdOn != null && shipmentCost != null && totalAmountWithoutTaxes != null && totalAmountWithTaxes != null) {
+            productOrder = new ProductOrder(clientUser, createdOn);
             return productOrder;
         } else if (clientUser != null && status != null && createdOn != null && deliveringPostalAddress != null && billingPostalAddress != null && totalAmountWithTaxes != null && totalAmountWithoutTaxes != null && shipmentMethod != null && shipmentCost != null && paymentMethod != null && agv != null){
             productOrder = new ProductOrder(clientUser, status, createdOn, deliveringPostalAddress, billingPostalAddress, totalAmountWithTaxes, totalAmountWithoutTaxes, shipmentMethod, shipmentCost, paymentMethod, agv);

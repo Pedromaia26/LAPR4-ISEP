@@ -53,9 +53,7 @@ public class AddOrderController {
 
     public ProductOrder addOrder(final String clientvat) {
         ClientUser clientUser = userRepository.findByVAT(clientvat);
-        long statusid = 1;
-        Status status = statusRepository.findByStatusId(statusid);
-        final ProductOrderBuilder newOrder = new ProductOrderBuilder(clientUser, Calendars.now(), status);
+        final ProductOrderBuilder newOrder = new ProductOrderBuilder(clientUser, Calendars.now());
         return orderRepository.save(newOrder.build());
     }
 
@@ -73,12 +71,12 @@ public class AddOrderController {
         order.modifyShipmentMethod(new ShipmentMethod(shipmentMethod));
         order.modifyShipmentCost(new ShipmentCost(shipmentCost));
         order.modifyPaymentMethod(new PaymentMethod(paymentMethod));
+        order.modifyStatus(status);
 
         orderRepository.save(order);
 
         assignAGVService.assignAGVService();
 
-        //chamar server e enviar id order
 
         return true;
     }
