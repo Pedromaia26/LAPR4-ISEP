@@ -13,6 +13,7 @@ public class SeeReportStatisticUI  extends AbstractUI {
 
     private final SeeReportStatisticController theController = new SeeReportStatisticController();
     private boolean invalidData;
+    private String surveyId;
 
     @Override
     protected boolean doShow() {
@@ -20,9 +21,20 @@ public class SeeReportStatisticUI  extends AbstractUI {
         ViewSurveysUI viewSurveysUI = new ViewSurveysUI();
         viewSurveysUI.show();
 
+
         List<SurveyDTO> list = (List<SurveyDTO>) theController.allSurveys();
         if (list.size() > 0){
-            String surveyId = Console.readLine("Select the questionnaire (enter the Id)");
+            do {
+                invalidData = false;
+                try {
+                    surveyId = Console.readLine("Select the questionnaire (enter the Id)");
+                    theController.getNumberClientsRequested(surveyId);
+                }catch (Exception e){
+                    System.out.println("Invalid id, please try again!");
+                    invalidData = true;
+                }
+            }while (invalidData);
+
             System.out.println("-------------");
             System.out.println("Survey: " + surveyId);
             int num = theController.getNumberClientsRequested(surveyId);

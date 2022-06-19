@@ -38,6 +38,6 @@ public class ListOrderPreparedUI  extends AbstractListUI<ProductOrder> {
 
     @Override
     public String headline() {
-        return "List product orders already prepared";
+        return "List of product orders";
     }
 }

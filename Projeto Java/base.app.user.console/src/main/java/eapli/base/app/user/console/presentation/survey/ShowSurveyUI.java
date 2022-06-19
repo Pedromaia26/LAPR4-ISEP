@@ -20,11 +20,23 @@ public class ShowSurveyUI  extends AbstractUI {
     @Override
     protected boolean doShow() {
         StringBuilder s = new StringBuilder();
-        boolean invalidAnswer;
+        boolean invalidAnswer, invalidID;
         boolean validDependecy;
         List<String> answers;
-        String surveyId = Console.readLine("Select the questionnaire (enter the Id)");
-        SurveyDTO survey = theController.getSurveyById(surveyId);
+        SurveyDTO survey = null;
+        String surveyId;
+
+        do {
+            invalidID = false;
+            surveyId = Console.readLine("Select the questionnaire (enter the Id)");
+            try {
+                 survey = theController.getSurveyById(surveyId);
+            }catch (Exception e){
+                System.out.println("Invalid id, please try again!");
+                invalidID = true;
+            }
+        }while (invalidID);
+
         System.out.println(survey.title);
         if (survey.welcomeMessage != null) System.out.println(survey.welcomeMessage);
         List<SurvSectionDTO> sections = theController.getSurveySections(surveyId);
@@ -97,7 +109,7 @@ public class ShowSurveyUI  extends AbstractUI {
 
     private List<String> readAnswer(QuestionDTO question, String type, String qobli, String sobli){
         List<String> as = new ArrayList<>();
-        boolean invalidAnswer;
+        boolean invalidAnswer = true;
         if (type.equals("Free-text")){
             String a = Console.readLine("Answer: ");
             as.add(a);
@@ -151,19 +163,28 @@ public class ShowSurveyUI  extends AbstractUI {
             as.add(a);
         }
         else if (type.equals("Multiple-Choice with input value")){
+            List<String> chosen = new ArrayList<>();
+            boolean invalidOption = false;
             String a, op;
             boolean input = false;
             do{
                 do{
                     a = Console.readLine("Choose one of the options (identifier) or write one: ");
-                    invalidAnswer = verifyAnswer(a, question.options, qobli, sobli);
-                    if (!invalidAnswer && a.length() > 1){
+                    if (chosen.contains(a)){
+                        System.out.println("Option was already chosen, please try again!");
+                        invalidOption = true;
+                    }else {
+                        invalidOption = false;
+                        chosen.add(a);
+                        invalidAnswer = verifyAnswer(a, question.options, qobli, sobli);
+                    }
+                        if (!invalidAnswer && a.length() > 1){
                         invalidAnswer = true;
                         input = true;
                     }
 
                     if (!invalidAnswer) System.out.println("The answer is not valid! Please try again!");
-                } while (!invalidAnswer);
+                } while (!invalidAnswer || invalidOption);
                 as.add(a);
                 op = "N";
                 if (a.length() > 0){
@@ -172,15 +193,24 @@ public class ShowSurveyUI  extends AbstractUI {
             } while (op.equals("Y") && !input);
         }
         else if (type.equals("Sorting Options")){
+            List<String> chosen = new ArrayList<>();
+            boolean invalidOption = false;
             String a;
             int num;
             for (int i = 0; i < question.options.size(); i++){
+                num = i + 1;
                 do{
-                    num = i + 1;
                     a = Console.readLine("Choose one of the options for position " + num + ": ");
-                    invalidAnswer = verifyAnswer(a, question.options, qobli, sobli);
-                    if (!invalidAnswer) System.out.println("The answer is not valid! Please try again!");
-                } while (!invalidAnswer);
+                    if (chosen.contains(a)){
+                        System.out.println("Option was already chosen, please try again!");
+                        invalidOption = true;
+                    }else{
+                        invalidOption = false;
+                        chosen.add(a);
+                        invalidAnswer = verifyAnswer(a, question.options, qobli, sobli);
+                        if (!invalidAnswer) System.out.println("The answer is not valid! Please try again!");
+                    }
+                } while (!invalidAnswer || invalidOption);
                 as.add(a);
             }
         }
